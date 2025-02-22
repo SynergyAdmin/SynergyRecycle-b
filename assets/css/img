@@ -5,3 +5,4 @@ innovazione.svg
 stabilita.svg
 app-screenshot.png        (800x600 PNG con compressione 60%)
 team-member-1.jpg         (500x500 JPG qualità 80%)
+convert input.jpg -resize 800x600 -quality 80 output.jpg
