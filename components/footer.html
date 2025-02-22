@@ -27,6 +27,8 @@
  <div class="copyright">
         © SynergyRecycle.B 2024
     </div>
+# sostituisci in tutti i file HTML
+find . -name "*.html" -exec sed -i 's/"assets\/css\/img/"assets\/img/g' {} +
 
 <script>
     // Caricamento Header
