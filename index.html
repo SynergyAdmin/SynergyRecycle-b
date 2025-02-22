@@ -217,6 +217,9 @@
 </body>
 </html>
 
+# sostituisci in tutti i file HTML
+find . -name "*.html" -exec sed -i 's/"assets\/css\/img/"assets\/img/g' {} +
+
     // Caricamento Footer
     fetch('./components/footer.html')
         .then(response => response.text())
