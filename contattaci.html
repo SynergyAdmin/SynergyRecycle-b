@@ -1,1 +1,83 @@
-contattaci.html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contattaci - SynergyRecycle.B</title>
+    <meta name="description" content="Contatta SynergyRecycle.B per informazioni sui servizi di riciclo tecnologico e sostenibilità ambientale">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/contact.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <main class="contact-section section">
+        <div class="container grid grid-2cols">
+            <!-- Form Contatto -->
+            <form id="contactForm" class="contact-form">
+                <h2 class="form-title">Scrivici</h2>
+                
+                <div class="form-group">
+                    <label for="name">Nome *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Numero di telefono</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Azienda</label>
+                    <input type="text" id="company" name="company">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Oggetto *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Seleziona un argomento</option>
+                        <option value="supporto">Supporto Tecnico</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="info">Informazioni Generali</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Domanda *</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="button submit-btn">Invia Messaggio</button>
+            </form>
+
+            <!-- Info Aziendali -->
+            <div class="company-info">
+                <h3 class="info-title">La Nostra Sede</h3>
+                <div class="info-item">
+                    <img src="assets/img/map-icon.svg" alt="Mappa" class="info-icon">
+                    <p>32052, Herford, Germany</p>
+                </div>
+                
+                <div class="info-item">
+                    <img src="assets/img/phone-icon.svg" alt="Telefono" class="info-icon">
+                    <p>+49 030 1234567</p>
+                </div>
+
+                <div class="info-item">
+                    <img src="assets/img/email-icon.svg" alt="Email" class="info-icon">
+                    <p>SynergyRecycle.b@gmail.com</p>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/img/facebook-icon.svg" alt="Facebook">
+                    </a>
+                    <a href="#" aria-label="Linked
