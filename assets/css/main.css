@@ -1,1 +1,49 @@
-Temp CSS
+:root {
+    --primary-green: #A7D1AB;
+    --secondary-green: #8BC34A;
+    --dark-gray: #2C3E50;
+    --light-gray: #ECF0F1;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--dark-gray);
+}
+
+/* Layout Generico */
+.section {
+    padding: 4rem 0;
+    margin: 2rem 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+
+/* Componenti Comuni */
+.button {
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    transition: transform 0.3s ease;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
