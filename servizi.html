@@ -7,36 +7,232 @@
     <link rel="stylesheet" href="assets/css/components/header.css">
     <link rel="stylesheet" href="assets/css/components/sections.css">
     <link rel="stylesheet" href="assets/css/components/footer.css">
-</head><section class="services-section section">
-    <div class="container">
-        <h2 class="section-title">La Mente, il Cuore, il nostro Eco-sistema</h2>
-        
-        <div class="grid grid-3cols">
-            <div class="service-card">
-                <img src="assets/img/app-screenshot.png" alt="App Funzionalità">
-                <h3>App con molte funzionalità</h3>
-                <ul class="service-features">
-                    <li>Registrazione e gestione utenti</li>
-                    <li>Tracciabilità in tempo reale</li>
-                    <li>Sistema di notifiche integrato</li>
-                </ul>
+</head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servizi - Eco-Platform</title>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <style>
+        /* Stili base ereditati dalla homepage */
+        /* [Stili precedenti rimangono invariati] */
+
+        /* Stili per la navigazione */
+        .navbar {
+            padding: 1rem 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .language-selector {
+            position: relative;
+            margin-left: 2rem;
+        }
+
+        .language-selector select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+        }
+
+        /* Stili specifici per la pagina Servizi */
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .system-card {
+            background: white;
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .system-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .milestone-section {
+            background: #f8f9fa;
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        .testimonials {
+            position: relative;
+            padding: var(--spacing-lg) 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            margin-top: var(--spacing-md);
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Eco-Platform</a>
+            <div class="nav-right">
+                <div class="language-selector">
+                    <select onchange="changeLanguage(this.value)">
+                        <option value="it">Italiano</option>
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </nav>
 
-<title>Servizi di Riciclo Innovativi | SynergyRecycle.B</title>
-<meta name="description" content="Scopri i nostri servizi avanzati per il riciclo tecnologico e la gestione sostenibile dei rifiuti elettronici">
-<meta name="keywords" content="riciclo, tecnologia, sostenibilità, rifiuti elettronici, economia circolare
+    <!-- Main Content -->
+    <main style="margin-top: 80px;">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">La Mente, il Cuore, il nostro Eco-sistema.</h1>
+            </div>
+        </section>
 
-  <script>
-    // Caricamento Header
-    fetch('./components/header.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('header-container').innerHTML = data);
+        <!-- Sistemi Section -->
+        <section class="section">
+            <div class="container">
+                <div class="systems-grid">
+                    <!-- App Features -->
+                    <div class="system-card">
+                        <img src="/api/placeholder/400/300" alt="App Screenshot">
+                        <h3>App con molte funzionalità</h3>
+                        <p>La tua guida digitale</p>
+                        <ul>
+                            <li>Registrazione utenti</li>
+                            <li>Tracciabilità riciclaggi</li>
+                            <li>Notifiche premi</li>
+                        </ul>
+                    </div>
 
-    // Caricamento Footer
-    fetch('./components/footer.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('footer-container').innerHTML = data);
-</script>
+                    <!-- Alleati -->
+                    <div class="system-card">
+                        <img src="/api/placeholder/400/300" alt="Collaborazione">
+                        <h3>I nostri Alleati</h3>
+                        <p>Una rete globale di partner</p>
+                        <ul>
+                            <li>Collaborazione aziende di riciclo</li>
+                            <li>Partnership istituzioni</li>
+                            <li>Supporto tecnologico</li>
+                        </ul>
+                    </div>
+
+                    <!-- World Benefits -->
+                    <div class="system-card">
+                        <img src="/api/placeholder/400/300" alt="Impatto ambientale">
+                        <h3>Anche il Mondo guadagnerà come te</h3>
+                        <p>Un impatto positivo per tutti</p>
+                        <ul>
+                            <li>Incentivi economici</li>
+                            <li>Riduzione impatto ambientale</li>
+                            <li>Contributo sostenibilità</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Milestone Section -->
+        <section class="milestone-section">
+            <div class="container">
+                <h2 class="section-title">SRB: Where Eovo Frentlinge meet Feutholking Rewarding.</h2>
+                <img src="/api/placeholder/200/200" alt="Albero con monete">
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Greater Impact</h2>
+                <p class="text-center">Making a difference every day.</p>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Community Focus</h2>
+                <p class="text-center">Connections</p>
+                <div class="social-links">
+                    <a href="#"><span>FB</span></a>
+                    <a href="#"><span>TW</span></a>
+                    <a href="#"><span>IG</span></a>
+                    <a href="#"><span>LI</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Innovation Hub -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Where ideas come to life.</h2>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="section" style="background-color: #f8f9fa;">
+            <div class="container">
+                <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma non tanto per il Mondo.</h2>
+                <p class="text-center">Unisciti a noi per migliorare il nostro Pianeta.</p>
+                <div style="text-align: center; margin-top: var(--spacing-md);">
+                    <a href="#" class="btn">Inizia ora</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function changeLanguage(lang) {
+            // Qui andrà la logica per il cambio lingua
+            console.log('Cambio lingua a:', lang);
+        }
+    </script>
+</body>
+</html>
