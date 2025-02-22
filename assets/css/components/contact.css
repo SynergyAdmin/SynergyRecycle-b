@@ -1,0 +1,92 @@
+/* CONTACT PAGE STYLES */
+.contact-section {
+    background: var(--light-gray);
+    min-height: calc(100vh - 160px);
+}
+
+.grid-2cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact-form {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.form-title {
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-green);
+    outline: none;
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.company-info {
+    background: var(--dark-gray);
+    padding: 2rem;
+    border-radius: 15px;
+    color: var(--white);
+}
+
+.info-title {
+    color: var(--primary-green);
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.info-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 1rem;
+}
+
+@media (max-width: 768px) {
+    .grid-2cols {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
