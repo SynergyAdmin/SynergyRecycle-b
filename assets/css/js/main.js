@@ -21,6 +21,30 @@ document.querySelectorAll('form').forEach(form => {
 document.addEventListener('DOMContentLoaded', () => {
     loadComponents();
     // Altre inizializzazioni
+    
+    // CODICE DEBUG IMMAGINE - INIZIO
+    const debugImageLoading = () => {
+        const targetImage = document.querySelector('img[alt="Innovazione"]');
+        
+        if(!targetImage) {
+            console.error('Nessuna immagine con alt="Innovazione" trovata');
+            return;
+        }
+
+        fetch(targetImage.src)
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                console.log('✅ Immagine caricata con successo:', targetImage.src);
+            })
+            .catch(err => {
+                console.error('❌ Errore caricamento immagine:', err.message);
+                console.log('Percorso assoluto tentato:', window.location.href + targetImage.src);
+            });
+    };
+
+    debugImageLoading();
+    // CODICE DEBUG IMMAGINE - FINE
+});
 });
 
 // Intersection Observer per animazioni al scroll
