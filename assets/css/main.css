@@ -47,3 +47,64 @@ body {
 .button:hover {
     transform: translateY(-3px);
 }
+
+/* Aggiungi dopo la sezione "Componenti Comuni" */
+/* ======================
+   SEZIONE IMMAGINI RESPONSIVE
+   ====================== */
+
+img {
+    max-width: 100%;       /* Adatta l'immagine al contenitore */
+    height: auto;          /* Mantiene le proporzioni originali */
+    display: block;        /* Elimina spazi indesiderati sotto le immagini */
+    margin: 0 auto;        /* Centratura orizzontale */
+    border-radius: 8px;    /* Bordi leggermente arrotondati */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sottile ombra per profondità */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Effetti hover */
+}
+
+/* Immagini nelle griglie */
+.grid img {
+    width: 100%;           /* Riempie completamente la cella della griglia */
+    object-fit: cover;     /* Ritaglio intelligente per immagini in contenitori */
+}
+
+/* Immagini hero/full-width */
+.hero-img {
+    width: 100%;
+    height: 60vh;          /* Altezza relativa alla viewport */
+    object-fit: cover;
+    object-position: center 30%; /* Priorità alla parte superiore */
+    border-radius: 0;      /* Rimuove bordi arrotondati per immagini a tutta larghezza */
+}
+
+/* Immagini nelle card */
+.card img {
+    aspect-ratio: 16/9;    /* Proporzioni fisse per uniformità */
+    border-radius: 8px 8px 0 0; /* Arrotonda solo la parte superiore */
+}
+
+/* Ottimizzazione prestazioni */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* Animazione hover per interattività */
+img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Media query per schermi HD/Retina */
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+    .high-res-img {
+        background-image: url('path/to/your/image@2x.jpg');
+    }
+}
