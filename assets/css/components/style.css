@@ -1,0 +1,23 @@
+:root {
+    --verde-principale: #A7D1AB;
+    --grigio-scuro: #2C3E50;
+    --bianco: #FFFFFF;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+#hero {
+    background-color: var(--verde-principale);
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.card {
+    background: var(--bianco);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
