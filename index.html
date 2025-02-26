@@ -159,68 +159,6 @@
             gap: var(--spacing-md);
             align-items: center;
         }
-            /* Sezione Hero Animata */
-        .hero-section {
-            background: url('assets/earth-grid.webp') no-repeat center/cover;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .blockchain-pulse {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--verde-eco) 0%, transparent 70%);
-            animation: pulse 3s infinite;
-            opacity: 0.15;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(0.95); }
-        }
-
-        /* Card ICO/Token con effetto ologramma */
-        .token-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .token-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .token-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, 
-                transparent 25%,
-                rgba(46, 204, 113, 0.1) 50%,
-                transparent 75%);
-            animation: hologram 6s infinite linear;
-        }
-
-        @keyframes hologram {
-            100% { transform: rotate(360deg); }
         }
     </style>   
 </head>
