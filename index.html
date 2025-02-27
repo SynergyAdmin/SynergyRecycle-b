@@ -242,3 +242,41 @@
         .then(response => response.text())
         .then(data => document.getElementById('footer-container').innerHTML = data);
 </script>
+
+<!-- Footer Copyright -->
+<footer class="site-footer">
+    <div class="container">
+        <p class="copyright-text">
+            © <span id="copyright-2024"></span> SynergyRecycle.B. 
+            Tutti i contenuti di questa pagina sono protetti da copyright 
+            ai sensi della legge italiana ed internazionale.
+        </p>
+    </div>
+</footer>
+
+<!-- Aggiungi questo script per l'anno dinamico -->
+<script>
+    document.getElementById('copyright-year').textContent = 
+        new Date().getFullYear();
+</script>
+
+<!-- Stile base (da inserire nel CSS) -->
+<style>
+    .site-footer {
+        background-color: var(--dark-gray);
+        padding: 2rem 0;
+        margin-top: 4rem;
+        text-align: center;
+    }
+
+    .copyright-text {
+        color: var(--light-gray);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .copyright-text a {
+        color: var(--primary-green);
+        text-decoration: none;
+    }
+</style>
