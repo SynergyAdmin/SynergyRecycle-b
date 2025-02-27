@@ -108,3 +108,23 @@ img:hover {
         background-image: url('path/to/your/image@2x.jpg');
     }
 }
+
+<!-- Stile base (da inserire nel CSS) -->
+<style>
+    .site-footer {
+        background-color: var(--dark-gray);
+        padding: 2rem 0;
+        margin-top: 4rem;
+        text-align: center;
+    }
+
+    .copyright-text {
+        color: var(--light-gray);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .copyright-text a {
+        color: var(--primary-green);
+        text-decoration: none;
+    }
