@@ -1,6 +1,401 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynergyRecycle - Roadmap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Intestazione */
+        header {
+            background-color: #0c546b;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .menu-item {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .menu-item.active {
+            background-color: #8bc34a;
+        }
+
+        .right-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-icon, .phone-icon, .notification-icon {
+            font-size: 18px;
+        }
+
+        .phone-number {
+            margin-left: 5px;
+        }
+
+        .contact-btn {
+            background-color: #8bc34a;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        /* Banner */
+        .banner {
+            background-color: #334a38;
+            color: white;
+            padding: 8px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* Roadmap Section */
+        .roadmap-section {
+            margin-top: 30px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .roadmap-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .roadmap-header h1 {
+            color: #0c546b;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .roadmap-header p {
+            color: #666;
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, #2e7d32, #1565c0);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+
+        .roadmap-item {
+            display: flex;
+            justify-content: flex-start;
+            position: relative;
+            margin-bottom: 40px;
+            width: 50%;
+        }
+
+        .roadmap-item:nth-child(even) {
+            margin-left: auto;
+            justify-content: flex-start;
+        }
+
+        .roadmap-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border-left: 4px solid;
+        }
+
+        .roadmap-item:nth-child(odd) .roadmap-content {
+            margin-right: 20px;
+            border-left-color: #2e7d32; /* Verde per economia circolare */
+        }
+
+        .roadmap-item:nth-child(even) .roadmap-content {
+            margin-left: 20px;
+            border-left-color: #1565c0; /* Blu per blockchain */
+        }
+
+        .roadmap-item:nth-child(3n) .roadmap-content {
+            border-left-color: #8bc34a; /* Verde chiaro per riciclo */
+        }
+
+        .roadmap-date {
+            background-color: #0c546b;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .roadmap-title {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .roadmap-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .roadmap-status {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .status-indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .status-completed {
+            background-color: #4caf50;
+        }
+
+        .status-in-progress {
+            background-color: #ff9800;
+        }
+
+        .status-upcoming {
+            background-color: #9e9e9e;
+        }
+
+        .status-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .roadmap-item .dot {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid;
+            top: 20px;
+            z-index: 1;
+        }
+
+        .roadmap-item:nth-child(odd) .dot {
+            right: -12.5px;
+            border-color: #2e7d32;
+        }
+
+        .roadmap-item:nth-child(even) .dot {
+            left: -12.5px;
+            border-color: #1565c0;
+        }
+
+        .roadmap-item:nth-child(3n) .dot {
+            border-color: #8bc34a;
+        }
+
+        .blockchain-icon {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .blockchain-icon .block {
+            width: 30px;
+            height: 30px;
+            background: #e3f2fd;
+            border: 2px solid #1565c0;
+            margin: 0 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            position: relative;
+        }
+
+        .blockchain-icon .block::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 2px;
+            background: #1565c0;
+            right: -15px;
+        }
+
+        .blockchain-icon .block:last-child::after {
+            display: none;
+        }
+
+        .circular-economy {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .circular-economy .circle {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        .circular-economy .circle::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px dashed #2e7d32;
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .circular-economy .icon {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #e8f5e9;
+            border: 2px solid #2e7d32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .circular-economy .icon:nth-child(1) {
+            top: 0;
+            left: 45px;
+        }
+
+        .circular-economy .icon:nth-child(2) {
+            top: 45px;
+            right: 0;
+        }
+
+        .circular-economy .icon:nth-child(3) {
+            bottom: 0;
+            left: 45px;
+        }
+
+        .circular-economy .icon:nth-child(4) {
+            top: 45px;
+            left: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .roadmap-timeline::before {
+                left: 30px;
+            }
+
+            .roadmap-item {
+                width: 100%;
+                margin-left: 0 !important;
+            }
+
+            .roadmap-item:nth-child(even) {
+                justify-content: flex-start;
+            }
+
+            .roadmap-item:nth-child(odd) .roadmap-content,
+            .roadmap-item:nth-child(even) .roadmap-content {
+                margin-left: 60px;
+                margin-right: 0;
+                width: calc(100% - 60px);
+            }
+
+            .roadmap-item:nth-child(odd) .dot,
+            .roadmap-item:nth-child(even) .dot {
+                left: 30px;
+                transform: translateX(-50%);
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Intestazione -->
+        <header>
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="Logo">
+                <span>SynergyRecycle</span>
+            </div>
+            <div class="menu">
+                <a href="#" class="menu-item">Home</a>
+                <a href="#" class="menu-item">Servizi</a>
+                <a href="#" class="menu-item">Sostenerci-ti</a>
+                <a href="#" class="menu-item active">Roadmap</a>
+                <a href="#" class="menu-item">Contattaci</a>
+            </div>
+            <div class="right-menu">
+                <div class="search-icon">🔍</div>
+                <div class="phone">📞 <span class="phone-number">+1 555-555-5556</span></div>
+                <div class="notification-icon">🔔</div>
+                <a href="#" class="contact-btn">Contattaci</a>
+            </div>
+        </header>
+
+        <head>
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,155 +407,13 @@
     <link rel="stylesheet" href="./assets/css/components/sections.css">
     <link rel="stylesheet" href="./assets/css/components/footer.css">
 </head>
-<body>
-    <!-- NAVIGAZIONE -->
-    <nav class="main-nav">
-        <a href="./" class="button">Home</a>
-        <a href="./servizi.html" class="button">Servizi</a>
-        <a href="./sostenerci.html" class="button">Supportaci</a>
-        <a href="./contattaci.html" class="button">Contattaci</a>
-        <a href="roadmap.html" class="menu-item">Roadmap</a>
-    </nav>
 
-    <!-- CONTENUTO PRINCIPALE -->
-    <div class="pricing-section section">
-        <!-- ... contenuto ... -->
-    </div>
-
-    <!-- Script JS -->
-    <script src="./assets/js/main.js"></script>
-</body>
-</html>
 <body>
     <!-- Collegamento JS -->
     <script src="assets/js/main.js" defer></script>
 </body>
-    
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco-Platform</title>
 
- <style>
-        :root {
-            --spacing-sm: 1rem;
-            --spacing-md: 2rem;
-            --spacing-lg: 4rem;
-            --container-width: 1200px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 var(--spacing-sm);
-        }
-
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            background-color: #f8f9fa;
-            padding: var(--spacing-lg) 0;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-lg);
-            color: #666;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        .section {
-            padding: var(--spacing-lg) 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: var(--spacing-lg);
-            font-size: 2.5rem;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-md);
-        }
-
-        .value-card {
-            padding: var(--spacing-md);
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-md);
-        }
-
-        .team-member {
-            text-align: center;
-        }
-
-        .team-member img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .references {
-            background-color: #f8f9fa;
-        }
-
-        .references-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: var(--spacing-md);
-            align-items: center;
-        }
-    </style>
-</head>
-
+        
 <body>
     <!-- Hero Section -->
     <section class="hero">
