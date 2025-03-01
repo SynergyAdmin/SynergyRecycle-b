@@ -170,8 +170,10 @@
                         <img src="./assets/img/3.1.jpeg" alt="Collaborazione">
                         <h3>I nostri Alleati</h3>
                         <p>Una rete globale di partner</p>
-                        </p> Descrizione:
-                        "Tu, insiemeai nostro alleati, costruiamo soluzioni sostenibili per un futuro migliore."</p>
+                        <ul
+                        <li>Descrizione:<li>
+                        <ul
+                        </p>"Tu, insieme ai nostro alleati, costruiamo soluzioni sostenibili per un futuro migliore."</p>
                         <ul 
                             <li>Collaborazione con aziende che si occupano del riciclo</li>
                             <li>Partnership con istituzioni Locali e Internazionali</li>
@@ -187,7 +189,7 @@
                         </p> Descrizione:
                         "Ogni tuo riciclo non solo genera benefici per te, ma aiuta a creare un mondo piú sostenibile e sano."</p>
                         <ul 
-                            <li>Incentivi economici</li>
+                            <li>Incentivi economici<li>
                             <li>Riduzione impatto ambientale</li>
                             <li>Contributo sostenibilità</li>
                         </ul>
@@ -196,59 +198,167 @@
             </div>
         </section>
 
-        <!-- Milestone Section -->
-        <section class="milestone-section">
-            <div class="container">
-                <h2 class="section-title">SRB: Where Eovo Frentlinge meet Feutholking Rewarding.</h2>
-                <img src="./assets/img/4.1.jpeg" alt="il nostro ecosistema">
+      <!-- Milestone Section -->
+<section class="milestone-section">
+    <div class="container">
+        <div class="grid-layout">
+            <!-- Colonna sinistra con l'immagine principale -->
+            <div class="main-image">
+                <img src="./assets/img/4.1.jpeg" alt="SRB:"Dove il vecchio incontra il nuovo, nasce un cerchio di valore senza fine."">
+                <div class="srb-logo">SRB</div>
             </div>
-        </section>
-
-        <!-- Impact Section -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">Greater Impact</h2>
-                <p class="text-center">Making a difference every day.</p>
-            </div>
-        </section>
-
-        <!-- Community Section -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">Community Focus</h2>
-                <p class="text-center">Connections</p>
-                <div class="social-links">
-                    <a href="#"><span>FB</span></a>
-                    <a href="#"><span>TW</span></a>
-                    <a href="#"><span>IG</span></a>
-                    <a href="#"><span>LI</span></a>
+            
+            <!-- Grid dei quattro quadrati -->
+            <div class="features-grid">
+                <!-- Key Milestone -->
+                <div class="feature-box green-box">
+                    <h3>Key Milestone</h3>
+                    <p>Reaching new heights</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Innovation Hub -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">Where ideas come to life.</h2>
-            </div>
-        </section>
+                
+                <!-- Greater Impact -->
+                <div class="feature-box blue-box">
+                    <h3>Greater Impact</h3>
+                    <p>Making a difference every day</p>
+                </div>
+                
+                <!-- Community Focus -->
+                <div class="feature-box light-box">
+                    <h3>Community Focus</h3>
+                    <p>Connections</p>
+                    <div class="social-icons">
+                        <a href="#"><span>X</span></a>
+                        <a href="#"><span class="youtube">YouTube</span></a>
+                        <a href="#"><span class="instagram">Instagram</span></a>
+                        <a href="#"><span class="tiktok">TikTok</span></a>
+                        <a href="#"><span class="spotify">Spotify</span></a>
+                        <a href="#"><span class="discord">Discord</span></a>
+                    </div>
+                </div>
+                
+                <!-- Innovation Hub -->
+                <div class="feature-box dark-green-box">
+                    <h3>Innovation Hub</h3>
+                    <p>Where ideas come to life</p>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-        <!-- Call to Action -->
-        <section class="section" style="background-color: #f8f9fa;">
-            <div class="container">
-                <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma non tanto per il Mondo.</h2>
-                <p class="text-center">Unisciti a noi per migliorare il nostro Pianeta.</p>
-                <div style="text-align: center; margin-top: var(--spacing-md);">
-                    <a href="#" class="btn">Inizia ora</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
+<style>
+    .grid-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 40px 0;
+    }
+    
+    .main-image {
+        position: relative;
+        grid-row: span 2;
+        height: 100%;
+    }
+    
+    .main-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    
+    .srb-logo {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+    
+    .features-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 15px;
+        height: 100%;
+    }
+    
+    .feature-box {
+        padding: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .feature-box h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .feature-box p {
+        color: #666;
+    }
+    
+    .green-box {
+        background-color: #f0f7ee;
+    }
+    
+    .blue-box {
+        background-color: #3c80e6;
+        color: white;
+    }
+    
+    .blue-box h3, .blue-box p {
+        color: white;
+    }
+    
+    .light-box {
+        background-color: #f8f9fa;
+    }
+    
+    .dark-green-box {
+        background-color: #315b4c;
+        color: white;
+    }
+    
+    .dark-green-box h3, .dark-green-box p {
+        color: white;
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .social-icons a {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: #f0f0f0;
+        text-decoration: none;
+        color: #333;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .grid-layout {
+            grid-template-columns: 1fr;
+        }
+        
+        .features-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, auto);
+        }
+    }
+</style>
     <script>
         function changeLanguage(lang) {
             // Qui andrà la logica per il cambio lingua
