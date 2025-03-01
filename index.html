@@ -11,67 +11,30 @@
     <link rel="stylesheet" href="./assets/css/components/header.css">
     <link rel="stylesheet" href="./assets/css/components/sections.css">
     <link rel="stylesheet" href="./assets/css/components/footer.css">
-</head>
-<body>
-<div class="logo">
-                <img src="./assets/img/logo da email.png" alt="Logo">
-                <span>...</span>
-            </div>
     
-    <!-- NAVIGAZIONE -->
-    <nav class="main-nav">
-        <a href="./" class="button">Home</a>
-        <a href="./servizi.html" class="button">Servizi</a>
-        <a href="./sostenerci.html" class="button">Supportaci</a>
-        <a href="./contattaci.html" class="button">Contattaci</a>
-        <a href="./roadmap.html" class="button">Roadmap</a>
-    </nav>
-
-    <!-- CONTENUTO PRINCIPALE -->
-    <div class="pricing-section section">
-        <!-- ... contenuto ... -->
-    </div>
-
-    <!-- Script JS -->
-    <script src="./assets/js/main.js"></script>
-</body>
-</html>
-<body>
-    <!-- Collegamento JS -->
-    <script src="assets/js/main.js" defer></script>
-</body>
-    
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco-Platform</title>
-
- <style>
+    <!-- Inline CSS per Eco-Platform -->
+    <style>
         :root {
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
             --spacing-lg: 4rem;
             --container-width: 1200px;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.5;
             color: #333;
         }
-
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
             padding: 0 var(--spacing-sm);
         }
-
         .hero {
             min-height: 80vh;
             display: flex;
@@ -79,24 +42,20 @@
             background-color: #f8f9fa;
             padding: var(--spacing-lg) 0;
         }
-
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
-
         .hero-title {
             font-size: 3rem;
             margin-bottom: var(--spacing-md);
         }
-
         .hero-subtitle {
             font-size: 1.5rem;
             margin-bottom: var(--spacing-lg);
             color: #666;
         }
-
         .btn {
             display: inline-block;
             padding: 1rem 2rem;
@@ -106,28 +65,23 @@
             border-radius: 4px;
             transition: background-color 0.3s;
         }
-
         .btn:hover {
             background-color: #0056b3;
         }
-
         .section {
             padding: var(--spacing-lg) 0;
         }
-
         .section-title {
             text-align: center;
             margin-bottom: var(--spacing-lg);
             font-size: 2.5rem;
         }
-
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: var(--spacing-md);
             margin-top: var(--spacing-md);
         }
-
         .value-card {
             padding: var(--spacing-md);
             background: white;
@@ -135,28 +89,23 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
         }
-
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: var(--spacing-md);
         }
-
         .team-member {
             text-align: center;
         }
-
         .team-member img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             margin-bottom: var(--spacing-sm);
         }
-
         .references {
             background-color: #f8f9fa;
         }
-
         .references-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -165,8 +114,27 @@
         }
     </style>
 </head>
-
 <body>
+    <!-- Logo Section -->
+    <div class="logo">
+        <img src="./assets/img/logo_da_email.png" alt="Logo">
+        <span>...</span>
+    </div>
+    
+    <!-- Navigazione -->
+    <nav class="main-nav">
+        <a href="./" class="button">Home</a>
+        <a href="./servizi.html" class="button">Servizi</a>
+        <a href="./sostenerci.html" class="button">Supportaci</a>
+        <a href="./contattaci.html" class="button">Contattaci</a>
+        <a href="./roadmap.html" class="button">Roadmap</a>
+    </nav>
+    
+    <!-- Sezione Contenuto Principale (Pricing) -->
+    <div class="pricing-section section">
+        <!-- ... contenuto ... -->
+    </div>
+    
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -176,7 +144,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Strategia Section -->
     <section class="section">
         <div class="container">
@@ -184,7 +152,7 @@
             <p class="text-center">Mettiamo a punto un'esperienza clienti unica, su misura basata su strategie digitali e ricerche.</p>
         </div>
     </section>
-
+    
     <!-- Valori Section -->
     <section class="section">
         <div class="container">
@@ -209,7 +177,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Offerta Section -->
     <section class="section">
         <div class="container">
@@ -220,7 +188,7 @@
                     <p>Aiutiamo le persone a prosperare in un panorama in evoluzione.</p>
                     <h3>Web e sviluppo app</h3>
                     <p>Esperienza accumulata per la crescita e la nostra App.</p>
-                    <a href="#" class="btn">Scarica la nostra App </a>
+                    <a href="#" class="btn">Scarica la nostra App</a>
                 </div>
                 <div>
                     <img src="./assets/img/persona.jpeg" alt="Innovazione">
@@ -228,8 +196,8 @@
             </div>
         </div>
     </section>
-
-    <!-- Call to Action -->
+    
+    <!-- Call to Action Section -->
     <section class="section" style="background-color: #f8f9fa;">
         <div class="container">
             <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma non tanto per il Mondo.</h2>
@@ -239,45 +207,44 @@
             </div>
         </div>
     </section>
+    
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container">
+            <p class="copyright-text">
+                © <span id="copyright-2024"></span> SynergyRecycle.B. 
+                Tutti i contenuti di questa pagina sono protetti da copyright 
+                ai sensi della legge italiana ed internazionale.
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Script per l'anno dinamico -->
+    <script>
+        document.getElementById('copyright-2024').textContent =
+            new Date().getFullYear();
+    </script>
+    
+    <!-- Collegamento al file JavaScript -->
+    <script src="./assets/js/main.js" defer></script>
+    
+    <!-- Stile base per il footer (se necessario) -->
+    <style>
+        .site-footer {
+            background-color: var(--dark-gray);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        .copyright-text {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .copyright-text a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+    </style>
 </body>
 </html>
-
-</script>
-
-<!-- Footer Copyright -->
-<footer class="site-footer">
-    <div class="container">
-        <p class="copyright-text">
-            © <span id="copyright-2024"></span> SynergyRecycle.B. 
-            Tutti i contenuti di questa pagina sono protetti da copyright 
-            ai sensi della legge italiana ed internazionale.
-        </p>
-    </div>
-</footer>
-
-<!-- Aggiungi questo script per l'anno dinamico -->
-<script>
-    document.getElementById('copyright-2024').textContent = 
-        new Date().getFullYear();
-</script>
-
-<!-- Stile base (da inserire nel CSS) -->
-<style>
-    .site-footer {
-        background-color: var(--dark-gray);
-        padding: 2rem 0;
-        margin-top: 4rem;
-        text-align: center;
-    }
-
-    .copyright-text {
-        color: var(--light-gray);
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
-
-    .copyright-text a {
-        color: var(--primary-green);
-        text-decoration: none;
-    }
-</style>
