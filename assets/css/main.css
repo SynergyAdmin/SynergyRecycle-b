@@ -1,9 +1,14 @@
+/* main.css */
 :root {
     --primary-green: #A7D1AB;
     --secondary-green: #8BC34A;
     --dark-gray: #2C3E50;
     --light-gray: #ECF0F1;
     --white: #FFFFFF;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --container-width: 1200px;
 }
 
 * {
@@ -13,36 +18,40 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-/* Per un colore solido */
+/* Base Styles */
 body {
     line-height: 1.6;
     color: var(--dark-gray);
-    background-color: #f5f5f5; /* o qualsiasi altro colore */
+    background-color: #f5f5f5; /* fallback */
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* Layout Generico */
 .section {
-    padding: 4rem 0;
-    margin: 2rem 0;
+    padding: var(--spacing-lg) 0;
+    margin: var(--spacing-md) 0;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 var(--spacing-sm);
 }
 
 .grid {
     display: grid;
-    gap: 2rem;
+    gap: var(--spacing-md);
 }
 
 /* Componenti Comuni */
 .button {
     background-color: var(--primary-green);
     color: var(--white);
-    padding: 1rem 2rem;
+    padding: var(--spacing-sm) var(--spacing-md);
     border-radius: 25px;
+    text-decoration: none;
     transition: transform 0.3s ease;
 }
 
@@ -50,10 +59,7 @@ body {
     transform: translateY(-3px);
 }
 
-/* ======================
-   SEZIONE IMMAGINI RESPONSIVE
-   ====================== */
-
+/* Immagini */
 img {
     max-width: 100%;       /* Adatta l'immagine al contenitore */
     height: auto;          /* Mantiene le proporzioni originali */
@@ -64,13 +70,11 @@ img {
     transition: transform 0.3s ease, opacity 0.3s ease; /* Effetti hover */
 }
 
-/* Immagini nelle griglie */
 .grid img {
     width: 100%;           /* Riempie completamente la cella della griglia */
     object-fit: cover;     /* Ritaglio intelligente per immagini in contenitori */
 }
 
-/* Immagini hero/full-width */
 .hero-img {
     width: 100%;
     height: 60vh;          /* Altezza relativa alla viewport */
@@ -79,7 +83,6 @@ img {
     border-radius: 0;      /* Rimuove bordi arrotondati per immagini a tutta larghezza */
 }
 
-/* Immagini nelle card */
 .card img {
     aspect-ratio: 16/9;    /* Proporzioni fisse per uniformità */
     border-radius: 8px 8px 0 0; /* Arrotonda solo la parte superiore */
@@ -101,19 +104,18 @@ img:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Media query per schermi HD/Retina */
-@media 
-(-webkit-min-device-pixel-ratio: 2), 
-(min-resolution: 192dpi) { 
+/* Media Query per schermi HD/Retina */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
     .high-res-img {
         background-image: url('path/to/your/image@2x.jpg');
     }
 }
 
+/* Footer */
 .site-footer {
     background-color: var(--dark-gray);
-    padding: 2rem 0;
-    margin-top: 4rem;
+    padding: var(--spacing-md) 0;
+    margin-top: var(--spacing-lg);
     text-align: center;
 }
 
@@ -128,12 +130,14 @@ img:hover {
     text-decoration: none;
 }
 
+/* Main Image Container */
 .main-image-container {
     grid-row: span 2;
     display: flex;
     flex-direction: column;
 }
 
+/* Section Title */
 .section-title {
     margin-bottom: 15px;
     text-align: center;
