@@ -235,18 +235,57 @@
 </main>
 
         <!-- Call to Action -->
-        <section class="section" style="background-color: #f8f9fa;">
-            <div class="container">
-                <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma non tanto per il Mondo.</h2>
-                <p class="text-center">Unisciti a noi per migliorare il nostro Pianeta.</p>
-                <div style="text-align: center; margin-top: var(--spacing-md);">
-                    <a href="#" class="btn">Inizia ora</a>
-                </div>
+    <section class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma non tanto per il Mondo.</h2>
+            <p class="text-center">Unisciti a noi per migliorare il nostro Pianeta.</p>
+            <div style="text-align: center; margin-top: var(--spacing-md);">
+                <a href="#" class="btn">Inizia ora</a>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</body>
+</html>
 
-    <script>
+</script>
+
+<!-- Footer Copyright -->
+<footer class="site-footer">
+    <div class="container">
+        <p class="copyright-text">
+            © <span id="copyright-2024"></span> SynergyRecycle.B. 
+            Tutti i contenuti di questa pagina sono protetti da copyright 
+            ai sensi della legge italiana ed internazionale.
+        </p>
+    </div>
+</footer>
+
+<!-- Aggiungi questo script per l'anno dinamico -->
+<script>
+    document.getElementById('copyright-2024').textContent = 
+        new Date().getFullYear();
+</script>
+
+<!-- Stile base (da inserire nel CSS) -->
+<style>
+    .site-footer {
+        background-color: var(--dark-gray);
+        padding: 2rem 0;
+        margin-top: 4rem;
+        text-align: center;
+    }
+
+    .copyright-text {
+        color: var(--light-gray);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .copyright-text a {
+        color: var(--primary-green);
+        text-decoration: none;
+    }
+</style>
         function changeLanguage(lang) {
             // Qui andrà la logica per il cambio lingua
             console.log('Cambio lingua a:', lang);
