@@ -128,3 +128,13 @@ img:hover {
         color: var(--primary-green);
         text-decoration: none;
     }
+.main-image-container {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    margin-bottom: 15px;
+    text-align: center;
+}
