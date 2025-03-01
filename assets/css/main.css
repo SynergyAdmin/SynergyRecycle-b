@@ -13,9 +13,11 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+/* Per un colore solido */
 body {
     line-height: 1.6;
     color: var(--dark-gray);
+    background-color: #f5f5f5; /* o qualsiasi altro colore */
 }
 
 /* Layout Generico */
@@ -48,7 +50,6 @@ body {
     transform: translateY(-3px);
 }
 
-/* Aggiungi dopo la sezione "Componenti Comuni" */
 /* ======================
    SEZIONE IMMAGINI RESPONSIVE
    ====================== */
@@ -109,25 +110,24 @@ img:hover {
     }
 }
 
-<!-- Stile base (da inserire nel CSS) -->
-<style>
-    .site-footer {
-        background-color: var(--dark-gray);
-        padding: 2rem 0;
-        margin-top: 4rem;
-        text-align: center;
-    }
+.site-footer {
+    background-color: var(--dark-gray);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    text-align: center;
+}
 
-    .copyright-text {
-        color: var(--light-gray);
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
+.copyright-text {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
 
-    .copyright-text a {
-        color: var(--primary-green);
-        text-decoration: none;
-    }
+.copyright-text a {
+    color: var(--primary-green);
+    text-decoration: none;
+}
+
 .main-image-container {
     grid-row: span 2;
     display: flex;
