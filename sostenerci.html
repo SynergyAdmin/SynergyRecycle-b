@@ -274,7 +274,7 @@
                 </div>
             </section>
         </main>
-        <!-- Call to Action -->
+        </section>
         <section class="section" style="background-color: #f8f9fa;">
             <div class="container">
                 <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma non tanto per il Mondo.</h2>
@@ -284,28 +284,36 @@
                 </div>
             </div>
         </section>
-    </body>
-</html>
-<script>
-    document.getElementById('copyright-2024').textContent = new Date().getFullYear();
-</script>
-<style>
-    .site-footer {
-        background-color: var(--dark-gray);
-        padding: 2rem 0;
-        margin-top: 4rem;
-        text-align: center;
-    }
-    .copyright-text {
-        color: var(--light-gray);
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
-    .copyright-text a {
-        color: var(--primary-green);
-        text-decoration: none;
-    }
-</style>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p class="copyright-text">
+                © <span id="copyright-2024"></span> SynergyRecycle.B. 
+                Tutti i contenuti di questa pagina sono protetti da copyright 
+                ai sensi della legge italiana ed internazionale.
+            </p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('copyright-2024').textContent = new Date().getFullYear();
+    </script>
+    <style>
+        .site-footer {
+            background-color: var(--dark-gray);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        .copyright-text {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .copyright-text a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+    </style>
 <script>
     function changeLanguage(lang) { console.log('Cambio lingua a:', lang); }
 </script>
