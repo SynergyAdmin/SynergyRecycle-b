@@ -11,96 +11,24 @@
     <link rel="stylesheet" href="./assets/css/components/header.css">
     <link rel="stylesheet" href="./assets/css/components/sections.css">
     <link rel="stylesheet" href="./assets/css/components/footer.css">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Stili specifici per le card dei prezzi */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-lg);
-        }
-        .pricing-card {
-            background: white;
-            border-radius: 12px;
-            padding: var(--spacing-lg);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .pricing-card:hover {
-            transform: translateY(-5px);
-        }
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #eee;
-            border-radius: 4px;
-            margin: var(--spacing-sm) 0;
-            overflow: hidden;
-        }
-        .progress-bar-fill {
-            height: 100%;
-            background: #007bff;
-            transition: width 0.3s ease;
-        }
-        .crypto-addresses {
-            text-align: left;
-            margin-top: var(--spacing-md);
-            padding: var(--spacing-sm);
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-        .crypto-addresses p {
-            margin: 0.5rem 0;
-            font-family: monospace;
-        }
-        .security-notice {
-            background: #fff3cd;
-            color: #856404;
-            padding: var(--spacing-md);
-            border-radius: 8px;
-            margin-top: var(--spacing-lg);
-            text-align: center;
-        }
-        .instant-setup {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
-        }
-        .setup-card {
-            background: white;
-            padding: var(--spacing-md);
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-    </style>
 </head>
-<body>
     <div class="logo">
-        <img src="./assets/img/logo da email.png" alt="Logo">
-        <span>...</span>
-    </div>
-    
+                <img src="./assets/img/logo da email.png" alt="Logo">
+                <span>...</span>
+            </div>
+<body>
     <!-- NAVIGAZIONE -->
-        <header class="header-ellipse">
-    <div class="header-left">
-        <div class="logo">
-            <img src="logo da email.png" alt="Logo">
-            <span>SynergyRecycle</span>
-        </div>
-    </div>
+    <nav class="main-nav">
+        <a href="./" class="button">Home</a>
+        <a href="./servizi.html" class="button">Servizi</a>
+        <a href="./sostenerci.html" class="button">Supportaci</a>
+        <a href="./contattaci.html" class="button">Contattaci</a>
+        <a href="./roadmap.html" class="button">Roadmap</a>
+    </nav>
     
-    <div class="header-center menu">
-        <a href="#" class="menu-item">Home</a>
-        <a href="#" class="menu-item">Servizi</a>
-        <a href="#" class="menu-item">Sostenerci</a>
-        <a href="#" class="menu-item active">Roadmap</a>
-        <a href="#" class="menu-item">Contattaci</a>
-    </div>
-    
+ <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-right">
                 <div class="language-selector">
                     <select onchange="changeLanguage(this.value)">
                         <option value="it">Italiano</option>
@@ -114,23 +42,35 @@
             </div>
         </div>
     </nav>
+    
+    
     <!-- CONTENUTO PRINCIPALE -->
     <div class="pricing-section section">
         <!-- ... contenuto ... -->
     </div>
+
+    <!-- Script JS -->
     <script src="./assets/js/main.js"></script>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+</body>
+</html>
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
     <link rel="stylesheet" href="styles.css">
+</head>
     <style>
+        /* Stili base ereditati */
+        /* [Stili di base precedenti rimangono invariati] */
+        /* Stili specifici per le card dei prezzi */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--spacing-lg);
             margin-top: var(--spacing-lg);
         }
+
         .pricing-card {
             background: white;
             border-radius: 12px;
@@ -139,9 +79,11 @@
             text-align: center;
             transition: transform 0.3s ease;
         }
+
         .pricing-card:hover {
             transform: translateY(-5px);
         }
+
         .progress-bar {
             width: 100%;
             height: 8px;
@@ -150,11 +92,13 @@
             margin: var(--spacing-sm) 0;
             overflow: hidden;
         }
+
         .progress-bar-fill {
             height: 100%;
             background: #007bff;
             transition: width 0.3s ease;
         }
+
         .crypto-addresses {
             text-align: left;
             margin-top: var(--spacing-md);
@@ -162,10 +106,12 @@
             background: #f8f9fa;
             border-radius: 8px;
         }
+
         .crypto-addresses p {
             margin: 0.5rem 0;
             font-family: monospace;
         }
+
         .security-notice {
             background: #fff3cd;
             color: #856404;
@@ -174,12 +120,14 @@
             margin-top: var(--spacing-lg);
             text-align: center;
         }
+
         .instant-setup {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: var(--spacing-md);
             margin-top: var(--spacing-lg);
         }
+
         .setup-card {
             background: white;
             padding: var(--spacing-md);
@@ -188,153 +136,172 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
     </style>
-    <body>
-        <main style="margin-top: 80px;">
-            
-              <!-- ... contenuto ... -->
-    </div>
-    <script src="./assets/js/main.js"></script>
-    <main style="margin-top: 80px;">
-        <section class="hero">
-            <div class="container">
-                <h1 class="hero-title">"Inizia oggi e farai la differenza Domani".</h1>
-                <p class="hero-subtitle">Scegli il tuo Eco-sistema che si adatta alle tue esigenze, unisciti alla rivoluzione del riciclo.</p>
-                <h2 class="slogan">Ogni azione conta, per te, e per il Pianeta.</h2>
-            </div>
-        </section>
-        <section class="section">
-            <div class="container">
-        
-            <!-- Pricing Cards -->
-            <section class="section">
-                <div class="container">
-                    <div class="pricing-grid">
-                        <!-- Pre/Sale Card -->
-                        <div class="pricing-card">
-                            <h2>Pre/Sale</h2>
-                            <div class="price-tag">
-                                <span class="currency">$</span>
-                                <span class="price">0.000777</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-bar-fill" style="width: 14%"></div>
-                            </div>
-                            <p>10% di tutto il circolante.</p>
-                            <a href="#" class="btn">Inizia ora</a>
-                        </div>
-                        <!-- ICO Card -->
-                        <div class="pricing-card">
-                            <h2>ICO</h2>
-                            <div class="price-tag">
-                                <span class="currency">$</span>
-                                <span class="price">0.00111</span>
-                            </div>
-                            <p>Potrai usare tutti i Metodi che vuoi per poter entrare a far parte del nostro progetto!</p>
-                            <div class="crypto-addresses">
-                                <p><strong>BTC:</strong> bcfdwfsdfB]</p>
-                                <p><strong>TON:</strong> [Indirizzo TON]</p>
-                                <p><strong>POL:</strong> [Indirizzo POL]</p>
-                                <p><strong>USDT:</strong> [Indirizzo USDT]</p>
-                                <p><strong>IBAN:</strong> [Codice IBAN]</p>
-                            </div>
-                            <a href="mailto:synergyrecycle.b@gmail.com" class="btn">Inviaci una Mail</a>
-                        </div>
-                        <!-- Launch Card -->
-                        <div class="pricing-card">
-                            <h2>Launch</h2>
-                            <div class="price-tag">
-                                <span class="currency">$</span>
-                                <span class="price">0.00222</span>
-                            </div>
-                            <p>Sei pronto a fare la differenza? Con il lancio...</p>
-                            <ul style="text-align: left; margin: var(--spacing-md) 0;">
-                                <li>Listing su Dex-Cex</li>
-                                <li>Scambio su App</li>
-                                <li>Carta Virtuale e Fisica</li>
-                            </ul>
-                        </div>
+</head>
+<body>
+    <!-- Navigation 
+
+    <!-- Main Content -->
+<main style="margin-top: 80px;">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">"Inizia oggi e fai la differenza!"</h1>
+            <p class="hero-subtitle">"Scegli il tuo Eco-sistema che si adatta alle tue esigenze, unisciti alla rivoluzione del riciclo."</p>
+            <h2 class="slogan">"Ogni azione conta, per te, e per il Pianeta."</h2>
+        </div>
+    </section>
+    <!-- Pricing Cards -->
+    <section class="section">
+        <div class="container">
+            <div class="pricing-grid">
+                <!-- Pre/Sale Card -->
+                <div class="pricing-card">
+                    <h2>Pre/Sale</h2>
+                    <div class="price-tag">
+                        <span class="currency">$</span>
+                        <span class="price">0.000777</span>
                     </div>
-                </div>
-            </section>
-            <!-- Security Notice -->
-            <section class="section">
-                <div class="container">
-                    <div class="security-notice">
-                        <h3>⚠️ Attenzione</h3>
-                        <p>Attenzione alle transazioni errate, fondi persi irreversibilmente.</p>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 14%"></div>
                     </div>
-                </div>
-            </section>
-            <!-- Instant Setup -->
-            <section class="section">
-                <div class="container">
-                    <div class="instant-setup">
-                        <div class="setup-card">
-                            <h3>Abbiamo appena cominciato!</h3>
-                            <div class="progress-bar">
-                                <div class="progress-bar-fill" style="width: 10%"></div>
-                            </div>
-                            <p>10% completato</p>
-                        </div>
-                        <div class="setup-card">
-                            <h3>Instant setup</h3>
-                            <p>Setup immediato e intuitivo</p>
-                        </div>
-                        <div class="setup-card">
-                            <h3>Coming SOON</h3>
-                            <p>Lavoriamo per garantire il massimo e una possibile speranza per tutti</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        </section>
-        <section class="section" style="background-color: #f8f9fa;">
-            <div class="container">
-                <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma non tanto per il Mondo.</h2>
-                <p class="text-center">Unisciti a noi per migliorare il nostro Pianeta.</p>
-                <div style="text-align: center; margin-top: var(--spacing-md);">
+                    <p>10% di tutto il circolante.</p>
                     <a href="#" class="btn">Inizia ora</a>
                 </div>
+                <!-- ICO Card -->
+                <div class="pricing-card">
+                    <h2>ICO</h2>
+                    <div class="price-tag">
+                        <span class="currency">$</span>
+                        <span class="price">0.00111</span>
+                    </div>
+                    <p>Potrai usare tutti i Metodi che vuoi per poter entrare a far parte del nostro progetto!</p>
+                    <div class="crypto-addresses">
+                        <p><strong>BTC:</strong> bcfdwfsdfB]</p>
+                        <p><strong>TON:</strong> [Indirizzo TON]</p>
+                        <p><strong>POL:</strong> [Indirizzo POL]</p>
+                        <p><strong>USDT:</strong> [Indirizzo USDT]</p>
+                        <p><strong>IBAN:</strong> [Codice IBAN]</p>
+                    </div>
+                    <a href="mailto:synergyrecycle.b@gmail.com" class="btn">Inviaci una Mail</a>
+                </div>
+                <!-- Launch Card -->
+                <div class="pricing-card">
+                    <h2>Launch</h2>
+                    <div class="price-tag">
+                        <span class="currency">$</span>
+                        <span class="price">0.00222</span>
+                    </div>
+                    <p>"Sei pronto a fare la differenza? Con il lancio..."</p>
+                    <ul style="text-align: left; margin: var(--spacing-md) 0;">
+                        <li>Listing su Dex-Cex</li>
+                        <li>Scambio su App</li>
+                        <li>Carta Virtuale e Fisica</li>
+                    </ul
+                </div>
             </div>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="container">
-            <p class="copyright-text">
-                © <span id="copyright-2024"></span> SynergyRecycle.B. 
-                Tutti i contenuti di questa pagina sono protetti da copyright 
-                ai sensi della legge italiana ed internazionale.
-            </p>
         </div>
-    </footer>
-    <script>
-        document.getElementById('copyright-2024').textContent = new Date().getFullYear();
-    </script>
-    <style>
-        .site-footer {
-            background-color: var(--dark-gray);
-            padding: 2rem 0;
-            margin-top: 4rem;
-            text-align: center;
-        }
-        .copyright-text {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        .copyright-text a {
-            color: var(--primary-green);
-            text-decoration: none;
-        }
-    </style>
-<script>
-    function changeLanguage(lang) { console.log('Cambio lingua a:', lang); }
+    </section>
+    <!-- Security Notice -->
+    <section class="section">
+        <div class="container">
+            <div class="security-notice">
+                <h3>⚠️ Attenzione</h3>
+                <p>Attenzione alle transazioni errate, fondi persi irreversibilmente.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Instant Setup -->
+    <section class="section">
+        <div class="container">
+            <div class="instant-setup">
+                <div class="setup-card">
+                    <h3>Abbiamo appena cominciato!</h3>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 10%"></div>
+                    </div>
+                    <p>10% completato</p>
+                </div>
+                <div class="setup-card">
+                    <h3>Instant setup</h3>
+                    <p>Setup immediato e intuitivo</p>
+                </div>
+                <div class="setup-card">
+                    <h3>Coming SOON</h3>
+                    <p>Lavoriamo per garantire il massimo e una possibile speranza per tutti</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+        <!-- Call to Action -->
+    <section class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma non tanto per il Mondo.</h2>
+            <p class="text-center">Unisciti a noi per migliorare il nostro Pianeta.</p>
+            <div style="text-align: center; margin-top: var(--spacing-md);">
+                <a href="#" class="btn">Inizia ora</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
 </script>
+
+<!-- Footer Copyright -->
+<footer class="site-footer">
+    <div class="container">
+        <p class="copyright-text">
+            © <span id="copyright-2024"></span> SynergyRecycle.B. 
+            Tutti i contenuti di questa pagina sono protetti da copyright 
+            ai sensi della legge italiana ed internazionale.
+        </p>
+    </div>
+</footer>
+
+<!-- Aggiungi questo script per l'anno dinamico -->
 <script>
+    document.getElementById('copyright-2024').textContent = 
+        new Date().getFullYear();
+</script>
+
+<!-- Stile base (da inserire nel CSS) -->
+<style>
+    .site-footer {
+        background-color: var(--dark-gray);
+        padding: 2rem 0;
+        margin-top: 4rem;
+        text-align: center;
+    }
+
+    .copyright-text {
+        color: var(--light-gray);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .copyright-text a {
+        color: var(--primary-green);
+        text-decoration: none;
+    }
+</style>
+        function changeLanguage(lang) {
+            // Qui andrà la logica per il cambio lingua
+            console.log('Cambio lingua a:', lang);
+        }
+    </script>
+
+</body>
+</html>
+
+<script>
+    // Caricamento Header
     fetch('./components/header.html')
         .then(response => response.text())
         .then(data => document.getElementById('header-container').innerHTML = data);
+
+    // Caricamento Footer
     fetch('./components/footer.html')
         .then(response => response.text())
         .then(data => document.getElementById('footer-container').innerHTML = data);
