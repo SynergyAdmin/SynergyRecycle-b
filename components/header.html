@@ -6,16 +6,22 @@
     <a href="roadmap.html" class="menu-item">Roadmap</a>
 </nav>
 
-<script>
-    // Caricamento Header
-    fetch('./components/header.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('header-container').innerHTML = data);
-
-    // Caricamento Footer
-    fetch('./components/footer.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('footer-container').innerHTML = data);
-</script>
+<!-- Menu a tendina per dispositivi mobili -->
+<div class="hamburger-container">
+    <button id="hamburger-btn" class="hamburger-btn">☰</button>
+</div>
+<nav id="mobile-nav" class="mobile-nav hidden">
+    <a href="./" class="button">Home</a>
+    <a href="./servizi.html" class="button">Servizi</a>
+    <a href="./sostenerci.html" class="button">Sostenerci</a>
+    <a href="./contattaci.html" class="button">Contattaci</a>
+    <a href="roadmap.html" class="button">Roadmap</a>
+</nav>
 
 <link href="https://fonts.googleapis.com/css2?family=NomeFont&display=swap" rel="stylesheet">
+
+<script>
+document.getElementById('hamburger-btn').addEventListener('click', function() {
+    document.getElementById('mobile-nav').classList.toggle('show');
+});
+</script>
