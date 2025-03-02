@@ -12,23 +12,20 @@
     <link rel="stylesheet" href="./assets/css/components/sections.css">
     <link rel="stylesheet" href="./assets/css/components/footer.css">
 </head>
+    <div class="logo">
+                <img src="./assets/img/logo da email.png" alt="Logo">
+                <span>...</span>
+            </div>
 <body>
-        <header class="header-ellipse">
-    <div class="header-left">
-        <div class="logo">
-            <img src="logo da email.png" alt="Logo">
-            <span>SynergyRecycle</span>
-        </div>
-    </div>
-    
-    <div class="header-center menu">
-        <a href="#" class="menu-item">Home</a>
-        <a href="#" class="menu-item">Servizi</a>
-        <a href="#" class="menu-item">Sostenerci</a>
-        <a href="#" class="menu-item active">Roadmap</a>
-        <a href="#" class="menu-item">Contattaci</a>
-    </div>
-    
+    <!-- NAVIGAZIONE -->
+    <nav class="main-nav">
+        <a href="./" class="button">Home</a>
+        <a href="./servizi.html" class="button">Servizi</a>
+        <a href="./sostenerci.html" class="button">Supportaci</a>
+        <a href="./contattaci.html" class="button">Contattaci</a>
+        <a href="./roadmap.html" class="button">Roadmap</a>
+    </nav>
+
     <!-- CONTENUTO PRINCIPALE -->
     <div class="pricing-section section">
         <!-- ... contenuto ... -->
@@ -36,28 +33,49 @@
 
     <!-- Script JS -->
     <script src="./assets/js/main.js"></script>
+</body>
+</html>
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contattaci - SynergyRecycle.B</title>
+    <meta name="description" content="Contatta SynergyRecycle.B per informazioni sui servizi di riciclo tecnologico e sostenibilità ambientale">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/contact.css">
+</head>
+<body>
+    <div id="header-container"></div>
 
     <main class="contact-section section">
         <div class="container grid grid-2cols">
             <!-- Form Contatto -->
             <form id="contactForm" class="contact-form">
                 <h2 class="form-title">Scrivici</h2>
+                
                 <div class="form-group">
                     <label for="name">Nome *</label>
                     <input type="text" id="name" name="name" required>
                 </div>
+
                 <div class="form-group">
                     <label for="phone">Numero di telefono</label>
                     <input type="tel" id="phone" name="phone">
                 </div>
+
                 <div class="form-group">
                     <label for="email">Email *</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+
                 <div class="form-group">
                     <label for="company">Azienda</label>
                     <input type="text" id="company" name="company">
                 </div>
+
                 <div class="form-group">
                     <label for="subject">Oggetto *</label>
                     <select id="subject" name="subject" required>
@@ -67,12 +85,15 @@
                         <option value="info">Informazioni Generali</option>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label for="message">Domanda *</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
                 </div>
+
                 <button type="submit" class="button submit-btn">Invia Messaggio</button>
             </form>
+
             <!-- Info Aziendali -->
             <div class="company-info">
                 <h3 class="info-title">La Nostra Sede</h3>
@@ -80,58 +101,77 @@
                     <img src="assets/img/adresse16.png" alt="Mappa" class="info-icon">
                     <p>32052, Herford, Germany</p>
                 </div>
+                
                 <div class="info-item">
-                    <img src="assets/img/telefon16.png" alt="Telefono" class="info-icon">
+                    <img src="assets/img/telofon16.png" alt="Telefono" class="info-icon">
                     <p>+49 030 1234567</p>
                 </div>
+
                 <div class="info-item">
                     <img src="assets/img/gmail16.png" alt="Email" class="info-icon">
                     <p>SynergyRecycle.b@gmail.com</p>
                 </div>
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/img/facebook-icon.svg" alt="Facebook">
+                    </a>
+                    <a href="#" aria-label="Linked
+<script>
+    // Caricamento Header
+    fetch('./components/header.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('header-container').innerHTML = data);
+
+    // Caricamento Footer
+    fetch('./components/footer.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('footer-container').innerHTML = data);
+</script>
+<!-- Call to Action -->
+    <section class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma non tanto per il Mondo.</h2>
+            <p class="text-center">Unisciti a noi per migliorare il nostro Pianeta.</p>
+            <div style="text-align: center; margin-top: var(--spacing-md);"
             </div>
         </div>
-    </main>
-
-    <script>
-        // Caricamento Header e Footer
-        fetch('./components/header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header-container').innerHTML = data);
-        fetch('./components/footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer-container').innerHTML = data);
-    </script>
-
-    <!-- Footer Copyright -->
-    <footer class="site-footer">
-        <div class="container">
-            <p class="copyright-text">
-                © <span id="copyright-2024"></span> SynergyRecycle.B.
-                Tutti i contenuti di questa pagina sono protetti da copyright 
-                ai sensi della legge italiana ed internazionale.
-            </p>
-        </div>
-    </footer>
-    <script>
-        document.getElementById('copyright-2024').textContent = new Date().getFullYear();
-    </script>
-    <!-- Stile base (da inserire nel CSS) -->
-    <style>
-        .site-footer {
-            background-color: var(--dark-gray);
-            padding: 2rem 0;
-            margin-top: 4rem;
-            text-align: center;
-        }
-        .copyright-text {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        .copyright-text a {
-            color: var(--primary-green);
-            text-decoration: none;
-        }
-    </style>
+    </section>
 </body>
 </html>
+
+</script>
+
+<!-- Footer Copyright -->
+<footer class="site-footer">
+    <div class="container">
+        <p class="copyright-text">
+            © <span id="copyright-2024"></span> SynergyRecycle.B.
+            Tutti i contenuti di questa pagina sono protetti da copyright 
+            ai sensi della legge italiana ed internazionale.
+        </p>
+    </div>
+</footer>
+
+
+<!-- Stile base (da inserire nel CSS) -->
+<style>
+    .site-footer {
+        background-color: var(--dark-gray);
+        padding: 2rem 0;
+        margin-top: 4rem;
+        text-align: center;
+    }
+
+    .copyright-text {
+        color: var(--light-gray);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .copyright-text a {
+        color: var(--primary-green);
+        text-decoration: none;
+    }
+</style>
