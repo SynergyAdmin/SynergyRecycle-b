@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const debugImageLoading = () => {
         const targetImage = document.querySelector('img[alt="Innovazione"]');
         
-        if(!targetImage) {
+        if (!targetImage) {
             console.error('Nessuna immagine con alt="Innovazione" trovata');
             return;
         }
@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     debugImageLoading();
     // CODICE DEBUG IMMAGINE - FINE
 });
-});
 
 // Intersection Observer per animazioni al scroll
 const observer = new IntersectionObserver((entries) => {
@@ -60,33 +59,29 @@ document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
 // Form Validation
 const contactForm = document.getElementById('contactForm');
-if(contactForm) {
+if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
         
-        if(validateForm(data)) {
+        if (validateForm(data)) {
             sendFormData(data);
         }
     });
 }
 
 function validateForm(data) {
-    // Validazione email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if(!emailRegex.test(data.email)) {
+    if (!emailRegex.test(data.email)) {
         showError('Email non valida');
         return false;
     }
-    
-    // Altri controlli
-    if(data.name.length < 2) {
+    if (data.name.length < 2) {
         showError('Nome troppo breve');
         return false;
     }
-    
     return true;
 }
 
@@ -94,20 +89,17 @@ function showError(message) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'form-error';
     errorDiv.textContent = message;
-    
     contactForm.prepend(errorDiv);
     setTimeout(() => errorDiv.remove(), 3000);
 }
 
 async function sendFormData(data) {
     try {
-        // Simulazione invio
         const response = await fetch('https://api.example.com/contact', {
             method: 'POST',
             body: JSON.stringify(data)
         });
-        
-        if(response.ok) {
+        if (response.ok) {
             alert('Messaggio inviato con successo!');
             contactForm.reset();
         }
@@ -115,3 +107,9 @@ async function sendFormData(data) {
         showError('Errore nell\'invio del messaggio');
     }
 }
+
+<script>
+document.getElementById('hamburger-btn').addEventListener('click', function() {
+    document.getElementById('mobile-nav').classList.toggle('show');
+});
+</script>
