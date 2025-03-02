@@ -1,115 +1,62 @@
-// Caricamento Componenti
-function loadComponents() {
-    fetch('components/header.html')
-        .then(response => response.text())
-        .then(data => document.body.insertAdjacentHTML('afterbegin', data));
-    
-    fetch('components/footer.html')
-        .then(response => response.text())
-        .then(data => document.body.insertAdjacentHTML('beforeend', data));
-}
-
-// Gestione Form
-document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        // Logica di invio
-    });
-});
-
-// Inizializzazione
+// assets/js/main.js
 document.addEventListener('DOMContentLoaded', () => {
     loadComponents();
-    // Altre inizializzazioni
-    
-    // CODICE DEBUG IMMAGINE - INIZIO
-    const debugImageLoading = () => {
-        const targetImage = document.querySelector('img[alt="Innovazione"]');
-        
-        if (!targetImage) {
-            console.error('Nessuna immagine con alt="Innovazione" trovata');
-            return;
-        }
-
-        fetch(targetImage.src)
-            .then(response => {
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-                console.log('✅ Immagine caricata con successo:', targetImage.src);
-            })
-            .catch(err => {
-                console.error('❌ Errore caricamento immagine:', err.message);
-                console.log('Percorso assoluto tentato:', window.location.href + targetImage.src);
-            });
-    };
-
-    debugImageLoading();
-    // CODICE DEBUG IMMAGINE - FINE
+    initSmoothScroll();
+    initIntersectionObserver();
+    initFormValidation();
 });
 
-// Intersection Observer per animazioni al scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
+async function loadComponents() {
+    try {
+        const [header, footer] = await Promise.all([
+            fetch('components/header.html').then(r => r.text()),
+            fetch('components/footer.html').then(r => r.text())
+        ]);
+        
+        document.body.insertAdjacentHTML('afterbegin', header);
+        document.body.insertAdjacentHTML('beforeend', footer);
+        initMobileMenu();
+    } catch (error) {
+        console.error('Error loading components:', error);
     }
-  });
-}, { threshold: 0.15 });
+}
 
-document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-
-// Form Validation
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        if (validateForm(data)) {
-            sendFormData(data);
-        }
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
     });
 }
 
-function validateForm(data) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-        showError('Email non valida');
-        return false;
-    }
-    if (data.name.length < 2) {
-        showError('Nome troppo breve');
-        return false;
-    }
-    return true;
+function initMobileMenu() {
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    hamburgerBtn?.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        hamburgerBtn.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+    });
 }
 
-function showError(message) {
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'form-error';
-    errorDiv.textContent = message;
-    contactForm.prepend(errorDiv);
-    setTimeout(() => errorDiv.remove(), 3000);
-}
-
-async function sendFormData(data) {
-    try {
-        const response = await fetch('https://api.example.com/contact', {
-            method: 'POST',
-            body: JSON.stringify(data)
+function initIntersectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            entry.target.classList.toggle('active', entry.isIntersecting);
         });
-        if (response.ok) {
-            alert('Messaggio inviato con successo!');
-            contactForm.reset();
-        }
-    } catch (error) {
-        showError('Errore nell\'invio del messaggio');
-    }
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-<script>
-document.getElementById('hamburger-btn').addEventListener('click', function() {
-    document.getElementById('mobile-nav').classList.toggle('show');
-});
-</script>
+function initFormValidation() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        // Add validation logic
+    });
+}
