@@ -76,11 +76,12 @@ img {
 }
 
 .hero-img {
-    width: 100%;
-    height: 60vh;          /* Altezza relativa alla viewport */
-    object-fit: cover;
-    object-position: center 30%; /* Priorità alla parte superiore */
-    border-radius: 0;      /* Rimuove bordi arrotondati per immagini a tutta larghezza */
+  width: 100%;
+  height: auto;          /* Modificato: era 60vh */
+  max-height: 60vh;      /* Aggiungi questa riga */
+  object-fit: contain;   /* Modificato: era cover */
+  object-position: center 30%;
+  border-radius: 0;
 }
 
 .card img {
@@ -102,6 +103,24 @@ img[loading="lazy"].loaded {
 img:hover {
     transform: scale(1.02);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Fix Immagini - Sovrascrive solo le regole necessarie */
+img {
+  box-shadow: none !important;
+  transition: none !important;
+  border-radius: 0 !important;
+}
+
+.grid img {
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+.info-icon {
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: contain !important;
 }
 
 /* Media Query per schermi HD/Retina */
