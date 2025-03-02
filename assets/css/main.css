@@ -194,3 +194,72 @@ img {
     display: flex;
   }
 }
+
+/* Esempio di stile ellittico per l'header */
+.header-ellipse {
+    background-color: #0c546b;       /* Colore di sfondo */
+    color: white;
+    border-radius: 50px;            /* Rende l'header ellittico */
+    margin: 20px auto;              /* Spazio intorno */
+    max-width: 95%;                 /* Larghezza massima */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+/* Sezioni interne */
+.header-left, .header-center, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo e testo a sinistra */
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Menu centrale */
+.header-center a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.header-center a:hover {
+    background-color: #8bc34a; /* Cambia colore al passaggio del mouse */
+}
+
+/* Sezione destra (ricerca, telefono, pulsante) */
+.header-right {
+    gap: 15px;
+}
+
+/* Pulsante contattaci */
+.contact-btn {
+    background-color: #8bc34a;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+/* Adattamento responsive su schermi piccoli */
+@media (max-width: 768px) {
+    .header-ellipse {
+        flex-wrap: wrap;           /* Va su più righe se serve */
+        justify-content: center;   /* Centra i contenuti */
+        text-align: center;
+    }
+    .header-left, .header-right {
+        margin: 10px 0;
+        justify-content: center;
+    }
+    .header-center a {
+        margin: 5px;
+    }
+}
