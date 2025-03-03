@@ -12,10 +12,6 @@
     <link rel="stylesheet" href="./assets/css/components/sections.css">
     <link rel="stylesheet" href="./assets/css/components/footer.css">
 </head>
-    <div class="logo">
-                <img src="./assets/img/logo da email.png" alt="Logo">
-                <span>...</span>
-            </div>
 <body>
     <!-- NAVIGAZIONE -->
     <nav class="main-nav">
@@ -33,26 +29,10 @@
 
     <!-- Script JS -->
     <script src="./assets/js/main.js"></script>
-</body>
-</html>
-    
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contattaci - SynergyRecycle.B</title>
-    <meta name="description" content="Contatta SynergyRecycle.B per informazioni sui servizi di riciclo tecnologico e sostenibilità ambientale">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/components/header.css">
-    <link rel="stylesheet" href="assets/css/components/footer.css">
-    <link rel="stylesheet" href="assets/css/components/contact.css">
-</head>
-<body>
-    <div id="header-container"></div>
 
+    <!-- Form Contatto -->
     <main class="contact-section section">
         <div class="container grid grid-2cols">
-            <!-- Form Contatto -->
             <form id="contactForm" class="contact-form">
                 <h2 class="form-title">Scrivici</h2>
                 
@@ -111,62 +91,61 @@
                     <img src="assets/img/gmail16.png" alt="Email" class="info-icon">
                     <p>SynergyRecycle.b@gmail.com</p>
                 </div>
+            </div>
+        </div>
+    </main>
 
-            
-<script>
-    // Caricamento Header
-    fetch('./components/header.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('header-container').innerHTML = data);
-
-    // Caricamento Footer
-    fetch('./components/footer.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('footer-container').innerHTML = data);
-</script>
-<!-- Call to Action -->
+    <!-- Call to Action -->
     <section class="section" style="background-color: #f8f9fa;">
         <div class="container">
             <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma non tanto per il Mondo.</h2>
             <p class="text-center">Unisciti a noi per migliorare il nostro Pianeta.</p>
-            <div style="text-align: center; margin-top: var(--spacing-md);"
-            </div>
+            <div style="text-align: center; margin-top: var(--spacing-md);"></div>
         </div>
     </section>
+
+    <!-- Footer Copyright -->
+    <footer class="site-footer">
+        <div class="container">
+            <p class="copyright-text">
+                © <span id="copyright-2024"></span> SynergyRecycle.B.
+                Tutti i contenuti di questa pagina sono protetti da copyright 
+                ai sensi della legge italiana ed internazionale.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Caricamento Header
+        fetch('./components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-container').innerHTML = data);
+
+        // Caricamento Footer
+        fetch('./components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-container').innerHTML = data);
+    </script>
+
+    <!-- Stile base (da inserire nel CSS) -->
+    <style>
+        .site-footer {
+            background-color: var(--dark-gray);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .copyright-text {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .copyright-text a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+    </style>
 </body>
 </html>
-
-</script>
-
-<!-- Footer Copyright -->
-<footer class="site-footer">
-    <div class="container">
-        <p class="copyright-text">
-            © <span id="copyright-2024"></span> SynergyRecycle.B.
-            Tutti i contenuti di questa pagina sono protetti da copyright 
-            ai sensi della legge italiana ed internazionale.
-        </p>
-    </div>
-</footer>
-
-
-<!-- Stile base (da inserire nel CSS) -->
-<style>
-    .site-footer {
-        background-color: var(--dark-gray);
-        padding: 2rem 0;
-        margin-top: 4rem;
-        text-align: center;
-    }
-
-    .copyright-text {
-        color: var(--light-gray);
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
-
-    .copyright-text a {
-        color: var(--primary-green);
-        text-decoration: none;
-    }
-</style>
