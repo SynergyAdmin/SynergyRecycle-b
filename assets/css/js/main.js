@@ -33,11 +33,26 @@ function initSmoothScroll() {
 
 function initMobileMenu() {
     const hamburgerBtn = document.getElementById('hamburger-btn');
-    const navMenu = document.querySelector('.nav-menu');
+    const mobileNav = document.getElementById('mobile-nav');
     
-    hamburgerBtn?.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        hamburgerBtn.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+    if (!hamburgerBtn || !mobileNav) return;
+    
+    hamburgerBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+        const isExpanded = mobileNav.classList.contains('active');
+        hamburgerBtn.setAttribute('aria-expanded', isExpanded);
+        
+        // Cambia il simbolo dell'hamburger quando è aperto
+        hamburgerBtn.textContent = isExpanded ? '✕' : '☰';
+    });
+    
+    // Chiudi il menu quando si clicca su un link
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            hamburgerBtn.textContent = '☰';
+        });
     });
 }
 
