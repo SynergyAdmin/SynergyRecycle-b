@@ -342,7 +342,7 @@ img {
 }
 
 .image-container::before {
-    content: "";
+    content: "assets/img/4.1.jpg";
     position: absolute;
     top: 0;
     left: 0;
