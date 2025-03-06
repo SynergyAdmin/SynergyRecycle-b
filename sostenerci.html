@@ -26,24 +26,6 @@
         <a href="./roadmap.html" class="button">Roadmap</a>
     </nav>
     
- <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-right">
-                <div class="language-selector">
-                    <select onchange="changeLanguage(this.value)">
-                        <option value="it">Italiano</option>
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                        <option value="fr">Français</option>
-                        <option value="de">Deutsch</option>
-                        <option value="zh">中文</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
-    
     <!-- CONTENUTO PRINCIPALE -->
     <div class="pricing-section section">
         <!-- ... contenuto ... -->
@@ -179,7 +161,7 @@
                         <p><strong>BTC:</strong> bc1quxquvevc9l8gfly6jj7u58vqgpw9l9vjyra0xx</p>
                         <p><strong>TON:</strong> UQDes1LjMasF3Erb4uI2KyPgzytmjiOmiOR8DnwqnLDxb2x2</p>
                         <p><strong>POL:</strong> 0xBaAd236beFee553736cbB94e3B8627ff14E2157f</p>
-                        <p><strong>USDC SOL:</strong> AkhMthuf2bW3NiS9kASqWMSEMwKrD2dfxLGhZQrk78hu</p>
+                        <p><strong>USDC SOL:</strong>[AkhMthuf2bW3NiS9kASqWMSEMwKrD2dfxLGhZQrk78hu]</p>
                         <p><strong>IBAN:</strong> [Codice IBAN]</p>
                     </div>
                     <a href="mailto:synergyrecycle.b@gmail.com" class="btn">Inviaci una Mail</a>
@@ -311,9 +293,25 @@
             color: #666;
         }
 </style>
+        // Qui andrà la logica per il cambio lingua
         function changeLanguage(lang) {
-            // Qui andrà la logica per il cambio lingua
-            console.log('Cambio lingua a:', lang);
+<nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-right">
+                <div class="language-selector">
+                    <select onchange="changeLanguage(this.value)">
+                        <option value="it">Italiano</option>
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+            
         }
     </script>
 
