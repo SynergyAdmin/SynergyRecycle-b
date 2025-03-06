@@ -27,7 +27,8 @@
         <a href="./contattaci.html" class="button">Contattaci</a>
         <a href="./roadmap.html" class="button">Roadmap</a>
     </nav>
-
+    
+    
     <!-- CONTENUTO PRINCIPALE -->
     <div class="pricing-section section">
         <!-- ... contenuto ... -->
@@ -37,10 +38,14 @@
     <script src="./assets/js/main.js"></script>
 
     <!-- Form Contatto -->
-    <main class="contact-section section">
-        <div class="container grid grid-2cols">
-            <form id="contactForm" class="contact-form">
-                <h2 class="form-title">Scrivici</h2>
+                <section class="hero">
+                        <div class="container">
+                            <div class="hero-content">
+                                <h1 class="hero-title">Contattaci</h1>
+                                <p class="hero-subtitle">Vuoi avere ulteriori Informazioni? Contattaci. Risponderemo ad ogni Mail nel minor tempo possibile.</p>
+                            </div>
+                         </div>
+                </section>
                 
                 <div class="form-group">
                     <label for="name">Nome *</label>
@@ -151,6 +156,30 @@
         .copyright-text a {
             color: var(--primary-green);
             text-decoration: none;
+        }
+         .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            padding: var(--spacing-lg) 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: #666;
         }
     </style>
 </body>
