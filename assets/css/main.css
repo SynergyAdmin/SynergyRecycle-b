@@ -339,10 +339,15 @@ img {
     background-repeat: no-repeat; /* L'immagine non si ripete */
     background-attachment: fixed; /* Fissa l'immagine di sfondo */
     position: relative; /* Per gestire la trasparenza */
+    padding: var(--spacing-md);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: var(--spacing-lg) 0;
 }
 
 .image-container::before {
-    content: "assets/img/4.1.jpg";
+    content: ""; /* Questo dovrebbe essere vuoto */
     position: absolute;
     top: 0;
     left: 0;
@@ -350,6 +355,7 @@ img {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.65); /* Sfondo semi-trasparente al 65% */
     z-index: 0;
+    border-radius: 10px; /* Per mantenere gli angoli arrotondati */
 }
 
 .language-selector {
