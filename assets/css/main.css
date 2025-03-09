@@ -392,3 +392,82 @@ img {
         background-image: url('path/to/your/image@2x.jpg');
     }
 }
+
+<!-- Aggiungi questo stile alla sezione <style> esistente -->
+<style>
+    .crypto-addresses {
+        text-align: left;
+        margin-top: var(--spacing-md);
+        padding: var(--spacing-sm);
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .crypto-address {
+        display: flex;
+        align-items: center;
+        margin: 0.7rem 0;
+        position: relative;
+    }
+    
+    .crypto-label {
+        flex: 0 0 80px;
+    }
+    
+    .crypto-value {
+        flex: 1;
+        font-family: monospace;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        padding: 2px 4px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+    
+    .crypto-value:hover {
+        background-color: rgba(0,123,255,0.1);
+    }
+    
+    .crypto-value.expanded {
+        white-space: normal;
+        word-break: break-all;
+    }
+    
+    .copy-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #007bff;
+        padding: 4px;
+        border-radius: 4px;
+        margin-left: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .copy-btn:hover {
+        background-color: rgba(0,123,255,0.1);
+    }
+    
+    .copy-msg {
+        position: absolute;
+        right: 0;
+        top: -20px;
+        background: #28a745;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+    }
+    
+    .copy-msg.show {
+        opacity: 1;
+    }
+</style>
+
