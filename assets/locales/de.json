@@ -1,0 +1,41 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "support": "Unterstütze uns",
+    "contact": "Kontakt",
+    "roadmap": "Roadmap"
+  },
+  "contact": {
+    "title": "Kontaktiere uns",
+    "subtitle": "Möchten Sie weitere Informationen? Kontaktieren Sie uns. Wir werden jede E-Mail so schnell wie möglich beantworten.",
+    "form": {
+      "name": "Name *",
+      "phone": "Telefonnummer",
+      "email": "E-Mail *",
+      "company": "Unternehmen",
+      "subject": "Betreff *",
+      "subjectPlaceholder": "Wählen Sie ein Thema",
+      "subjectOptions": {
+        "support": "Technischer Support",
+        "partnership": "Partnerschaft",
+        "info": "Allgemeine Informationen"
+      },
+      "message": "Frage *",
+      "submit": "Nachricht senden"
+    },
+    "companyInfo": {
+      "title": "Unser Standort",
+      "address": "32052, Herford, Deutschland",
+      "phone": "+49 030 1234567",
+      "email": "SynergyRecycle.b@gmail.com"
+    }
+  },
+  "cta": {
+    "title": "Mehr als 50.000 Menschen haben viel für sich selbst getan, aber nicht so viel für die Welt.",
+    "subtitle": "Schließen Sie sich uns an, um unseren Planeten zu verbessern."
+  },
+  "footer": {
+    "copyright": "© 2024 SynergyRecycle.B. Alle Inhalte dieser Seite sind durch das italienische und internationale Recht urheberrechtlich geschützt."
+  }
+}
