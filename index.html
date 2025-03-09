@@ -179,16 +179,54 @@
 </head>
 
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="image-container">
-                <h1 class="hero-title">La nuova piattaforma per aiutarci, ad aiutare il Mondo.</h1>
-                <p class="hero-subtitle">Costruiamo esperienze digitali, rivoluzioniamo il modo di fare, distinguiamoci.</p>
-                </div>
-            </div>
+    <!-- Hero Section con correzioni -->
+<section class="hero">
+    <div class="container">
+        <div class="image-container">
+            <h1 class="hero-title">La nuova piattaforma per aiutarci, ad aiutare il Mondo.</h1>
+            <p class="hero-subtitle">Costruiamo esperienze digitali, rivoluzioniamo il modo di fare, distinguiamoci.</p>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- Aggiungi questo snippet CSS all'interno di un tag <style> o in un file CSS -->
+<style>
+    .image-container {
+        background-image: url('../assets/img/4.1.jpeg'); /* Percorso corretto relativo alla cartella del file HTML */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin: 4rem 0;
+        height: 400px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .image-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.65);
+        z-index: 0;
+        border-radius: 10px;
+    }
+    
+    .image-container > * {
+        position: relative;
+        z-index: 1;
+    }
+</style>
+    
 
     <!-- Strategia Section -->
     <section class="section">
