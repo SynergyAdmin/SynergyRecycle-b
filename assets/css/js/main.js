@@ -73,3 +73,40 @@ function initFormValidation() {
         // Add validation logic
     });
 }
+
+// Funzione per copiare l'indirizzo
+    function copyAddress(elementId) {
+        const element = document.getElementById(elementId);
+        const fullAddress = element.getAttribute('data-address');
+        
+        // Copia negli appunti
+        navigator.clipboard.writeText(fullAddress).then(() => {
+            // Mostra messaggio di conferma
+            const copyMsg = document.getElementById(elementId + '-copy-msg');
+            copyMsg.classList.add('show');
+            
+            // Nascondi dopo 2 secondi
+            setTimeout(() => {
+                copyMsg.classList.remove('show');
+            }, 2000);
+        });
+    }
+    
+    // Funzione per espandere/comprimere l'indirizzo
+    document.querySelectorAll('.crypto-value').forEach(element => {
+        element.addEventListener('click', function() {
+            // Toggle tra versione abbreviata e completa
+            this.classList.toggle('expanded');
+            
+            if (this.classList.contains('expanded')) {
+                // Mostra indirizzo completo
+                this.textContent = this.getAttribute('data-address');
+            } else {
+                // Mostra versione abbreviata
+                const address = this.getAttribute('data-address');
+                // Primi 6 caratteri + ... + ultimi 4 caratteri
+                this.textContent = address.substring(0, 6) + '...' + address.substring(address.length - 4);
+            }
+        });
+    });
+</script>
