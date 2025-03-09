@@ -333,7 +333,7 @@ img {
 }
 
 .image-container {
-    background-image: url('assets/img/4.1.jpg'); /* Percorso dell'immagine */
+    background-image: url('assets/img/4.1.jpeg'); /* Percorso dell'immagine */
     background-size: cover; /* Riempie il contenitore senza distorcersi */
     background-position: center; /* Centra l'immagine */
     background-repeat: no-repeat; /* L'immagine non si ripete */
