@@ -156,14 +156,67 @@
                         <span class="currency">$</span>
                         <span class="price">COMMING SOON</span>
                     </div>
-                    <p>Potrai usare tutti i Metodi a tua disposizione per poter entrare a far parte del nostro progetto!</p>
-                    <div class="crypto-addresses">
-                        <p><strong>BTC:</strong> bc1quxquvevc9l8gfly6jj7u58vqgpw9l9vjyra0xx</p>
-                        <p><strong>TON:</strong> UQDes1LjMasF3Erb4uI2KyPgzytmjiOmiOR8DnwqnLDxb2x2</p>
-                        <p><strong>POL:</strong> 0xBaAd236beFee553736cbB94e3B8627ff14E2157f</p>
-                        <p><strong>USDC SOL:</strong>[AkhMthuf2bW3NiS9kASqWMSEMwKrD2dfxLGhZQrk78hu]</p>
-                        <p><strong>IBAN:</strong> [Codice IBAN]</p>
-                    </div>
+                   <div class="crypto-addresses">
+    <div class="crypto-address">
+        <span class="crypto-label"><strong>BTC:</strong></span>
+        <span class="crypto-value" id="btc-address" data-address="bc1quxquvevc9l8gfly6jj7u58vqgpw9l9vjyra0xx">bc1qux...ra0xx</span>
+        <button class="copy-btn" onclick="copyAddress('btc-address')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+        </button>
+        <span class="copy-msg" id="btc-copy-msg">Copiato!</span>
+    </div>
+    
+    <div class="crypto-address">
+        <span class="crypto-label"><strong>TON:</strong></span>
+        <span class="crypto-value" id="ton-address" data-address="UQDes1LjMasF3Erb4uI2KyPgzytmjiOmiOR8DnwqnLDxb2x2">UQDes1...b2x2</span>
+        <button class="copy-btn" onclick="copyAddress('ton-address')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+        </button>
+        <span class="copy-msg" id="ton-copy-msg">Copiato!</span>
+    </div>
+    
+    <div class="crypto-address">
+        <span class="crypto-label"><strong>POL:</strong></span>
+        <span class="crypto-value" id="pol-address" data-address="0xBaAd236beFee553736cbB94e3B8627ff14E2157f">0xBaAd...157f</span>
+        <button class="copy-btn" onclick="copyAddress('pol-address')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+        </button>
+        <span class="copy-msg" id="pol-copy-msg">Copiato!</span>
+    </div>
+    
+    <div class="crypto-address">
+        <span class="crypto-label"><strong>USDC SOL:</strong></span>
+        <span class="crypto-value" id="usdc-address" data-address="AkhMthuf2bW3NiS9kASqWMSEMwKrD2dfxLGhZQrk78hu">AkhMt...78hu</span>
+        <button class="copy-btn" onclick="copyAddress('usdc-address')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+        </button>
+        <span class="copy-msg" id="usdc-copy-msg">Copiato!</span>
+    </div>
+    
+    <div class="crypto-address">
+        <span class="crypto-label"><strong>IBAN:</strong></span>
+        <span class="crypto-value" id="iban-address" data-address="[Codice IBAN]">[Codice IBAN]</span>
+        <button class="copy-btn" onclick="copyAddress('iban-address')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+        </button>
+        <span class="copy-msg" id="iban-copy-msg">Copiato!</span>
+    </div>
+</div>
                     <a href="mailto:synergyrecycle.b@gmail.com" class="btn">Inviaci una Mail</a>
                 </div>
                 <!-- Launch Card -->
