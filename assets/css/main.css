@@ -381,3 +381,9 @@ img {
     position: relative;
     z-index: 1; /* Porta il contenuto sopra lo sfondo */
 }
+
+.image-container {
+    /* altre proprietà... */
+    height: 400px; /* Aggiungi questa riga */
+    width: 100%; /* Aggiungi questa riga */
+}
