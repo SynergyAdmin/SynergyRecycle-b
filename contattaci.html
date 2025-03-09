@@ -17,17 +17,31 @@
                 <img src="./assets/img/logo da email.png" alt="Logo">
                 <span>...</span>
             </div>
+    
+<div class="language-selector">
+    <button onclick="changeLanguage('it')" class="lang-btn" data-lang="it">IT</button>
+    <button onclick="changeLanguage('de')" class="lang-btn" data-lang="de">DE</button>
+</div>
+    
+   <!-- NAVIGAZIONE -->
+<nav class="main-nav">
+    <a href="./" class="button" data-i18n="navigation.home">Home</a>
+    <a href="./servizi.html" class="button" data-i18n="navigation.services">Servizi</a>
+    <a href="./sostenerci.html" class="button" data-i18n="navigation.support">Supportaci</a>
+    <a href="./contattaci.html" class="button" data-i18n="navigation.contact">Contattaci</a>
+    <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
+</nav>
 
-    
-    <!-- NAVIGAZIONE -->
-    <nav class="main-nav">
-        <a href="./" class="button">Home</a>
-        <a href="./servizi.html" class="button">Servizi</a>
-        <a href="./sostenerci.html" class="button">Supportaci</a>
-        <a href="./contattaci.html" class="button">Contattaci</a>
-        <a href="./roadmap.html" class="button">Roadmap</a>
-    </nav>
-    
+<!-- Form Contatto -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title" data-i18n="contact.title">Contattaci</h1>
+            <p class="hero-subtitle" data-i18n="contact.subtitle">Vuoi avere ulteriori Informazioni? Contattaci. Risponderemo ad ogni Mail nel minor tempo possibile.</p>
+        </div>
+    </div>
+</section>
+
     
     <!-- CONTENUTO PRINCIPALE -->
     <div class="pricing-section section">
@@ -37,15 +51,7 @@
     <!-- Script JS -->
     <script src="./assets/js/main.js"></script>
 
-    <!-- Form Contatto -->
-                <section class="hero">
-                        <div class="container">
-                            <div class="hero-content">
-                                <h1 class="hero-title">Contattaci</h1>
-                                <p class="hero-subtitle">Vuoi avere ulteriori Informazioni? Contattaci. Risponderemo ad ogni Mail nel minor tempo possibile.</p>
-                            </div>
-                         </div>
-                </section>
+<script src="./assets/js/i18n.js"></script>
                 
                 <div class="form-group">
                     <label for="name">Nome *</label>
