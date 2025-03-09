@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadComponents() {
     try {
         const [header, footer] = await Promise.all([
-            fetch('components/header.html').then(r => r.text()),
-            fetch('components/footer.html').then(r => r.text())
         ]);
         
         document.body.insertAdjacentHTML('afterbegin', header);
