@@ -352,6 +352,25 @@ img {
     z-index: 0;
 }
 
+.language-selector {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.lang-btn {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.lang-btn[data-lang=it] {
+    background-color: var(--primary-green);
+    color: white;
+}
+
 .image-container > * {
     position: relative;
     z-index: 1; /* Porta il contenuto sopra lo sfondo */
