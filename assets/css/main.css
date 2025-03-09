@@ -59,208 +59,61 @@ body {
     transform: translateY(-3px);
 }
 
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
 /* Immagini */
 img {
-    max-width: 100%;       /* Adatta l'immagine al contenitore */
-    height: auto;          /* Mantiene le proporzioni originali */
-    display: block;        /* Elimina spazi indesiderati sotto le immagini */
-    margin: 0 auto;        /* Centratura orizzontale */
-    border-radius: 8px;    /* Bordi leggermente arrotondati */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sottile ombra per profondità */
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Effetti hover */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .grid img {
-    width: 100%;           /* Riempie completamente la cella della griglia */
-    object-fit: cover;     /* Ritaglio intelligente per immagini in contenitori */
+    width: auto;
+    object-fit: contain;
 }
 
 .hero-img {
-  width: 100%;
-  height: auto;          /* Modificato: era 60vh */
-  max-height: 60vh;      /* Aggiungi questa riga */
-  object-fit: contain;   /* Modificato: era cover */
-  object-position: center 30%;
-  border-radius: 0;
-}
-
-.card img {
-    aspect-ratio: 16/9;    /* Proporzioni fisse per uniformità */
-    border-radius: 8px 8px 0 0; /* Arrotonda solo la parte superiore */
-}
-
-/* Ottimizzazione prestazioni */
-img[loading="lazy"] {
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-img[loading="lazy"].loaded {
-    opacity: 1;
-}
-
-/* Animazione hover per interattività */
-img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/* Fix Immagini - Sovrascrive solo le regole necessarie */
-img {
-  box-shadow: none !important;
-  transition: none !important;
-  border-radius: 0 !important;
-}
-
-.grid img {
-  width: auto !important;
-  object-fit: contain !important;
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+    object-position: center 30%;
 }
 
 .info-icon {
-  width: 24px !important;
-  height: 24px !important;
-  object-fit: contain !important;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
-/* Media Query per schermi HD/Retina */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-    .high-res-img {
-        background-image: url('path/to/your/image@2x.jpg');
-    }
-}
-@media (max-width: 768px) {
-  .main-nav {
-    display: none;
-  }
-  .hamburger-container {
-    display: block;
-    text-align: right;
-    padding: var(--spacing-sm);
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1001;
-  }
-  .hamburger-btn {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--dark-gray);
-    cursor: pointer;
-  }
-  .mobile-nav {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    background: var(--white);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: var(--spacing-sm);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-  .mobile-nav a {
-    display: block;
-    margin: var(--spacing-sm) 0;
-    width: 100%;
-    text-align: center;
-  }
-  .mobile-nav.active {
-    display: flex;
-  }
-}
-
-/* Desktop: nascondi l'hamburger */
-@media (min-width: 769px) {
-  .hamburger-container {
-    display: none;
-  }
-  .mobile-nav {
-    display: none;
-  }
-}
-/* Footer */
-.site-footer {
-    background-color: var(--dark-gray);
-    padding: var(--spacing-md) 0;
-    margin-top: var(--spacing-lg);
-    text-align: center;
-}
-
-.copyright-text {
-    color: var(--light-gray);
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-.copyright-text a {
-    color: var(--primary-green);
-    text-decoration: none;
-}
-
-/* Main Image Container */
-.main-image-container {
-    grid-row: span 2;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Section Title */
-.section-title {
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-@media (max-width: 768px) {
-  .main-nav {
-    display: none;
-  }
-  .hamburger-container {
-    display: block;
-    text-align: right;
-    padding: var(--spacing-sm);
-  }
-  .hamburger-btn {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--dark-gray);
-    cursor: pointer;
-  }
-  .mobile-nav {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    background: var(--white);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: var(--spacing-sm);
-  }
-  .mobile-nav a {
-    display: block;
-    margin: var(--spacing-sm) 0;
-  }
-  .mobile-nav.active {
-    display: flex;
-  }
-}
-
-/* Esempio di stile ellittico per l'header */
+/* Header ellittico */
 .header-ellipse {
-    background-color: #0c546b;       /* Colore di sfondo */
+    background-color: #0c546b;
     color: white;
-    border-radius: 50px;            /* Rende l'header ellittico */
-    margin: 20px auto;              /* Spazio intorno */
-    max-width: 95%;                 /* Larghezza massima */
+    border-radius: 50px;
+    margin: 20px auto;
+    max-width: 95%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
 }
 
-/* Sezioni interne */
+/* Sezioni interne header */
 .header-left, .header-center, .header-right {
     display: flex;
     align-items: center;
@@ -283,81 +136,58 @@ img {
 }
 
 .header-center a:hover {
-    background-color: #8bc34a; /* Cambia colore al passaggio del mouse */
+    background-color: var(--secondary-green);
 }
 
-/* Sezione destra (ricerca, telefono, pulsante) */
+/* Sezione destra */
 .header-right {
     gap: 15px;
 }
 
 /* Pulsante contattaci */
 .contact-btn {
-    background-color: #8bc34a;
+    background-color: var(--secondary-green);
     color: white;
     padding: 8px 15px;
     border-radius: 20px;
     text-decoration: none;
 }
 
-/* Adattamento responsive su schermi piccoli */
-@media (max-width: 768px) {
-    .header-ellipse {
-        flex-wrap: wrap;           /* Va su più righe se serve */
-        justify-content: center;   /* Centra i contenuti */
-        text-align: center;
-    }
-    .header-left, .header-right {
-        margin: 10px 0;
-        justify-content: center;
-    }
-    .header-center a {
-        margin: 5px;
-    }
-}
-
-/* Aggiungi questo stile per il contenitore bianco */
+/* Contenitore immagine */
 .image-container {
-    background-color: var(--white);
+    background-image: url('./assets/img/4.1.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
     padding: var(--spacing-md);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin: var(--spacing-lg) 0;
-}
-
-.image-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.image-container {
-    background-image: url('./assets/img/4.1.jpeg'); /* Percorso dell'immagine */
-    background-size: cover; /* Riempie il contenitore senza distorcersi */
-    background-position: center; /* Centra l'immagine */
-    background-repeat: no-repeat; /* L'immagine non si ripete */
-    background-attachment: fixed; /* Fissa l'immagine di sfondo */
-    position: relative; /* Per gestire la trasparenza */
-    padding: var(--spacing-md);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin: var(--spacing-lg) 0;
+    height: 400px;
+    width: 100%;
 }
 
 .image-container::before {
-    content: ""; /* Questo dovrebbe essere vuoto */
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.65); /* Sfondo semi-trasparente al 65% */
+    background-color: rgba(255, 255, 255, 0.65);
     z-index: 0;
-    border-radius: 10px; /* Per mantenere gli angoli arrotondati */
+    border-radius: 10px;
 }
 
+.image-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Selettore lingua */
 .language-selector {
     display: flex;
     gap: 8px;
@@ -377,13 +207,188 @@ img {
     color: white;
 }
 
-.image-container > * {
-    position: relative;
-    z-index: 1; /* Porta il contenuto sopra lo sfondo */
+/* Hero Section */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: var(--spacing-lg) 0;
 }
 
-.image-container {
-    /* altre proprietà... */
-    height: 400px; /* Aggiungi questa riga */
-    width: 100%; /* Aggiungi questa riga */
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    color: #666;
+}
+
+/* Section Styles */
+.section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    font-size: 2.5rem;
+}
+
+/* Values Section */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.value-card {
+    padding: var(--spacing-md);
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Team Section */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* References Section */
+.references {
+    background-color: #f8f9fa;
+}
+
+.references-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+/* Navigation */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    margin: var(--spacing-md) 0;
+}
+
+.hamburger-container {
+    display: none;
+    text-align: right;
+    padding: var(--spacing-sm);
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--dark-gray);
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: var(--spacing-sm);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.mobile-nav a {
+    display: block;
+    margin: var(--spacing-sm) 0;
+    width: 100%;
+    text-align: center;
+}
+
+.mobile-nav.active {
+    display: flex;
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--dark-gray);
+    padding: var(--spacing-md) 0;
+    margin-top: var(--spacing-lg);
+    text-align: center;
+}
+
+.copyright-text {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.copyright-text a {
+    color: var(--primary-green);
+    text-decoration: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .main-nav {
+        display: none;
+    }
+    
+    .hamburger-container {
+        display: block;
+    }
+    
+    .header-ellipse {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .header-left, .header-right {
+        margin: 10px 0;
+        justify-content: center;
+    }
+    
+    .header-center a {
+        margin: 5px;
+    }
+}
+
+@media (min-width: 769px) {
+    .hamburger-container, .mobile-nav {
+        display: none;
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+    .high-res-img {
+        background-image: url('path/to/your/image@2x.jpg');
+    }
 }
