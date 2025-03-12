@@ -8,11 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadComponents() {
     try {
-        const [header, footer] = await Promise.all([
-        ]);
+        // Carica header e footer
+        const headerResponse = await fetch('./components/header.html');
+        const footerResponse = await fetch('./components/footer.html');
         
-        document.body.insertAdjacentHTML('afterbegin', header);
-        document.body.insertAdjacentHTML('beforeend', footer);
+        const header = await headerResponse.text();
+        const footer = await footerResponse.text();
+        
+        document.getElementById('header-container').innerHTML = header;
+        document.getElementById('footer-container').innerHTML = footer;
+        
+        // IMPORTANTE: inizializza il menu mobile DOPO che l'header è stato inserito nel DOM
         initMobileMenu();
     } catch (error) {
         console.error('Error loading components:', error);
