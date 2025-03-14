@@ -79,24 +79,6 @@ function initFormValidation() {
         // Add validation logic
     });
 }
-
-// Funzione per copiare l'indirizzo
-    function copyAddress(elementId) {
-        const element = document.getElementById(elementId);
-        const fullAddress = element.getAttribute('data-address');
-        
-        // Copia negli appunti
-        navigator.clipboard.writeText(fullAddress).then(() => {
-            // Mostra messaggio di conferma
-            const copyMsg = document.getElementById(elementId + '-copy-msg');
-            copyMsg.classList.add('show');
-            
-            // Nascondi dopo 2 secondi
-            setTimeout(() => {
-                copyMsg.classList.remove('show');
-            }, 2000);
-        });
-    }
     
     // Funzione per espandere/comprimere l'indirizzo
     document.querySelectorAll('.crypto-value').forEach(element => {
@@ -115,7 +97,6 @@ function initFormValidation() {
             }
         });
     });
-</script>
 
 /**
  * Funzione di copia migliorata per gli indirizzi wallet
