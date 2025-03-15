@@ -4,489 +4,331 @@
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SynergyRecycle.B</title>
+    <title>SynergyRecycle.B - Contattaci</title>
     
     <!-- Collegamento CSS -->
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/components/header.css">
     <link rel="stylesheet" href="./assets/css/components/sections.css">
     <link rel="stylesheet" href="./assets/css/components/footer.css">
+    
+    <style>
+        .site-footer {
+            background-color: var(--dark-gray);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .copyright-text {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .copyright-text a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+        
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            padding: var(--spacing-lg) 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: #666;
+        }
+        
+        /* Form di contatto */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+        
+        .company-info {
+            flex: 0 0 300px;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-left: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-green, #2ecc71);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        .info-title {
+            margin-bottom: 1.5rem;
+            color: var(--primary-green, #2ecc71);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .info-icon {
+            margin-right: 0.75rem;
+            width: 16px;
+            height: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .company-info {
+                margin-left: 0;
+                margin-top: 2rem;
+            }
+        }
+        
+        /* FAQ e Glossario */
+        .faq-glossary-section {
+            padding: 4rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 1rem 1.5rem;
+            margin: 0 0.5rem 1rem;
+            background-color: transparent;
+            border: 1px solid var(--primary-green, #2ecc71);
+            color: var(--primary-green, #2ecc71);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active, .tab-button:hover {
+            background-color: var(--primary-green, #2ecc71);
+            color: white;
+        }
+
+        .tab-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        /* FAQ Styles */
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1rem;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: var(--primary-green, #2ecc71);
+        }
+
+        .faq-answer {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 1rem;
+            max-height: 500px;
+        }
+
+        .faq-answer ul {
+            padding-left: 1.5rem;
+        }
+
+        /* Glossary Styles */
+        .glossary-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .glossary-item h3 {
+            color: var(--primary-green, #2ecc71);
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem;
+            background-color: #f2f2f2;
+            border-radius: 8px;
+        }
+
+        .cta-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1rem 0 2rem;
+        }
+
+        .cta-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            background-color: var(--primary-green, #2ecc71);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-link:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .cta-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 1rem;
+        }
+
+        .cta-section a {
+            color: var(--primary-green, #2ecc71);
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-<div class="logo">
-                <img src="./assets/img/logo da email.png" alt="Logo">
-                <span>.</span>
-            </div>
-
-   <!-- NAVIGAZIONE -->
-<nav class="main-nav">
-    <a href="./" class="button" data-i18n="navigation.home">Home</a>
-    <a href="./servizi.html" class="button" data-i18n="navigation.services">Servizi</a>
-    <a href="./sostenerci.html" class="button" data-i18n="navigation.support">Supportaci</a>
-    <a href="./contattaci.html" class="button" data-i18n="navigation.contact">Contattaci</a>
-    <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
-</nav>
-
-    
-<!-- Form Contatto -->
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <h1 class="hero-title" data-i18n="contact.title">Contattaci</h1>
-            <p class="hero-subtitle" data-i18n="contact.subtitle">Vuoi avere ulteriori Informazioni? Contattaci. Risponderemo ad ogni Mail nel minor tempo possibile.</p>
-        </div>
-    </div>
-</section>
-<!-- Sezione FAQ e Glossario -->
-<section class="faq-glossary-section section">
-    <div class="container">
-        <!-- Tab Navigation -->
-        <div class="tab-navigation">
-            <button class="tab-button active" data-tab="faq-general">FAQ Generali</button>
-            <button class="tab-button" data-tab="faq-investors">FAQ Investitori</button>
-            <button class="tab-button" data-tab="glossary">Glossario</button>
-            <button class="tab-button" data-tab="faq-crypto">FAQ Crypto</button>
+    <!-- Header con logo -->
+    <header>
+        <div class="logo">
+            <img src="./assets/img/logo da email.png" alt="Logo">
+            <span>.</span>
         </div>
 
-        <!-- Tab Content -->
-        <div class="tab-content">
-            <!-- FAQ Generali -->
-            <div class="tab-pane active" id="faq-general">
-                <h2 class="section-title">Domande Frequenti</h2>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Perché dovrei donare in SRB invece che in Euro?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Donare in SRB consente di sostenere i progetti green globali e di beneficiare di un token che potrebbe apprezzarsi nel tempo.</p>
-                    </div>
-                </div>
+        <!-- NAVIGAZIONE -->
+        <nav class="main-nav">
+            <a href="./" class="button" data-i18n="navigation.home">Home</a>
+            <a href="./servizi.html" class="button" data-i18n="navigation.services">Servizi</a>
+            <a href="./sostenerci.html" class="button" data-i18n="navigation.support">Supportaci</a>
+            <a href="./contattaci.html" class="button" data-i18n="navigation.contact">Contattaci</a>
+            <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
+        </nav>
+    </header>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Posso scegliere in quale progetto green investire i miei token?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sì, la nostra piattaforma consente di destinare i tuoi token a progetti specifici.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Le mie donazioni sono deducibili?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sì, le donazioni in Euro sono deducibili in base alla legislazione locale. I dettagli saranno inviati via email al momento della donazione.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Cosa succede se il valore del token SRB cambia?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Il valore di SRB è variabile. Tuttavia, i progetti green ricevono sempre l'equivalente in valuta stabile.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Investitori -->
-            <div class="tab-pane" id="faq-investors">
-                <h2 class="section-title">FAQ per gli investitori</h2>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Cos'è SynergyRecycle.B?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>SynergyRecycle.B è un progetto innovativo che combina blockchain e sostenibilità. Il nostro obiettivo è incentivare il riciclaggio e la protezione ambientale attraverso un sistema di premi basato su utility token.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Come posso investire nel progetto?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Gli investitori interessati possono partecipare attraverso il nostro programma di Private Sale o successivamente tramite la nostra ICO. È possibile contattarci tramite il modulo nella sezione "Investi con noi" per ricevere ulteriori dettagli e documentazione.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Quali sono i benefici per gli investitori?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Gli investitori ottengono:</p>
-                        <ul>
-                            <li>Accesso a utility token con potenziale apprezzamento.</li>
-                            <li>Coinvolgimento in un progetto con un impatto ambientale concreto.</li>
-                            <li>Opportunità di partecipare a una piattaforma in crescita.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Come funziona l'acquisto di token?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>I token possono essere acquistati durante le nostre fasi di vendita. Gli investitori riceveranno un wallet digitale integrato dove saranno depositati i token.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Quali sono le misure di sicurezza adottate?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Adottiamo tecnologie avanzate per la protezione dei dati e dei fondi degli utenti. Tutte le transazioni sono garantite da smart contract verificati e utilizziamo audit regolari per prevenire vulnerabilità.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Quali partnership state sviluppando?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Stiamo collaborando con organizzazioni no-profit, aziende tecnologiche e istituzioni ambientali per espandere il nostro impatto e costruire un ecosistema solido.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Glossario -->
-            <div class="tab-pane" id="glossary">
-                <h2 class="section-title">Glossario</h2>
-                
-                <div class="glossary-list">
-                    <div class="glossary-item">
-                        <h3>Utility Token</h3>
-                        <p>Un tipo di criptovaluta progettato per fornire accesso a un prodotto o servizio specifico all'interno di un ecosistema blockchain.</p>
-                    </div>
-                    
-                    <div class="glossary-item">
-                        <h3>Staking</h3>
-                        <p>Il processo di bloccare una certa quantità di token per un periodo di tempo, contribuendo alla sicurezza della rete e ottenendo ricompense.</p>
-                    </div>
-                    
-                    <div class="glossary-item">
-                        <h3>DEX (Decentralized Exchange)</h3>
-                        <p>Una piattaforma per lo scambio di criptovalute che funziona senza intermediari centralizzati.</p>
-                    </div>
-                    
-                    <div class="glossary-item">
-                        <h3>Economia Circolare</h3>
-                        <p>Un modello economico che promuove il riutilizzo, il riciclaggio e la sostenibilità delle risorse.</p>
-                    </div>
-                    
-                    <div class="glossary-item">
-                        <h3>Smart Contract</h3>
-                        <p>Contratti digitali auto-eseguibili con i termini dell'accordo scritti direttamente nel codice.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Crypto generiche -->
-            <div class="tab-pane" id="faq-crypto">
-                <h2 class="section-title">FAQ Crypto</h2>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Che cos'è una blockchain?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>La blockchain è un registro digitale distribuito e immutabile che registra transazioni su più computer in modo che il record non possa essere alterato retroattivamente senza la modifica di tutti i blocchi successivi.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Cosa significa ICO?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>ICO (Initial Coin Offering) è un metodo di raccolta fondi attraverso il quale i nuovi progetti vendono i loro token in cambio di criptovalute consolidate come Bitcoin o Ethereum.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Cos'è un wallet di criptovalute?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Un wallet di criptovalute è un software o dispositivo che memorizza le chiavi private necessarie per accedere e gestire le tue criptovalute. Può essere online (hot wallet) o offline (cold wallet).</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Quali sono i rischi dell'investimento in criptovalute?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Gli investimenti in criptovalute comportano rischi come alta volatilità, potenziali problemi normativi, rischi di sicurezza e possibile mancanza di liquidità. È importante fare ricerche approfondite e investire solo ciò che si è disposti a perdere.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Cos'è il DeFi (Finanza Decentralizzata)?</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>DeFi è un movimento emergente che utilizza blockchain e criptovalute per ricreare e migliorare servizi finanziari tradizionali come prestiti, trading e assicurazioni senza intermediari centralizzati.</p>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-i18n="contact.title">Contattaci</h1>
+                <p class="hero-subtitle" data-i18n="contact.subtitle">Vuoi avere ulteriori Informazioni? Contattaci. Risponderemo ad ogni Mail nel minor tempo possibile.</p>
             </div>
         </div>
+    </section>
 
-        <!-- Call to Action -->
-        <div class="cta-section">
-            <h3>Scopri di più</h3>
-            <div class="cta-links">
-                <a href="whitepaper.html" class="cta-link">Whitepaper</a>
-                <a href="roadmap.html" class="cta-link">Roadmap</a>
-                <a href="regolamenti.html" class="cta-link">Regolamenti</a>
-            </div>
-            
-            <h3>Contattaci direttamente</h3>
-            <p>Per gli investitori: <a href="mailto:investors@synergyrecycle.b">investors@synergyrecycle.b</a></p>
-        </div>
-    </div>
-</section>
-
-<!-- Stile CSS per la sezione FAQ e Glossario -->
-<style>
-    .faq-glossary-section {
-        padding: 4rem 0;
-        background-color: #f9f9f9;
-    }
-
-    .tab-navigation {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-    }
-
-    .tab-button {
-        padding: 1rem 1.5rem;
-        margin: 0 0.5rem 1rem;
-        background-color: transparent;
-        border: 1px solid var(--primary-green, #2ecc71);
-        color: var(--primary-green, #2ecc71);
-        border-radius: 4px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .tab-button.active, .tab-button:hover {
-        background-color: var(--primary-green, #2ecc71);
-        color: white;
-    }
-
-    .tab-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .tab-pane {
-        display: none;
-    }
-
-    .tab-pane.active {
-        display: block;
-    }
-
-    .section-title {
-        text-align: center;
-        margin-bottom: 2rem;
-        color: #333;
-    }
-
-    /* FAQ Styles */
-    .faq-item {
-        margin-bottom: 1rem;
-        border: 1px solid #e0e0e0;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-
-    .faq-question {
-        padding: 1rem;
-        background-color: #f2f2f2;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    .faq-question h3 {
-        margin: 0;
-        font-size: 1.1rem;
-    }
-
-    .toggle-icon {
-        font-size: 1.5rem;
-        color: var(--primary-green, #2ecc71);
-    }
-
-    .faq-answer {
-        padding: 0 1rem;
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.3s ease;
-    }
-
-    .faq-answer.active {
-        padding: 1rem;
-        max-height: 500px;
-    }
-
-    .faq-answer ul {
-        padding-left: 1.5rem;
-    }
-
-    /* Glossary Styles */
-    .glossary-item {
-        margin-bottom: 1.5rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    .glossary-item h3 {
-        color: var(--primary-green, #2ecc71);
-        margin-bottom: 0.5rem;
-    }
-
-    /* CTA Section */
-.cta-section {
-    margin-top: 3rem;
-    text-align: center;
-    padding: 2rem;
-    background-color: #f2f2f2;
-    border-radius: 8px;
-}
-
-.cta-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 1rem 0 2rem;
-}
-
-.cta-link {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    margin: 0.5rem;
-    background-color: var(--primary-green, #2ecc71);
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.cta-link:hover {
-    background-color: #27ae60;
-    transform: translateY(-2px);
-}
-
-.cta-section h3 {
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.cta-section p {
-    margin-bottom: 1rem;
-}
-
-.cta-section a {
-    color: var(--primary-green, #2ecc71);
-    text-decoration: none;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .tab-button {
-        padding: 0.75rem 1rem;
-        margin: 0 0.25rem 0.5rem;
-        font-size: 0.9rem;
-    }
-    
-    .faq-question h3 {
-        font-size: 1rem;
-    }
-}
-
-// Codice JavaScript da aggiungere al file HTML
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Tab Functionality
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabPanes = document.querySelectorAll('.tab-pane');
-    
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons and panes
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabPanes.forEach(pane => pane.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Show corresponding pane
-            const tabId = this.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
-        });
-    });
-    
-    // FAQ Accordion Functionality
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-            const answer = this.nextElementSibling;
-            const icon = this.querySelector('.toggle-icon');
-            
-            // Toggle answer visibility
-            if (answer.classList.contains('active')) {
-                answer.classList.remove('active');
-                icon.textContent = '+';
-            } else {
-                answer.classList.add('active');
-                icon.textContent = '−';
-            }
-        });
-    });
-});
-
-
-    
-    <!-- CONTENUTO PRINCIPALE -->
-    <div class="pricing-section section">
-        <!-- ... contenuto ... -->
-    </div>
-
-    <!-- Script JS -->
-    <script src="./assets/css/js/i18n.js"></script>
-
-
-
-<script src="./assets/js/i18n.js"></script>
-                
+    <!-- Form di contatto -->
+    <main>
+        <div class="contact-container">
+            <form class="contact-form">
                 <div class="form-group">
                     <label for="name">Nome *</label>
                     <input type="text" id="name" name="name" required>
@@ -546,6 +388,237 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </main>
 
+    <!-- Sezione FAQ e Glossario -->
+    <section class="faq-glossary-section">
+        <div class="container">
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-button active" data-tab="faq-general">FAQ Generali</button>
+                <button class="tab-button" data-tab="faq-investors">FAQ Investitori</button>
+                <button class="tab-button" data-tab="glossary">Glossario</button>
+                <button class="tab-button" data-tab="faq-crypto">FAQ Crypto</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- FAQ Generali -->
+                <div class="tab-pane active" id="faq-general">
+                    <h2 class="section-title">Domande Frequenti</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Perché dovrei donare in SRB invece che in Euro?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Donare in SRB consente di sostenere i progetti green globali e di beneficiare di un token che potrebbe apprezzarsi nel tempo.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Posso scegliere in quale progetto green investire i miei token?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sì, la nostra piattaforma consente di destinare i tuoi token a progetti specifici.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Le mie donazioni sono deducibili?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sì, le donazioni in Euro sono deducibili in base alla legislazione locale. I dettagli saranno inviati via email al momento della donazione.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Cosa succede se il valore del token SRB cambia?</h3>
+			    <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Il valore di SRB è variabile. Tuttavia, i progetti green ricevono sempre l'equivalente in valuta stabile.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Investitori -->
+                <div class="tab-pane" id="faq-investors">
+                    <h2 class="section-title">FAQ per gli investitori</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Cos'è SynergyRecycle.B?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>SynergyRecycle.B è un progetto innovativo che combina blockchain e sostenibilità. Il nostro obiettivo è incentivare il riciclaggio e la protezione ambientale attraverso un sistema di premi basato su utility token.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Come posso investire nel progetto?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Gli investitori interessati possono partecipare attraverso il nostro programma di Private Sale o successivamente tramite la nostra ICO. È possibile contattarci tramite il modulo nella sezione "Investi con noi" per ricevere ulteriori dettagli e documentazione.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Quali sono i benefici per gli investitori?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Gli investitori ottengono:</p>
+                            <ul>
+                                <li>Accesso a utility token con Utility immediata.</li>
+                                <li>Coinvolgimento in un progetto con un impatto ambientale concreto.</li>
+                                <li>Opportunità Unica di partecipare a una piattaforma in crescita costante.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Come funziona l'acquisto di token?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>I token possono essere acquistati durante le nostre fasi di vendita. Gli investitori riceveranno un wallet digitale integrato dove saranno depositati i token.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Quali sono le misure di sicurezza adottate?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Adottiamo tecnologie avanzate per la protezione dei dati e dei fondi degli utenti. Tutte le transazioni sono garantite da smart contract verificati e utilizziamo audit regolari per prevenire vulnerabilità.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Quali partnership state sviluppando?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Stiamo collaborando con organizzazioni no-profit, aziende tecnologiche e istituzioni ambientali per espandere il nostro impatto e costruire un ecosistema solido.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glossario -->
+                <div class="tab-pane" id="glossary">
+                    <h2 class="section-title">Glossario</h2>
+                    
+                    <div class="glossary-list">
+                        <div class="glossary-item">
+                            <h3>Utility Token</h3>
+                            <p>Un tipo di criptovaluta progettato per fornire accesso a un prodotto o servizio specifico all'interno di un ecosistema blockchain.</p>
+                        </div>
+                        
+                        <div class="glossary-item">
+                            <h3>Staking</h3>
+                            <p>Il processo di bloccare una certa quantità di token per un periodo di tempo, contribuendo alla sicurezza della rete.</p>
+                        </div>
+                        
+                        <div class="glossary-item">
+                            <h3>DEX (Decentralized Exchange)</h3>
+                            <p>Una piattaforma per lo scambio di criptovalute che funziona senza intermediari centralizzati.</p>
+                        </div>
+                        
+                        <div class="glossary-item">
+                            <h3>Economia Circolare</h3>
+                            <p>Un modello economico che promuove il riutilizzo, il riciclaggio e la sostenibilità delle risorse.</p>
+                        </div>
+                        
+                        <div class="glossary-item">
+                            <h3>Smart Contract</h3>
+                            <p>Contratti digitali auto-eseguibili con i termini dell'accordo scritti direttamente nel codice.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Crypto generiche -->
+                <div class="tab-pane" id="faq-crypto">
+                    <h2 class="section-title">FAQ Crypto</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Che cos'è una blockchain?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>La blockchain è un registro digitale distribuito e immutabile che registra transazioni su più computer in modo che il record non possa essere alterato retroattivamente senza la modifica di tutti i blocchi successivi.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Cosa significa ICO?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>ICO (Initial Coin Offering) è un metodo di raccolta fondi attraverso il quale i nuovi progetti vendono i loro token in cambio di criptovalute consolidate come Bitcoin o Ethereum.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Cos'è un wallet di criptovalute?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Un wallet di criptovalute è un software o dispositivo che memorizza le chiavi private necessarie per accedere e gestire le tue criptovalute. Può essere online (hot wallet) o offline (cold wallet).</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Quali sono i rischi dell'investimento in criptovalute?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Gli investimenti in criptovalute comportano rischi come alta volatilità, potenziali problemi normativi, rischi di sicurezza e possibile mancanza di liquidità. È importante fare ricerche approfondite e investire solo ciò che si è disposti a perdere.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Cos'è il DeFi (Finanza Decentralizzata)?</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>DeFi è un movimento emergente che utilizza blockchain e criptovalute per ricreare e migliorare servizi finanziari tradizionali come prestiti, trading e assicurazioni senza intermediari centralizzati.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <h3>Scopri di più</h3>
+                <div class="cta-links">
+                    <a href="whitepaper.pdf" class="cta-link">Whitepaper</a>
+                    <a href="roadmap.html" class="cta-link">Roadmap</a>
+                    <a href="regolamenti.html" class="cta-link">Regolamenti</a>
+                </div>
+                
+                <h3>Contattaci direttamente</h3>
+                <p>Per gli investitori: <a href="mailto:synergyrecycle.b@gmail.com">synergyrecycle.b@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+
     <!-- Call to Action -->
     <section class="section" style="background-color: #f8f9fa;">
         <div class="container">
@@ -562,68 +635,57 @@ document.addEventListener('DOMContentLoaded', function() {
     <footer class="site-footer">
         <div class="container">
             <p class="copyright-text" data-i18n="footer.copyright">
-    © <span id="copyright-2024"></span> SynergyRecycle.B.
-    Tutti i contenuti di questa pagina sono protetti da copyright 
-    ai sensi della legge italiana ed internazionale.
+                © <span id="copyright-2024">2024</span> SynergyRecycle.B.
+                Tutti i contenuti di questa pagina sono protetti da copyright 
+                ai sensi della legge italiana ed internazionale.
             </p>
         </div>
     </footer>
 
+    <!-- Script JS -->
     <script>
-        // Caricamento Header
-        fetch('./components/header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header-container').innerHTML = data);
-
-        // Caricamento Footer
-        fetch('./components/footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer-container').innerHTML = data);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Imposta l'anno corrente per il copyright
+            document.getElementById('copyright-2024').textContent = new Date().getFullYear();
+            
+            // Tab Functionality
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and panes
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding pane
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // FAQ Accordion Functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('.toggle-icon');
+                    
+                    // Toggle answer visibility
+                    if (answer.classList.contains('active')) {
+                        answer.classList.remove('active');
+                        icon.textContent = '+';
+                    } else {
+                        answer.classList.add('active');
+                        icon.textContent = '−';
+                    }
+                });
+            });
+        });
     </script>
-
-    <!-- Stile base (da inserire nel CSS) -->
-    <style>
-        .site-footer {
-            background-color: var(--dark-gray);
-            padding: 2rem 0;
-            margin-top: 4rem;
-            text-align: center;
-        }
-
-        .copyright-text {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .copyright-text a {
-            color: var(--primary-green);
-            text-decoration: none;
-        }
-         .hero {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            background-color: #f8f9fa;
-            padding: var(--spacing-lg) 0;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-lg);
-            color: #666;
-        }
-    </style>
 </body>
 </html>
