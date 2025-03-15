@@ -296,32 +296,28 @@
                 </div>
             </div>
         </section>
-        <!-- Aggiungi questa sezione dopo la Call to Action e prima del footer -->
+<!-- Aggiungi questa sezione dopo la Call to Action e prima del footer -->
 <section class="section partners-section">
     <div class="container">
         <h2 class="section-title">Le Aziende che Credono in Noi</h2>
-        <div class="film-strip-container">
-            <div class="film-strip">
-                <div class="film-strip-track">
-                    <!-- Ripeti i loghi due volte per creare l'effetto infinito -->
-                    <div class="logo-item"><img src="./assets/img/partner1.png" alt="Logo Partner 1"></div>
-                    <div class="logo-item"><img src="./assets/img/partner2.png" alt="Logo Partner 2"></div>
-                    <div class="logo-item"><img src="./assets/img/partner3.png" alt="Logo Partner 3"></div>
-                    <div class="logo-item"><img src="./assets/img/partner4.png" alt="Logo Partner 4"></div>
-                    <div class="logo-item"><img src="./assets/img/partner5.png" alt="Logo Partner 5"></div>
-                    <div class="logo-item"><img src="./assets/img/partner6.png" alt="Logo Partner 6"></div>
-                    
-                    <!-- Ripetizione dei loghi per scorrimento continuo -->
-                    <div class="logo-item"><img src="./assets/img/partner1.png" alt="Logo Partner 1"></div>
-                    <div class="logo-item"><img src="./assets/img/partner2.png" alt="Logo Partner 2"></div>
-                    <div class="logo-item"><img src="./assets/img/partner3.png" alt="Logo Partner 3"></div>
-                    <div class="logo-item"><img src="./assets/img/partner4.png" alt="Logo Partner 4"></div>
-                    <div class="logo-item"><img src="./assets/img/partner5.png" alt="Logo Partner 5"></div>
-                    <div class="logo-item"><img src="./assets/img/partner6.png" alt="Logo Partner 6"></div>
-                </div>
+        <div class="logo-container">
+            <div class="logo-track">
+                <!-- Ripeti i loghi due volte per creare l'effetto infinito -->
+                <div class="logo-item"><img src="./assets/img/partner1.png" alt="Logo Partner 1"></div>
+                <div class="logo-item"><img src="./assets/img/partner2.png" alt="Logo Partner 2"></div>
+                <div class="logo-item"><img src="./assets/img/partner3.png" alt="Logo Partner 3"></div>
+                <div class="logo-item"><img src="./assets/img/partner4.png" alt="Logo Partner 4"></div>
+                <div class="logo-item"><img src="./assets/img/partner5.png" alt="Logo Partner 5"></div>
+                <div class="logo-item"><img src="./assets/img/partner6.png" alt="Logo Partner 6"></div>
+                
+                <!-- Ripetizione dei loghi per scorrimento continuo -->
+                <div class="logo-item"><img src="./assets/img/partner1.png" alt="Logo Partner 1"></div>
+                <div class="logo-item"><img src="./assets/img/partner2.png" alt="Logo Partner 2"></div>
+                <div class="logo-item"><img src="./assets/img/partner3.png" alt="Logo Partner 3"></div>
+                <div class="logo-item"><img src="./assets/img/partner4.png" alt="Logo Partner 4"></div>
+                <div class="logo-item"><img src="./assets/img/partner5.png" alt="Logo Partner 5"></div>
+                <div class="logo-item"><img src="./assets/img/partner6.png" alt="Logo Partner 6"></div>
             </div>
-            <div class="film-holes top-holes"></div>
-            <div class="film-holes bottom-holes"></div>
         </div>
     </div>
 </section>
@@ -330,35 +326,27 @@
 <style>
     .partners-section {
         padding: var(--spacing-md) 0;
-        background-color: #f0f0f0;
+        background-color: #f8f9fa;
     }
     
-    .film-strip-container {
+    .logo-container {
         position: relative;
         width: 100%;
         max-width: 800px;
-        height: 160px;
+        height: 100px;
         margin: 0 auto;
         overflow: hidden;
-        background-color: #000;
+        background-color: white;
         border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     
-    .film-strip {
-        position: relative;
-        width: 100%;
-        height: 100px;
-        margin: 30px 0;
-        overflow: hidden;
-        background-color: #222;
-    }
-    
-    .film-strip-track {
+    .logo-track {
         display: flex;
         align-items: center;
         width: max-content;
         height: 100%;
-        animation: scroll 30s linear infinite;
+        animation: scrollLogos 30s linear infinite;
     }
     
     .logo-item {
@@ -369,8 +357,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: white;
-        border-radius: 8px;
     }
     
     .logo-item img {
@@ -379,7 +365,7 @@
         object-fit: contain;
     }
     
-    @keyframes scroll {
+    @keyframes scrollLogos {
         0% {
             transform: translateX(0);
         }
@@ -387,82 +373,17 @@
             transform: translateX(-1080px); /* Deve essere la larghezza totale dei primi 6 loghi */
         }
     }
-    
-    .film-holes {
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 20px;
-        background-color: #000;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 20px;
-    }
-    
-    .top-holes {
-        top: 0;
-    }
-    
-    .bottom-holes {
-        bottom: 0;
-    }
-    
-    .film-holes::before,
-    .film-holes::after {
-        content: "";
-        flex: 1;
-        display: flex;
-    }
-    
-    .film-holes::before {
-        background-image: repeating-circle(#333 0 5px, #000 0 15px);
-        background-size: 20px 20px;
-        background-repeat: repeat-x;
-    }
-    
-    .film-holes::after {
-        background-image: repeating-circle(#333 0 5px, #000 0 15px);
-        background-size: 20px 20px;
-        background-repeat: repeat-x;
-    }
-    
-    .top-holes::before, .bottom-holes::before {
-        background: repeating-linear-gradient(
-            to right,
-            transparent,
-            transparent 15px,
-            #000 15px,
-            #000 20px,
-            transparent 20px,
-            transparent 35px
-        );
-        background-size: 40px 100%;
-        left: 0;
-    }
-    
-    .top-holes::after, .bottom-holes::after {
-        background: repeating-radial-gradient(
-            circle at center,
-            #444 0,
-            #444 6px,
-            #000 6px,
-            #000 10px
-        );
-        background-size: 40px 20px;
-        background-repeat: repeat-x;
-        left: 0;
-    }
 </style>
 
 <!-- Questo script è opzionale - aggiungi alla fine del body prima di </body> -->
 <script>
     // Pausa l'animazione quando il mouse passa sopra
-    document.querySelector('.film-strip-container').addEventListener('mouseenter', function() {
-        document.querySelector('.film-strip-track').style.animationPlayState = 'paused';
+    document.querySelector('.logo-container').addEventListener('mouseenter', function() {
+        document.querySelector('.logo-track').style.animationPlayState = 'paused';
     });
     
-    document.querySelector('.film-strip-container').addEventListener('mouseleave', function() {
-        document.querySelector('.film-strip-track').style.animationPlayState = 'running';
+    document.querySelector('.logo-container').addEventListener('mouseleave', function() {
+        document.querySelector('.logo-track').style.animationPlayState = 'running';
     });
 </script>
         <!-- Call to Action -->
