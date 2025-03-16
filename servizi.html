@@ -309,6 +309,96 @@
         </div>
     </section>
     </main>
+    <!-- Aggiungi questa sezione dopo la Call to Action e prima del footer -->
+<section class="section partners-section">
+    <div class="container">
+        <h2 class="section-title">Le Aziende che Credono in Noi</h2>
+        <div class="logo-container">
+            <div class="logo-track">
+                <!-- Ripeti i loghi due volte per creare l'effetto infinito -->
+                <div class="logo-item"><img src="./assets/img/partner1.png" alt="Logo Partner 1"></div>
+                <div class="logo-item"><img src="./assets/img/partner2.png" alt="Logo Partner 2"></div>
+                <div class="logo-item"><img src="./assets/img/partner3.png" alt="Logo Partner 3"></div>
+                <div class="logo-item"><img src="./assets/img/partner4.png" alt="Logo Partner 4"></div>
+                <div class="logo-item"><img src="./assets/img/partner5.png" alt="Logo Partner 5"></div>
+                <div class="logo-item"><img src="./assets/img/partner6.png" alt="Logo Partner 6"></div>
+                
+                <!-- Ripetizione dei loghi per scorrimento continuo -->
+                <div class="logo-item"><img src="./assets/img/partner1.png" alt="Logo Partner 1"></div>
+                <div class="logo-item"><img src="./assets/img/partner2.png" alt="Logo Partner 2"></div>
+                <div class="logo-item"><img src="./assets/img/partner3.png" alt="Logo Partner 3"></div>
+                <div class="logo-item"><img src="./assets/img/partner4.png" alt="Logo Partner 4"></div>
+                <div class="logo-item"><img src="./assets/img/partner5.png" alt="Logo Partner 5"></div>
+                <div class="logo-item"><img src="./assets/img/partner6.png" alt="Logo Partner 6"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Aggiungi questi stili al tag <style> esistente nella sezione head -->
+<style>
+    .partners-section {
+        padding: var(--spacing-md) 0;
+        background-color: #f8f9fa;
+    }
+    
+    .logo-container {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        height: 100px;
+        margin: 0 auto;
+        overflow: hidden;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .logo-track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        height: 100%;
+        animation: scrollLogos 30s linear infinite;
+    }
+    
+    .logo-item {
+        flex: 0 0 auto;
+        width: 150px;
+        height: 80px;
+        margin: 0 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .logo-item img {
+        max-width: 80%;
+        max-height: 70%;
+        object-fit: contain;
+    }
+    
+    @keyframes scrollLogos {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-1080px); /* Deve essere la larghezza totale dei primi 6 loghi */
+        }
+    }
+</style>
+
+<!-- Questo script è opzionale - aggiungi alla fine del body prima di </body> -->
+<script>
+    // Pausa l'animazione quando il mouse passa sopra
+    document.querySelector('.logo-container').addEventListener('mouseenter', function() {
+        document.querySelector('.logo-track').style.animationPlayState = 'paused';
+    });
+    
+    document.querySelector('.logo-container').addEventListener('mouseleave', function() {
+        document.querySelector('.logo-track').style.animationPlayState = 'running';
+    });
+</script>
     <footer class="site-footer">
         <div class="container">
             <p class="copyright-text">
