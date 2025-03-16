@@ -4,7 +4,7 @@
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SynergyRecycle.B - Contattaci</title>
+    <title>SynergyRecycle.B</title>
     
     <!-- Collegamento CSS -->
     <link rel="stylesheet" href="./assets/css/main.css">
@@ -13,6 +13,186 @@
     <link rel="stylesheet" href="./assets/css/components/footer.css">
     
     <style>
+        :root {
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --container-width: 1200px;
+            --dark-gray: #333;
+            --light-gray: #f5f5f5;
+            --primary-green: #8bc34a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* Header styling - similare alla roadmap */
+        header {
+            background-color: white;
+            color: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Navigazione - stile simile alla roadmap */
+        .main-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .main-nav .button {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .main-nav .button:hover {
+            background-color: #0c546b;
+            color: white;
+        }
+
+        /* Menu hamburger per mobile */
+        .hamburger-container {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+        /* Hero section e altri elementi */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            padding: var(--spacing-lg) 0;
+        }
+
+        .image-container {
+            background-image: url('./assets/img/4.1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 4rem 0;
+            height: 400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .image-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.65);
+            z-index: 0;
+            border-radius: 10px;
+        }
+        
+        .image-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            font-size: 2.5rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .value-card {
+            padding: var(--spacing-md);
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
         .site-footer {
             background-color: var(--dark-gray);
             padding: 2rem 0;
@@ -26,670 +206,196 @@
             line-height: 1.5;
         }
 
-        .copyright-text a {
-            color: var(--primary-green);
-            text-decoration: none;
-        }
-        
-        .hero {
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            background-color: #f8f9fa;
-            padding: var(--spacing-lg) 0;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-lg);
-            color: #666;
-        }
-        
-        /* Form di contatto */
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            padding: 1rem;
-        }
-        
-        .company-info {
-            flex: 0 0 300px;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            margin-left: 2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background-color: var(--primary-green, #2ecc71);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background-color: #27ae60;
-        }
-        
-        .info-title {
-            margin-bottom: 1.5rem;
-            color: var(--primary-green, #2ecc71);
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .info-icon {
-            margin-right: 0.75rem;
-            width: 16px;
-            height: 16px;
-        }
-        
+        /* Responsive design */
         @media (max-width: 768px) {
-            .contact-container {
+            header {
                 flex-direction: column;
+                text-align: center;
             }
             
-            .company-info {
-                margin-left: 0;
-                margin-top: 2rem;
+            .logo {
+                margin-bottom: 15px;
             }
-        }
-        
-        /* FAQ e Glossario */
-        .faq-glossary-section {
-            padding: 4rem 0;
-            background-color: #f9f9f9;
-        }
-
-        .tab-navigation {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-button {
-            padding: 1rem 1.5rem;
-            margin: 0 0.5rem 1rem;
-            background-color: transparent;
-            border: 1px solid var(--primary-green, #2ecc71);
-            color: var(--primary-green, #2ecc71);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tab-button.active, .tab-button:hover {
-            background-color: var(--primary-green, #2ecc71);
-            color: white;
-        }
-
-        .tab-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .tab-pane {
-            display: none;
-        }
-
-        .tab-pane.active {
-            display: block;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        /* FAQ Styles */
-        .faq-item {
-            margin-bottom: 1rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 1rem;
-            background-color: #f2f2f2;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .faq-question h3 {
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
-        .toggle-icon {
-            font-size: 1.5rem;
-            color: var(--primary-green, #2ecc71);
-        }
-
-        .faq-answer {
-            padding: 0 1rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-answer.active {
-            padding: 1rem;
-            max-height: 500px;
-        }
-
-        .faq-answer ul {
-            padding-left: 1.5rem;
-        }
-
-        /* Glossary Styles */
-        .glossary-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .glossary-item h3 {
-            color: var(--primary-green, #2ecc71);
-            margin-bottom: 0.5rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            margin-top: 3rem;
-            text-align: center;
-            padding: 2rem;
-            background-color: #f2f2f2;
-            border-radius: 8px;
-        }
-
-        .cta-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 1rem 0 2rem;
-        }
-
-        .cta-link {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            margin: 0.5rem;
-            background-color: var(--primary-green, #2ecc71);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .cta-link:hover {
-            background-color: #27ae60;
-            transform: translateY(-2px);
-        }
-
-        .cta-section h3 {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            margin-bottom: 1rem;
-        }
-
-        .cta-section a {
-            color: var(--primary-green, #2ecc71);
-            text-decoration: none;
+            
+            .main-nav {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .main-nav .button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hamburger-container {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 15px;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .mobile-nav {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .mobile-nav .button {
+                width: 100%;
+                text-align: center;
+                padding: 8px 15px;
+                border-radius: 20px;
+                text-decoration: none;
+                color: #333;
+                background-color: #f5f5f5;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header con logo -->
-    <header>
-        <div class="logo">
-            <img src="./assets/img/logo da email.png" alt="Logo">
-            <span>.</span>
+    <div class="container">
+        <!-- Header con logo e navigazione come nella roadmap -->
+        <header>
+            <div class="logo">
+                <img src="./assets/img/logo da email.png" alt="Logo">
+                <span>SynergyRecycle</span>
+            </div>
+            <nav class="main-nav">
+                <a href="./" class="button">Home</a>
+                <a href="./servizi.html" class="button">Servizi</a>
+                <a href="./sostenerci.html" class="button">Supportaci</a>
+                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./roadmap.html" class="button">Roadmap</a>
+            </nav>
+            
+            <!-- Menu hamburger per mobile -->
+            <div class="hamburger-container">
+                <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+            </div>
+            
+            <nav class="mobile-nav" id="mobile-nav">
+                <a href="./" class="button">Home</a>
+                <a href="./servizi.html" class="button">Servizi</a>
+                <a href="./sostenerci.html" class="button">Supportaci</a>
+                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./roadmap.html" class="button">Roadmap</a>
+            </nav>
+        </header>
+        
+        <!-- Banner simile alla roadmap -->
+        <div class="banner" style="background-color: #334a38; color: white; padding: 8px 15px; margin: 10px 0; border-radius: 5px; text-align: center;">
+            SynergyRecycle.B: La nuova piattaforma per aiutarci, ad aiutare il Mondo.
         </div>
 
-        <!-- NAVIGAZIONE -->
-        <nav class="main-nav">
-            <a href="./" class="button" data-i18n="navigation.home">Home</a>
-            <a href="./servizi.html" class="button" data-i18n="navigation.services">Servizi</a>
-            <a href="./sostenerci.html" class="button" data-i18n="navigation.support">Supportaci</a>
-            <a href="./contattaci.html" class="button" data-i18n="navigation.contact">Contattaci</a>
-            <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title" data-i18n="contact.title">Contattaci</h1>
-                <p class="hero-subtitle" data-i18n="contact.subtitle">Vuoi avere ulteriori Informazioni? Contattaci. Risponderemo ad ogni Mail nel minor tempo possibile.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Form di contatto -->
-    <main>
-        <div class="contact-container">
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Nome *</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Numero di telefono</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="company">Azienda</label>
-                    <input type="text" id="company" name="company">
-                </div>
-
-                <div class="form-group">
-                    <label for="subject">Oggetto *</label>
-                    <select id="subject" name="subject" required>
-                        <option value="">Seleziona un argomento</option>
-                        <option value="supporto">Supporto Tecnico</option>
-                        <option value="partnership">Partnership</option>
-                        <option value="info">Informazioni Generali</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Domanda *</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-
-                <button type="submit" class="button submit-btn">Invia Messaggio</button>
-            </form>
-
-            <!-- Info Aziendali -->
-            <div class="company-info">
-                <h3 class="info-title">La Nostra Sede</h3>
-                <div class="info-item">
-                    <img src="assets/img/adresse16.png" alt="Mappa" class="info-icon">
-                    <p>32052, Herford, Germany</p>
-                </div>
-                
-                <div class="info-item">
-                    <img src="assets/img/telefon16.png" alt="Telefono" class="info-icon">
-                    <p>+49 030 1234567</p>
-                </div>
-
-                <div class="info-item">
-                    <img src="assets/img/gmail16.png" alt="Email" class="info-icon">
-                    <p>SynergyRecycle.b@gmail.com</p>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="image-container">
+                    <h1 class="hero-title">La nuova piattaforma per aiutarci, ad aiutare il Mondo.</h1>
+                    <p class="hero-subtitle">Costruiamo esperienze digitali, rivoluzioniamo il modo di fare, distinguiamoci.</p>
                 </div>
             </div>
-        </div>
-    </main>
+        </section>
 
-    <!-- Sezione FAQ e Glossario -->
-    <section class="faq-glossary-section">
-        <div class="container">
-            <!-- Tab Navigation -->
-            <div class="tab-navigation">
-                <button class="tab-button active" data-tab="faq-general">FAQ Generali</button>
-                <button class="tab-button" data-tab="faq-investors">FAQ Investitori</button>
-                <button class="tab-button" data-tab="glossary">Glossario</button>
-                <button class="tab-button" data-tab="faq-crypto">FAQ Crypto</button>
+        <!-- Strategia Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Guidiamo il Successo attraverso: Efficienza, Affidabilità, Innovazione, Scalabilità.</h2>
+                <p class="text-center">Mettiamo a punto un'esperienza clienti unica.</p>
+                <p class="text-center">Strategie digitali e ricerche su misura basate su Affidabilità e Innovazione.</p>
             </div>
+        </section>
 
-            <!-- Tab Content -->
-            <div class="tab-content">
-                <!-- FAQ Generali -->
-                <div class="tab-pane active" id="faq-general">
-                    <h2 class="section-title">Domande Frequenti</h2>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Perché dovrei donare in SRB invece che in Euro?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Donare in SRB consente di sostenere i progetti green globali e di beneficiare di un Eco-Sistema Decentralizzato senza restrizioni Globali.</p>
-                        </div>
+        <!-- Valori Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">I nostri pilastri fondamentali</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Efficienza</h3>
+                        <img src="./assets/img/efficienz.jpeg" alt="Efficienza">
                     </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Posso scegliere io a quale progetto green inviare i miei token?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Sì, la nostra piattaforma consente di destinare i tuoi token a progetti specifici.</p>
-                        </div>
+                    <div class="value-card">
+                        <h3>Affidabilità</h3>
+                        <img src="./assets/img/affidabilita.jpeg" alt="Affidabilità">
                     </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Le mie donazioni sono deducibili?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Sì, le donazioni in Euro sono deducibili in base alla legislazione locale. Le donazioni in SRb invece no. I dettagli saranno inviati via email al momento della donazione.</p>
-                        </div>
+                    <div class="value-card">
+                        <h3>Innovazione</h3>
+                        <img src="./assets/img/innovazione.jpeg" alt="Innovazione">
                     </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Cosa succede se il valore del token SRB cambia?</h3>
-			    <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Il valore di SRb è variabile. Tuttavia, i progetti green ricevono sempre un aiuto dalla Fondazione per poter arrivare ai loro Obbiettivi.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Investitori -->
-                <div class="tab-pane" id="faq-investors">
-                    <h2 class="section-title">FAQ per gli investitori</h2>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Cos'è SynergyRecycle.B?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>SynergyRecycle.B è un progetto innovativo che combina blockchain e sostenibilità. Il nostro obiettivo è incentivare il riciclaggio e la protezione ambientale attraverso un sistema di premi basato su utility token.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Come posso investire nel progetto?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Gli investitori interessati possono partecipare attraverso il nostro programma di Private Sale o successivamente tramite la nostra ICO. È possibile contattarci tramite il modulo nella sezione "Investi con noi" per ricevere ulteriori dettagli e documentazione.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Quali sono i benefici per gli investitori?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Gli investitori ottengono:</p>
-                            <ul>
-                                <li>Accesso a utility token.</li>
-                                <li>Coinvolgimento in un progetto con un impatto ambientale concreto.</li>
-                                <li>Opportunità Unica di partecipare a una piattaforma in crescita costante.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Come posso ottenere i token?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p> Come faccio ad ottenere i Token?</p>
-			    <ul>
-                                <li>La cosa piú semplice possibile "inizia a Riciclare.</li>
-                                <li>Acquistandoli durante la nostra fase di vendita.</li>
-                                <li>Scambiandoli su DEX.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Quali sono le misure di sicurezza adottate?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Adottiamo tecnologie avanzate per la protezione dei dati. Tutte le transazioni sono garantite da smart contract verificati e utilizziamo audit regolari per prevenire vulnerabilità.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Quali partnership state sviluppando?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Stiamo collaborando con organizzazioni no-profit, aziende tecnologiche e istituzioni ambientali per espandere il nostro impatto e costruire un ecosistema solido.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Glossario -->
-                <div class="tab-pane" id="glossary">
-                    <h2 class="section-title">Glossario</h2>
-                    
-                    <div class="glossary-list">
-                        <div class="glossary-item">
-                            <h3>Utility Token</h3>
-                            <p>Un tipo di criptovaluta progettato per fornire accesso a un prodotto o servizio specifico all'interno di un ecosistema blockchain.</p>
-                        </div>
-                        
-                        <div class="glossary-item">
-                            <h3>Partecipazione Vincolata</h3>
-                            <p>Il processo di bloccare una certa quantità di token per un periodo di tempo, contribuendo alla sicurezza della rete.</p>
-                        </div>
-                        
-                        <div class="glossary-item">
-                            <h3>DEX (Decentralized Exchange)</h3>
-                            <p>Una piattaforma per lo scambio di criptovalute che funziona senza intermediari centralizzati.</p>
-                        </div>
-                        
-                        <div class="glossary-item">
-                            <h3>Economia Circolare</h3>
-                            <p>Un modello economico che promuove il riutilizzo, il riciclaggio e la sostenibilità delle risorse e dei materiali.</p>
-                        </div>
-                        
-                        <div class="glossary-item">
-                            <h3>Smart Contract</h3>
-                            <p>Contratti digitali auto-eseguibili con i termini dell'accordo scritti direttamente nel codice.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Crypto generiche -->
-                <div class="tab-pane" id="faq-crypto">
-                    <h2 class="section-title">FAQ Crypto</h2>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Che cos'è una blockchain?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>La blockchain è un registro digitale distribuito e immutabile che registra transazioni su più computer in modo che il record non possa essere alterato retroattivamente senza la modifica di tutti i blocchi successivi.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Cosa significa ICO?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>ICO (Initial Coin Offering) è un metodo di raccolta fondi attraverso il quale i nuovi progetti vendono i loro token in cambio di criptovalute consolidate come Bitcoin o Ethereum.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Cos'è un wallet di criptovalute?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Un wallet di criptovalute è un software o dispositivo che permette di gestire le tue criptovalute. Può essere online (hot wallet) o offline (cold wallet).</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Quali sono i rischi dell'investimento in criptovalute?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Gli investimenti in criptovalute comportano rischi come alta volatilità, potenziali problemi normativi, rischi di sicurezza e possibile mancanza di liquidità. È importante fare ricerche approfondite e investire solo ciò che si e disposto a perdere.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Cos'è il DeFi (Finanza Decentralizzata)?</h3>
-                            <span class="toggle-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>DeFi è un movimento emergente che utilizza blockchain e criptovalute per ricreare e migliorare servizi finanziari tradizionali come prestiti, trading e assicurazioni senza intermediari centralizzati.</p>
-                        </div>
+                    <div class="value-card">
+                        <h3>Scalabilità</h3>
+                        <img src="./assets/img/donna.png" alt="Scalabilità">
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Call to Action -->
-            <div class="cta-section">
-                <h3>Scopri di più</h3>
-                <div class="cta-links">
-                    <a href="whitepaper.pdf" class="cta-link">Whitepaper</a>
-                    <a href="roadmap.html" class="cta-link">Roadmap</a>
-                    <a href="regolamenti.html" class="cta-link">Regolamenti</a>
+        <!-- Offerta Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Scopri cosa stiamo Costruendo.</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
+                    <div>
+                        <h3>Trasformazione digitale</h3>
+                        <p>Aiutiamo le persone a prosperare in un panorama in continua evoluzione.</p>
+                        <h3>Web e sviluppo App</h3>
+                        <p>Abbiamo accumulato esperienza e continueremo a farlo,</p>
+                        <p>in modo da poter dare a Tutti la possibilità continuare a crescere.</p>
+                        <a href="#" class="btn">Scarica la nostra App </a>
+                    </div>
+                    <div>
+                        <img src="./assets/img/persona.jpeg" alt="Innovazione">
+                    </div>
                 </div>
-                
-                <h3>Contattaci direttamente</h3>
-                <p>Per gli investitori: <a href="mailto:synergyrecycle.b@gmail.com">synergyrecycle.b@gmail.com</a></p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Call to Action -->
-    <section class="section" style="background-color: #f8f9fa;">
-        <div class="container">
-            <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma ancora poco per il nostro Pianeta.</h2>
-            <h2 class="section-title">Entra a far parte di SynergyRecycle.b insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
-            <p class="text-center">Unisciti a noi per migliorare, e insieme miglioreremo il nostro Pianeta.</p>
-            <div style="text-align: center; margin-top: var(--spacing-md);">
-                <a href="#" class="btn">Inizia ora</a>
+        <!-- Call to Action -->
+        <section class="section" style="background-color: #f8f9fa;">
+            <div class="container">
+                <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma ancora poco per il nostro Pianeta.</h2>
+                <h2 class="section-title">Entra a far parte di SynergyRecycle.b insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
+                <p class="text-center">Unisciti a noi per migliorare, e insieme miglioreremo il nostro Pianeta.</p>
+                <div style="text-align: center; margin-top: var(--spacing-md);">
+                    <a href="#" class="btn">Inizia ora</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer Copyright -->
-    <footer class="site-footer">
-        <div class="container">
-            <p class="copyright-text" data-i18n="footer.copyright">
-                © <span id="copyright-2024">2024</span> SynergyRecycle.B.
-                Tutti i contenuti di questa pagina sono protetti da copyright 
-                ai sensi della legge italiana ed internazionale.
-            </p>
-        </div>
-    </footer>
+        <!-- Footer Copyright -->
+        <footer class="site-footer">
+            <div class="container">
+                <p class="copyright-text">
+                    © <span id="copyright-year"></span> SynergyRecycle.B. 
+                    Tutti i contenuti di questa pagina sono protetti da copyright 
+                    ai sensi della legge italiana ed internazionale.
+                </p>
+            </div>
+        </footer>
+    </div>
 
     <!-- Script JS -->
     <script>
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        
+        // Hamburger menu funzionamento
         document.addEventListener('DOMContentLoaded', function() {
-            // Imposta l'anno corrente per il copyright
-            document.getElementById('copyright-2024').textContent = new Date().getFullYear();
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileNav = document.getElementById('mobile-nav');
             
-            // Tab Functionality
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabPanes = document.querySelectorAll('.tab-pane');
-            
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons and panes
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabPanes.forEach(pane => pane.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Show corresponding pane
-                    const tabId = this.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !expanded);
+                    mobileNav.style.display = expanded ? 'none' : 'flex';
                 });
-            });
-            
-            // FAQ Accordion Functionality
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const answer = this.nextElementSibling;
-                    const icon = this.querySelector('.toggle-icon');
-                    
-                    // Toggle answer visibility
-                    if (answer.classList.contains('active')) {
-                        answer.classList.remove('active');
-                        icon.textContent = '+';
-                    } else {
-                        answer.classList.add('active');
-                        icon.textContent = '−';
-                    }
-                });
-            });
+            }
         });
     </script>
 </body>
