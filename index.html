@@ -11,71 +11,30 @@
     <link rel="stylesheet" href="./assets/css/components/header.css">
     <link rel="stylesheet" href="./assets/css/components/sections.css">
     <link rel="stylesheet" href="./assets/css/components/footer.css">
-</head>
-<body>
-<div class="logo">
-                <img src="./assets/img/logo da email.png" alt="Logo">
-                <span>...</span>
-            </div>
     
-   <!-- NAVIGAZIONE (desktop e mobile) -->
-<div class="hamburger-container">
-    <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
-</div>
-
-<nav class="main-nav">
-    <a href="./" class="button">Home</a>
-    <a href="./servizi.html" class="button">Servizi</a>
-    <a href="./sostenerci.html" class="button">Supportaci</a>
-    <a href="./contattaci.html" class="button">Contattaci</a>
-    <a href="./roadmap.html" class="button">Roadmap</a>
-</nav>
-
-<nav class="mobile-nav" id="mobile-nav">
-    <a href="./" class="button">Home</a>
-    <a href="./servizi.html" class="button">Servizi</a>
-    <a href="./sostenerci.html" class="button">Supportaci</a>
-    <a href="./contattaci.html" class="button">Contattaci</a>
-    <a href="./roadmap.html" class="button">Roadmap</a>
-</nav>
-
-    <!-- CONTENUTO PRINCIPALE -->
-    <div class="pricing-section section">
-        <!-- ... contenuto ... -->
-    </div>
-
-    <!-- Script JS -->
-    <script src="./assets/js/main.js"></script>
-</body>
-</html>
-<body>
-    <!-- Collegamento JS -->
-    <script src="assets/js/main.js" defer></script>
-</body>
-    
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco-Platform</title>
-
- <style>
+    <style>
         :root {
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
             --spacing-lg: 4rem;
             --container-width: 1200px;
+            --dark-gray: #333;
+            --light-gray: #f5f5f5;
+            --primary-green: #8bc34a;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
         }
 
         body {
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.5;
             color: #333;
+            background-color: #f5f5f5;
         }
 
         .container {
@@ -84,6 +43,63 @@
             padding: 0 var(--spacing-sm);
         }
 
+        /* Header styling - similare alla roadmap */
+        header {
+            background-color: white;
+            color: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Navigazione - stile simile alla roadmap */
+        .main-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .main-nav .button {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .main-nav .button:hover {
+            background-color: #0c546b;
+            color: white;
+        }
+
+        /* Menu hamburger per mobile */
+        .hamburger-container {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+        /* Hero section e altri elementi */
         .hero {
             min-height: 80vh;
             display: flex;
@@ -92,10 +108,39 @@
             padding: var(--spacing-lg) 0;
         }
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .image-container {
+            background-image: url('./assets/img/4.1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            margin: 4rem 0;
+            height: 400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .image-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.65);
+            z-index: 0;
+            border-radius: 10px;
+        }
+        
+        .image-container > * {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-title {
@@ -148,190 +193,210 @@
             text-align: center;
         }
 
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-md);
-        }
-
-        .team-member {
+        .site-footer {
+            background-color: var(--dark-gray);
+            padding: 2rem 0;
+            margin-top: 4rem;
             text-align: center;
         }
 
-        .team-member img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: var(--spacing-sm);
+        .copyright-text {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        .references {
-            background-color: #f8f9fa;
-        }
-
-        .references-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: var(--spacing-md);
-            align-items: center;
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .main-nav {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .main-nav .button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hamburger-container {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 15px;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .mobile-nav {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .mobile-nav .button {
+                width: 100%;
+                text-align: center;
+                padding: 8px 15px;
+                border-radius: 20px;
+                text-decoration: none;
+                color: #333;
+                background-color: #f5f5f5;
+            }
         }
     </style>
 </head>
-
 <body>
-    <!-- Hero Section con correzioni -->
-<section class="hero">
     <div class="container">
-        <div class="image-container">
-            <h1 class="hero-title">La nuova piattaforma per aiutarci, ad aiutare il Mondo.</h1>
-            <p class="hero-subtitle">Costruiamo esperienze digitali, rivoluzioniamo il modo di fare, distinguiamoci.</p>
+        <!-- Header con logo e navigazione come nella roadmap -->
+        <header>
+            <div class="logo">
+                <img src="./assets/img/logo da email.png" alt="Logo">
+                <span>SynergyRecycle</span>
+            </div>
+            <nav class="main-nav">
+                <a href="./" class="button">Home</a>
+                <a href="./servizi.html" class="button">Servizi</a>
+                <a href="./sostenerci.html" class="button">Supportaci</a>
+                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./roadmap.html" class="button">Roadmap</a>
+            </nav>
+            
+            <!-- Menu hamburger per mobile -->
+            <div class="hamburger-container">
+                <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+            </div>
+            
+            <nav class="mobile-nav" id="mobile-nav">
+                <a href="./" class="button">Home</a>
+                <a href="./servizi.html" class="button">Servizi</a>
+                <a href="./sostenerci.html" class="button">Supportaci</a>
+                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./roadmap.html" class="button">Roadmap</a>
+            </nav>
+        </header>
+        
+        <!-- Banner simile alla roadmap -->
+        <div class="banner" style="background-color: #334a38; color: white; padding: 8px 15px; margin: 10px 0; border-radius: 5px; text-align: center;">
+            SynergyRecycle.B: La nuova piattaforma per aiutarci, ad aiutare il Mondo.
         </div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="image-container">
+                    <h1 class="hero-title">La nuova piattaforma per aiutarci, ad aiutare il Mondo.</h1>
+                    <p class="hero-subtitle">Costruiamo esperienze digitali, rivoluzioniamo il modo di fare, distinguiamoci.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategia Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Guidiamo il Successo attraverso: Efficienza, Affidabilità, Innovazione, Scalabilità.</h2>
+                <p class="text-center">Mettiamo a punto un'esperienza clienti unica.</p>
+                <p class="text-center">Strategie digitali e ricerche su misura basate su Affidabilità e Innovazione.</p>
+            </div>
+        </section>
+
+        <!-- Valori Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">I nostri pilastri fondamentali</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Efficienza</h3>
+                        <img src="./assets/img/efficienz.jpeg" alt="Efficienza">
+                    </div>
+                    <div class="value-card">
+                        <h3>Affidabilità</h3>
+                        <img src="./assets/img/affidabilita.jpeg" alt="Affidabilità">
+                    </div>
+                    <div class="value-card">
+                        <h3>Innovazione</h3>
+                        <img src="./assets/img/innovazione.jpeg" alt="Innovazione">
+                    </div>
+                    <div class="value-card">
+                        <h3>Scalabilità</h3>
+                        <img src="./assets/img/donna.png" alt="Scalabilità">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offerta Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Scopri cosa stiamo Costruendo.</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
+                    <div>
+                        <h3>Trasformazione digitale</h3>
+                        <p>Aiutiamo le persone a prosperare in un panorama in continua evoluzione.</p>
+                        <h3>Web e sviluppo App</h3>
+                        <p>Abbiamo accumulato esperienza e continueremo a farlo,</p>
+                        <p>in modo da poter dare a Tutti la possibilità continuare a crescere.</p>
+                        <a href="#" class="btn">Scarica la nostra App </a>
+                    </div>
+                    <div>
+                        <img src="./assets/img/persona.jpeg" alt="Innovazione">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="section" style="background-color: #f8f9fa;">
+            <div class="container">
+                <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma ancora poco per il nostro Pianeta.</h2>
+                <h2 class="section-title">Entra a far parte di SynergyRecycle.b insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
+                <p class="text-center">Unisciti a noi per migliorare, e insieme miglioreremo il nostro Pianeta.</p>
+                <div style="text-align: center; margin-top: var(--spacing-md);">
+                    <a href="#" class="btn">Inizia ora</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Copyright -->
+        <footer class="site-footer">
+            <div class="container">
+                <p class="copyright-text">
+                    © <span id="copyright-year"></span> SynergyRecycle.B. 
+                    Tutti i contenuti di questa pagina sono protetti da copyright 
+                    ai sensi della legge italiana ed internazionale.
+                </p>
+            </div>
+        </footer>
     </div>
-</section>
 
-<!-- Aggiungi questo snippet CSS all'interno di un tag <style> o in un file CSS -->
-<style>
-    .image-container {
-        background-image: url('../assets/img/4.1.jpeg'); /* Percorso corretto relativo alla cartella del file HTML */
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        position: relative;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        margin: 4rem 0;
-        height: 400px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    
-    .image-container::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.65);
-        z-index: 0;
-        border-radius: 10px;
-    }
-    
-    .image-container > * {
-        position: relative;
-        z-index: 1;
-    }
-</style>
-    
-
-    <!-- Strategia Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Guidiamo il Sucsesso attraverso: Effecienze, Affidabilità, Innovazione, Scalabilità.</h2>
-            <p class="text-center">Mettiamo a punto un'esperienza clienti unica.</p>
-            <p class="text-center">Strategie digitali e ricerche su misura basate su Affidabilità e Innovazione.</p>
-        </div>
-    </section>
-
-    <!-- Valori Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">I nostri pilastri fondamentali</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <h3>Efficienza</h3>
-                    <img src="./assets/img/efficienz.jpeg" alt="Efficienza">
-                </div>
-                <div class="value-card">
-                    <h3>Affidabilità</h3>
-                    <img src="./assets/img/affidabilita.jpeg" alt="Affidabilità">
-                </div>
-                <div class="value-card">
-                    <h3>Innovazione</h3>
-                    <img src="./assets/img/innovazione.jpeg" alt="Innovazione">
-                </div>
-                <div class="value-card">
-                    <h3>Scalabilità</h3>
-                    <img src="./assets/img/donna.png" alt="Scalabilità">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Offerta Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Scopri cosa stiamo Costruendo.</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
-                <div>
-                    <h3>Trasformazione digitale</h3>
-                    <p>Aiutiamo le persone a prosperare in un panorama in continua evoluzione.</p>
-                    <h3>Web e sviluppo App</h3>
-                    <p>Abbiamo accumulato esperienza e continueremo a farlo,</p>
-                    <p>in modo da poter dare a Tutti la possibilità continuare a crescere.</p>
-                    <a href="#" class="btn">Scarica la nostra App </a>
-                </div>
-                <div>
-                    <img src="./assets/img/persona.jpeg" alt="Innovazione">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="section" style="background-color: #f8f9fa;">
-        <div class="container">
-            <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma ancora poco per il nostro Pianeta.</h2>
-            <h2 class="section-title">Entra a far parte di SynergyRecycle.b insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
-            <p class="text-center">Unisciti a noi per migliorare, e insieme miglioreremo il nostro Pianeta.</p>
-            <div style="text-align: center; margin-top: var(--spacing-md);">
-                <a href="#" class="btn">Inizia ora</a>
-            </div>
-        </div>
-    </section>
+    <!-- Script JS -->
+    <script>
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        
+        // Hamburger menu funzionamento
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !expanded);
+                    mobileNav.style.display = expanded ? 'none' : 'flex';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
-</script>
-
-<!-- Footer Copyright -->
-<footer class="site-footer">
-    <div class="container">
-        <p class="copyright-text">
-            © <span id="copyright-2024"></span> SynergyRecycle.B. 
-            Tutti i contenuti di questa pagina sono protetti da copyright 
-            ai sensi della legge italiana ed internazionale.
-        </p>
-    </div>
-</footer>
-
-<!-- Aggiungi questo script per l'anno dinamico -->
-<script>
-    document.getElementById('copyright-2024').textContent = 
-        new Date().getFullYear();
-</script>
-
-<!-- Stile base (da inserire nel CSS) -->
-<style>
-    .site-footer {
-        background-color: var(--dark-gray);
-        padding: 2rem 0;
-        margin-top: 4rem;
-        text-align: center;
-    }
-
-    .copyright-text {
-        color: var(--light-gray);
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
-
-    .copyright-text a {
-        color: var(--primary-green);
-        text-decoration: none;
-    }
-</style>
