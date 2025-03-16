@@ -32,7 +32,7 @@
         }
         
         .hero {
-            min-height: 60vh;
+            min-height: 40vh;
             display: flex;
             align-items: center;
             background-color: #f8f9fa;
@@ -56,6 +56,75 @@
             color: #666;
         }
         
+        /* Header e navigazione */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .main-nav a.button {
+            padding: 8px 15px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .main-nav a.button:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Menu mobile */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 100;
+            }
+
+            .main-nav.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+        
         /* Form di contatto */
         .contact-container {
             display: flex;
@@ -72,11 +141,12 @@
         }
         
         .company-info {
-            flex: 0 0 300px;
+            flex: 0 0 250px;
             padding: 1rem;
             background-color: #f8f9fa;
             border-radius: 8px;
             margin-left: 2rem;
+            height: fit-content;
         }
         
         .form-group {
@@ -302,7 +372,7 @@
     <header>
         <div class="logo">
             <img src="./assets/img/logo da email.png" alt="Logo">
-            <span>.</span>
+            <span>SynergyRecycle</span>
         </div>
 
         <!-- NAVIGAZIONE -->
@@ -313,6 +383,9 @@
             <a href="./contattaci.html" class="button" data-i18n="navigation.contact">Contattaci</a>
             <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
         </nav>
+        
+        <!-- Menu Mobile Toggle -->
+        <button class="mobile-menu-toggle">☰</button>
     </header>
 
     <!-- Hero Section -->
