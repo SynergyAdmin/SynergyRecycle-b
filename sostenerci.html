@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SynergyRecycle.B</title>
-    
     <style>
         /* Variabili */
         :root {
@@ -19,6 +18,24 @@
             --primary-green: #58a845;
             --secondary-green: #8BC34A;
         }
+
+        /* Reset e base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: system-ui, -apple-system, sans-serif; 
+            line-height: 1.5; 
+            color: #333;
+            padding-top: 0; /* Rimuoviamo padding iniziale che potrebbe causare problemi */
+        }
+
+        /* Layout container */
+        .container { 
+            max-width: var(--container-width); 
+            width: 100%;
+            margin: 0 auto; 
+            padding: 0 var(--spacing-sm); 
+        }
+
         /* Header e navigazione */
         header {
             background-color: var(--primary-blue);
@@ -32,7 +49,7 @@
             position: relative;
             z-index: 1000;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
@@ -412,7 +429,7 @@
     <header>
         <div class="logo">
             <img src="./assets/img/logo da email.png" alt="Logo">
-            <span>SynergyRecycle.B</span>
+            <span>SynergyRecycle</span>
         </div>
         <nav class="main-nav">
             <a href="./" class="button">Home</a>
@@ -435,7 +452,7 @@
 
     <!-- Banner -->
     <div class="banner">
-        SynergyRecycle.B: I nostri servizi per un futuro sostenibile attraverso blockchain e riciclo
+        SynergyRecycle.B: "Il Tuo Supporto è prezioso, come ogni singolo Albero di questo Pianeta."
     </div>
 </div>
     
@@ -611,7 +628,7 @@
         <section class="section" style="background-color: #f8f9fa;">
             <div class="container">
                 <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma ancora poco per il nostro Pianeta.</h2>
-                <h2 class="section-title">Entra a far parte di SynergyRecycle.B insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
+                <h2 class="section-title">Entra a far parte di SynergyRecycle.b insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
                 <p class="text-center" style="text-align: center;">Unisciti a noi per migliorare, e insieme miglioreremo il nostro Pianeta.</p>
                 <div style="text-align: center; margin-top: 15px;">
                     <a href="#" class="btn">Inizia ora</a>
