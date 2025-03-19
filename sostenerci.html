@@ -6,55 +6,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SynergyRecycle.B</title>
     
-    <!-- Collegamento CSS -->
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/components/header.css">
-    <link rel="stylesheet" href="./assets/css/components/sections.css">
-    <link rel="stylesheet" href="./assets/css/components/footer.css">
-    
     <style>
-        /* Stili di debug per visualizzare chiaramente la navigazione */
-        .main-nav {
-            background-color: #333;
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            text-align: center;
+        /* Variabili */
+        :root {
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --container-width: 1200px;
+            --primary-blue: #0c546b;
+            --dark-gray: #333;
+            --light-gray: #ccc;
+            --primary-green: #58a845;
+            --secondary-green: #8BC34A;
+        }
+        /* Header e navigazione */
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1000;
         }
         
-        .main-nav .button {
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+                .main-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .main-nav a.button {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .main-nav a.button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Banner */
+        .banner {
+            background-color: #334a38;
+            color: white;
+            padding: 8px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        /* Menu mobile e responsività */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: var(--primary-blue);
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            margin-top: -10px;
+        }
+
+        .mobile-nav a.button {
             color: white;
             text-decoration: none;
             padding: 10px 15px;
+            margin: 5px 0;
             border-radius: 5px;
-            background-color: #007bff;
-            transition: background-color 0.3s;
         }
         
-        .main-nav .button:hover {
-            background-color: #0056b3;
+        /* Hero section */
+        .hero { 
+            min-height: 60vh; 
+            display: flex; 
+            align-items: center; 
+            background-color: #f8f9fa; 
+            padding: var(--spacing-lg) 0; 
         }
         
-        /* Logo styling */
-        .logo {
-            display: flex;
-            align-items: left;
-            margin-bottom: 20px;
-            justify-content: center;
-            padding-top: 70px; /* Spazio per la navigazione fissa */
+        .hero-content { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center; 
         }
         
-        .logo img {
-            max-height: 40px;
-            margin-right: 10px;
+        .hero-title { 
+            font-size: 3rem; 
+            margin-bottom: var(--spacing-md); 
         }
         
+        /* Sezioni */
+        .section { 
+            padding: var(--spacing-lg) 0; 
+        }
+        
+        .section-title { 
+            text-align: center; 
+            margin-bottom: var(--spacing-lg); 
+            font-size: 2.5rem; 
+        }
+
         /* Stili base ereditati */
         /* Stili specifici per le card dei prezzi */
         .pricing-grid {
@@ -310,7 +382,16 @@
         .btn:hover {
             background-color: #0056b3;
         }
-        
+        .srb-logo { 
+            position: absolute; 
+            bottom: 10px; 
+            right: 10px; 
+            background-color: rgba(255, 255, 255, 0.7); 
+            padding: 5px 10px; 
+            border-radius: 4px; 
+            font-weight: bold; 
+        }
+
         /* Stile per debug */
         .debug-info {
             position: fixed;
@@ -326,22 +407,37 @@
     </style>
 </head>
 <body>
-    <!-- Debug Info -->
-    <div class="debug-info">Debug Mode: Navigation Visible</div>
+<div class="container">
+    <!-- Intestazione -->
+    <header>
+        <div class="logo">
+            <img src="./assets/img/logo da email.png" alt="Logo">
+            <span>SynergyRecycle</span>
+        </div>
+        <nav class="main-nav">
+            <a href="./" class="button">Home</a>
+            <a href="./servizi.html" class="button">Servizi</a>
+            <a href="./sostenerci.html" class="button">Supportaci</a>
+            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./roadmap.html" class="button">Roadmap</a>
+        </nav>
+        <button class="hamburger-menu">☰</button>
+    </header>
 
-    <!-- Logo -->
-    <div class="logo">
-        <img src="./assets/img/logo da email.png" alt="Logo">
-    </div>
-    
-    <!-- NAVIGAZIONE -->
-    <nav class="main-nav">
+    <!-- Navigazione mobile -->
+    <nav class="mobile-nav" id="mobile-nav">
         <a href="./" class="button">Home</a>
         <a href="./servizi.html" class="button">Servizi</a>
         <a href="./sostenerci.html" class="button">Supportaci</a>
         <a href="./contattaci.html" class="button">Contattaci</a>
         <a href="./roadmap.html" class="button">Roadmap</a>
     </nav>
+
+    <!-- Banner -->
+    <div class="banner">
+        SynergyRecycle.B: I nostri servizi per un futuro sostenibile attraverso blockchain e riciclo
+    </div>
+</div>
     
     <!-- CONTENUTO PRINCIPALE -->
     <main>
@@ -483,7 +579,7 @@
             <div class="container">
                 <div class="security-notice">
                     <h3>⚠️ Attenzione</h3>
-                    <p>Attenzione alle transazioni errate, fondi persi irreversibilmente.</p>
+                    <p>Attenzione l'errato invio di fondi ad altre reti sono considerati, fondi persi irreversibilmente. Fai attenzione prima di inviare.</p>
                 </div>
             </div>
         </section>
