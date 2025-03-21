@@ -772,32 +772,49 @@
         </div>
     </section>
 
-    <!-- Footer Copyright -->
-    <footer class="site-footer">
-        <div class="container">
-            <p class="copyright-text" data-i18n="footer.copyright">
-                © <span id="copyright-2024">2024</span> SynergyRecycle.B.
-                Tutti i contenuti di questa pagina sono protetti da copyright 
-                ai sensi della legge italiana ed internazionale.
-            </p>
-        </div>
-    </footer>
     <!-- Script JS -->
     <script>
-        // Aggiorna l'anno di copyright
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
-        
-        // Menu mobile toggle
-        document.getElementById('hamburger-btn').addEventListener('click', function() {
-            const mobileNav = document.getElementById('mobile-nav');
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        document.addEventListener('DOMContentLoaded', function() {
+            // Imposta l'anno corrente per il copyright
+            document.getElementById('copyright-2024').textContent = new Date().getFullYear();
             
-            this.setAttribute('aria-expanded', !isExpanded);
-            if (!isExpanded) {
-                mobileNav.classList.add('active');
-            } else {
-                mobileNav.classList.remove('active');
-            }
+            // Tab Functionality
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and panes
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding pane
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // FAQ Accordion Functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('.toggle-icon');
+                    
+                    // Toggle answer visibility
+                    if (answer.classList.contains('active')) {
+                        answer.classList.remove('active');
+                        icon.textContent = '+';
+                    } else {
+                        answer.classList.add('active');
+                        icon.textContent = '−';
+                    }
+                });
+            });
         });
     </script>
 </body>
