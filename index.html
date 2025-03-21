@@ -1,59 +1,54 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SynergyRecycle.B</title>
-    
-    <!-- Collegamento CSS -->
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/components/header.css">
-    <link rel="stylesheet" href="./assets/css/components/sections.css">
-    <link rel="stylesheet" href="./assets/css/components/footer.css">
-    
     <style>
+        /* Variabili */
         :root {
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
             --spacing-lg: 4rem;
             --container-width: 1200px;
+            --primary-blue: #0c546b;
             --dark-gray: #333;
-            --light-gray: #f5f5f5;
-            --primary-green: #8bc34a;
+            --light-gray: #ccc;
+            --primary-green: #58a845;
+            --secondary-green: #8BC34A;
+            --background-green: #f5f5f5; /* Colore di sfondo verde chiaro */
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.5;
+        
+        /* Reset e base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: system-ui, -apple-system, sans-serif; 
+            line-height: 1.5; 
             color: #333;
-            background-color: #f5f5f5;
+            background-color: var(--background-green);
         }
-
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 var(--spacing-sm);
+        
+        /* Layout container */
+        .container { 
+            max-width: var(--container-width); 
+            width: 100%;
+            margin: 0 auto; 
+            padding: 0 var(--spacing-sm); 
         }
-
-        /* Header styling - similare alla roadmap */
+        
+        /* Header e navigazione */
         header {
-            background-color: white;
-            color: #333;
+            background-color: var(--primary-blue);
+            color: white;
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1000;
         }
 
         .logo {
@@ -66,48 +61,87 @@
             margin-right: 10px;
         }
 
-        .logo span {
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Navigazione - stile simile alla roadmap */
         .main-nav {
             display: flex;
             gap: 15px;
         }
 
-        .main-nav .button {
+        .main-nav a.button {
             padding: 8px 15px;
             border-radius: 20px;
             text-decoration: none;
-            color: #333;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .main-nav .button:hover {
-            background-color: #0c546b;
             color: white;
+            transition: background-color 0.3s;
         }
 
-        /* Menu hamburger per mobile */
-        .hamburger-container {
+        .main-nav a.button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Banner */
+        .banner {
+            background-color: #334a38;
+            color: white;
+            padding: 8px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        /* Menu mobile e responsività */
+        .hamburger-btn {
             display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
         }
 
         .mobile-nav {
             display: none;
+            flex-direction: column;
+            background-color: var(--primary-blue);
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            margin-top: -10px;
         }
 
-        /* Hero section e altri elementi */
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            background-color: #f8f9fa;
-            padding: var(--spacing-lg) 0;
+        .mobile-nav a.button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
         }
-
+        
+        /* Hero section */
+        .hero { 
+            min-height: 60vh; 
+            display: flex; 
+            align-items: center; 
+            background-color: var(--background-green); 
+            padding: var(--spacing-lg) 0; 
+        }
+        
+        .hero-content { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
+        
+        .hero-title { 
+            font-size: 3rem; 
+            margin-bottom: var(--spacing-md); 
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: #666;
+        }
+        
+        /* Image container */
         .image-container {
             background-image: url('./assets/img/4.1.jpeg');
             background-size: cover;
@@ -142,42 +176,23 @@
             position: relative;
             z-index: 1;
         }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: var(--spacing-md);
+        
+        /* Sezioni */
+        .section { 
+            padding: var(--spacing-lg) 0; 
         }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-lg);
-            color: #666;
+        
+        .section-title { 
+            text-align: center; 
+            margin-bottom: var(--spacing-md); 
+            font-size: 2.5rem; 
         }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        .section {
-            padding: var(--spacing-lg) 0;
-        }
-
-        .section-title {
+        
+        .text-center {
             text-align: center;
-            margin-bottom: var(--spacing-lg);
-            font-size: 2.5rem;
         }
-
+        
+        /* Values grid */
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -192,7 +207,29 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
         }
+        
+        .value-card img {
+            max-width: 100%;
+            height: auto;
+            margin-top: var(--spacing-sm);
+        }
+        
+        /* Button/CTA styles */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
 
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Footer */
         .site-footer {
             background-color: var(--dark-gray);
             padding: 2rem 0;
@@ -206,64 +243,46 @@
             line-height: 1.5;
         }
 
-        /* Responsive design */
+        .copyright-text a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-            }
-            
-            .main-nav {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .main-nav .button {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .hamburger-container {
-                display: block;
-                position: absolute;
-                top: 15px;
-                right: 15px;
-            }
-            
             .main-nav {
                 display: none;
             }
             
-            .mobile-nav {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                width: 100%;
+            .hamburger-btn {
+                display: block;
             }
             
-            .mobile-nav .button {
-                width: 100%;
-                text-align: center;
-                padding: 8px 15px;
-                border-radius: 20px;
-                text-decoration: none;
-                color: #333;
-                background-color: #f5f5f5;
+            .mobile-nav.active {
+                display: flex;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header con logo e navigazione come nella roadmap -->
+        <!-- Intestazione -->
         <header>
             <div class="logo">
                 <img src="./assets/img/logo da email.png" alt="Logo">
-                <span>SynergyRecycle</span>
+                <span>SynergyRecycle.B</span>
             </div>
             <nav class="main-nav">
                 <a href="./" class="button">Home</a>
@@ -272,31 +291,32 @@
                 <a href="./contattaci.html" class="button">Contattaci</a>
                 <a href="./roadmap.html" class="button">Roadmap</a>
             </nav>
-            
-            <!-- Menu hamburger per mobile -->
             <div class="hamburger-container">
                 <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
             </div>
-            
-            <nav class="mobile-nav" id="mobile-nav">
-                <a href="./" class="button">Home</a>
-                <a href="./servizi.html" class="button">Servizi</a>
-                <a href="./sostenerci.html" class="button">Supportaci</a>
-                <a href="./contattaci.html" class="button">Contattaci</a>
-                <a href="./roadmap.html" class="button">Roadmap</a>
-            </nav>
         </header>
-        
-        <!-- Banner simile alla roadmap -->
-        <div class="banner" style="background-color: #334a38; color: white; padding: 8px 15px; margin: 10px 0; border-radius: 5px; text-align: center;">
-            SynergyRecycle.B: "Il Tuo gesto Conta" aiutaci cosí da poter aiutare il Mondo.
-        </div>
 
+        <!-- Navigazione mobile -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="./" class="button">Home</a>
+            <a href="./servizi.html" class="button">Servizi</a>
+            <a href="./sostenerci.html" class="button">Supportaci</a>
+            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./roadmap.html" class="button">Roadmap</a>
+        </nav>
+
+        <!-- Banner -->
+        <div class="banner">
+            SynergyRecycle.B: Riciclo sostenibile attraverso blockchain per un futuro migliore
+        </div>
+    </div>
+
+    <main>
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <div class="image-container">
-                    <h1 class="hero-title">La nuova piattaforma che ci aiuta, ad aiutare il Mondo.</h1>
+                    <h1 class="hero-title">La nuova piattaforma per aiutarci, ad aiutare il Mondo.</h1>
                     <p class="hero-subtitle">Costruiamo esperienze digitali, rivoluzioniamo il modo di fare, distinguiamoci.</p>
                 </div>
             </div>
@@ -347,10 +367,10 @@
                         <h3>Web e sviluppo App</h3>
                         <p>Abbiamo accumulato esperienza e continueremo a farlo,</p>
                         <p>in modo da poter dare a Tutti la possibilità continuare a crescere.</p>
-                        <a href="#" class="btn">Scarica la nostra App </a>
+                        <a href="#" class="btn">Scarica la nostra App</a>
                     </div>
                     <div>
-                        <img src="./assets/img/persona.jpeg" alt="Innovazione">
+                        <img src="./assets/img/persona.jpeg" alt="Innovazione" style="max-width: 100%; height: auto;">
                     </div>
                 </div>
             </div>
@@ -360,41 +380,41 @@
         <section class="section" style="background-color: #f8f9fa;">
             <div class="container">
                 <h2 class="section-title">Più di 50.000 Persone hanno fatto molto per se stessi, ma ancora poco per il nostro Pianeta.</h2>
-                <h2 class="section-title">Entra a far parte di SynergyRecycle.b insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
+                <h2 class="section-title">Entra a far parte di SynergyRecycle.B insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
                 <p class="text-center">Unisciti a noi per migliorare, e insieme miglioreremo il nostro Pianeta.</p>
                 <div style="text-align: center; margin-top: var(--spacing-md);">
                     <a href="#" class="btn">Inizia ora</a>
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- Footer Copyright -->
-        <footer class="site-footer">
-            <div class="container">
-                <p class="copyright-text">
-                    © <span id="copyright-year"></span> SynergyRecycle.B. 
-                    Tutti i contenuti di questa pagina sono protetti da copyright 
-                    ai sensi della legge italiana ed internazionale.
-                </p>
-            </div>
-        </footer>
-    </div>
+    <!-- Footer Copyright -->
+    <footer class="site-footer">
+        <div class="container">
+            <p class="copyright-text">
+                © <span id="copyright-year"></span> SynergyRecycle.B. 
+                Tutti i contenuti di questa pagina sono protetti da copyright 
+                ai sensi della legge italiana ed internazionale.
+            </p>
+        </div>
+    </footer>
 
     <!-- Script JS -->
     <script>
+        // Aggiorna l'anno di copyright
         document.getElementById('copyright-year').textContent = new Date().getFullYear();
         
-        // Hamburger menu funzionamento
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburgerBtn = document.getElementById('hamburger-btn');
+        // Menu mobile toggle
+        document.getElementById('hamburger-btn').addEventListener('click', function() {
             const mobileNav = document.getElementById('mobile-nav');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
             
-            if (hamburgerBtn && mobileNav) {
-                hamburgerBtn.addEventListener('click', function() {
-                    const expanded = this.getAttribute('aria-expanded') === 'true';
-                    this.setAttribute('aria-expanded', !expanded);
-                    mobileNav.style.display = expanded ? 'none' : 'flex';
-                });
+            this.setAttribute('aria-expanded', !isExpanded);
+            if (!isExpanded) {
+                mobileNav.classList.add('active');
+            } else {
+                mobileNav.classList.remove('active');
             }
         });
     </script>
