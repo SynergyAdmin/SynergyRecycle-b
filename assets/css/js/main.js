@@ -1,9 +1,15 @@
 // assets/js/main.js
 document.addEventListener('DOMContentLoaded', () => {
+    // Funzioni principali
     loadComponents();
     initSmoothScroll();
     initIntersectionObserver();
     initFormValidation();
+    
+    // Inizializza la gestione degli indirizzi crypto
+    initCryptoAddresses();
+    
+    console.log('Script principale caricato correttamente');
 });
 
 async function loadComponents() {
@@ -36,18 +42,25 @@ function initSmoothScroll() {
 }
 
 function initMobileMenu() {
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const mobileNav = document.getElementById('mobile-nav');
+    // Seleziona sia il pulsante standard che quello hamburger
+    const hamburgerBtn = document.getElementById('hamburger-btn') || document.querySelector('.hamburger-btn');
+    // Seleziona sia la navigazione mobile che il menu standard
+    const mobileNav = document.getElementById('mobile-nav') || document.querySelector('.nav-menu');
     
-    if (!hamburgerBtn || !mobileNav) return;
+    if (!hamburgerBtn || !mobileNav) {
+        console.warn('Menu mobile elements not found');
+        return;
+    }
     
     hamburgerBtn.addEventListener('click', () => {
         mobileNav.classList.toggle('active');
         const isExpanded = mobileNav.classList.contains('active');
         hamburgerBtn.setAttribute('aria-expanded', isExpanded);
         
-        // Cambia il simbolo dell'hamburger quando è aperto
-        hamburgerBtn.textContent = isExpanded ? '✕' : '☰';
+        // Cambia il simbolo dell'hamburger quando è aperto (se presente)
+        if (hamburgerBtn.textContent) {
+            hamburgerBtn.textContent = isExpanded ? '✕' : '☰';
+        }
     });
     
     // Chiudi il menu quando si clicca su un link
@@ -55,9 +68,13 @@ function initMobileMenu() {
         link.addEventListener('click', () => {
             mobileNav.classList.remove('active');
             hamburgerBtn.setAttribute('aria-expanded', 'false');
-            hamburgerBtn.textContent = '☰';
+            if (hamburgerBtn.textContent) {
+                hamburgerBtn.textContent = '☰';
+            }
         });
     });
+    
+    console.log('Menu mobile inizializzato');
 }
 
 function initIntersectionObserver() {
@@ -79,32 +96,13 @@ function initFormValidation() {
         // Add validation logic
     });
 }
-    
-    // Funzione per espandere/comprimere l'indirizzo
-    document.querySelectorAll('.crypto-value').forEach(element => {
-        element.addEventListener('click', function() {
-            // Toggle tra versione abbreviata e completa
-            this.classList.toggle('expanded');
-            
-            if (this.classList.contains('expanded')) {
-                // Mostra indirizzo completo
-                this.textContent = this.getAttribute('data-address');
-            } else {
-                // Mostra versione abbreviata
-                const address = this.getAttribute('data-address');
-                // Primi 6 caratteri + ... + ultimi 4 caratteri
-                this.textContent = address.substring(0, 6) + '...' + address.substring(address.length - 4);
-            }
-        });
-    });
 
-// Aggiungi event listener per tutti i pulsanti di copia all'avvio della pagina
-document.addEventListener('DOMContentLoaded', function() {
+function initCryptoAddresses() {
     // Inizializza gli indirizzi in formato abbreviato
     document.querySelectorAll('.crypto-value').forEach(element => {
         const address = element.getAttribute('data-address');
         
-        if (address.length > 12) {
+        if (address && address.length > 12) {
             element.textContent = address.substring(0, 6) + '...' + address.substring(address.length - 4);
         }
         
@@ -116,15 +114,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.textContent = this.getAttribute('data-address');
             } else {
                 const addr = this.getAttribute('data-address');
-                if (addr.length > 12) {
+                if (addr && addr.length > 12) {
                     this.textContent = addr.substring(0, 6) + '...' + addr.substring(addr.length - 4);
                 }
             }
         });
     });
     
-    // Aggiungi feedback visivo ai pulsanti
+    // Gestione dei pulsanti di copia
     document.querySelectorAll('.copy-btn').forEach(button => {
+        // Aggiungi feedback visivo
         button.addEventListener('mousedown', function() {
             this.style.transform = 'scale(0.95)';
         });
@@ -136,8 +135,28 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('mouseleave', function() {
             this.style.transform = 'scale(1)';
         });
+        
+        // Aggiungi funzionalità di copia
+        button.addEventListener('click', function() {
+            const valueElement = this.closest('.crypto-address').querySelector('.crypto-value');
+            const textToCopy = valueElement.getAttribute('data-address');
+            
+            if (textToCopy) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    // Mostra il messaggio di copia
+                    const copyMsg = this.parentNode.querySelector('.copy-msg');
+                    if (copyMsg) {
+                        copyMsg.classList.add('show');
+                        setTimeout(() => {
+                            copyMsg.classList.remove('show');
+                        }, 2000);
+                    }
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            }
+        });
     });
-});
-
-// Aggiungi un console.log per verificare che lo script si carichi
-console.log('Script per la gestione degli indirizzi wallet caricato correttamente');
+    
+    console.log('Gestione indirizzi crypto inizializzata');
+}
