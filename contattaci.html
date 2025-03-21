@@ -1,69 +1,62 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <!-- Metadata -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SynergyRecycle.B - Contattaci</title>
-    
     <!-- Collegamento CSS -->
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/components/header.css">
     <link rel="stylesheet" href="./assets/css/components/sections.css">
     <link rel="stylesheet" href="./assets/css/components/footer.css">
-    
+
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynergyRecycle.B - Contattaci</title>
+     
     <style>
-        .site-footer {
-            background-color: var(--dark-gray);
-            padding: 2rem 0;
-            margin-top: 4rem;
-            text-align: center;
-        }
-
-        .copyright-text {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .copyright-text a {
-            color: var(--primary-green);
-            text-decoration: none;
+        /* Variabili */
+        :root {
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --container-width: 1200px;
+            --primary-blue: #0c546b;
+            --dark-gray: #333;
+            --light-gray: #ccc;
+            --primary-green: #58a845;
+            --secondary-green: #8BC34A;
+            --background-green: #f5f5f5; /* Colore di sfondo verde chiaro */
         }
         
-        .hero {
-            min-height: 40vh;
-            display: flex;
-            align-items: center;
-            background-color: #f8f9fa;
-            padding: var(--spacing-lg) 0;
+        /* Reset e base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: system-ui, -apple-system, sans-serif; 
+            line-height: 1.5; 
+            color: #333;
+            background-color: var(--background-green);
         }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-lg);
-            color: #666;
+        
+        /* Layout container */
+        .container { 
+            max-width: var(--container-width); 
+            width: 100%;
+            margin: 0 auto; 
+            padding: 0 var(--spacing-sm); 
         }
         
         /* Header e navigazione */
         header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            background-color: white;
             border-radius: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1000;
         }
 
         .logo {
@@ -78,51 +71,82 @@
 
         .main-nav {
             display: flex;
-            gap: 10px;
+            gap: 15px;
         }
 
         .main-nav a.button {
             padding: 8px 15px;
-            text-decoration: none;
-            color: #333;
             border-radius: 20px;
+            text-decoration: none;
+            color: white;
             transition: background-color 0.3s;
         }
 
         .main-nav a.button:hover {
-            background-color: #f0f0f0;
+            background-color: rgba(255, 255, 255, 0.2);
         }
-
-        /* Menu mobile */
-        .mobile-menu-toggle {
+        
+        /* Banner */
+        .banner {
+            background-color: #334a38;
+            color: white;
+            padding: 8px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        /* Menu mobile e responsività */
+        .hamburger-btn {
             display: none;
+            cursor: pointer;
             background: none;
             border: none;
+            color: white;
             font-size: 24px;
-            cursor: pointer;
         }
 
-        @media (max-width: 768px) {
-            .main-nav {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background-color: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                z-index: 100;
-            }
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: var(--primary-blue);
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            margin-top: -10px;
+        }
 
-            .main-nav.active {
-                display: flex;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
+        .mobile-nav a.button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        
+        /* Hero section */
+        .hero { 
+            min-height: 60vh; 
+            display: flex; 
+            align-items: center; 
+            background-color: var(--background-green); 
+            padding: var(--spacing-lg) 0; 
+        }
+        
+        .hero-content { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
+        
+        .hero-title { 
+            font-size: 3rem; 
+            margin-bottom: var(--spacing-md); 
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: #666;
         }
         
         /* Form di contatto */
@@ -184,6 +208,17 @@
             font-size: 1rem;
             transition: background-color 0.3s;
         }
+
+        .copyright-text {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .copyright-text a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
         
         .submit-btn:hover {
             background-color: #27ae60;
@@ -219,6 +254,20 @@
         @media (max-width: 768px) {
             .contact-container {
                 flex-direction: column;
+            }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+            
+            .hamburger-btn {
+                display: block;
+            }
+            
+            .mobile-nav.active {
+                display: flex;
             }
             
             .company-info {
@@ -384,8 +433,6 @@
             <img src="./assets/img/logo da email.png" alt="Logo">
             <span>SynergyRecycle.B</span>
         </div>
-
-        <!-- NAVIGAZIONE -->
         <nav class="main-nav">
             <a href="./" class="button" data-i18n="navigation.home">Home</a>
             <a href="./servizi.html" class="button" data-i18n="navigation.services">Servizi</a>
@@ -394,22 +441,28 @@
             <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
         </nav>
         
-        <!-- Menu Mobile Toggle -->
-        <button class="mobile-menu-toggle">☰</button>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title" data-i18n="contact.title">Contattaci</h1>
-                <p class="hero-subtitle" data-i18n="contact.subtitle">Vuoi avere ulteriori Informazioni? Contattaci. Risponderemo ad ogni Mail nel minor tempo possibile.</p>
+            <div class="hamburger-container">
+                <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Form di contatto -->
+        <!-- Navigazione mobile -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="./" class="button">Home</a>
+            <a href="./servizi.html" class="button">Servizi</a>
+            <a href="./sostenerci.html" class="button">Supportaci</a>
+            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./roadmap.html" class="button">Roadmap</a>
+        </nav>
+
+        <!-- Banner -->
+        <div class="banner">
+            SynergyRecycle.B: "Ogni gesto conta, noi insieme facciamo la differenza."
+        </div>
+    </div>
+
     <main>
+        <!-- Form di contatto -->
         <div class="contact-container">
             <form class="contact-form">
                 <div class="form-group">
@@ -729,50 +782,22 @@
             </p>
         </div>
     </footer>
-
     <!-- Script JS -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Imposta l'anno corrente per il copyright
-            document.getElementById('copyright-2024').textContent = new Date().getFullYear();
+        // Aggiorna l'anno di copyright
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        
+        // Menu mobile toggle
+        document.getElementById('hamburger-btn').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobile-nav');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
             
-            // Tab Functionality
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabPanes = document.querySelectorAll('.tab-pane');
-            
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons and panes
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabPanes.forEach(pane => pane.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Show corresponding pane
-                    const tabId = this.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
-                });
-            });
-            
-            // FAQ Accordion Functionality
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const answer = this.nextElementSibling;
-                    const icon = this.querySelector('.toggle-icon');
-                    
-                    // Toggle answer visibility
-                    if (answer.classList.contains('active')) {
-                        answer.classList.remove('active');
-                        icon.textContent = '+';
-                    } else {
-                        answer.classList.add('active');
-                        icon.textContent = '−';
-                    }
-                });
-            });
+            this.setAttribute('aria-expanded', !isExpanded);
+            if (!isExpanded) {
+                mobileNav.classList.add('active');
+            } else {
+                mobileNav.classList.remove('active');
+            }
         });
     </script>
 </body>
