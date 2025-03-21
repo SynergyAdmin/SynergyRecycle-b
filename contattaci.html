@@ -769,16 +769,7 @@
         </div>
     </section>
 	
-    <!-- Script JS -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Menu hamburger per mobile
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const mobileNav = document.getElementById('mobile-nav');
-            
-            if (hamburgerBtn && mobileNav) {
-                hamburgerBtn.addEventListener('click', function()
-document.addEventListener('DOMContentLoaded', function() {
+	document.addEventListener('DOMContentLoaded', function() {
     // Menu hamburger per mobile
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileNav = document.getElementById('mobile-nav');
@@ -819,10 +810,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
-					      
-// FAQ Accordion Functionality
-document.addEventListener('DOMContentLoaded', function() {
+    
     // Imposta l'anno corrente per il copyright
     if (document.getElementById('copyright-2024')) {
         document.getElementById('copyright-2024').textContent = new Date().getFullYear();
@@ -847,7 +835,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // FAQ Accordion Functionality - Versione corretta
+    // FAQ Accordion Functionality
     const faqQuestions = document.querySelectorAll('.faq-question');
     
     faqQuestions.forEach(question => {
@@ -876,16 +864,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Mobile menu toggle
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const mobileNav = document.getElementById('mobile-nav');
-    
-    if (hamburgerBtn && mobileNav) {
-        hamburgerBtn.addEventListener('click', function() {
-            mobileNav.classList.toggle('active');
-            hamburgerBtn.setAttribute('aria-expanded', 
-                hamburgerBtn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
-        });
-    }
 });
