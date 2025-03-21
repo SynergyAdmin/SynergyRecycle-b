@@ -772,50 +772,71 @@
         </div>
     </section>
 
-    <!-- Script JS -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Imposta l'anno corrente per il copyright
-            document.getElementById('copyright-2024').textContent = new Date().getFullYear();
+// FAQ Accordion Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Imposta l'anno corrente per il copyright
+    if (document.getElementById('copyright-2024')) {
+        document.getElementById('copyright-2024').textContent = new Date().getFullYear();
+    }
+    
+    // Tab Functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons and panes
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
             
-            // Tab Functionality
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabPanes = document.querySelectorAll('.tab-pane');
+            // Add active class to clicked button
+            this.classList.add('active');
             
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons and panes
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabPanes.forEach(pane => pane.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Show corresponding pane
-                    const tabId = this.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
-                });
-            });
+            // Show corresponding pane
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+    
+    // FAQ Accordion Functionality - Versione corretta
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            const icon = this.querySelector('.toggle-icon');
             
-            // FAQ Accordion Functionality
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const answer = this.nextElementSibling;
-                    const icon = this.querySelector('.toggle-icon');
-                    
-                    // Toggle answer visibility
-                    if (answer.classList.contains('active')) {
-                        answer.classList.remove('active');
-                        icon.textContent = '+';
-                    } else {
-                        answer.classList.add('active');
-                        icon.textContent = '−';
+            // Toggle answer visibility
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.textContent = '+';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Opzionale: chiude altri accordeon aperti
+                document.querySelectorAll('.faq-answer.active').forEach(item => {
+                    if (item !== answer) {
+                        item.classList.remove('active');
+                        item.previousElementSibling.querySelector('.toggle-icon').textContent = '+';
+                        item.previousElementSibling.querySelector('.toggle-icon').style.transform = 'rotate(0deg)';
                     }
                 });
-            });
+                
+                answer.classList.add('active');
+                icon.textContent = '−';
+                icon.style.transform = 'rotate(180deg)';
+            }
         });
-    </script>
-</body>
-</html>
+    });
+    
+    // Mobile menu toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    if (hamburgerBtn && mobileNav) {
+        hamburgerBtn.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+            hamburgerBtn.setAttribute('aria-expanded', 
+                hamburgerBtn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+        });
+    }
+});
