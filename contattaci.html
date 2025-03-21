@@ -255,9 +255,7 @@
             .contact-container {
                 flex-direction: column;
             }
-
-        /* Responsive */
-        @media (max-width: 768px) {
+            
             .main-nav {
                 display: none;
             }
@@ -441,24 +439,23 @@
             <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
         </nav>
         
-            <div class="hamburger-container">
-                <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
-            </div>
-        </header>
-
-        <!-- Navigazione mobile -->
-        <nav class="mobile-nav" id="mobile-nav">
-            <a href="./" class="button">Home</a>
-            <a href="./servizi.html" class="button">Servizi</a>
-            <a href="./sostenerci.html" class="button">Supportaci</a>
-            <a href="./contattaci.html" class="button">Contattaci</a>
-            <a href="./roadmap.html" class="button">Roadmap</a>
-        </nav>
-
-        <!-- Banner -->
-        <div class="banner">
-            SynergyRecycle.B: "Ogni gesto conta, noi insieme facciamo la differenza."
+        <div class="hamburger-container">
+            <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
         </div>
+    </header>
+
+    <!-- Navigazione mobile -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="./" class="button">Home</a>
+        <a href="./servizi.html" class="button">Servizi</a>
+        <a href="./sostenerci.html" class="button">Supportaci</a>
+        <a href="./contattaci.html" class="button">Contattaci</a>
+        <a href="./roadmap.html" class="button">Roadmap</a>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner">
+        SynergyRecycle.B: "Ogni gesto conta, noi insieme facciamo la differenza."
     </div>
 
     <main>
@@ -574,7 +571,7 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <h3>Cosa succede se il valore del token SRB cambia?</h3>
-			    <span class="toggle-icon">+</span>
+                            <span class="toggle-icon">+</span>
                         </div>
                         <div class="faq-answer">
                             <p>Il valore di SRb è variabile. Tuttavia, i progetti green ricevono sempre un aiuto dalla Fondazione per poter arrivare ai loro Obbiettivi.</p>
@@ -627,8 +624,8 @@
                             <span class="toggle-icon">+</span>
                         </div>
                         <div class="faq-answer">
-                            <p> Come faccio ad ottenere i Token?</p>
-			    <ul>
+                            <p>Come faccio ad ottenere i Token?</p>
+                            <ul>
                                 <li>La cosa piú semplice possibile "inizia a Riciclare.</li>
                                 <li>Acquistandoli durante la nostra fase di vendita.</li>
                                 <li>Scambiandoli su DEX.</li>
@@ -771,7 +768,59 @@
             </div>
         </div>
     </section>
-
+	
+    <!-- Script JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu hamburger per mobile
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function()
+document.addEventListener('DOMContentLoaded', function() {
+    // Menu hamburger per mobile
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    if (hamburgerBtn && mobileNav) {
+        hamburgerBtn.addEventListener('click', function() {
+            // Toggle della classe 'active' o 'open' sul menu mobile
+            mobileNav.classList.toggle('active');
+            
+            // Cambia l'aspetto del pulsante hamburger (opzionale)
+            hamburgerBtn.classList.toggle('open');
+            
+            // Toggle dell'attributo aria-expanded per l'accessibilità
+            const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true' || false;
+            hamburgerBtn.setAttribute('aria-expanded', !expanded);
+            
+            // Impedisce lo scroll della pagina quando il menu è aperto (opzionale)
+            document.body.classList.toggle('menu-open');
+        });
+        
+        // Chiudi il menu quando si clicca al di fuori (opzionale)
+        document.addEventListener('click', function(event) {
+            if (!hamburgerBtn.contains(event.target) && !mobileNav.contains(event.target) && mobileNav.classList.contains('active')) {
+                mobileNav.classList.remove('active');
+                hamburgerBtn.classList.remove('open');
+                hamburgerBtn.setAttribute('aria-expanded', false);
+                document.body.classList.remove('menu-open');
+            }
+        });
+        
+        // Chiudi il menu quando si preme il tasto ESC (opzionale)
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && mobileNav.classList.contains('active')) {
+                mobileNav.classList.remove('active');
+                hamburgerBtn.classList.remove('open');
+                hamburgerBtn.setAttribute('aria-expanded', false);
+                document.body.classList.remove('menu-open');
+            }
+        });
+    }
+});
+					      
 // FAQ Accordion Functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Imposta l'anno corrente per il copyright
