@@ -21,8 +21,10 @@
 body {
     line-height: 1.6;
     color: var(--dark-gray);
-    background-color: var(--primary-green);
-    background-image: none;
+    background-color: #f5f5f5; /* fallback */
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* Layout Generico */
