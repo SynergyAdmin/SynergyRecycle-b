@@ -30,11 +30,10 @@
             font-family: system-ui, -apple-system, sans-serif; 
             line-height: 1.5; 
             color: #333;
-            padding-top: 0; /* Rimuoviamo padding iniziale che potrebbe causare problemi */
+            padding-top: , 0;
+            background-color: #f5f5f5;
         }
-        .body {
-    background-color: #f5f5f5;
-        }
+        
         /* Layout container */
         .container { 
             max-width: var(--container-width); 
@@ -121,7 +120,7 @@
             border-radius: 5px;
         }
         
-        /* Hero section */
+        /* Hero section con video in background */
         .hero {
             min-height: 60vh;
             display: flex;
@@ -130,7 +129,7 @@
             overflow: hidden;
             padding: var(--spacing-lg) 0;
         }
-    
+        
         .video-background {
             position: absolute;
             top: 0;
@@ -139,31 +138,40 @@
             height: 100%;
             z-index: 0;
         }
-    
+        
         .video-background video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.8; /* Regola l'opacità del video */
+            opacity: 0.8;
         }
-    
+        
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
             position: relative;
             z-index: 1;
-            background-color: rgba(255, 255, 255, 0.5); /* Sfondo semi-trasparente */
+            background-color: rgba(255, 255, 255, 0.5);
             padding: 2rem;
             border-radius: 8px;
-            margin-top: -5rem; /* Sposta il contenuto verso l'alto */
+            margin-top: -3rem;
         }
-    
+        
         .hero-title {
             font-size: 3rem;
             margin-bottom: var(--spacing-md);
-            color: var(--primary-blue); /* Colore del testo per migliore visibilità */
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Ombra per migliore leggibilità */
+            color: var(--primary-blue);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Fallback per il video */
+        .fallback-image {
+            width: 100%;
+            height: 100%;
+            background-image: url('./assets/img/video-fallback.jpg');
+            background-size: cover;
+            background-position: center;
         }
         
         /* Sezioni */
@@ -439,8 +447,28 @@
                 grid-template-rows: repeat(4, auto);
             }
             
-            .main {
-                margin-top: 20px;
+            .hero-content {
+                padding: 1rem;
+                margin-top: 0;
+                width: 90%;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .video-background video {
+                opacity: 0.6;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            
+            .hero-content {
+                padding: 0.8rem;
             }
         }
     </style>
@@ -480,11 +508,12 @@
 </div>
 
 <main>
+    <!-- Sezione hero modificata con video background -->
     <section class="hero">
-    <div class="video-background">
-        <video autoplay muted loop id="hero-video">
-            <source src="./assets/video/utilizzo App.mp4" type="video/mp4">
-        </video>
+        <div class="video-background">
+            <video autoplay muted loop playsinline id="hero-video">
+                <source src="./assets/video/utilizzo APP.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="container">
             <div class="hero-content">
@@ -623,185 +652,147 @@
             </div>
         </div>
     </section>
-    </main>
-    <!-- Aggiungi questa sezione dopo la Call to Action e prima del footer -->
-<section class="section partners-section">
-    <div class="container">
-        <h2 class="section-title">Le Aziende che Credono in Noi</h2>
-        <div class="logo-container">
-            <div class="logo-track">
-                <!-- Ripeti i loghi due volte per creare l'effetto infinito -->
-                <div class="logo-item"><img src="./assets/img/partner1.png" alt="Logo Partner 1"></div>
-                <div class="logo-item"><img src="./assets/img/partner2.png" alt="Logo Partner 2"></div>
-                <div class="logo-item"><img src="./assets/img/partner3.png" alt="Logo Partner 3"></div>
-                <div class="logo-item"><img src="./assets/img/partner4.png" alt="Logo Partner 4"></div>
-                <div class="logo-item"><img src="./assets/img/partner5.png" alt="Logo Partner 5"></div>
-                <div class="logo-item"><img src="./assets/img/partner6.png" alt="Logo Partner 6"></div>
-                
-                <!-- Ripetizione dei loghi per scorrimento continuo -->
-                <div class="logo-item"><img src="./assets/img/partner1.png" alt="Logo Partner 1"></div>
-                <div class="logo-item"><img src="./assets/img/partner2.png" alt="Logo Partner 2"></div>
-                <div class="logo-item"><img src="./assets/img/partner3.png" alt="Logo Partner 3"></div>
-                <div class="logo-item"><img src="./assets/img/partner4.png" alt="Logo Partner 4"></div>
-                <div class="logo-item"><img src="./assets/img/partner5.png" alt="Logo Partner 5"></div>
-                <div class="logo-item"><img src="./assets/img/partner6.png" alt="Logo Partner 6"></div>
+    
+    <!-- Partner section -->
+    <section class="section partners-section">
+        <div class="container">
+            <h2 class="section-title">Le Aziende che Credono in Noi</h2>
+            <div class="logo-container">
+                <div class="logo-track">
+                    <!-- Ripeti i loghi due volte per creare l'effetto infinito -->
+                    <div class="logo-item"><img src="./assets/img/partner1.png" alt="Logo Partner 1"></div>
+                    <div class="logo-item"><img src="./assets/img/partner2.png" alt="Logo Partner 2"></div>
+                    <div class="logo-item"><img src="./assets/img/partner3.png" alt="Logo Partner 3"></div>
+                    <div class="logo-item"><img src="./assets/img/partner4.png" alt="Logo Partner 4"></div>
+                    <div class="logo-item"><img src="./assets/img/partner5.png" alt="Logo Partner 5"></div>
+                    <div class="logo-item"><img src="./assets/img/partner6.png" alt="Logo Partner 6"></div>
+                    
+                    <!-- Ripetizione dei loghi per scorrimento continuo -->
+                    <div class="logo-item"><img src="./assets/img/partner1.png" alt="Logo Partner 1"></div>
+                    <div class="logo-item"><img src="./assets/img/partner2.png" alt="Logo Partner 2"></div>
+                    <div class="logo-item"><img src="./assets/img/partner3.png" alt="Logo Partner 3"></div>
+                    <div class="logo-item"><img src="./assets/img/partner4.png" alt="Logo Partner 4"></div>
+                    <div class="logo-item"><img src="./assets/img/partner5.png" alt="Logo Partner 5"></div>
+                    <div class="logo-item"><img src="./assets/img/partner6.png" alt="Logo Partner 6"></div>
+                </div>
             </div>
         </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p class="copyright-text">
+            © <span id="copyright-2024"></span> SynergyRecycle.B. 
+            Tutti i contenuti di questa pagina sono protetti da copyright 
+            ai sensi della legge italiana ed internazionale.
+        </p>
     </div>
-</section>
+</footer>
 
-<!-- Aggiungi questi stili al tag <style> esistente nella sezione head -->
-<style>
-    .partners-section {
-        padding: var(--spacing-md) 0;
-        background-color: #f8f9fa;
-    }
-    
-    .logo-container {
-        position: relative;
-        width: 100%;
-        max-width: 800px;
-        height: 100px;
-        margin: 0 auto;
-        overflow: hidden;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    
-    .logo-track {
-        display: flex;
-        align-items: center;
-        width: max-content;
-        height: 100%;
-        animation: scrollLogos 30s linear infinite;
-    }
-    
-    .logo-item {
-        flex: 0 0 auto;
-        width: 150px;
-        height: 80px;
-        margin: 0 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .logo-item img {
-        max-width: 80%;
-        max-height: 70%;
-        object-fit: contain;
-    }
-    
-    @keyframes scrollLogos {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-1080px); /* Deve essere la larghezza totale dei primi 6 loghi */
-        }
-    }
-</style>
-
-<!-- Questo script è opzionale - aggiungi alla fine del body prima di </body> -->
 <script>
-    // Pausa l'animazione quando il mouse passa sopra
-    document.querySelector('.logo-container').addEventListener('mouseenter', function() {
-        document.querySelector('.logo-track').style.animationPlayState = 'paused';
+    // Aggiorna l'anno del copyright
+    document.getElementById('copyright-2024').textContent = new Date().getFullYear();
+    
+    // Link ai video Dropbox
+    const videoLinks = {
+        'app-video': 'https://www.dropbox.com/scl/fi/5k9rivkbkj2zyoprnwd86/video-carta.mp4?rlkey=5ciemjgygvevi3fvtsroi6t0h&raw=1',
+        'allies-video': 'https://www.dropbox.com/scl/fi/twxlmmnbn704wxr3kpgbk/ricompense.mp4?rlkey=hk71vqb90ehkge5rqlqvmc938&raw=1'
+    };
+    
+    // Funzione per aprire il popup con il video
+    function openVideo(videoId) {
+        const popup = document.getElementById(videoId);
+        const iframe = popup.querySelector('iframe');
+        
+        // Imposta il link corretto del video
+        iframe.src = videoLinks[videoId];
+        
+        // Mostra il popup
+        popup.classList.add('active');
+        
+        // Disabilita lo scroll della pagina
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Funzione per chiudere il popup video
+    function closeVideo(videoId) {
+        const popup = document.getElementById(videoId);
+        const iframe = popup.querySelector('iframe');
+        
+        // Nasconde il popup
+        popup.classList.remove('active');
+        
+        // Ferma il video resettando la src
+        setTimeout(() => {
+            iframe.src = '';
+        }, 300);
+        
+        // Riabilita lo scroll della pagina
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Chiudi il popup se si clicca fuori dal video
+    document.querySelectorAll('.video-popup').forEach(popup => {
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                const videoId = popup.getAttribute('id');
+                closeVideo(videoId);
+            }
+        });
     });
     
-    document.querySelector('.logo-container').addEventListener('mouseleave', function() {
-        document.querySelector('.logo-track').style.animationPlayState = 'running';
+    // Aggiungi gestione tasti della tastiera (ESC per chiudere)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.video-popup.active').forEach(popup => {
+                const videoId = popup.getAttribute('id');
+                closeVideo(videoId);
+            });
+        }
     });
-</script>
-    <footer class="site-footer">
-        <div class="container">
-            <p class="copyright-text">
-                © <span id="copyright-2024"></span> SynergyRecycle.B. 
-                Tutti i contenuti di questa pagina sono protetti da copyright 
-                ai sensi della legge italiana ed internazionale.
-            </p>
-        </div>
-    </footer>
     
-    <script src="./assets/js/main.js"></script>
-    <script>
-        document.getElementById('copyright-2024').textContent = new Date().getFullYear();
+    // Menu hamburger toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburgerBtn = document.querySelector('.hamburger-menu');
+        const mobileNav = document.getElementById('mobile-nav');
         
-        // Link al video Dropbox
-        const videoLinks = {
-    'app-video': 'https://www.dropbox.com/scl/fi/5k9rivkbkj2zyoprnwd86/video-carta.mp4?rlkey=5ciemjgygvevi3fvtsroi6t0h&raw=1',
-    'allies-video': 'https://www.dropbox.com/scl/fi/twxlmmnbn704wxr3kpgbk/ricompense.mp4?rlkey=hk71vqb90ehkge5rqlqvmc938&raw=1'
-};
+        hamburgerBtn.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+        });
         
-        // Funzione per aprire il popup con il video
-        function openVideo(videoId) {
-            const popup = document.getElementById(videoId);
-            const iframe = popup.querySelector('iframe');
-            
-            // Imposta il link corretto del video
-            iframe.src = videoLinks[videoId];
-            
-            // Mostra il popup
-            popup.classList.add('active');
-            
-            // Disabilita lo scroll della pagina
-            document.body.style.overflow = 'hidden';
-        }
-        
-        // Funzione per chiudere il popup video
-        function closeVideo(videoId) {
-            const popup = document.getElementById(videoId);
-            const iframe = popup.querySelector('iframe');
-            
-            // Nasconde il popup
-            popup.classList.remove('active');
-            
-            // Ferma il video resettando la src
-            setTimeout(() => {
-                iframe.src = '';
-            }, 300);
-            
-            // Riabilita lo scroll della pagina
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Chiudi il popup se si clicca fuori dal video
-        document.querySelectorAll('.video-popup').forEach(popup => {
-            popup.addEventListener('click', (e) => {
-                if (e.target === popup) {
-                    const videoId = popup.getAttribute('id');
-                    closeVideo(videoId);
-                }
+        // Chiudi il menu quando si clicca su un link
+        const mobileNavLinks = mobileNav.querySelectorAll('a.button');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
             });
         });
         
-        // Aggiungi gestione tasti della tastiera (ESC per chiudere)
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.video-popup.active').forEach(popup => {
-                    const videoId = popup.getAttribute('id');
-                    closeVideo(videoId);
+        // Gestione del video in background
+        const heroVideo = document.getElementById('hero-video');
+        
+        // Fallback per dispositivi che non supportano la riproduzione automatica
+        heroVideo.addEventListener('canplay', function() {
+            if (heroVideo.paused) {
+                heroVideo.play().catch(function(error) {
+                    // Se il video non può essere riprodotto automaticamente, 
+                    // mostriamo un'immagine di fallback
+                    if (error.name === 'NotAllowedError') {
+                        const videoBackground = document.querySelector('.video-background');
+                        videoBackground.innerHTML = '<div class="fallback-image"></div>';
+                    }
                 });
             }
         });
-        // Menu hamburger toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerBtn = document.querySelector('.hamburger-menu');
-    const mobileNav = document.getElementById('mobile-nav');
-    
-    hamburgerBtn.addEventListener('click', function() {
-        mobileNav.classList.toggle('active');
-    });
-    
-    // Chiudi il menu quando si clicca su un link
-    const mobileNavLinks = mobileNav.querySelectorAll('a.button');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            mobileNav.classList.remove('active');
-                 });
-             });
-         });
-    </script>
-</body>
-</html>
+        
+        // Pausa l'animazione del logo quando il mouse passa sopra
+        document.querySelector('.logo-container').addEventListener('mouseenter', function() {
+            document.querySelector('.logo-track').style.animationPlayState = 'paused';
+        });
+        
+        document.querySelector('.logo-container').addEventListener('mouseleave', function() {
+            document.querySelector('.logo-track').style.animation
+            document.querySelector('.logo-container').addEventListener('mouseleave', function() {
+    document.querySelector('.logo-track').style.animationPlayState = 'running';
+});
