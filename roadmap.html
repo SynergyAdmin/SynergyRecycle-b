@@ -264,6 +264,47 @@
             position: relative;
         }
 
+        /* Menu mobile e responsività */
+        .hamburger-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #0c546b;
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            margin-top: -10px;
+        }
+
+        .mobile-nav a.button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+@media (max-width: 768px) {
+        .main-nav {
+            display: none;
+        }
+    
+       .hamburger-btn {
+           display: block;
+       }
+    }
+
         .blockchain-icon .block::after {
             content: '';
             position: absolute;
@@ -372,19 +413,31 @@
     <div class="container">
         <!-- Intestazione -->
         <header>
-            <div class="logo">
-                <img src="./assets/img/logo da email.png" alt="Logo">
-                <span>SynergyRecycle</span>
-            </div>
-        <nav class="main-nav">
+    <div class="logo">
+        <img src="./assets/img/logo da email.png" alt="Logo">
+        <span>SynergyRecycle.B</span>
+    </div>
+    <nav class="main-nav">
         <a href="./" class="button">Home</a>
         <a href="./servizi.html" class="button">Servizi</a>
         <a href="./sostenerci.html" class="button">Supportaci</a>
         <a href="./contattaci.html" class="button">Contattaci</a>
         <a href="./roadmap.html" class="button">Roadmap</a>
     </nav>
-        </header>
+    <div class="hamburger-container">
+        <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+    </div>
+</header>
 
+<!-- Navigazione mobile -->
+<nav class="mobile-nav" id="mobile-nav">
+    <a href="./" class="button">Home</a>
+    <a href="./servizi.html" class="button">Servizi</a>
+    <a href="./sostenerci.html" class="button">Supportaci</a>
+    <a href="./contattaci.html" class="button">Contattaci</a>
+    <a href="./roadmap.html" class="button">Roadmap</a>
+</nav>
+        
         <!-- Banner -->
         <div class="banner">
             SynergyRecycle.B: La nostra roadmap per un futuro sostenibile attraverso blockchain e riciclo
@@ -543,6 +596,18 @@
             // Inizializzazione di eventuali animazioni o interazioni
             console.log('Roadmap loaded successfully');
         });
+        // Menu mobile toggle
+document.getElementById('hamburger-btn').addEventListener('click', function() {
+    const mobileNav = document.getElementById('mobile-nav');
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    
+    this.setAttribute('aria-expanded', !isExpanded);
+    if (!isExpanded) {
+        mobileNav.classList.add('active');
+    } else {
+        mobileNav.classList.remove('active');
+    }
+});
     </script>
 </body>
 </html>
