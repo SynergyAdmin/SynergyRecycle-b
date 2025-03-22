@@ -753,6 +753,23 @@
                 });
             }
         });
+        // Menu hamburger toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerBtn = document.querySelector('.hamburger-menu');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    hamburgerBtn.addEventListener('click', function() {
+        mobileNav.classList.toggle('active');
+    });
+    
+    // Chiudi il menu quando si clicca su un link
+    const mobileNavLinks = mobileNav.querySelectorAll('a.button');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+                 });
+             });
+         });
     </script>
 </body>
 </html>
