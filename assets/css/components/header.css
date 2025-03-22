@@ -14,7 +14,7 @@
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 0 1rem;
-    height: 70px; /* Altezza fissa più bassa */
+    height: auto; /* Altezza fissa più bassa */
 }
 
 .navbar {
