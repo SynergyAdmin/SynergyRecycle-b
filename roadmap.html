@@ -267,6 +267,24 @@
             position: relative;
         }
 
+            /* Stile per la navigazione principale */
+        .main-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .main-nav a.button {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .main-nav a.button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
         /* Menu mobile e responsività */
         .hamburger-btn {
             display: none;
@@ -600,12 +618,12 @@
             console.log('Roadmap loaded successfully');
         });
         // Menu mobile toggle
-document.getElementById('hamburger-btn').addEventListener('click', function() {
-    const mobileNav = document.getElementById('mobile-nav');
-    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        document.getElementById('hamburger-btn').addEventListener('click', function() {
+        const mobileNav = document.getElementById('mobile-nav');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
     
-    this.setAttribute('aria-expanded', !isExpanded);
-    if (!isExpanded) {
+        this.setAttribute('aria-expanded', !isExpanded);
+        if (!isExpanded) {
         mobileNav.classList.add('active');
     } else {
         mobileNav.classList.remove('active');
