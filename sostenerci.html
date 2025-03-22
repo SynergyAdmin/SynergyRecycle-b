@@ -119,6 +119,10 @@
             border-radius: 5px;
         }
         
+        .mobile-nav.show {
+            display: flex;
+        }
+        
         /* Hero section */
         .hero { 
             min-height: 60vh; 
@@ -351,6 +355,32 @@
             .coin-outer-container {
                 margin: 0 auto;
             }
+            
+            .instant-setup {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+            
+            .hamburger-menu {
+                display: block;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
         }
         
         .site-footer {
@@ -444,7 +474,7 @@
             <a href="./contattaci.html" class="button">Contattaci</a>
             <a href="./roadmap.html" class="button">Roadmap</a>
         </nav>
-        <button class="hamburger-menu">☰</button>
+        <button class="hamburger-menu" id="hamburger-menu">☰</button>
     </header>
 
     <!-- Navigazione mobile -->
@@ -675,6 +705,16 @@
                 }, 2000);
             });
         }
+        
+        // Toggle menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburger-menu');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            hamburgerBtn.addEventListener('click', function() {
+                mobileNav.classList.toggle('show');
+            });
+        });
     </script>
 </body>
 </html>
