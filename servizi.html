@@ -122,23 +122,48 @@
         }
         
         /* Hero section */
-        .hero { 
-            min-height: 60vh; 
-            display: flex; 
-            align-items: center; 
-            background-color: #f8f9fa; 
-            padding: var(--spacing-lg) 0; 
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: var(--spacing-lg) 0;
         }
-        
-        .hero-content { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            text-align: center; 
+    
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
         }
-        
-        .hero-title { 
-            font-size: 3rem; 
-            margin-bottom: var(--spacing-md); 
+    
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8; /* Regola l'opacità del video */
+        }
+    
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.5); /* Sfondo semi-trasparente */
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: -5rem; /* Sposta il contenuto verso l'alto */
+        }
+    
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-blue); /* Colore del testo per migliore visibilità */
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Ombra per migliore leggibilità */
         }
         
         /* Sezioni */
@@ -456,8 +481,15 @@
 
 <main>
     <section class="hero">
+    <div class="video-background">
+        <video autoplay muted loop id="hero-video">
+            <source src="./assets/video/background-video.mp4" type="video/mp4">
+        </video>
+        </div>
         <div class="container">
-            <h1 class="hero-title">La Mente, il Cuore, il nostro Eco-sistema.</h1>
+            <div class="hero-content">
+                <h1 class="hero-title">La Mente, il Cuore, il nostro Eco-sistema.</h1>
+            </div>
         </div>
     </section>
     
