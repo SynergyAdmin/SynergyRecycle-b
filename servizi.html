@@ -30,7 +30,7 @@
             font-family: system-ui, -apple-system, sans-serif; 
             line-height: 1.5; 
             color: #333;
-            padding-top: , 0;
+            padding-top: 0;
             background-color: #f5f5f5;
         }
         
@@ -110,6 +110,9 @@
             padding: 15px;
             border-radius: 0 0 10px 10px;
             margin-top: -10px;
+            position: absolute;
+            width: 100%;
+            z-index: 999;
         }
 
         .mobile-nav a.button {
@@ -683,7 +686,7 @@
 <footer class="site-footer">
     <div class="container">
         <p class="copyright-text">
-            © <span id="copyright-2024"></span> SynergyRecycle.B. 
+            © <span id="copyright-year"></span> SynergyRecycle.B. 
             Tutti i contenuti di questa pagina sono protetti da copyright 
             ai sensi della legge italiana ed internazionale.
         </p>
@@ -692,7 +695,7 @@
 
 <script>
     // Aggiorna l'anno del copyright
-    document.getElementById('copyright-2024').textContent = new Date().getFullYear();
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
     
     // Link ai video Dropbox
     const videoLinks = {
@@ -752,8 +755,24 @@
         }
     });
     
-    // Menu hamburger toggle
+    // Gestione video in background con precaricamento e fallback
     document.addEventListener('DOMContentLoaded', function() {
+        const heroVideo = document.getElementById('hero-video');
+        
+        // Precarica il video con attributo preload
+        heroVideo.preload = 'auto';
+        
+        // Forza il play dopo il caricamento
+        heroVideo.addEventListener('loadeddata', function() {
+            heroVideo.play().catch(function(error) {
+                console.log('Errore riproduzione video:', error);
+                // Fallback in caso di errore
+                const videoBackground = document.querySelector('.video-background');
+                videoBackground.innerHTML = '<div class="fallback-image"></div>';
+            });
+        });
+        
+        // Gestore per il menu hamburger
         const hamburgerBtn = document.querySelector('.hamburger-menu');
         const mobileNav = document.getElementById('mobile-nav');
         
@@ -768,31 +787,3 @@
                 mobileNav.classList.remove('active');
             });
         });
-        
-        // Gestione del video in background
-        const heroVideo = document.getElementById('hero-video');
-        
-        // Fallback per dispositivi che non supportano la riproduzione automatica
-        heroVideo.addEventListener('canplay', function() {
-            if (heroVideo.paused) {
-                heroVideo.play().catch(function(error) {
-                    // Se il video non può essere riprodotto automaticamente, 
-                    // mostriamo un'immagine di fallback
-                    if (error.name === 'NotAllowedError') {
-                        const videoBackground = document.querySelector('.video-background');
-                        videoBackground.innerHTML = '<div class="fallback-image"></div>';
-                    }
-                });
-            }
-        });
-        
-        // Pausa l'animazione del logo quando il mouse passa sopra
-        document.querySelector('.logo-container').addEventListener('mouseenter', function() {
-            document.querySelector('.logo-track').style.animationPlayState = 'paused';
-        });
-        
-        document.querySelector('.logo-container').addEventListener('mouseleave', function() {
-            document.querySelector('.logo-track').style.animation
-            document.querySelector('.logo-container').addEventListener('mouseleave', function() {
-    document.querySelector('.logo-track').style.animationPlayState = 'running';
-});
