@@ -120,6 +120,30 @@
             margin: 5px 0;
             border-radius: 5px;
         }
+
+        .building-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .building-text {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .building-text .btn {
+            margin-top: var(--spacing-sm);
+            align-self: flex-start;
+        }
+
+        @media (max-width: 768px) {
+        .building-content {
+             grid-template-columns: 1fr;
+             }
+         }
         
         /* Hero section */
         .hero { 
@@ -362,26 +386,27 @@
         </section>
 
         <!-- Offerta Section -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">Scopri cosa stiamo Costruendo.</h2>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
-                    <div>
-                        <h3>Trasformazione digitale</h3>
-                        <p>Aiutiamo le persone a prosperare in un panorama in continua evoluzione.</p>
-                        <h3>Web e sviluppo App</h3>
-                        <p>Abbiamo accumulato esperienza e continueremo a farlo,</p>
-                        <p>in modo da poter dare a Tutti la possibilità continuare a crescere.</p>
-                        <a href="https://apps.apple.com/it/app/synergyrecycle-b" class="btn" target="_blank">Scarica su App Store</a>
-                        <a href="https://play.google.com/store/apps/details?id=com.synergyrecycleb" class="btn" target="_blank">Scarica su Google Play</a>
-                    </div>
-                    <div>
-                        <img src="./assets/img/persona.jpeg" alt="Innovazione" style="max-width: 100%; height: auto;">
-                    </div>
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Scopri cosa stiamo Costruendo.</h2>
+        <div class="building-section">
+            <div class="building-content">
+                <div class="building-text">
+                    <h3>Trasformazione digitale</h3>
+                    <p>Aiutiamo le persone a prosperare in un panorama in continua evoluzione.</p>
+                    <h3>Web e sviluppo App</h3>
+                    <p>Abbiamo accumulato esperienza e continueremo a farlo,</p>
+                    <p>in modo da poter dare a Tutti la possibilità continuare a crescere.</p>
+                    <a href="https://previewer.adalo.com/54134a12-b0af-49f3-9551-2b40e77c4eb2?target=c23c6fc2327047528d008524c980fad6&params=%7B%7D"_blank">Scarica su App Store</a>
+                    <a href="https://previewer.adalo.com/54134a12-b0af-49f3-9551-2b40e77c4eb2?target=c23c6fc2327047528d008524c980fad6&params=%7B%7D" class="btn" target="_blank">Scarica su Google Play</a>
+                </div>
+                <div class="building-image">
+                    <img src="./assets/img/persona.jpeg" alt="Innovazione" style="max-width: 100%; height: auto;">
                 </div>
             </div>
-        </section>
-
+        </div>
+    </div>
+</section>
         <!-- Call to Action -->
         <section class="section" style="background-color: #f8f9fa;">
             <div class="container">
