@@ -406,9 +406,10 @@
         
         .block {
             width: 70px;
-            height: 70px;
+            height: 80px; /* Leggermente più alto per compensare la forma esagonale */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            border-radius: 0; /* Rimuovi border-radius precedente */
             background: linear-gradient(135deg, var(--primary-green), var(--tertiary-green));
-            border-radius: 12px;
             position: absolute;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -421,19 +422,43 @@
         }
         
         .block:hover {
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(5deg);
+            z-index: 4; /* Assicura che l'esagono hover sia sopra gli altri */
+        }
+
+        .block {
+            box-shadow: 0 0 10px var(--laser-glow), inset 0 0 5px var(--laser-glow);
+            border: 2px solid rgba(138,43,226,0.5);
         }
         
         .laser {
-            height: 2px;
-            background-color: var(--laser-color);
+            height: 3px; /* Laser leggermente più spesso */
+            background: linear-gradient(90deg, rgba(148,0,211,0.8), rgba(75,0,130,0.8));
             position: absolute;
             transform-origin: left;
             z-index: 2;
-            filter: drop-shadow(0 0 3px var(--laser-color));
+            filter: drop-shadow(0 0 6px rgba(148,0,211,0.5));
             animation: laserPulse 2s infinite;
         }
-        
+
+        @keyframes hexPulse {
+            0% { transform: scaleX(0.9); opacity: 0.8; }
+            50% { transform: scaleX(1.1); opacity: 1; }
+            100% { transform: scaleX(0.9); opacity: 0.8; }
+        }
+
+        .laser {
+            animation: hexPulse 1.5s ease-in-out infinite;
+        }
+
+        .block-connector {
+            position: absolute;
+            width: 20px;
+            height: 3px;
+            background: purple;
+            z-index: 2;
+        }
+
         @keyframes laserPulse {
             0%, 100% { opacity: 0.7; }
             50% { opacity: 1; }
@@ -694,8 +719,8 @@
                 
                 // Position blocks from left to right
                 const leftPos = (i * 20) + 5; // percentage
-                block.style.left = `${leftPos}%`;
-                block.style.top = '40%';
+                block.style.left = `${index * 85}px`;
+                block.style.top = `${row % 2 === 0 ? row * 70 : row * 70 + 35}px`;
                 
                 container.appendChild(block);
                 blocks.push(block);
