@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynergyRecycle.B - Documenti Legali/Regolamenti </title>
+    <style>
+        /* Variabili */
+        :root {
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --container-width: 1200px;
+            --primary-blue: #0c546b;
+            --dark-gray: #333;
+            --light-gray: #ccc;
+            --primary-green: #58a845;
+            --secondary-green: #8BC34A;
+            --background-green: #f5f5f5; /* Colore di sfondo verde chiaro */
+        }
+        
+        /* Reset e base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: system-ui, -apple-system, sans-serif; 
+            line-height: 1.5; 
+            color: #333;
+            background-color: var(--background-green);
+        }
+        
+        /* Layout container */
+        .container { 
+            max-width: var(--container-width); 
+            width: 100%;
+            margin: 0 auto; 
+            padding: 0 var(--spacing-sm); 
+        }
+        
+        /* Header e navigazione */
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .main-nav a.button {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .main-nav a.button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Banner */
+        .banner {
+            background-color: #334a38;
+            color: white;
+            padding: 8px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        /* Menu mobile e responsività */
+        .hamburger-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: var(--primary-blue);
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            margin-top: -10px;
+        }
+
+        .mobile-nav a.button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        
+        /* Hero section */
+        .hero { 
+            min-height: 60vh; 
+            display: flex; 
+            align-items: center; 
+            background-color: var(--background-green); 
+            padding: var(--spacing-lg) 0; 
+        }
+        
+        .hero-content { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
+        
+        .hero-title { 
+            font-size: 3rem; 
+            margin-bottom: var(--spacing-md); 
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: #666;
+        }
+        
+        /* Form di contatto */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+        
+        .company-info {
+            flex: 0 0 250px;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-left: 2rem;
+            height: fit-content;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-green, #2ecc71);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .copyright-text {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .copyright-text a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+        
+        .submit-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        .info-title {
+            margin-bottom: 1.5rem;
+            color: var(--primary-green, #2ecc71);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .info-icon {
+            margin-right: 0.75rem;
+            width: 16px;
+            height: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .hamburger-btn {
+                display: block;
+            }
+            
+            .mobile-nav.active {
+                display: flex;
+            }
+            
+            .company-info {
+                margin-left: 0;
+                margin-top: 2rem;
+            }
+        }
+        
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 1rem 1.5rem;
+            margin: 0 0.5rem 1rem;
+            background-color: transparent;
+            border: 1px solid var(--primary-green, #2ecc71);
+            color: var(--primary-green, #2ecc71);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active, .tab-button:hover {
+            background-color: var(--primary-green, #2ecc71);
+            color: white;
+        }
+
+        .tab-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: var(--primary-green, #2ecc71);
+        }
+
+        .faq-answer {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 1rem;
+            max-height: 500px;
+        }
+
+        .faq-answer ul {
+            padding-left: 1.5rem;
+        }
+
+
+        /* CTA Section */
+        .cta-section {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem;
+            background-color: #f2f2f2;
+            border-radius: 8px;
+        }
+
+        .cta-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1rem 0 2rem;
+        }
+
+        .cta-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            background-color: var(--primary-green, #2ecc71);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-link:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .cta-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 1rem;
+        }
+
+        .cta-section a {
+            color: var(--primary-green, #2ecc71);
+            text-decoration: none;
+        }
+        
+        /* Documenti legali */
+        .legal-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .legal-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .legal-nav a {
+            padding: 8px 15px;
+            background-color: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .legal-nav a:hover {
+            background-color: #4a9632;
+        }
+        
+        .documento-legale {
+            padding: 10px;
+        }
+        
+        .documento-legale h1 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-green);
+        }
+        
+        .documento-legale h2 {
+            color: var(--primary-green);
+            margin: 30px 0 15px;
+        }
+        
+        .documento-legale section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .ultimo-aggiornamento {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .ultimo-aggiornamento p {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con logo -->
+    <header>
+        <div class="logo">
+            <img src="./assets/img/logo da email.png" alt="Logo">
+            <span>SynergyRecycle.B</span>
+        </div>
+        <nav class="main-nav">
+            <a href="./" class="button" data-i18n="navigation.home">Home</a>
+            <a href="./servizi.html" class="button" data-i18n="navigation.services">Servizi</a>
+            <a href="./sostenerci.html" class="button" data-i18n="navigation.support">Supportaci</a>
+            <a href="./contattaci.html" class="button" data-i18n="navigation.contact">Contattaci</a>
+            <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
+        </nav>
+        
+        <div class="hamburger-container">
+            <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+        </div>
+    </header>
+
+    <!-- Navigazione mobile -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="./" class="button">Home</a>
+        <a href="./servizi.html" class="button">Servizi</a>
+        <a href="./sostenerci.html" class="button">Supportaci</a>
+        <a href="./contattaci.html" class="button">Contattaci</a>
+        <a href="./roadmap.html" class="button">Roadmap</a>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner">
+        SynergyRecycle.B: "Benvenuti nei documenti legali di SynergyRecycle.B. Qui troverete tutte le informazioni relative ai nostri impegni legali e alle nostre politiche."
+    </div>
+    
+    <div class="legal-container">
+        <div class="legal-nav">
+            <a href="legal.html">Documenti Legali</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="risk-policy.html">Politica dei Rischi</a>
+            <a href="kyc-aml-policy.html">KYC / AML Policy</a>
+        </div>
+        <div class="documento-legale">
+            <h1>Privacy Policy</h1>
+            
+            <section>
+                <h2>1. Introduzione</h2>
+                <p>Benvenuto nella nostra Privacy Policy. Questa pagina spiega come raccogliamo, utilizziamo, divulghiamo e proteggiamo le tue informazioni personali.</p>
+            </section>
+            
+            <section>
+                <h2>2. Dati Raccolti</h2>
+                <h3>2.1 Tipologie di Dati</h3>
+                <p>Possiamo raccogliere le seguenti categorie di dati:</p>
+                <ul>
+                    <li>Dati personali di identificazione (nome, cognome, email)</li>
+                    <li>Dati di navigazione</li>
+                    <li>Dati relativi all'utilizzo dei nostri servizi</li>
+                    <li>Dati tecnici del dispositivo</li>
+                </ul>
+
+                <h3>2.2 Modalità di Raccolta</h3>
+                <p>I dati possono essere raccolti mediante:</p>
+                <ul>
+                    <li>Compilazione di moduli online</li>
+                    <li>Utilizzo del sito web</li>
+                    <li>Comunicazioni via email</li>
+                    <li>Cookies e tecnologie di tracciamento</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>3. Base Giuridica del Trattamento</h2>
+                <p>Il trattamento dei dati personali si basa su:</p>
+                <ul>
+                    <li>Consenso esplicito dell'interessato</li>
+                    <li>Necessità contrattuale</li>
+                    <li>Obblighi di legge</li>
+                    <li>Legittimo interesse del Titolare</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>4. Finalità del Trattamento</h2>
+                <p>I dati personali sono trattati per:</p>
+                <ul>
+                    <li>Erogazione dei servizi</li>
+                    <li>Gestione amministrativa e contabile</li>
+                    <li>Comunicazioni di marketing (previa autorizzazione)</li>
+                    <li>Miglioramento dell'esperienza utente</li>
+                    <li>Adempimenti legali e fiscali</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>5. Conservazione dei Dati</h2>
+                <p>I dati personali sono conservati per:</p>
+                <ul>
+                    <li>Durata necessaria alle finalità di trattamento</li>
+                    <li>Periodo previsto da obblighi di legge</li>
+                    <li>Massimo 24 mesi dalla raccolta, salvo diversi obblighi normativi</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>6. Diritti dell'Interessato</h2>
+                <p>Ai sensi degli artt. 15-22 del GDPR, l'interessato ha diritto a:</p>
+                <ul>
+                    <li>Accesso ai dati personali</li>
+                    <li>Rettifica e cancellazione</li>
+                    <li>Limitazione del trattamento</li>
+                    <li>Portabilità dei dati</li>
+                    <li>Opposizione al trattamento</li>
+                    <li>Revoca del consenso</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>7. Misure di Sicurezza</h2>
+                <p>Adottiamo misure di sicurezza:</p>
+                <ul>
+                    <li>Crittografia dei dati sensibili</li>
+                    <li>Protezione contro accessi non autorizzati</li>
+                    <li>Sistemi di autenticazione sicura</li>
+                    <li>Aggiornamento periodico delle protezioni</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>8. Comunicazione e Diffusione dei Dati</h2>
+                <p>I dati possono essere comunicati a:</p>
+                <ul>
+                    <li>Personale interno autorizzato</li>
+                    <li>Consulenti e professionisti</li>
+                    <li>Autorità giudiziarie</li>
+                    <li>Fornitori di servizi tecnologici</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>9. Cookies</h2>
+                <p>Utilizziamo cookies per:</p>
+                <ul>
+                    <li>Migliorare la navigazione</li>
+                    <li>Analisi degli accessi</li>
+                    <li>Personalizzazione dei contenuti</li>
+                    <li>Tracciamento anonimo</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>10. Contatti del Titolare del Trattamento</h2>
+                <p><strong>Titolare del Trattamento</strong>:<br>
+                SynergyRecycle.B<br>
+                Herford, Germany<br>
+                SynergyRecycle.B@gmail.com</p>
+            </section>
+            
+            <section>
+                <h2>11. Modifiche alla Privacy Policy</h2>
+                <p>Ci riserviamo il diritto di aggiornare questa Privacy Policy. Le modifiche saranno pubblicate con preavviso.</p>
+            </section>
+            
+            <section>
+                <h2>12. Riferimenti Normativi</h2>
+                <ul>
+                    <li>Regolamento UE 2016/679 (GDPR)</li>
+                    <li>D.Lgs. 196/2003 (Codice Privacy)</li>
+                    <li>Provvedimenti del Garante Privacy</li>
+                </ul>
+            </section>
+            
+            <div class="ultimo-aggiornamento">
+                <p><strong>Ultimo Aggiornamento</strong>: 26-03-2025</p>
+                <p><strong>Versione</strong>: 1.0</p>
+            </div>
+        </div>
+
+        <div class="documento-legale">
+            <h1>Termini e Condizioni di Utilizzo</h1>
+            
+            <section>
+                <h2>1. Premessa</h2>
+                <p>I presenti Termini e Condizioni regolano l'utilizzo dei nostri servizi e del nostro sito web.</p>
+            </section>
+            
+            <section>
+                <h2>2. Accettazione dei Termini</h2>
+                <p>L'accesso e l'utilizzo del sito comportano l'accettazione integrale e incondizionata dei seguenti termini.</p>
+            </section>
+            
+            <section>
+                <h2>3. Descrizione dei Servizi</h2>
+                <h3>3.1 Tipologia di Servizi</h3>
+                <ul>
+                    <li>Servizi informativi</li>
+                    <li>Servizi interattivi</li>
+                    <li>Servizi di comunicazione</li>
+                </ul>
+
+                <h3>3.2 Limitazioni</h3>
+                <p>Ci riserviamo il diritto di:</p>
+                <ul>
+                    <li>Modificare i servizi</li>
+                    <li>Sospendere l'accesso</li>
+                    <li>Interrompere funzionalità</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>4. Obblighi dell'Utente</h2>
+                <p>L'utente si impegna a:</p>
+                <ul>
+                    <li>Utilizzare i servizi lecitamente</li>
+                    <li>Non violare diritti di terzi</li>
+                    <li>Proteggere le proprie credenziali</li>
+                    <li>Non diffondere contenuti illegali</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>5. Proprietà Intellettuale</h2>
+                <h3>5.1 Diritti sui Contenuti</h3>
+                <ul>
+                    <li>Tutti i contenuti sono di proprietà esclusiva</li>
+                    <li>È vietata la riproduzione non autorizzata</li>
+                    <li>Marchi e loghi sono tutelati</li>
+                </ul>
+
+                <h3>5.2 Licenze di Utilizzo</h3>
+                <p>Concediamo licenza limitata, non esclusiva, non trasferibile per:</p>
+                <ul>
+                    <li>Consultazione personale</li>
+                    <li>Utilizzo dei servizi</li>
+                    <li>Nei limiti dei nostri termini</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>6. Responsabilità</h2>
+                <h3>6.1 Limitazione di Responsabilità</h3>
+                <p>Non rispondiamo per:</p>
+                <ul>
+                    <li>Danni diretti o indiretti</li>
+                    <li>Interruzioni di servizio</li>
+                    <li>Contenuti di terzi</li>
+                    <li>Uso improprio dei servizi</li>
+                </ul>
+
+                <h3>6.2 Esclusione di Garanzie</h3>
+                <p>Decliniamo ogni responsabilità circa:</p>
+                <ul>
+                    <li>Continuità del servizio</li>
+                    <li>Precisione dei contenuti</li>
+                    <li>Risultati ottenibili</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>7. Trattamento dei Dati Personali</h2>
+                <p>Il trattamento dei dati è disciplinato dalla nostra Privacy Policy.</p>
+            </section>
+            
+            <section>
+                <h2>8. Modifiche ai Termini</h2>
+                <p>Possiamo modificare i termini in qualsiasi momento, con preavviso.</p>
+            </section>
+            
+            <section>
+                <h2>9. Legge Applicabile e Foro Competente</h2>
+                <h3>9.1 Legge Applicabile</h3>
+                <ul>
+                    <li>Legislazione Tedesca</li>
+                    <li>Normativa Europea</li>
+                </ul>
+
+                <h3>9.2 Foro Competente</h3>
+                <p>Per ogni controversia è competente il Foro di Bielefeld.</p>
+            </section>
+            
+            <section>
+                <h2>10. Contatti</h2>
+                <p>Per informazioni o chiarimenti: SynergyRecycle.B@gmail.com</p>
+            </section>
+            
+            <div class="ultimo-aggiornamento">
+                <p><strong>Ultimo Aggiornamento</strong>: 26-03-2025</p>
+                <p><strong>Versione</strong>: 1.0</p>
+            </div>
+        </div>
+
+        <div class="documento-legale">
+            <h1>Disclaimer</h1>
+            
+            <section>
+                <h2>1. Natura Informativa dei Contenuti</h2>
+                <p>I contenuti del nostro sito hanno carattere meramente informativo e non costituiscono:</p>
+                <ul>
+                    <li>Consulenza professionale</li>
+                    <li>Offerta contrattuale</li>
+                    <li>Suggerimento vincolante</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>2. Accuratezza delle Informazioni</h2>
+                <h3>2.1 Impegno</h3>
+                <p>Ci impegniamo a:</p>
+                <ul>
+                    <li>Fornire informazioni accurate</li>
+                    <li>Aggiornare periodicamente i contenuti</li>
+                    <li>Verificare le fonti</li>
+                </ul>
+
+                <h3>2.2 Limitazioni</h3>
+                <p>Nonostante l'impegno, non garantiamo:</p>
+                <ul>
+                    <li>Completezza assoluta</li>
+                    <li>Immediata correttezza</li>
+                    <li>Assenza di errori materiali</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>3. Esclusione di Responsabilità</h2>
+                <p>Non rispondiamo di:</p>
+                <ul>
+                    <li>Danni derivanti dall'uso delle informazioni</li>
+                    <li>Conseguenze di interpretazioni personali</li>
+                    <li>Scelte basate sui nostri contenuti</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>4. Link Esterni</h2>
+                <h3>4.1 Collegamento a Siti Terzi</h3>
+                <ul>
+                    <li>Non controlliamo siti esterni</li>
+                    <li>Non assumiamo responsabilità per loro contenuti</li>
+                    <li>Consigliamo verifica autonoma</li>
+                </ul>
+
+                <h3>4.2 Declinazione</h3>
+                <p>Decliniamo ogni responsabilità per:</p>
+                <ul>
+                    <li>Contenuti dei link</li>
+                    <li>Modifiche dei siti terzi</li>
+                    <li>Conseguenze dell'accesso</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>5. Utilizzo dei Contenuti</h2>
+                <h3>5.1 Riproduzione</h3>
+                <ul>
+                    <li>Vietata riproduzione non autorizzata</li>
+                    <li>Citazione consentita con fonte</li>
+                </ul>
+
+                <h3>5.2 Interpretazione</h3>
+                <p>I contenuti sono:</p>
+                <ul>
+                    <li>Non esaustivi</li>
+                    <li>Non sostitutivi di consulenza professionale</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>6. Variazioni e Aggiornamenti</h2>
+                <p>Ci riserviamo diritto di:</p>
+                <ul>
+                    <li>Modificare contenuti</li>
+                    <li>Aggiornare disclaimer</li>
+                    <li>Integrare informazioni</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>7. Protezione Intellettuale</h2>
+                <p>Tutti i contenuti sono:</p>
+                <ul>
+                    <li>Proprietà intellettuale riservata</li>
+                    <li>Tutelati da normativa vigente</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>8. Comunicazioni e Chiarimenti</h2>
+                <p>Per informazioni: SynergyRecycle.B@gmail.com</p>
+            </section>
+            
+            <div class="ultimo-aggiornamento">
+                <p><strong>Ultimo Aggiornamento</strong>: 26-03-2025</p>
+                <p><strong>Versione</strong>: 1.0</p>
+            </div>
+        </div>
+
+        <div class="documento-legale">
+            <h1>Cookie Policy</h1>
+            
+            <section>
+                <h2>1. Cosa sono i Cookie</h2>
+                <p>I cookie sono piccoli file di testo che:</p>
+                <ul>
+                    <li>Vengono memorizzati sul dispositivo</li>
+                    <li>Raccolgono informazioni di navigazione</li>
+                    <li>Migliorano l'esperienza utente</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>2. Tipologie di Cookie</h2>
+                <h3>2.1 Cookie Tecnici</h3>
+                <ul>
+                    <li>Essenziali per navigazione</li>
+                    <li>Non richiedono consenso</li>
+                    <li>Garantiscono funzionalità base</li>
+                </ul>
+
+                <h3>2.2 Cookie Analitici</h3>
+                <ul>
+                    <li>Misurano accessi e comportamenti</li>
+                    <li>Anonimizzati</li>
+                    <li>Supportano miglioramento servizi</li>
+                </ul>
+
+                <h3>2.3 Cookie di Profilazione</h3>
+                <ul>
+                    <li>Tracciamento preferenze</li>
+                    <li>Personalizzazione contenuti</li>
+                    <li>Richiedono consenso esplicito</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>3. Cookie Utilizzati</h2>
+                <p>Installiamo:</p>
+                <ul>
+                    <li>Cookie tecnici di sessione</li>
+                    <li>Cookie analytics</li>
+                    <li>Cookie di funzionalità</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>4. Gestione dei Cookie</h2>
+                <h3>4.1 Consenso</h3>
+                <p>L'utente può:</p>
+                <ul>
+                    <li>Accettare tutti i cookie</li>
+                    <li>Rifiutare cookie non necessari</li>
+                    <li>Modificare preferenze</li>
+                </ul>
+
+                <h3>4.2 Strumenti di Controllo</h3>
+                <ul>
+                    <li>Impostazioni browser</li>
+                    <li>Pannello preferenze</li>
+                    <li>Cancellazione manuale</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>5. Base Giuridica</h2>
+                <p>Utilizziamo cookie secondo:</p>
+                <ul>
+                    <li>Regolamento UE 2016/679</li>
+                    <li>Provvedimenti Garante Privacy</li>
+                    <li>Linee guida Autorità</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>6. Durata dei Cookie</h2>
+                <p>Conservati per:</p>
+                <ul>
+                    <li>Sessione corrente</li>
+                    <li>Massimo 13 mesi</li>
+                    <li>Nel rispetto normativa</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>7. Trasferimento Dati</h2>
+                <p>Non trasferiamo:</p>
+                <ul>
+                    <li>Dati personali identificativi</li>
+                    <li>Informazioni sensibili</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>8. Sicurezza</h2>
+                <p>Adottiamo misure per:</p>
+                <ul>
+                    <li>Proteggere informazioni</li>
+                    <li>Limitare accessi</li>
+                    <li>Anonimizzare dati</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>9. Aggiornamenti</h2>
+                <p>Policy soggetta a modifiche con preavviso.</p>
+            </section>
+            
+            <section>
+                <h2>10. Contatti</h2>
+                <p>Per informazioni: SynergyRecycle.B@gmail.com</p>
+            </section>
+            
+            <div class="ultimo-aggiornamento">
+                <p><strong>Ultimo Aggiornamento</strong>: 26-03-2025</p>
+                <p><strong>Versione</strong>: 1.0</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 SynergyRecycle.B - Tutti i diritti riservati</p>
+            <p>Herford, Germany | SynergyRecycle.B@gmail.com</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+    <!-- Script JS -->
+    <script>
+        // Aggiorna l'anno di copyright
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        
+        // Menu mobile toggle
+        document.getElementById('hamburger-btn').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobile-nav');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            this.setAttribute('aria-expanded', !isExpanded);
+            if (!isExpanded) {
+                mobileNav.classList.add('active');
+            } else {
+                mobileNav.classList.remove('active');
+            }
+        });
+        
+        // Chiudi menu mobile quando si clicca su un link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-nav').classList.remove('active');
+                document.getElementById('hamburger-btn').setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // Gestione scroll - nascondi il menu mobile quando si scrolla
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
+                // Scroll verso il basso
+                document.getElementById('mobile-nav').classList.remove('active');
+                document.getElementById('hamburger-btn').setAttribute('aria-expanded', 'false');
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
