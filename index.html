@@ -395,7 +395,7 @@
             color: var(--tertiary-green);
         }
         
-        /* Blockchain Visualization - Animato con esagoni connessi da raggi laser */
+        /* Blockchain Visualization - Animated blocks connected by laser lines */
         .blockchain-visualization {
             width: 100%;
             height: 220px;
@@ -406,9 +406,9 @@
         
         .block {
             width: 70px;
-            height: 80px;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            height: 70px;
             background: linear-gradient(135deg, var(--primary-green), var(--tertiary-green));
+            border-radius: 12px;
             position: absolute;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -418,45 +418,22 @@
             font-weight: bold;
             z-index: 3;
             transition: transform 0.3s ease;
-            animation: fadeIn 0.5s forwards;
-            opacity: 0;
         }
         
         .block:hover {
-            transform: scale(1.15) rotate(5deg);
-            z-index: 4;
-        }
-
-        .block {
-            box-shadow: 0 0 10px rgba(138,43,226,0.5), inset 0 0 5px rgba(138,43,226,0.5);
-            border: 2px solid rgba(138,43,226,0.5);
+            transform: scale(1.1);
         }
         
         .laser {
-            height: 3px;
-            background: linear-gradient(90deg, rgba(148,0,211,0.8), rgba(75,0,130,0.8));
+            height: 2px;
+            background-color: var(--laser-color);
             position: absolute;
             transform-origin: left;
             z-index: 2;
-            filter: drop-shadow(0 0 6px rgba(148,0,211,0.5));
+            filter: drop-shadow(0 0 3px var(--laser-color));
             animation: laserPulse 2s infinite;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes hexPulse {
-            0% { transform: scaleX(0.9); opacity: 0.8; }
-            50% { transform: scaleX(1.1); opacity: 1; }
-            100% { transform: scaleX(0.9); opacity: 0.8; }
-        }
-
-        .laser {
-            animation: hexPulse 1.5s ease-in-out infinite;
-        }
-
+        
         @keyframes laserPulse {
             0%, 100% { opacity: 0.7; }
             50% { opacity: 1; }
@@ -597,7 +574,7 @@
                 <h2 class="section-title">Blockchain per un futuro sostenibile</h2>
                 <p class="text-center">La nostra tecnologia blockchain connette ogni fase del riciclo per massimizzare l'impatto positivo.</p>
                 <div class="blockchain-visualization" id="blockchain-viz">
-                    <!-- Blocchi della blockchain verranno aggiunti qui dal JavaScript -->
+                    <!-- This will be filled by JavaScript -->
                 </div>
             </div>
         </section>
@@ -703,145 +680,99 @@
             }
         });
         
-        // Blockchain Visualization - CORREZIONE COMPLETA
-        document.addEventListener('DOMContentLoaded', function() {
-            // Ottieni il container
+        // Blockchain Visualization
+        function createBlockchainVisualization() {
             const container = document.getElementById('blockchain-viz');
-            
-            // Definisci i blocchi della blockchain
             const blockLabels = ['Raccolta', 'Verifica', 'Processo', 'Riciclo', 'Riutilizzo'];
             const blocks = [];
             
-            // Crea i blocchi e posizionali
+            // Create blocks
             blockLabels.forEach((label, i) => {
                 const block = document.createElement('div');
                 block.className = 'block';
                 block.textContent = label;
                 
-                // Calcola la posizione orizzontale (distribuita uniformemente)
-                const step = (container.offsetWidth - 100) / (blockLabels.length - 1);
-                const left = 15 + (i * step);
-                
-                // Alterna la posizione verticale (zigzag)
-                const top = i % 2 === 0 ? 50 : 120;
-                
-                // Applica le posizioni
-                block.style.left = `${left}px`;
-                block.style.top = `${top}px`;
-                
-                // Animazione ritardata per l'apparizione in sequenza
-                block.style.animationDelay = `${i * 0.2}s`;
+                // Position blocks from left to right
+                const leftPos = (i * 20) + 5; // percentage
+                block.style.left = `${leftPos}%`;
+                block.style.top = '40%';
                 
                 container.appendChild(block);
                 blocks.push(block);
-            });
-            
-            // Attendi che i blocchi appaiano prima di aggiungere i laser
-            setTimeout(() => {
-                // Crea i laser di connessione tra i blocchi
-                for (let i = 0; i < blocks.length - 1; i++) {
-                    const blockA = blocks[i];
-                    const blockB = blocks[i+1];
-                    
-                    // Ottieni le posizioni dei blocchi
-                    const rectA = blockA.getBoundingClientRect();
-                    const rectB = blockB.getBoundingClientRect();
-                    const containerRect = container.getBoundingClientRect();
-                    
-                    // Calcola i punti di inizio e fine del laser
-                    // Punto centrale del lato destro del blocco A
-                    const x1 = rectA.left + rectA.width - containerRect.left;
-                    const y1 = rectA.top + (rectA.height / 2) - containerRect.top;
-                    
-                    // Punto centrale del lato sinistro del blocco B
-                    const x2 = rectB.left - containerRect.left;
-                    const y2 = rectB.top + (rectB.height / 2) - containerRect.top;
-                    
-                    // Calcola lunghezza e angolo del laser
-                    const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-                    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-                    
-                    // Crea l'elemento laser
-                    const laser = document.createElement('div');
-                    laser.className = 'laser';
-                    laser.style.width = `${length}px`;
-                    laser.style.left = `${x1}px`;
-                    laser.style.top = `${y1}px`;
-                    laser.style.transform = `rotate(${angle}deg)`;
-                    
-                    container.appendChild(laser);
-                }
-            }, 1000);
-            
-            // In caso di ridimensionamento della finestra, aggiorna la visualizzazione
-            window.addEventListener('resize', function() {
-                // Rimuovi tutti gli elementi esistenti
-                while (container.firstChild) {
-                    container.removeChild(container.firstChild);
-                }
                 
-                // Ricrea la visualizzazione
-                setTimeout(() => {
-                    // Crea i blocchi e posizionali nuovamente
-                    const blocks = [];
-                    blockLabels.forEach((label, i) => {
-                        const block = document.createElement('div');
-                        block.className = 'block';
-                        block.textContent = label;
-                        
-                        // Calcola la posizione orizzontale (distribuita uniformemente)
-                        const step = (container.offsetWidth - 100) / (blockLabels.length - 1);
-                        const left = 15 + (i * step);
-                        
-                        // Alterna la posizione verticale (zigzag)
-                        const top = i % 2 === 0 ? 50 : 120;
-                        
-                        // Applica le posizioni
-                        block.style.left = `${left}px`;
-                        block.style.top = `${top}px`;
-                        block.style.opacity = '1'; // Rendi visibile subito
-                        block.style.animation = 'none'; // Disattiva l'animazione per il ridimensionamento
-                        
-                        container.appendChild(block);
-                        blocks.push(block);
-                    });
-                    
-                    // Crea immediatamente i laser
-                    for (let i = 0; i < blocks.length - 1; i++) {
-                        const blockA = blocks[i];
-                        const blockB = blocks[i+1];
-                        
-                        // Ottieni le posizioni dei blocchi
-                        const rectA = blockA.getBoundingClientRect();
-                        const rectB = blockB.getBoundingClientRect();
-                        const containerRect = container.getBoundingClientRect();
-                        const containerRect = container.getBoundingClientRect();
-                        
-                        // Calcola i punti di inizio e fine del laser
-                        // Punto centrale del lato destro del blocco A
-                        const x1 = rectA.left + rectA.width - containerRect.left;
-                        const y1 = rectA.top + (rectA.height / 2) - containerRect.top;
-                        
-                        // Punto centrale del lato sinistro del blocco B
-                        const x2 = rectB.left - containerRect.left;
-                        const y2 = rectB.top + (rectB.height / 2) - containerRect.top;
-                        
-                        // Calcola lunghezza e angolo del laser
-                        const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-                        const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-                        
-                        // Crea l'elemento laser
-                        const laser = document.createElement('div');
-                        laser.className = 'laser';
-                        laser.style.width = `${length}px`;
-                        laser.style.left = `${x1}px`;
-                        laser.style.top = `${y1}px`;
-                        laser.style.transform = `rotate(${angle}deg)`;
-                        
-                        container.appendChild(laser);
-                    }
-                }, 100); // Ridotto il ritardo per il ridimensionamento
+                // Add animation delay for blocks to appear one after another
+                block.style.opacity = '0';
+                block.style.animation = `fadeIn 0.5s ${i * 0.2}s forwards`;
             });
+            
+            // Create keyframes for fadeIn animation if not already defined
+            if (!document.querySelector('style').textContent.includes('@keyframes fadeIn')) {
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: translateY(20px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Connect blocks with lasers
+            setTimeout(() => {
+                for (let i = 0; i < blocks.length - 1; i++) {
+                    connectBlocksWithLaser(blocks[i], blocks[i+1]);
+                }
+            }, 1500); // Wait for blocks to appear
+        }
+        
+        function connectBlocksWithLaser(blockA, blockB) {
+            const container = document.getElementById('blockchain-viz');
+            const laser = document.createElement('div');
+            laser.className = 'laser';
+            
+            // Get positions of blocks
+            const rectA = blockA.getBoundingClientRect();
+            const rectB = blockB.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+            
+            // Calculate relative positions
+            const x1 = rectA.left + rectA.width - containerRect.left;
+            const y1 = rectA.top + (rectA.height / 2) - containerRect.top;
+            const x2 = rectB.left - containerRect.left;
+            const y2 = rectB.top + (rectB.height / 2) - containerRect.top;
+            
+            // Calculate length and angle of laser
+            const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+            const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+            
+            // Set laser properties
+            laser.style.width = `${length}px`;
+            laser.style.left = `${x1}px`;
+            laser.style.top = `${y1}px`;
+            laser.style.transform = `rotate(${angle}deg)`;
+            
+            // Add animation for laser appearance
+            laser.style.opacity = '0';
+            laser.style.animation = 'laserAppear 0.8s forwards, laserPulse 2s infinite 0.8s';
+            
+            container.appendChild(laser);
+            
+            // Create keyframes for laser appear animation if not already defined
+            if (!document.querySelector('style').textContent.includes('@keyframes laserAppear')) {
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes laserAppear {
+                        from { transform: rotate(${angle}deg) scaleX(0); opacity: 0; }
+                        to { transform: rotate(${angle}deg) scaleX(1); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+        
+        // Initialize blockchain visualization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createBlockchainVisualization();
         });
     </script>
 </body>
