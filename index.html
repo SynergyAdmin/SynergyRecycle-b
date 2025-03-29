@@ -20,6 +20,8 @@
             --background-green: #f5f9f5;   /* Sfondo verde chiarissimo */
             --blockchain-blue: #4c7f9c;    /* Blu per la blockchain */
             --laser-color: #5cdb95;        /* Colore dei "raggi laser" */
+            /* ... altre variabili esistenti ... */
+            --laser-color: #9c27b0; /* Cambiato da verde a viola */
         }
         
         /* Reset e base */
@@ -405,10 +407,9 @@
         }
         
         .block {
-            width: 70px;
+            width: 80px;
             height: 70px;
             background: linear-gradient(135deg, var(--primary-green), var(--tertiary-green));
-            border-radius: 12px;
             position: absolute;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -418,6 +419,8 @@
             font-weight: bold;
             z-index: 3;
             transition: transform 0.3s ease;
+            /* Nuova forma esagonale */
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
         }
         
         .block:hover {
@@ -426,11 +429,11 @@
         
         .laser {
             height: 2px;
-            background-color: var(--laser-color);
+            background-color: #9c27b0; /* Colore viola */
             position: absolute;
             transform-origin: left;
             z-index: 2;
-            filter: drop-shadow(0 0 3px var(--laser-color));
+            filter: drop-shadow(0 0 3px #9c27b0); /* Stesso colore viola per il bagliore */
             animation: laserPulse 2s infinite;
         }
         
@@ -681,10 +684,13 @@
         });
         
         // Blockchain Visualization
-        function createBlockchainVisualization() {
+            function createBlockchainVisualization() {
             const container = document.getElementById('blockchain-viz');
+        // Puoi aggiungere più blocchi qui se desideri
             const blockLabels = ['Raccolta', 'Verifica', 'Processo', 'Riciclo', 'Riutilizzo'];
             const blocks = [];
+    
+            }
             
             // Create blocks
             blockLabels.forEach((label, i) => {
