@@ -1,3 +1,478 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politica dei Rischi nell'Acquisto di Token</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>    
+        :root {
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --container-width: 1200px;
+            --primary-blue: #0c546b;
+            --dark-gray: #333;
+            --light-gray: #ccc;
+            --primary-green: #58a845;
+            --secondary-green: #8BC34A;
+            --background-green: #f5f5f5; /* Colore di sfondo verde chiaro */
+        }
+        
+        /* Reset e base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: system-ui, -apple-system, sans-serif; 
+            line-height: 1.5; 
+            color: #333;
+            background-color: var(--background-green);
+        }
+        
+        /* Layout container */
+        .container { 
+            max-width: var(--container-width); 
+            width: 100%;
+            margin: 0 auto; 
+            padding: 0 var(--spacing-sm); 
+        }
+        
+        /* Header e navigazione */
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .main-nav a.button {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .main-nav a.button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Banner */
+        .banner {
+            background-color: #334a38;
+            color: white;
+            padding: 8px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        /* Menu mobile e responsività */
+        .hamburger-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: var(--primary-blue);
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            margin-top: -10px;
+        }
+
+        .mobile-nav a.button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        
+        /* Hero section */
+        .hero { 
+            min-height: 60vh; 
+            display: flex; 
+            align-items: center; 
+            background-color: var(--background-green); 
+            padding: var(--spacing-lg) 0; 
+        }
+        
+        .hero-content { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
+        
+        .hero-title { 
+            font-size: 3rem; 
+            margin-bottom: var(--spacing-md); 
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: #666;
+        }
+        
+        /* Form di contatto */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+        
+        .company-info {
+            flex: 0 0 250px;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-left: 2rem;
+            height: fit-content;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-green, #2ecc71);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .copyright-text {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .copyright-text a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+        
+        .submit-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        .info-title {
+            margin-bottom: 1.5rem;
+            color: var(--primary-green, #2ecc71);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .info-icon {
+            margin-right: 0.75rem;
+            width: 16px;
+            height: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .hamburger-btn {
+                display: block;
+            }
+            
+            .mobile-nav.active {
+                display: flex;
+            }
+            
+            .company-info {
+                margin-left: 0;
+                margin-top: 2rem;
+            }
+        }
+        
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 1rem 1.5rem;
+            margin: 0 0.5rem 1rem;
+            background-color: transparent;
+            border: 1px solid var(--primary-green, #2ecc71);
+            color: var(--primary-green, #2ecc71);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active, .tab-button:hover {
+            background-color: var(--primary-green, #2ecc71);
+            color: white;
+        }
+
+        .tab-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: var(--primary-green, #2ecc71);
+        }
+
+        .faq-answer {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 1rem;
+            max-height: 500px;
+        }
+
+        .faq-answer ul {
+            padding-left: 1.5rem;
+        }
+
+
+        /* CTA Section */
+        .cta-section {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem;
+            background-color: #f2f2f2;
+            border-radius: 8px;
+        }
+
+        .cta-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1rem 0 2rem;
+        }
+
+        .cta-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            background-color: var(--primary-green, #2ecc71);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-link:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .cta-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 1rem;
+        }
+
+        .cta-section a {
+            color: var(--primary-green, #2ecc71);
+            text-decoration: none;
+        }
+        
+        /* Documenti legali */
+        .legal-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .legal-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .legal-nav a {
+            padding: 8px 15px;
+            background-color: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .legal-nav a:hover {
+            background-color: #4a9632;
+        }
+        
+        .documento-legale {
+            padding: 10px;
+        }
+        
+        .documento-legale h1 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-green);
+        }
+        
+        .documento-legale h2 {
+            color: var(--primary-green);
+            margin: 30px 0 15px;
+        }
+        
+        .documento-legale section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .ultimo-aggiornamento {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .ultimo-aggiornamento p {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con logo -->
+    <header>
+        <div class="logo">
+            <img src="./assets/img/logo da email.png" alt="Logo">
+            <span>SynergyRecycle.B</span>
+        </div>
+        <nav class="main-nav">
+            <a href="./" class="button" data-i18n="navigation.home">Home</a>
+            <a href="./servizi.html" class="button" data-i18n="navigation.services">Servizi</a>
+            <a href="./sostenerci.html" class="button" data-i18n="navigation.support">Supportaci</a>
+            <a href="./contattaci.html" class="button" data-i18n="navigation.contact">Contattaci</a>
+            <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
+        </nav>
+        
+        <div class="hamburger-container">
+            <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+        </div>
+    </header>
+
+    <!-- Navigazione mobile -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="./" class="button">Home</a>
+        <a href="./servizi.html" class="button">Servizi</a>
+        <a href="./sostenerci.html" class="button">Supportaci</a>
+        <a href="./contattaci.html" class="button">Contattaci</a>
+        <a href="./roadmap.html" class="button">Roadmap</a>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner">
+        SynergyRecycle.B: "Benvenuti nei documenti legali di SynergyRecycle.B. Qui troverete tutte le informazioni relative ai nostri impegni legali e alle nostre politiche."
+    </div>
 <div class="documento-legale">
     <h1>Politica dei Rischi nell'Acquisto di Token</h1>
     
