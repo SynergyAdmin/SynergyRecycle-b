@@ -11,17 +11,15 @@
             --spacing-md: 2rem;
             --spacing-lg: 4rem;
             --container-width: 1200px;
-            --primary-blue: #0c546b;
             --dark-gray: #333;
             --light-gray: #ccc;
-            --primary-green: #58a845;
             --secondary-green: #8BC34A;
-            --primary-blue: #3a7c8c;       / Blu più soft /
-            --primary-green: #5aad57;      / Verde ecologico /
-            --secondary-green: #8BC34A;    / Verde più chiaro /
-            --tertiary-green: #c2e6c0;     / Verde molto soft /
-            --background-green: #f5f9f5;   / Sfondo verde chiarissimo /
-            --blockchain-blue: #4c7f9c;    / Blu per la blockchain /
+            --primary-blue: #3a7c8c;       /* Blu più soft */
+            --primary-green: #5aad57;      /* Verde ecologico */
+            --secondary-green: #8BC34A;    /* Verde più chiaro */
+            --tertiary-green: #c2e6c0;     /* Verde molto soft */
+            --background-green: #f5f9f5;   /* Sfondo verde chiarissimo */
+            --blockchain-blue: #4c7f9c;    /* Blu per la blockchain */
         }
         
         /* Reset e base */
@@ -454,27 +452,7 @@
             padding: var(--spacing-md) 0;
             background-color: #f8f9fa;
         }
-        
-        .logo-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            height: 100px;
-            margin: 0 auto;
-            overflow: hidden;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .logo-track {
-            display: flex;
-            align-items: center;
-            width: max-content;
-            height: 100%;
-            animation: scrollLogos 30s linear infinite;
-        }
-        
+                
         .logo-item {
             flex: 0 0 auto;
             width: 150px;
@@ -489,15 +467,6 @@
             max-width: 80%;
             max-height: 70%;
             object-fit: contain;
-        }
-        
-        @keyframes scrollLogos {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-1080px);
-            }
         }
         
         /* Footer */
@@ -776,7 +745,7 @@
             <p class="copyright-text">
                 © <span id="copyright-2024"></span> SynergyRecycle.B. 
                 - Tutti i diritti riservati
-                Herford, Germany | SynergyRecycle.B@gmail.com.
+                Herford, Germany | SynergyRecycle.B.
             </p>
         </div>
     </footer>
