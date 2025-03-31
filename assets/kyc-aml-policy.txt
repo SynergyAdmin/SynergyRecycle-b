@@ -700,3 +700,52 @@
         <p><strong>Versione</strong>: 1.0</p>
     </div>
 </div>
+
+        <div class="footer">
+            <p>© 2025 SynergyRecycle.B - Tutti i diritti riservati
+            Herford, Germany </p>
+        </div>
+    </div>
+</body>
+</html>
+
+    <!-- Script JS -->
+    <script>
+        // Aggiorna l'anno di copyright
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        
+        // Menu mobile toggle
+        document.getElementById('hamburger-btn').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobile-nav');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            this.setAttribute('aria-expanded', !isExpanded);
+            if (!isExpanded) {
+                mobileNav.classList.add('active');
+            } else {
+                mobileNav.classList.remove('active');
+            }
+        });
+        
+        // Chiudi menu mobile quando si clicca su un link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-nav').classList.remove('active');
+                document.getElementById('hamburger-btn').setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // Gestione scroll - nascondi il menu mobile quando si scrolla
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
+                // Scroll verso il basso
+                document.getElementById('mobile-nav').classList.remove('active');
+                document.getElementById('hamburger-btn').setAttribute('aria-expanded', 'false');
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
