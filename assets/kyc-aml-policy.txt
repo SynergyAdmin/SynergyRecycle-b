@@ -701,10 +701,16 @@
     </div>
 </div>
 
-        <div class="footer">
-            <p>© 2025 SynergyRecycle.B - Tutti i diritti riservati
-            Herford, Germany </p>
+    <footer class="site-footer">
+        <div class="container">
+            <p class="copyright-text">
+                © <span id="copyright-2024"></span> SynergyRecycle.B. 
+                - Tutti i diritti riservati
+                Herford, Germany |
+            </p>
         </div>
+    </footer>
+
     </div>
 </body>
 </html>
