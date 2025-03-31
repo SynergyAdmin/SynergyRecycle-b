@@ -1,0 +1,240 @@
+<div class="documento-legale">
+    <h1>POLITICA KNOW YOUR CUSTOMER (KYC) E ANTIRICICLAGGIO (AML)</h1>
+    
+    <section>
+        <h2>1. DEFINIZIONI E OBIETTIVI</h2>
+        
+        <h3>1.1 Introduzione</h3>
+        <p>La presente Politica Know Your Customer (KYC) e Antiriciclaggio (AML) definisce i principi e le procedure adottate da SynergyRecycle.B per prevenire e contrastare il riciclaggio di denaro, il finanziamento del terrorismo e altre attività illecite attraverso i nostri servizi.</p>
+        
+        <h3>1.2 Quadro Normativo di Riferimento</h3>
+        <ul>
+            <li>Direttiva (UE) 2015/849 (Quarta Direttiva Antiriciclaggio)</li>
+            <li>Direttiva (UE) 2018/843 (Quinta Direttiva Antiriciclaggio)</li>
+            <li>D.Lgs. 231/2007 e successive modifiche</li>
+            <li>Regolamento (UE) 2016/679 (GDPR)</li>
+            <li>Raccomandazioni del GAFI (Gruppo di Azione Finanziaria Internazionale)</li>
+        </ul>
+        
+        <h3>1.3 Obiettivi della Politica</h3>
+        <ul>
+            <li>Prevenire l'utilizzo dei nostri servizi per attività illecite</li>
+            <li>Verificare l'identità dei clienti e monitorare le attività</li>
+            <li>Rilevare e segnalare operazioni sospette</li>
+            <li>Garantire la conformità normativa</li>
+            <li>Proteggere la reputazione aziendale</li>
+        </ul>
+        
+        <h3>1.4 Ambito di Applicazione</h3>
+        <p>Si applica a:</p>
+        <ul>
+            <li>Tutti i clienti e transazioni</li>
+            <li>Dipendenti e collaboratori</li>
+            <li>Terze parti operanti per conto nostro</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>2. PROCEDURE DI VERIFICA DELL'IDENTITÀ (KYC)</h2>
+        
+        <h3>2.1 Livelli di Due Diligence</h3>
+        <ol>
+            <li><strong>Semplificata (SDD)</strong>: Per clienti a basso rischio</li>
+            <li><strong>Standard (CDD)</strong>: Per la maggioranza dei clienti</li>
+            <li><strong>Rafforzata (EDD)</strong>: Per clienti ad alto rischio</li>
+        </ol>
+        
+        <h3>2.2 Processo di Identificazione</h3>
+        
+        <h4>2.2.1 Persone Fisiche</h4>
+        <p><strong>Documenti:</strong></p>
+        <ul>
+            <li>Documento d'identità valido</li>
+            <li>Codice fiscale</li>
+            <li>Prova di residenza</li>
+        </ul>
+        
+        <p><strong>Procedura:</strong></p>
+        <ol>
+            <li>Acquisizione documenti</li>
+            <li>Verifica autenticità</li>
+            <li>Controllo liste sanzioni/PEP</li>
+        </ol>
+        
+        <h4>2.2.2 Persone Giuridiche</h4>
+        <p><strong>Documenti:</strong></p>
+        <ul>
+            <li>Certificato Camera di Commercio</li>
+            <li>Statuto societario</li>
+            <li>Identificazione titolare effettivo</li>
+        </ul>
+        
+        <h3>2.3 Aggiornamento Informazioni</h3>
+        <ul>
+            <li>Clienti standard: ogni 12-24 mesi</li>
+            <li>Alto rischio: ogni 6-12 mesi</li>
+            <li>Aggiornamento immediato per cambiamenti significativi</li>
+        </ul>
+        
+        <h3>2.4 Classificazione del Rischio</h3>
+        <p>Basata su:</p>
+        <ul>
+            <li>Tipo cliente e attività</li>
+            <li>Paese di origine</li>
+            <li>Volume transazioni</li>
+            <li>Status PEP</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>3. MISURE ANTIRICICLAGGIO (AML)</h2>
+        
+        <h3>3.1 Monitoraggio Transazioni</h3>
+        <ul>
+            <li>Monitoraggio continuo</li>
+            <li>Sistemi automatizzati</li>
+            <li>Soglie di attenzione</li>
+            <li>Revisione manuale</li>
+        </ul>
+        
+        <h3>3.2 Rilevamento Attività Sospette</h3>
+        <p>Indicatori:</p>
+        <ul>
+            <li>Transazioni insolite</li>
+            <li>Operazioni non coerenti</li>
+            <li>Paesi ad alto rischio</li>
+            <li>Strutturazione transazioni</li>
+        </ul>
+        
+        <h3>3.3 Segnalazione Operazioni Sospette</h3>
+        <ul>
+            <li>Responsabile dedicato</li>
+            <li>Procedura interna</li>
+            <li>Segnalazione a UIF</li>
+            <li>Divieto di tipping off</li>
+        </ul>
+        
+        <h3>3.4 Formazione del Personale</h3>
+        <ul>
+            <li>Corsi regolari</li>
+            <li>Aggiornamenti normativi</li>
+            <li>Test periodici</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>4. CONSERVAZIONE E SICUREZZA DEI DATI</h2>
+        
+        <h3>4.1 Archiviazione</h3>
+        <ul>
+            <li>Sistema centralizzato</li>
+            <li>Tracciabilità accessi</li>
+            <li>Backup regolari</li>
+        </ul>
+        
+        <h3>4.2 Periodo Conservazione</h3>
+        <ul>
+            <li>Documentazione KYC: 10+ anni</li>
+            <li>Registrazioni transazioni: 10+ anni</li>
+        </ul>
+        
+        <h3>4.3 Protezione Dati</h3>
+        <ul>
+            <li>Crittografia avanzata</li>
+            <li>Controllo accessi</li>
+            <li>Audit trail</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>5. DIRITTI DEGLI UTENTI</h2>
+        
+        <h3>5.1 Informativa Privacy</h3>
+        <ul>
+            <li>Trasparenza sulle finalità</li>
+            <li>Accessibilità multicanale</li>
+        </ul>
+        
+        <h3>5.2 Diritto di Accesso</h3>
+        <ul>
+            <li>Risposta entro 30 giorni</li>
+            <li>Formato elettronico</li>
+        </ul>
+        
+        <h3>5.3 Limitazioni</h3>
+        <ul>
+            <li>Eccezioni legali AML</li>
+            <li>Obbligo conservazione</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>6. PROCEDURE DI REVISIONE</h2>
+        
+        <h3>6.1 Audit Interno</h3>
+        <ul>
+            <li>Verifiche annuali</li>
+            <li>Reporting al management</li>
+        </ul>
+        
+        <h3>6.2 Revisione Politica</h3>
+        <ul>
+            <li>Aggiornamento annuale</li>
+            <li>Modifiche per cambiamenti normativi</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>7. VALUTAZIONE DEL RISCHIO</h2>
+        
+        <h3>7.1 Risk Assessment</h3>
+        <ul>
+            <li>Valutazione annuale</li>
+            <li>Analisi clienti/prodotti/aree</li>
+        </ul>
+        
+        <h3>7.2 Mitigazione</h3>
+        <ul>
+            <li>Misure specifiche</li>
+            <li>Allocazione risorse</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>8. GOVERNANCE</h2>
+        
+        <h3>8.1 Struttura</h3>
+        <ul>
+            <li>Board of Directors</li>
+            <li>Comitato AML</li>
+            <li>Responsabile dedicato</li>
+        </ul>
+        
+        <h3>8.2 Responsabilità</h3>
+        <ul>
+            <li>Approvazione: CdA</li>
+            <li>Implementazione: Senior Management</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>9. DISPOSIZIONI FINALI</h2>
+        
+        <h3>9.1 Entrata in Vigore</h3>
+        <p>Dal <strong>26-03-2025</strong></p>
+        
+        <h3>9.2 Diffusione</h3>
+        <ul>
+            <li>Intranet aziendale</li>
+            <li>Formazione personale</li>
+        </ul>
+        
+        <h3>9.3 Contatti</h3>
+        <p><strong>Responsabile AML:</strong> info-SRb@gmail.com</p>
+    </section>
+
+    <div class="ultimo-aggiornamento">
+        <p><strong>Ultimo Aggiornamento</strong>: 26-03-2025</p>
+        <p><strong>Versione</strong>: 1.0</p>
+    </div>
+</div>
