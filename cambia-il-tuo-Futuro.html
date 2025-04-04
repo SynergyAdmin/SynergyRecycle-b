@@ -28,6 +28,7 @@
             font-family: "Segoe UI", system-ui, -apple-system, sans-serif; 
             background-color: var(--background-green);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* Header e navigazione */
@@ -39,7 +40,7 @@
             justify-content: space-between;
             align-items: center;
             border-radius: 10px;
-            margin-bottom: 15px;
+            margin: 10px;
             position: relative;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -48,11 +49,11 @@
         .logo {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
         .logo img {
             height: 40px;
-            margin-right: 10px;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
             transition: transform 0.3s ease;
         }
@@ -66,6 +67,7 @@
             gap: 15px;
             justify-content: flex-end;
             width: 70%;
+            flex-wrap: wrap;
         }
 
         .main-nav a.button {
@@ -76,6 +78,7 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            white-space: nowrap;
         }
 
         .main-nav a.button:hover {
@@ -151,6 +154,7 @@
             background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
             padding: 15px;
             border-radius: 0 0 10px 10px;
+            margin: 0 10px;
             margin-top: -10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -203,6 +207,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.5s ease;
+            overflow-y: auto;
         }
 
         .future-page.active {
@@ -212,12 +217,16 @@
 
         .future-frame {
             width: 90%;
-            height: 90%;
+            max-width: 1200px;
+            height: 90%; 
+            max-height: 90vh;
             border-radius: 20px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             background-color: var(--background-green);
+            display: flex;
+            flex-direction: column;
         }
 
         .frame-background {
@@ -226,7 +235,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/api/placeholder/1600/900');
+            background-color: var(--background-green);
             background-size: cover;
             background-position: center;
             filter: blur(10px);
@@ -290,6 +299,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
+            padding: 0 20px;
         }
         
         .bottle-graphic {
@@ -298,11 +308,13 @@
             justify-content: center;
             align-items: center;
             height: 350px;
+            min-width: 200px;
         }
         
         .bottle-img {
-            width: 200px;
-            height: 350px;
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: contain;
         }
         
         .hero-text {
@@ -311,11 +323,13 @@
             font-weight: bold;
             color: var(--primary-color);
             line-height: 1.2;
+            padding-left: 20px;
         }
         
         .wave-top {
             margin-top: -50px;
             margin-bottom: -5px;
+            width: 100%;
         }
 
         /* Stile per la sezione calcolatrice */
@@ -324,6 +338,7 @@
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 20px;
             margin-top: -50px;
             position: relative;
             z-index: 10;
@@ -362,6 +377,7 @@
             justify-content: center;
             gap: 10px;
             margin-top: 10px;
+            flex-wrap: wrap;
         }
 
         .material-button {
@@ -385,10 +401,12 @@
             justify-content: space-between;
             gap: 15px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .result-card {
             flex: 1;
+            min-width: 200px;
             background-color: white;
             border-radius: 10px;
             padding: 15px;
@@ -398,6 +416,7 @@
             align-items: center;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 10px;
         }
         
         .result-card:hover {
@@ -497,6 +516,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .tree-label {
@@ -515,16 +536,19 @@
             justify-content: space-between;
             margin-top: 20px;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .stat-card {
             flex: 1;
+            min-width: 200px;
             background-color: #f0f8ff;
             border-radius: 10px;
             padding: 15px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 10px;
         }
         
         .stat-card:hover {
@@ -548,7 +572,7 @@
             display: block;
             width: 250px;
             height: 50px;
-            margin: 0 auto;
+            margin: 30px auto;
             background-color: var(--accent-color);
             color: white;
             border: none;
@@ -557,7 +581,6 @@
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 30px;
             position: relative;
             z-index: 10;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -576,57 +599,6 @@
             0% { transform: scale(1); }
             50% { transform: scale(0.95); }
             100% { transform: scale(1); }
-        }
-
-        /* Animazioni per bottiglia, token e albero */
-        #animation-container {
-            width: 100%;
-            height: 100%;
-        }
-        
-        #bottle-container {
-            opacity: 1;
-            transition: opacity 1s ease-in-out;
-        }
-        
-        #token-container {
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        
-        #tree-container {
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        
-        #animation-container.cycle-animation #bottle-container {
-            animation: fadeBottle 9s infinite;
-        }
-        
-        #animation-container.cycle-animation #token-container {
-            animation: fadeToken 9s infinite;
-        }
-        
-        #animation-container.cycle-animation #tree-container {
-            animation: fadeTree 9s infinite;
-        }
-        
-        @keyframes fadeBottle {
-            0%, 33% { opacity: 1; }
-            34%, 66% { opacity: 0; }
-            67%, 100% { opacity: 0; }
-        }
-        
-        @keyframes fadeToken {
-            0%, 33% { opacity: 0; }
-            34%, 66% { opacity: 1; }
-            67%, 100% { opacity: 0; }
-        }
-        
-        @keyframes fadeTree {
-            0%, 33% { opacity: 0; }
-            34%, 66% { opacity: 0; }
-            67%, 100% { opacity: 1; }
         }
 
         /* Responsive per dispositivi mobili */
@@ -650,11 +622,13 @@
             .hero {
                 flex-direction: column;
                 text-align: center;
+                padding: 0 10px;
             }
             
             .hero-text {
                 font-size: 36px;
                 margin-top: 20px;
+                padding-left: 0;
             }
             
             .results {
@@ -663,7 +637,6 @@
             
             .result-card {
                 width: 100%;
-                margin-bottom: 10px;
             }
             
             .total-stats {
@@ -672,20 +645,75 @@
             
             .stat-card {
                 width: 100%;
-                margin-bottom: 10px;
             }
             
             .cta-button {
                 width: 100%;
+            }
+            
+            .bottle-graphic {
+                height: 250px;  
+            }
+            
+            .bottle-img {
+                max-height: 250px;
+            }
+            
+            .calculator {
+                margin: 0 10px;
+                margin-top: -30px;
+                padding: 15px;
+            }
+            
+            .material-button {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+            
+            .input-field {
+                width: 100px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-text {
+                font-size: 28px;
+            }
+            
+            .bottle-graphic {
+                height: 200px;
+            }
+            
+            .bottle-img {
+                max-height: 200px;
+            }
+            
+            .input-label {
+                font-size: 16px;
+            }
+            
+            .result-value {
+                font-size: 24px;
+            }
+            
+            .tree-counter {
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .tree-label, .tree-value {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
     <!-- Intestazione -->
+<!-- Intestazione -->
     <header>
         <div class="logo">
-            <img src="./assets/img/logo da email.png" alt="Logo">
+            <img src="./assets/img/logo.png" alt="Logo SynergyRecycle.B">
             <span>SynergyRecycle.B</span>
         </div>
         <nav class="main-nav">
@@ -734,123 +762,85 @@
                     <div class="logo-text">SynergyRecycle.B</div>
                 </div>
 
-                    <div class="main-content">
-        <div class="hero">
-            <div class="bottle-graphic">
-                <svg class="bottle-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 350">
-                    <!-- Transition Animation - Bottle to Token to Tree -->
-                    <g id="animation-container">
-                        <!-- Bottle/Can -->
-                        <g id="bottle-container">
-                            <!-- Bottle Shape -->
-                            <path d="M70 50 L130 50 L130 80 C160 100 170 150 170 200 C170 280 130 320 100 320 C70 320 30 280 30 200 C30 150 40 100 70 80 Z" fill="#A8E6E6"/>
-                            <!-- Bottle Cap -->
-                            <path d="M75 30 L125 30 L125 50 L75 50 Z" fill="#006565"/>
-                            <!-- Bottle Ring -->
-                            <path d="M70 50 L130 50 L130 55 L70 55 Z" fill="#8BDFDF"/>
-                            <!-- Label -->
-                            <path d="M40 150 L160 150 L160 250 L40 250 Z" fill="#6DD2D2"/>
-                        </g>
-                        
-                        <!-- Token -->
-                        <g id="token-container" opacity="0">
-                            <circle cx="100" cy="175" r="70" fill="#1DC973"/>
-                            <text x="100" y="180" font-size="24" fill="white" text-anchor="middle" font-weight="bold">SRb</text>
-                            <circle cx="100" cy="175" r="60" stroke="white" stroke-width="3" fill="none"/>
-                        </g>
-                        
-                        <!-- Tree -->
-                        <g id="tree-container" opacity="0">
-                            <!-- Tree Trunk -->
-                            <rect x="90" y="200" width="20" height="100" fill="#8B4513"/>
-                            <!-- Tree Leaves -->
-                            <path d="M100 50 L30 200 L170 200 Z" fill="#228B22"/>
-                            <path d="M100 80 L40 180 L160 180 Z" fill="#2E8B57"/>
-                            <path d="M100 110 L50 160 L150 160 Z" fill="#3CB371"/>
-                        </g>
-                        
-                        <!-- Recycling Symbol -->
-                        <g id="recycling-symbol">
-                            <path d="M100 330 C70 330, 50 310, 50 280 C50 250, 70 230, 100 230" stroke="#1DC973" stroke-width="5" fill="none"/>
-                            <path d="M100 230 C130 230, 150 250, 150 280 C150 310, 130 330, 100 330" stroke="#1DC973" stroke-width="5" fill="none"/>
-                            <path d="M85 280 L115 280" stroke="#1DC973" stroke-width="5"/>
-                            <path d="M85 280 L95 270" stroke="#1DC973" stroke-width="5"/>
-                            <path d="M85 280 L95 290" stroke="#1DC973" stroke-width="5"/>
-                        </g>
-                    </g>
-                </svg>
-            </div>
-            <div class="hero-text">
-                Recycle,<br>
-                Earn<br>
-                Impact<br>
-                the World
-            </div>
-        </div>
-
-        <button class="cta-button" id="calculate-button">Calculate your impact now</button>
-
-        <div class="wave-top">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#EFFBFB" fill-opacity="1" d="M0,32L48,53.3C96,75,192,117,288,122.7C384,128,480,96,576,90.7C672,85,768,107,864,144C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-
-        <div class="calculator">
-            <div class="input-section">
-                <div class="input-label">Enter the number of bottles or cans</div>
-                <div class="input-container">
-                    <input type="number" id="quantity-input" class="input-field" value="20" min="0">
-                </div>
-                <div class="material-toggle">
-                    <button class="material-button active" id="pet-button">PET Bottles</button>
-                    <button class="material-button" id="can-button">Aluminum Cans</button>
-                </div>
-            </div>
-
-            <div class="results">
-                <div class="result-card">
-                    <div class="result-value" id="co2-saved">11</div>
-                    <div class="result-label">kg CO<sub>2</sub> Saved</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-value" id="tokens-earned">3.5</div>
-                    <div class="result-label">SRb Earned</div>
-                    <div class="earnings-value" id="money-earned">€0.08</div>
-                </div>
-                <div class="result-card donated-card">
-                    <div class="token-tree-container">
-                        <div class="token-icon">🪙</div>
-                        <div class="tree-icon">🌳</div>
-                    </div>
-                    <div class="result-label">Donated</div>
-                    <div class="slider-container">
-                        <input type="range" min="0" max="100" value="50" class="donation-slider" id="donation-slider">
-                        <div class="donation-info">
-                            <span id="donated-amount">1.8 SRb</span>
-                            <span>Touttree</span>
+                <div class="main-content">
+                    <div class="hero">
+                        <div class="bottle-graphic">
+                            <img src="./assets/img/recycling-cycle.png" alt="Ciclo di riciclo" class="bottle-img" id="cycle-image">
+                        </div>
+                        <div class="hero-text">
+                            Recycle,<br>
+                            Earn<br>
+                            Impact<br>
+                            the World
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="tree-counter" id="tree-counter">
-                <div class="tree-label">Trees planted from this donation:</div>
-                <div class="tree-value" id="tree-value">0</div>
-            </div>
+                    <button class="cta-button" id="calculate-button">Calculate your impact now</button>
 
-            <div class="total-stats">
-                <div class="stat-card">
-                    <div class="stat-value" id="recycled-counter">1,240,560</div>
-                    <div class="stat-label">Items Recycled</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="total-co2-saved">198,490</div>
-                    <div class="stat-label">kg CO<sub>2</sub> Saved</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="total-trees">113</div>
-                    <div class="stat-label">Trees Planted</div>
+                    <div class="wave-top">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                            <path fill="#EFFBFB" fill-opacity="1" d="M0,32L48,53.3C96,75,192,117,288,122.7C384,128,480,96,576,90.7C672,85,768,107,864,144C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                        </svg>
+                    </div>
+
+                    <div class="calculator">
+                        <div class="input-section">
+                            <div class="input-label">Enter the number of bottles or cans</div>
+                            <div class="input-container">
+                                <input type="number" id="quantity-input" class="input-field" value="20" min="0">
+                            </div>
+                            <div class="material-toggle">
+                                <button class="material-button active" id="pet-button">PET Bottles</button>
+                                <button class="material-button" id="can-button">Aluminum Cans</button>
+                            </div>
+                        </div>
+
+                        <div class="results">
+                            <div class="result-card">
+                                <div class="result-value" id="co2-saved">11</div>
+                                <div class="result-label">kg CO<sub>2</sub> Saved</div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-value" id="tokens-earned">3.5</div>
+                                <div class="result-label">SRb Earned</div>
+                                <div class="earnings-value" id="money-earned">€0.08</div>
+                            </div>
+                            <div class="result-card donated-card">
+                                <div class="token-tree-container">
+                                    <div class="token-icon">🪙</div>
+                                    <div class="tree-icon">🌳</div>
+                                </div>
+                                <div class="result-label">Donated</div>
+                                <div class="slider-container">
+                                    <input type="range" min="0" max="100" value="50" class="donation-slider" id="donation-slider">
+                                    <div class="donation-info">
+                                        <span id="donated-amount">1.8 SRb</span>
+                                        <span>Touttree</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tree-counter" id="tree-counter">
+                            <div class="tree-label">Trees planted from this donation:</div>
+                            <div class="tree-value" id="tree-value">0</div>
+                        </div>
+
+                        <div class="total-stats">
+                            <div class="stat-card">
+                                <div class="stat-value" id="recycled-counter">1,240,560</div>
+                                <div class="stat-label">Items Recycled</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="total-co2-saved">198,490</div>
+                                <div class="stat-label">kg CO<sub>2</sub> Saved</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="total-trees">113</div>
+                                <div class="stat-label">Trees Planted</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -871,169 +861,174 @@
         let sessionDonatedTokens = 0;
 
         // DOM Elements
-        const quantityInput = document.getElementById('quantity-input');
-        const co2SavedElement = document.getElementById('co2-saved');
-        const tokensEarnedElement = document.getElementById('tokens-earned');
-        const moneyEarnedElement = document.getElementById('money-earned');
-        const donationSlider = document.getElementById('donation-slider');
-        const donatedAmountElement = document.getElementById('donated-amount');
-        const recycledCounterElement = document.getElementById('recycled-counter');
-        const totalCO2SavedElement = document.getElementById('total-co2-saved');
-        const totalTreesElement = document.getElementById('total-trees');
-        const petButton = document.getElementById('pet-button');
-        const canButton = document.getElementById('can-button');
-        const treeValueElement = document.getElementById('tree-value');
-        const calculateButton = document.getElementById('calculate-button');
-        const tokenIcon = document.querySelector('.token-icon');
-        const treeIcon = document.querySelector('.tree-icon');
-
-        // Animation elements
-        const animationContainer = document.getElementById('animation-container');
-        const bottleContainer = document.getElementById('bottle-container');
-        const tokenContainer = document.getElementById('token-container');
-        const treeContainer = document.getElementById('tree-container');
-
-        // Start animation cycle - versione migliorata
-        function startAnimation() {
-            // Anziché alternare l'opacità, utilizziamo animazioni CSS
-            bottleContainer.classList.add('animated');
-            tokenContainer.classList.add('animated');
-            treeContainer.classList.add('animated');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header and navigation elements
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+            const futureButton = document.getElementById('future-button');
+            const futureButtonMobile = document.getElementById('future-button-mobile');
+            const futurePage = document.getElementById('future-page');
+            const closeButton = document.getElementById('close-button');
             
-            // Aggiungiamo anche una classe al contenitore principale
-            animationContainer.classList.add('cycle-animation');
-        }
+            // Calculator elements
+            const quantityInput = document.getElementById('quantity-input');
+            const co2SavedElement = document.getElementById('co2-saved');
+            const tokensEarnedElement = document.getElementById('tokens-earned');
+            const moneyEarnedElement = document.getElementById('money-earned');
+            const donationSlider = document.getElementById('donation-slider');
+            const donatedAmountElement = document.getElementById('donated-amount');
+            const recycledCounterElement = document.getElementById('recycled-counter');
+            const totalCO2SavedElement = document.getElementById('total-co2-saved');
+            const totalTreesElement = document.getElementById('total-trees');
+            const petButton = document.getElementById('pet-button');
+            const canButton = document.getElementById('can-button');
+            const calculateButton = document.getElementById('calculate-button');
+            const treeValueElement = document.getElementById('tree-value');
+            const cycleImage = document.getElementById('cycle-image');
 
-        // Configurazione per l'animazione token-albero
-        function setupTokenTreeAnimation() {
-            // Funzione per aggiornare l'animazione in base al valore dello slider
-            function updateTokenTreeAnimation(value) {
-                // Calcola la percentuale di donazione (0-100)
-                const percentage = value / 100;
-                
-                // Token Animation - dall'alto verso il basso, gradualmente scompare
-                tokenIcon.style.transform = `translateY(${percentage * 30}px) scale(${1 - percentage * 0.5})`;
-                tokenIcon.style.opacity = `${1 - percentage * 0.7}`;
-                
-                // Tree Animation - dal basso verso l'alto, gradualmente appare e cresce
-                treeIcon.style.transform = `translateY(-${percentage * 30}px) scale(${0.5 + percentage * 0.5})`;
-                treeIcon.style.opacity = `${percentage}`;
-            }
-            
-            // Aggiorniamo l'animazione quando lo slider cambia
-            donationSlider.addEventListener('input', function() {
-                updateTokenTreeAnimation(this.value);
+            // Mobile menu toggle
+            hamburgerBtn.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+                this.setAttribute('aria-expanded', !expanded);
+                mobileNav.classList.toggle('active');
             });
-            
-            // Inizializza con il valore attuale dello slider
-            updateTokenTreeAnimation(donationSlider.value);
-        }
 
-        // Calculate and update results
-        function updateResults() {
-            const quantity = parseInt(quantityInput.value) || 0;
-            
-            // Calculate CO2 savings based on material type
-            const co2PerUnit = currentMaterial === 'pet' ? PET_CO2_SAVING : CAN_CO2_SAVING;
-            const totalCO2 = (quantity * co2PerUnit) / 1000; // Convert to kg
-            
-            // Calculate tokens earned (1 token per unit)
-            const tokensEarned = quantity;
-            
-            // Calculate money earned
-            const moneyEarned = tokensEarned * TOKEN_VALUE;
-            
-            // Calculate donated amount based on slider percentage
-            const donationPercentage = donationSlider.value / 100;
-            const donatedTokens = tokensEarned * donationPercentage;
-            
-            // Update UI
-            co2SavedElement.textContent = totalCO2.toFixed(1);
-            tokensEarnedElement.textContent = tokensEarned.toFixed(1);
-            moneyEarnedElement.textContent = '€' + moneyEarned.toFixed(2);
-            donatedAmountElement.textContent = donatedTokens.toFixed(1) + ' SRb';
-            
-            // Calculate trees planted from current donation
-            const treesFromDonation = Math.floor(donatedTokens / TOKENS_PER_TREE);
-            treeValueElement.textContent = treesFromDonation;
-        }
+            // Future page toggle
+            futureButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                futurePage.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
 
-        // Submit calculation
-        function submitCalculation() {
-            const quantity = parseInt(quantityInput.value) || 0;
-            if (quantity <= 0) return;
-            
-            // Calculate CO2 savings
-            const co2PerUnit = currentMaterial === 'pet' ? PET_CO2_SAVING : CAN_CO2_SAVING;
-            const totalCO2 = (quantity * co2PerUnit) / 1000; // Convert to kg
-            
-            // Calculate tokens and donations
-            const tokensEarned = quantity;
-            const donationPercentage = donationSlider.value / 100;
-            const donatedTokens = tokensEarned * donationPercentage;
-            
-            // Update global counters
-            totalRecycled += quantity;
-            totalCO2Saved += totalCO2;
-            
-            // Add to session donations but calculate trees properly
-            sessionDonatedTokens += donatedTokens;
-            const newTreesPlanted = Math.floor(sessionDonatedTokens / TOKENS_PER_TREE);
-            
-            // Calculate the remainder tokens that didn't make a tree
-            const remainderTokens = sessionDonatedTokens % TOKENS_PER_TREE;
-            
-            // Reset session donations to just the remainder
-            sessionDonatedTokens = remainderTokens;
-            
-            // Update total trees planted
-            totalTreesPlanted += newTreesPlanted;
-            
-            // Update UI
-            recycledCounterElement.textContent = totalRecycled.toLocaleString();
-            totalCO2SavedElement.textContent = totalCO2Saved.toFixed(0).toLocaleString();
-            totalTreesElement.textContent = totalTreesPlanted.toLocaleString();
-            
-            // Reset input
-            quantityInput.value = "0";
-            updateResults();
-        }
+            futureButtonMobile.addEventListener('click', function(e) {
+                e.preventDefault();
+                futurePage.classList.add('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'hidden';
+            });
 
-        // Funzione per inizializzare tutte le animazioni migliorate
-        function initImprovedAnimations() {
-            setupTokenTreeAnimation();
-            startAnimation();
-            updateResults();
-        }
+            closeButton.addEventListener('click', function() {
+                futurePage.classList.remove('active');
+                document.body.style.overflow = '';
+            });
 
-        // Event listeners
-        quantityInput.addEventListener('input', updateResults);
-        
-        donationSlider.addEventListener('input', updateResults);
-        
-        petButton.addEventListener('click', () => {
-            currentMaterial = 'pet';
-            petButton.classList.add('active');
-            canButton.classList.remove('active');
-            updateResults();
+            // Material toggle
+            petButton.addEventListener('click', function() {
+                currentMaterial = 'pet';
+                petButton.classList.add('active');
+                canButton.classList.remove('active');
+                updateCalculations();
+            });
+
+            canButton.addEventListener('click', function() {
+                currentMaterial = 'can';
+                canButton.classList.add('active');
+                petButton.classList.remove('active');
+                updateCalculations();
+            });
+
+            // Input event listeners
+            quantityInput.addEventListener('input', updateCalculations);
+            donationSlider.addEventListener('input', updateDonation);
+
+            // Calculate button
+            calculateButton.addEventListener('click', function() {
+                // Animation effect for the cycle image
+                cycleImage.classList.add('spin');
+                setTimeout(() => {
+                    cycleImage.classList.remove('spin');
+                }, 1000);
+                
+                const quantity = parseInt(quantityInput.value) || 0;
+                
+                // Update global counters
+                totalRecycled += quantity;
+                recycledCounterElement.textContent = formatNumber(totalRecycled);
+                
+                const co2Saved = calculateCO2Saved(quantity);
+                totalCO2Saved += co2Saved / 1000; // Convert to kg
+                totalCO2SavedElement.textContent = formatNumber(Math.round(totalCO2Saved));
+                
+                // Calculate donation impact
+                const donationPercentage = parseInt(donationSlider.value);
+                const tokensEarned = calculateTokens(quantity);
+                const donatedTokens = tokensEarned * (donationPercentage / 100);
+                sessionDonatedTokens += donatedTokens;
+                
+                // Calculate new trees
+                updateTreeCounter();
+            });
+
+            // Initial calculations
+            updateCalculations();
+            updateDonation();
+            formatCounters();
+
+            // Functions
+            function updateCalculations() {
+                const quantity = parseInt(quantityInput.value) || 0;
+                const co2Saved = calculateCO2Saved(quantity);
+                const tokensEarned = calculateTokens(quantity);
+                const moneyValue = tokensEarned * TOKEN_VALUE;
+
+                co2SavedElement.textContent = (co2Saved / 1000).toFixed(1); // Convert to kg
+                tokensEarnedElement.textContent = tokensEarned.toFixed(1);
+                moneyEarnedElement.textContent = `€${moneyValue.toFixed(2)}`;
+
+                updateDonation();
+            }
+
+            function calculateCO2Saved(quantity) {
+                return quantity * (currentMaterial === 'pet' ? PET_CO2_SAVING : CAN_CO2_SAVING);
+            }
+
+            function calculateTokens(quantity) {
+                // Simple calculation: 1 token per 5 items
+                return quantity * 0.175;
+            }
+
+            function updateDonation() {
+                const quantity = parseInt(quantityInput.value) || 0;
+                const tokensEarned = calculateTokens(quantity);
+                const donationPercentage = parseInt(donationSlider.value);
+                const donatedTokens = tokensEarned * (donationPercentage / 100);
+                
+                donatedAmountElement.textContent = `${donatedTokens.toFixed(1)} SRb`;
+                updateTreeCounter();
+            }
+
+            function updateTreeCounter() {
+                const treesToPlant = Math.floor(sessionDonatedTokens / TOKENS_PER_TREE * 100) / 100;
+                treeValueElement.textContent = treesToPlant.toFixed(2);
+                
+                // Update total trees if we've accumulated enough tokens
+                if (sessionDonatedTokens >= TOKENS_PER_TREE) {
+                    const newTrees = Math.floor(sessionDonatedTokens / TOKENS_PER_TREE);
+                    totalTreesPlanted += newTrees;
+                    sessionDonatedTokens = sessionDonatedTokens % TOKENS_PER_TREE;
+                    totalTreesElement.textContent = totalTreesPlanted;
+                    
+                    // Animation for tree planting celebration
+                    totalTreesElement.classList.add('highlight');
+                    setTimeout(() => {
+                        totalTreesElement.classList.remove('highlight');
+                    }, 1500);
+                }
+            }
+
+            function formatCounters() {
+                recycledCounterElement.textContent = formatNumber(totalRecycled);
+                totalCO2SavedElement.textContent = formatNumber(totalCO2Saved);
+                totalTreesElement.textContent = totalTreesPlanted;
+            }
+
+            function formatNumber(num) {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
         });
-        
-        canButton.addEventListener('click', () => {
-            currentMaterial = 'can';
-            canButton.classList.add('active');
-            petButton.classList.remove('active');
-            updateResults();
-        });
-        
-        calculateButton.addEventListener('click', submitCalculation);
-
-        // Inizializza tutto al caricamento
-        document.addEventListener('DOMContentLoaded', initImprovedAnimations);
-        
-        // Se il documento è già caricato, esegui subito
-        if (document.readyState === 'complete' || document.readyState === 'interactive') {
-            setTimeout(initImprovedAnimations, 1);
-        }
     </script>
+
+    <!-- Footer or additional content would go here -->
+    
 </body>
 </html>
