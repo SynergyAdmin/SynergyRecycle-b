@@ -541,6 +541,23 @@
             .blockchain-visualization {
                 height: 180px;
             }
+
+            #future-button {
+                padding: 8px 15px;
+                border-radius: 20px;
+                text-decoration: none;
+                color: white;
+                background-color: var(--primary-green);
+                transition: all 0.3s;
+                margin: 0 15px;
+                white-space: nowrap;
+            }
+
+            #future-button:hover {
+                background-color: var(--secondary-green);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
         }
     </style>
 </head>
@@ -556,15 +573,13 @@
                 <img src="./assets/img/logo da email.png" alt="Logo">
                 <span>SynergyRecycle.B</span>
             </div>
+            <a href="#" class="button" id="future-button">Guarda come puoi cambiare il futuro</a>
             <nav class="main-nav">
-                <a href="#" class="future-button" id="future-button">Guarda come puoi cambiare il futuro</a>
-                
                 <a href="./" class="button">Home</a>
                 <a href="./servizi.html" class="button">Servizi</a>
                 <a href="./sostenerci.html" class="button">Supportaci</a>
                 <a href="./contattaci.html" class="button">Contattaci</a>
                 <a href="./roadmap.html" class="button">Roadmap</a>
-                <a href="./cambia-il-tuo-Futuro.html" class="button">Cambia il tuo Futuro</a>
             </nav>
             <div class="hamburger-container">
                 <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
@@ -573,12 +588,12 @@
 
         <!-- Navigazione mobile -->
         <nav class="mobile-nav" id="mobile-nav">
+            <a href="#" class="button">Guarda come puoi cambiare il futuro</a>
             <a href="./" class="button">Home</a>
             <a href="./servizi.html" class="button">Servizi</a>
             <a href="./sostenerci.html" class="button">Supportaci</a>
             <a href="./contattaci.html" class="button">Contattaci</a>
             <a href="./roadmap.html" class="button">Roadmap</a>
-            <a href="./cambia-il-tuo-Futuro.html">Guarda come puoi cambiare il futuro</a>
         </nav>
 
         <!-- Banner -->
