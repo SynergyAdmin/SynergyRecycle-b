@@ -20,6 +20,8 @@
             --background-green: #f5f9f5;   /* Sfondo verde chiarissimo */
             --blockchain-blue: #4c7f9c;    /* Blu per la blockchain */
             --laser-color: #5cdb95;        /* Colore dei "raggi laser" */
+            /* ... altre variabili esistenti ... */
+            --laser-color: #9c27b0; /* Cambiato da verde a viola */
         }
         
         /* Reset e base */
@@ -36,12 +38,33 @@
         
         /* Layout container */
         .container { 
-            max-width: var(--container-width); 
+            max-width: 1200px; 
             width: 100%;
             margin: 0 auto; 
-            padding: 0 var(--spacing-sm); 
+            padding: 20px; /* Questo crea lo spazio sopra l'header */ 
             position: relative;
             z-index: 2;
+        }
+
+        .cta-button {
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            background-color: var(--primary-green);
+            transition: all 0.3s;
+            margin: 0 10px;
+            text-align: center;
+            font-weight: 500;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
         /* Header e navigazione con effetto gradiente */
@@ -405,10 +428,9 @@
         }
         
         .block {
-            width: 70px;
+            width: 80px;
             height: 70px;
             background: linear-gradient(135deg, var(--primary-green), var(--tertiary-green));
-            border-radius: 12px;
             position: absolute;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -418,6 +440,8 @@
             font-weight: bold;
             z-index: 3;
             transition: transform 0.3s ease;
+            /* Nuova forma esagonale */
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
         }
         
         .block:hover {
@@ -426,11 +450,11 @@
         
         .laser {
             height: 2px;
-            background-color: var(--laser-color);
+            background-color: #9c27b0; /* Colore viola */
             position: absolute;
             transform-origin: left;
             z-index: 2;
-            filter: drop-shadow(0 0 3px var(--laser-color));
+            filter: drop-shadow(0 0 3px #9c27b0); /* Stesso colore viola per il bagliore */
             animation: laserPulse 2s infinite;
         }
         
@@ -438,6 +462,29 @@
             0%, 100% { opacity: 0.7; }
             50% { opacity: 1; }
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+           .blockchain-visualization {
+           height: 180px;
+        }
+    
+        .block {
+            width: 60px;
+            height: 50px;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 480px) {
+            .blockchain-visualization {
+            height: 250px;
+        }
+    
+        .block {
+            width: 55px;
+            height: 45px;
+            font-size: 0.7rem;
+        }        
         
         /* Background decorations */
         .bg-decoration {
@@ -515,6 +562,23 @@
             .blockchain-visualization {
                 height: 180px;
             }
+
+            #future-button {
+                padding: 8px 15px;
+                border-radius: 20px;
+                text-decoration: none;
+                color: white;
+                background-color: var(--primary-green);
+                transition: all 0.3s;
+                margin: 0 15px;
+                white-space: nowrap;
+            }
+
+            #future-button:hover {
+                background-color: var(--secondary-green);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
         }
     </style>
 </head>
@@ -536,6 +600,7 @@
                 <a href="./sostenerci.html" class="button">Supportaci</a>
                 <a href="./contattaci.html" class="button">Contattaci</a>
                 <a href="./roadmap.html" class="button">Roadmap</a>
+                <a href="./cambia-il-tuo-Futuro.html" class="button">Guarda come puoi cambiare il futuro</a>
             </nav>
             <div class="hamburger-container">
                 <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
@@ -571,8 +636,8 @@
         <!-- Blockchain Visualization Section -->
         <section class="section">
             <div class="container">
-                <h2 class="section-title">Blockchain per un futuro sostenibile</h2>
-                <p class="text-center">La nostra tecnologia blockchain connette ogni fase del riciclo per massimizzare l'impatto positivo.</p>
+                <h2 class="section-title">Con la Blockchain Polygon il futuro sarà sostenibile</h2>
+                <p class="text-center">La nostra tecnologia basata su blockchain Polygon connette ogni fase del riciclo per massimizzare l'impatto positivo.</p>
                 <div class="blockchain-visualization" id="blockchain-viz">
                     <!-- This will be filled by JavaScript -->
                 </div>
@@ -656,124 +721,134 @@
         <div class="container">
             <p class="copyright-text">
                 © <span id="copyright-year"></span> SynergyRecycle.B. 
-                Tutti i contenuti di questa pagina sono protetti da copyright 
-                ai sensi della legge internazionale.
+                 - Tutti i diritti riservati
+                Herford, Germany | SynergyRecycle.B@gmail.com
             </p>
         </div>
     </footer>
 
     <!-- Script JS -->
     <script>
-        // Aggiorna l'anno di copyright
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
-        
-        // Menu mobile toggle
-        document.getElementById('hamburger-btn').addEventListener('click', function() {
-            const mobileNav = document.getElementById('mobile-nav');
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            
-            this.setAttribute('aria-expanded', !isExpanded);
-            if (!isExpanded) {
-                mobileNav.classList.add('active');
-            } else {
-                mobileNav.classList.remove('active');
-            }
-        });
-        
-        // Blockchain Visualization
-        function createBlockchainVisualization() {
-            const container = document.getElementById('blockchain-viz');
-            const blockLabels = ['Raccolta', 'Verifica', 'Processo', 'Riciclo', 'Riutilizzo'];
-            const blocks = [];
-            
-            // Create blocks
-            blockLabels.forEach((label, i) => {
-                const block = document.createElement('div');
-                block.className = 'block';
-                block.textContent = label;
-                
-                // Position blocks from left to right
-                const leftPos = (i * 20) + 5; // percentage
-                block.style.left = `${leftPos}%`;
-                block.style.top = '40%';
-                
-                container.appendChild(block);
-                blocks.push(block);
-                
-                // Add animation delay for blocks to appear one after another
-                block.style.opacity = '0';
-                block.style.animation = `fadeIn 0.5s ${i * 0.2}s forwards`;
-            });
-            
-            // Create keyframes for fadeIn animation if not already defined
-            if (!document.querySelector('style').textContent.includes('@keyframes fadeIn')) {
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes fadeIn {
-                        from { opacity: 0; transform: translateY(20px); }
-                        to { opacity: 1; transform: translateY(0); }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-            
-            // Connect blocks with lasers
-            setTimeout(() => {
-                for (let i = 0; i < blocks.length - 1; i++) {
-                    connectBlocksWithLaser(blocks[i], blocks[i+1]);
-                }
-            }, 1500); // Wait for blocks to appear
-        }
-        
-        function connectBlocksWithLaser(blockA, blockB) {
-            const container = document.getElementById('blockchain-viz');
-            const laser = document.createElement('div');
-            laser.className = 'laser';
-            
-            // Get positions of blocks
-            const rectA = blockA.getBoundingClientRect();
-            const rectB = blockB.getBoundingClientRect();
-            const containerRect = container.getBoundingClientRect();
-            
-            // Calculate relative positions
-            const x1 = rectA.left + rectA.width - containerRect.left;
-            const y1 = rectA.top + (rectA.height / 2) - containerRect.top;
-            const x2 = rectB.left - containerRect.left;
-            const y2 = rectB.top + (rectB.height / 2) - containerRect.top;
-            
-            // Calculate length and angle of laser
-            const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-            const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-            
-            // Set laser properties
-            laser.style.width = `${length}px`;
-            laser.style.left = `${x1}px`;
-            laser.style.top = `${y1}px`;
-            laser.style.transform = `rotate(${angle}deg)`;
-            
-            // Add animation for laser appearance
-            laser.style.opacity = '0';
-            laser.style.animation = 'laserAppear 0.8s forwards, laserPulse 2s infinite 0.8s';
-            
-            container.appendChild(laser);
-            
-            // Create keyframes for laser appear animation if not already defined
-            if (!document.querySelector('style').textContent.includes('@keyframes laserAppear')) {
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes laserAppear {
-                        from { transform: rotate(${angle}deg) scaleX(0); opacity: 0; }
-                        to { transform: rotate(${angle}deg) scaleX(1); opacity: 1; }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-        }
-        
-        // Initialize blockchain visualization when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            createBlockchainVisualization();
+    // Aggiorna l'anno di copyright
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    
+    // Menu mobile toggle
+    document.getElementById('hamburger-btn').addEventListener('click', function() {
+        const mobileNav = document.getElementById('mobile-nav');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        this.setAttribute('aria-expanded', !isExpanded);
+        if (!isExpanded) {
+            mobileNav.classList.add('active');
+        } else {
+            mobileNav.classList.remove('active');
+        }
+    });
+    
+    // Blockchain Visualization
+    function createBlockchainVisualization() {
+        const container = document.getElementById('blockchain-viz');
+        if (!container) return; // Verifica che il container esista
+        
+        // Definizione dei blocchi della blockchain
+        const blockLabels = ['Raccolta', 'Verifica', 'Processo', 'Riciclo', 'Riutilizzo'];
+        const blocks = [];
+        
+        // Crea i blocchi
+        blockLabels.forEach((label, i) => {
+            const block = document.createElement('div');
+            block.className = 'block';
+            block.textContent = label;
+            
+            // Posiziona i blocchi da sinistra a destra
+            const leftPos = (i * 20) + 5; // percentuale
+            block.style.left = `${leftPos}%`;
+            block.style.top = '40%';
+            
+            container.appendChild(block);
+            blocks.push(block);
+            
+            // Aggiungi ritardo di animazione per far apparire i blocchi uno dopo l'altro
+            block.style.opacity = '0';
+            block.style.animation = `fadeIn 0.5s ${i * 0.2}s forwards`;
         });
+        
+        // Crea i keyframes per l'animazione fadeIn se non già definiti
+        if (!document.getElementById('blockchain-animations')) {
+            const style = document.createElement('style');
+            style.id = 'blockchain-animations';
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes laserAppear {
+                    from { transform: scaleX(0); opacity: 0; }
+                    to { transform: scaleX(1); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Collega i blocchi con i laser
+        setTimeout(() => {
+            for (let i = 0; i < blocks.length - 1; i++) {
+                connectBlocksWithLaser(blocks[i], blocks[i+1]);
+            }
+        }, 1500); // Aspetta che i blocchi appaiano
+    }
+    
+    function connectBlocksWithLaser(blockA, blockB) {
+        const container = document.getElementById('blockchain-viz');
+        if (!container || !blockA || !blockB) return;
+        
+        const laser = document.createElement('div');
+        laser.className = 'laser';
+        
+        // Ottieni le posizioni dei blocchi
+        const rectA = blockA.getBoundingClientRect();
+        const rectB = blockB.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        
+        // Calcola le posizioni relative
+        const x1 = rectA.left + rectA.width - containerRect.left;
+        const y1 = rectA.top + (rectA.height / 2) - containerRect.top;
+        const x2 = rectB.left - containerRect.left;
+        const y2 = rectB.top + (rectB.height / 2) - containerRect.top;
+        
+        // Calcola lunghezza e angolo del laser
+        const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+        
+        // Imposta le proprietà del laser
+        laser.style.width = `${length}px`;
+        laser.style.left = `${x1}px`;
+        laser.style.top = `${y1}px`;
+        laser.style.transform = `rotate(${angle}deg)`;
+        
+        // Aggiungi animazione per l'apparizione del laser
+        laser.style.opacity = '0';
+        laser.style.transformOrigin = 'left center';
+        laser.style.animation = `laserAppear 0.8s forwards, laserPulse 2s infinite 0.8s`;
+        
+        container.appendChild(laser);
+    }
+    
+    // Inizializza la visualizzazione blockchain quando il DOM è caricato
+    createBlockchainVisualization();
+    
+    // Gestione responsive per la visualizzazione blockchain
+    window.addEventListener('resize', function() {
+        // Rimuovi i vecchi elementi
+        const container = document.getElementById('blockchain-viz');
+        if (container) {
+            container.innerHTML = '';
+            // Ricrea la visualizzazione
+            createBlockchainVisualization();
+        }
+    });
+});
     </script>
 </body>
 </html>
