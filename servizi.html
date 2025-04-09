@@ -90,6 +90,81 @@
             margin: 0 auto; 
             padding: 20px; 
         }
+
+        .language-selector {
+            position: relative;
+            margin-left: 10px;
+        }
+        
+        .language-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+        
+        .language-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            min-width: 120px;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .language-dropdown.show {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-option:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .language-flag {
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+        
+        /* Aggiungiamo stili anche per la versione mobile */
+        .mobile-nav .language-selector {
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .mobile-nav .language-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-nav .language-dropdown {
+            position: relative;
+            width: 100%;
+            box-shadow: none;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-top: none;
         
         /* Header e navigazione */
         header {
@@ -598,8 +673,19 @@
             <a href="./sostenerci.html" class="button">Supportaci</a>
             <a href="./contattaci.html" class="button">Contattaci</a>
             <a href="./roadmap.html" class="button">Roadmap</a>
+            
+            <div class="language-selector">
+                    <button class="language-btn" id="language-btn">🌐</button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <div class="language-option" data-lang="it"><span class="language-flag">🇮🇹</span> Italiano</div>
+                        <div class="language-option" data-lang="en"><span class="language-flag">🇬🇧</span> English</div>
+                        <div class="language-option" data-lang="es"><span class="language-flag">🇪🇸</span> Español</div>
+                        <div class="language-option" data-lang="de"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                        <div class="language-option" data-lang="fr"><span class="language-flag">🇫🇷</span> Français</div>
+                    </div>
+            </div>
         </nav>
-        <button class="hamburger-menu">☰</button>
+        <button class="hamburger-menu" id="hamburger-menu">☰</button>
     </header>
 
     <!-- Navigazione mobile -->
@@ -610,6 +696,17 @@
         <a href="./sostenerci.html" class="button">Supportaci</a>
         <a href="./contattaci.html" class="button">Contattaci</a>
         <a href="./roadmap.html" class="button">Roadmap</a>
+        
+        <div class="language-selector">
+                <button class="language-btn" id="mobile-language-btn">🌐 Lingua</button>
+                <div class="language-dropdown" id="mobile-language-dropdown">
+                    <div class="language-option" data-lang="it"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    <div class="language-option" data-lang="en"><span class="language-flag">🇬🇧</span> English</div>
+                    <div class="language-option" data-lang="es"><span class="language-flag">🇪🇸</span> Español</div>
+                    <div class="language-option" data-lang="de"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                    <div class="language-option" data-lang="fr"><span class="language-flag">🇫🇷</span> Français</div>
+                </div>
+        </div>
     </nav>
 
     <!-- Banner -->
@@ -806,6 +903,114 @@
     <script src="./assets/js/main.js"></script>
     <script>
         document.getElementById('copyright-2024').textContent = new Date().getFullYear();
+
+               // Set the current year in the copyright
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        
+        // Function to copy address to clipboard
+        function copyAddress(elementId) {
+            const element = document.getElementById(elementId);
+            const address = element.getAttribute('data-address');
+            
+            navigator.clipboard.writeText(address).then(() => {
+                // Show the "copied" message
+                const copyMsg = document.getElementById(elementId + '-copy-msg');
+                copyMsg.style.display = 'inline';
+                
+                // Hide the message after 2 seconds
+                setTimeout(() => {
+                    copyMsg.style.display = 'none';
+                }, 2000);
+            });
+        }
+        
+        // Toggle menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburger-menu');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            hamburgerBtn.addEventListener('click', function() {
+                mobileNav.classList.toggle('show');
+            });
+            
+            // Gestione dei dropdown per il selettore di lingua
+            const languageBtn = document.getElementById('language-btn');
+            const languageDropdown = document.getElementById('language-dropdown');
+            const mobileLanguageBtn = document.getElementById('mobile-language-btn');
+            const mobileLanguageDropdown = document.getElementById('mobile-language-dropdown');
+            const languageOptions = document.querySelectorAll('.language-option');
+            
+            // Funzione per mostrare/nascondere il dropdown della lingua
+            languageBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageDropdown.classList.toggle('show');
+                // Nasconde l'altro dropdown se aperto
+                mobileLanguageDropdown.classList.remove('show');
+            });
+            
+            // Versione mobile
+            mobileLanguageBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mobileLanguageDropdown.classList.toggle('show');
+                // Nasconde l'altro dropdown se aperto
+                languageDropdown.classList.remove('show');
+            });
+            
+            // Gestione del click sul documento per chiudere i dropdown
+            document.addEventListener('click', function() {
+                languageDropdown.classList.remove('show');
+                mobileLanguageDropdown.classList.remove('show');
+            });
+            
+            // Impedisce la propagazione del click sul dropdown stesso
+            languageDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            mobileLanguageDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            // Gestione del cambio lingua
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeLang(lang);
+                    
+                    // Chiude i dropdown
+                    languageDropdown.classList.remove('show');
+                    mobileLanguageDropdown.classList.remove('show');
+                });
+            });
+            
+            // Funzione per cambiare lingua
+            function changeLang(lang) {
+                // Imposta la lingua nel localStorage per persistenza
+                localStorage.setItem('selectedLanguage', lang);
+                
+                // Qui dovresti implementare la logica per cambiare la lingua
+                // Per esempio, reindirizzare a una versione tradotta della pagina
+                // o caricare le traduzioni necessarie
+                
+                console.log(`Lingua cambiata in: ${lang}`);
+                
+                // Opzione 1: Reindirizza a una versione tradotta
+                // window.location.href = `/${lang}/sostenerci.html`;
+                
+                // Opzione 2: Cambia la lingua dell'interfaccia con traduzioni caricate dinamicamente
+                // loadTranslations(lang);
+                
+                // Per ora, mostriamo solo un alert per dimostrare il funzionamento
+                alert(`Lingua selezionata: ${lang}. Implementa la logica di traduzione secondo le tue esigenze.`);
+            }
+            
+            // Carica la lingua salvata se disponibile
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang) {
+                // Si potrebbe applicare la lingua salvata all'avvio
+                // changeLang(savedLang);
+            }
+        });
         
         // Link al video Dropbox
         const videoLinks = {
