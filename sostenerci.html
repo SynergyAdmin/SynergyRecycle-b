@@ -410,59 +410,56 @@
             border: 1px solid rgba(0,0,0,0.05); /* Bordo leggero */
         }
 
+        /* --- Start Corrected Coin CSS --- */
         .coin-container {
-            perspective: 1000px;
-            width: 200px; /* Dimensione moneta ridotta */
-            height: 200px;
+            perspective: 1000px; /* Crucial for 3D */
+            width: 200px; /* Adjusted size */
+            height: 200px; /* Adjusted size */
             margin: 10px 0;
         }
 
         .coin {
-            width: 100%; height: 100%; position: relative;
-            transform-style: preserve-3d;
-            animation: spin 10s linear infinite; /* Rallentato */
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d; /* Apply to the direct parent of the faces */
+            animation: spin 10s linear infinite; /* Slower spin */
         }
 
         .coin-side {
-            position: absolute; width: 100%; height: 100%; border-radius: 50%;
-            backface-visibility: hidden; background-size: cover; background-position: center;
-            border: 3px solid #b8860b; /* Bordo più scuro */
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.2); /* Ombra interna */
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            backface-visibility: hidden; /* Hide the back when facing away */
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #b8860b; /* Darker gold border */
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2); /* Inner shadow */
         }
 
         .front {
-            background-color: #ffd700; /* Oro base */
+            background-color: #ffd700; /* Base gold color */
             background-image: url('./assets/img/coinF.jpg');
-            transform: translateZ(4px); /* Spessore ridotto */
+            /* Push the front face slightly forward */
+            transform: translateZ(2px); /* Small Z translation */
         }
 
         .back {
-            background-color: #f4a700; /* Oro più scuro */
+            background-color: #f4a700; /* Darker gold color */
             background-image: url('./assets/img/coinR.jpg');
-            transform: rotateY(180deg) translateZ(4px); /* Spessore ridotto */
+            /* Rotate the back face and push it slightly forward (same amount as front) */
+            transform: rotateY(180deg) translateZ(2px); /* Rotate and small Z translation */
         }
 
-        /* Bordo laterale (Edge) */
-        /* Creiamo un bordo più realistico usando pseudo-elementi o div multipli se necessario.
-           Semplificazione: Usiamo box-shadow spesso */
-         .coin::before { /* Simula bordo laterale */
-             content: '';
-             position: absolute;
-             top: 0; left: 4px; /* Leggermente spostato per simulare spessore */
-             width: calc(100% - 8px); /* Larghezza interna */
-             height: calc(100% - 8px); /* Altezza interna */
-             border-radius: 50%;
-             background: linear-gradient(#b8860b, #ffd700, #b8860b); /* Gradiente per effetto metallico */
-             transform: translateZ(0px) rotateY(90deg); /* Posiziona sul lato */
-             transform-style: preserve-3d;
-             box-shadow: 0 0 5px #a0740a;
-         }
-
+        /* Removed the complex/problematic edge simulation (.edge or .coin::before) */
 
         @keyframes spin {
             from { transform: rotateY(0deg); }
             to { transform: rotateY(360deg); }
         }
+        /* --- End Corrected Coin CSS --- */
+
 
         /* Pricing Grid e Cards */
         .pricing-grid {
@@ -476,15 +473,13 @@
             background: white;
             border-radius: 12px; /* Stesso radius value-card */
             padding: var(--spacing-md); /* Usa variabile */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Stessa ombra value-card */
             text-align: center;
-             /* Applicare effetto bordo qui */
-             /* Eredita transform da card-fx-border */
+             /* Applica effetto bordo qui usando card-fx-border */
              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Ombra base */
              display: flex; /* Flex per layout interno */
              flex-direction: column; /* Contenuto in colonna */
         }
-         .pricing-card:hover {
+         .pricing-card:hover { /* Hover gestito da card-fx-border */
              box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Ombra hover da value-card */
          }
 
@@ -496,6 +491,10 @@
 
         .price-tag {
             margin: 10px 0 20px 0;
+            min-height: 3em; /* Ensure space even if empty */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .price-tag .currency {
              font-size: 1.2rem;
@@ -504,17 +503,12 @@
              margin-right: 2px;
         }
         .price-tag .price {
-             font-size: 2rem; /* Più piccolo */
-             font-weight: 600;
-             color: var(--price-color);
-        }
-         /* Stile specifico COMING SOON */
-         .price-tag .price:contains("COMING SOON") {
-             font-size: 1.2rem;
-             font-weight: 500;
-             color: var(--dark-gray);
+             font-size: 1.5rem; /* Adjusted size for COMING SOON */
+             font-weight: 500; /* Normal weight */
+             color: var(--dark-gray); /* Standard color */
              opacity: 0.8;
-         }
+             /* Removed specific :contains selector, style directly */
+        }
 
         .pricing-card p {
              margin-bottom: 15px;
@@ -598,6 +592,7 @@
             color: var(--primary-blue); /* Colore icona */
             line-height: 1; /* Evita spazio extra */
             transition: color 0.2s;
+            flex-shrink: 0; /* Non restringere bottone */
         }
         .copy-btn:hover {
              color: var(--secondary-green);
@@ -607,11 +602,12 @@
              width: 18px; height: 18px; /* Dimensione icona */
         }
         .copy-msg {
-            display: none;
+            display: none; /* Hidden by default */
             color: var(--primary-green); /* Verde messaggio */
             margin-left: 5px;
             font-size: 0.8em;
             white-space: nowrap;
+            flex-shrink: 0; /* Non restringere messaggio */
         }
 
         /* Security Notice */
@@ -641,10 +637,10 @@
             padding: var(--spacing-md);
             border-radius: 12px; /* Stesso radius card */
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Stessa ombra */
-             /* Applica effetto bordo */
+             /* Applica effetto bordo usando card-fx-border */
+             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Stessa ombra */
         }
-         .setup-card:hover {
+         .setup-card:hover { /* Hover gestito da card-fx-border */
              box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Ombra hover */
          }
          .setup-card h3 {
@@ -678,9 +674,6 @@
               text-align: center;
               margin-top: var(--spacing-sm);
          }
-
-        /* Rimosso srb-logo non presente nell'HTML */
-        /* Rimosso debug-info */
 
         /* === END: Styles Specific to sostenerci.html === */
 
@@ -724,8 +717,10 @@
              .coin-outer-container { width: 250px; }
              .coin-container { width: 160px; height: 160px; }
 
-             .crypto-address { flex-wrap: wrap; } /* Permetti a capo indirizzi */
-             .crypto-value { max-width: 100%; } /* Occupa tutta larghezza disponibile su riga nuova */
+             .crypto-address { flex-wrap: wrap; gap: 5px; } /* Permetti a capo indirizzi, riduci gap */
+             .crypto-value { max-width: 100%; flex-basis: 100%; } /* Occupa tutta larghezza disponibile su riga nuova */
+             .copy-btn { margin-left: auto; } /* Spinge bottone a destra sulla riga del label */
+             .copy-msg { flex-basis: 100%; text-align: right; margin-left:0; } /* Messaggio sotto, allineato a dx */
         }
 
         @media (max-width: 480px) {
@@ -778,11 +773,11 @@
                 <div class="language-selector">
                     <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
                     <div class="language-dropdown" id="language-dropdown" role="menu">
-                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
-                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                        <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                        <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                        <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                        <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                        <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
                     </div>
                 </div>
                 <!-- END: Language Selector HTML (Desktop) -->
@@ -803,10 +798,10 @@
             <div class="language-selector">
                 <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
                 <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
                     <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
                     <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
                     <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
                     <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
                 </div>
             </div>
@@ -838,7 +833,6 @@
                                 <!-- Immagini definite via CSS -->
                                 <div class="coin-side front"></div>
                                 <div class="coin-side back"></div>
-                                <!-- Edge simulato via pseudo-elemento CSS -->
                             </div>
                         </div>
                          <p style="font-size: 0.9rem; margin-top: 10px; color: var(--dark-gray); font-weight: 500;">SRB Token</p>
@@ -856,7 +850,6 @@
                     <div class="pricing-card card-fx-border"> <!-- Aggiunta classe effetto -->
                         <h2>Pre-Sale Riservata</h2>
                         <div class="price-tag">
-                            <!-- <span class="currency">$</span> -->
                             <span class="price">COMING SOON</span>
                         </div>
                         <div class="progress-bar" aria-label="Progresso Pre-Sale" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
@@ -870,7 +863,6 @@
                     <div class="pricing-card card-fx-border"> <!-- Aggiunta classe effetto -->
                         <h2>Supporto Iniziale (ICO)</h2>
                         <div class="price-tag">
-                            <!-- <span class="currency">$</span> -->
                             <span class="price">COMING SOON</span>
                         </div>
                          <p style="margin-bottom: 20px;">Contribuisci direttamente allo sviluppo e alla crescita del progetto tramite le seguenti opzioni:</p>
@@ -878,6 +870,7 @@
                              <!-- Indirizzi Cripto -->
                             <div class="crypto-address">
                                 <span class="crypto-label">BTC:</span>
+                                <!-- ATTENZIONE: data-address DEVE contenere l'indirizzo completo -->
                                 <span class="crypto-value" id="btc-address" data-address="bc1quxquvevc9l8gfly6jj7u58vqgpw9l9vjyra0xx">bc1q...a0xx</span>
                                 <button class="copy-btn" onclick="copyAddress('btc-address')" aria-label="Copia indirizzo Bitcoin">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
@@ -910,7 +903,8 @@
                              </div>
                              <div class="crypto-address">
                                  <span class="crypto-label">IBAN:</span>
-                                 <span class="crypto-value" id="iban-address" data-address="DE89 3704 0044 0532 0130 00">[IBAN - Richiedi via mail]</span> <!-- Placeholder IBAN -->
+                                 <!-- IMPORTANTE: Inserisci l'IBAN completo nel data-address! -->
+                                 <span class="crypto-value" id="iban-address" data-address="DE89370400440532013000">DE89...3000</span>
                                  <button class="copy-btn" onclick="copyAddress('iban-address')" aria-label="Copia IBAN">
                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                  </button>
@@ -924,7 +918,6 @@
                     <div class="pricing-card card-fx-border"> <!-- Aggiunta classe effetto -->
                         <h2>Lancio Ufficiale</h2>
                         <div class="price-tag">
-                           <!-- <span class="currency">$</span> -->
                            <span class="price">COMING SOON</span>
                         </div>
                         <p>"Preparati al lancio! Apriremo le porte a tutti per unirsi alla rivoluzione del riciclo. Seguici per non perdere le novità e i benefici esclusivi."</p>
@@ -934,7 +927,7 @@
                             <li>Introduzione Carta Virtuale/Fisica SRB</li>
                             <li>Nuove funzionalità e potenziamenti Eco-Sistema</li>
                         </ul>
-                        <a href="#stay-updated" class="btn">Resta Aggiornato (Coming Soon)</a> <!-- Link placeholder -->
+                        <a href="#stay-updated" class="btn" style="opacity: 0.7; cursor: not-allowed;">Resta Aggiornato (Coming Soon)</a> <!-- Link placeholder disabilitato -->
                     </div>
                 </div>
             </div>
@@ -1000,12 +993,13 @@
         </div>
     </footer>
 
-    <!-- Script JS Combinato -->
+    <!-- Script JS (con funzione Copia corretta) -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
             // --- COMMON HELPER FUNCTIONS ---
             const toggleAriaExpanded = (element) => {
+                 if (!element) return; // Add check
                  const isExpanded = element.getAttribute('aria-expanded') === 'true';
                  element.setAttribute('aria-expanded', !isExpanded);
             };
@@ -1032,7 +1026,10 @@
                     link.addEventListener('click', function() {
                         if (!link.closest('.language-selector')) {
                              mobileNav.classList.remove('active');
-                             hamburgerBtn.setAttribute('aria-expanded', 'false');
+                             // Ensure hamburger button state is also reset
+                            if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                                toggleAriaExpanded(hamburgerBtn);
+                            }
                         }
                     });
                 });
@@ -1105,42 +1102,60 @@
             // --- END: Language Selector Logic ---
 
 
-             // --- COPY ADDRESS FUNCTION --- (Mantenuta da originale)
-             window.copyAddress = function(elementId) { // Rendi globale o attacca a un oggetto globale
-                const element = document.getElementById(elementId);
-                const copyMsg = document.getElementById(elementId + '-copy-msg');
-                if (!element || !copyMsg) {
-                    console.error("Elemento non trovato per copiare:", elementId);
+             // --- START: Corrected COPY ADDRESS FUNCTION ---
+            // Make the function globally available for onclick attributes
+            window.copyAddress = function(elementId) {
+                console.log('copyAddress called for:', elementId); // Debug log
+
+                const valueElement = document.getElementById(elementId); // Get the span containing the text/data-attribute
+                const copyMsgElement = document.getElementById(elementId + '-copy-msg'); // Get the corresponding message span
+
+                // --- Input Validation ---
+                if (!valueElement) {
+                    console.error("Elemento valore non trovato:", elementId);
                     return;
                 }
-                 const address = element.getAttribute('data-address');
-                 if (!address) {
-                    console.error("Attributo data-address mancante per:", elementId);
+                if (!copyMsgElement) {
+                    console.error("Elemento messaggio copia non trovato per:", elementId);
+                    return;
+                }
+                const addressToCopy = valueElement.getAttribute('data-address');
+                if (!addressToCopy || addressToCopy === "[Codice IBAN]") { // Check also for placeholder
+                     console.error("Attributo 'data-address' mancante, vuoto o placeholder per:", elementId);
+                     alert("Indirizzo non disponibile per la copia.");
                      return;
-                 }
+                }
+                console.log('Address to copy:', addressToCopy); // Debug log
 
-                // Nascondi tutti gli altri messaggi di copia
-                 document.querySelectorAll('.copy-msg').forEach(msg => {
-                     if (msg.id !== copyMsg.id) {
+                // --- Hide other copy messages ---
+                document.querySelectorAll('.copy-msg').forEach(msg => {
+                    if (msg !== copyMsgElement) { // Don't hide the current message yet
                         msg.style.display = 'none';
                     }
-                 });
+                });
 
-                navigator.clipboard.writeText(address).then(() => {
-                    copyMsg.style.display = 'inline'; // Mostra messaggio specifico
+                // --- Use Clipboard API ---
+                navigator.clipboard.writeText(addressToCopy).then(() => {
+                    // Success! Show the confirmation message.
+                    console.log('Copiato con successo:', addressToCopy); // Debug log
+                    copyMsgElement.style.display = 'inline'; // Show the "Copiato!" message
+
+                    // Hide the message after a delay
                     setTimeout(() => {
-                        copyMsg.style.display = 'none';
-                    }, 2500); // Lascia visibile un po' più a lungo
+                        copyMsgElement.style.display = 'none';
+                    }, 2500); // Hide after 2.5 seconds
+
                 }).catch(err => {
-                     console.error('Errore durante la copia:', err);
-                     // Potresti mostrare un messaggio di errore all'utente qui
+                    // Error handling
+                    console.error('Errore durante la copia negli appunti:', err);
+                    alert('Errore: Impossibile copiare l\'indirizzo negli appunti. Potrebbe essere necessario farlo manualmente.\n Dettagli: ' + err.message);
+                     copyMsgElement.style.display = 'none';
                 });
             }
-
-            // --- Coin Animation (se si vuole controllare via JS, altrimenti solo CSS) ---
-            // Nessun JS aggiuntivo necessario per l'animazione CSS di base della moneta.
+            // --- END: Corrected COPY ADDRESS FUNCTION ---
 
         }); // Fine DOMContentLoaded
     </script>
+
 </body>
 </html>
