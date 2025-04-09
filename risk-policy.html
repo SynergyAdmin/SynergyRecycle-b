@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politica dei Rischi nell'Acquisto di Token</title>
+    <title>Politica dei Rischi Token - SynergyRecycle.B</title> <!-- Updated Title -->
     <style>
+        /* === START: Styles Copied/Adapted from index.html === */
+
+        /* Variabili con palette di colori ecologica e tecnologica (da index.html) */
         :root {
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
             --spacing-lg: 4rem;
             --container-width: 1200px;
-            --primary-blue: #0c546b;
+            --primary-blue: #3a7c8c;       /* Blu più soft */
             --dark-gray: #333;
             --light-gray: #ccc;
-            --primary-green: #58a845;
-            --secondary-green: #8BC34A;
-            --background-green: #f5f5f5; /* Colore di sfondo verde chiaro */
+            --primary-green: #5aad57;      /* Verde ecologico */
+            --secondary-green: #8BC34A;    /* Verde più chiaro */
+            --tertiary-green: #c2e6c0;     /* Verde molto soft */
+            --background-green: #f5f9f5;   /* Sfondo verde chiarissimo */
+            --blockchain-blue: #4c7f9c;    /* Blu per la blockchain */
+            --card-bg-color: #fff;         /* Sfondo per card/contenitori */
+            --light-bg-section: #f8f9fa;   /* Sfondo alternato sezioni */
+            --link-color: var(--primary-green); /* Colore link base */
+            --link-hover-color: var(--secondary-green);
+            --warning-color-strong: #dc3545; /* Rosso per avvertenze forti */
         }
-        
-        /* Reset e base */
+
+        /* Reset e base (da index.html) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            font-family: system-ui, -apple-system, sans-serif; 
-            line-height: 1.5; 
-            color: #333;
-            background-color: var(--background-green);
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif; /* Font da index */
+            line-height: 1.5;
+            color: var(--dark-gray); /* Colore base da index */
+            background-color: var(--background-green); /* Sfondo da index */
+            position: relative;
+            overflow-x: hidden;
+            margin: 0;
         }
-        
-        /* Layout container */
-        .container { 
-            max-width: var(--container-width); 
+
+        /* Layout container (da index.html) */
+        .container {
+            max-width: var(--container-width);
             width: 100%;
-            margin: 0 auto; 
-            padding: 0 var(--spacing-sm); 
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
         }
-        
-        /* Header e navigazione */
+
+        /* Header e navigazione con effetto gradiente (da index.html) */
         header {
-            background-color: var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
             color: white;
-            padding: 10px 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -48,615 +64,789 @@
             margin-bottom: 15px;
             position: relative;
             z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
             display: flex;
             align-items: center;
+            color: white;
+            text-decoration: none;
         }
 
         .logo img {
             height: 40px;
             margin-right: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+             transform: scale(1.05);
         }
 
+        /* Main Nav - Stile da index.html */
         .main-nav {
             display: flex;
-            gap: 15px;
-            justify-content: flex-end; /* Allinea gli elementi alla fine (destra) del container */
-            width: 70%; /* Opzionale: regola questa percentuale in base alle tue preferenze */
+            gap: 5px; /* Ridotto per lingua */
+            align-items: center;
+            justify-content: flex-end;
         }
-        
-        .main-nav a.button {
+
+        .main-nav a.button { /* Classe .button usata per i link nav */
             padding: 8px 15px;
             border-radius: 20px;
             text-decoration: none;
             color: white;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
         }
 
         .main-nav a.button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Banner */
-        .banner {
-            background-color: #334a38;
-            color: white;
-            padding: 8px 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            text-align: center;
-        }
-        
-        /* Menu mobile e responsività */
-        .hamburger-btn {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-        }
-
-        .mobile-nav {
-            display: none;
-            flex-direction: column;
-            background-color: var(--primary-blue);
-            padding: 15px;
-            border-radius: 0 0 10px 10px;
-            margin-top: -10px;
-        }
-
-        .mobile-nav a.button {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            margin: 5px 0;
-            border-radius: 5px;
-        }
-        
-        /* Hero section */
-        .hero { 
-            min-height: 60vh; 
-            display: flex; 
-            align-items: center; 
-            background-color: var(--background-green); 
-            padding: var(--spacing-lg) 0; 
-        }
-        
-        .hero-content { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            text-align: center; 
-        }
-        
-        .hero-title { 
-            font-size: 3rem; 
-            margin-bottom: var(--spacing-md); 
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-lg);
-            color: #666;
-        }
-        
-        /* Form di contatto */
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            padding: 1rem;
-        }
-        
-        .company-info {
-            flex: 0 0 250px;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            margin-left: 2rem;
-            height: fit-content;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background-color: var(--primary-green, #2ecc71);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-
-        .copyright-text {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .copyright-text a {
-            color: var(--primary-green);
-            text-decoration: none;
-        }
-        
-        .submit-btn:hover {
-            background-color: #27ae60;
-        }
-        
-        .info-title {
-            margin-bottom: 1.5rem;
-            color: var(--primary-green, #2ecc71);
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .info-icon {
-            margin-right: 0.75rem;
-            width: 16px;
-            height: 16px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        @media (max-width: 768px) {
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .main-nav {
-                display: none;
-            }
-            
-            .hamburger-btn {
-                display: block;
-            }
-            
-            .mobile-nav.active {
-                display: flex;
-            }
-            
-            .company-info {
-                margin-left: 0;
-                margin-top: 2rem;
-            }
-        }
-        
-        .tab-navigation {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-button {
-            padding: 1rem 1.5rem;
-            margin: 0 0.5rem 1rem;
-            background-color: transparent;
-            border: 1px solid var(--primary-green, #2ecc71);
-            color: var(--primary-green, #2ecc71);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tab-button.active, .tab-button:hover {
-            background-color: var(--primary-green, #2ecc71);
-            color: white;
-        }
-
-        .tab-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .tab-pane {
-            display: none;
-        }
-
-        .tab-pane.active {
-            display: block;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        .toggle-icon {
-            font-size: 1.5rem;
-            color: var(--primary-green, #2ecc71);
-        }
-
-        .faq-answer {
-            padding: 0 1rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-answer.active {
-            padding: 1rem;
-            max-height: 500px;
-        }
-
-        .faq-answer ul {
-            padding-left: 1.5rem;
-        }
-
-
-        /* CTA Section */
-        .cta-section {
-            margin-top: 3rem;
-            text-align: center;
-            padding: 2rem;
-            background-color: #f2f2f2;
-            border-radius: 8px;
-        }
-
-        .cta-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 1rem 0 2rem;
-        }
-
-        .cta-link {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            margin: 0.5rem;
-            background-color: var(--primary-green, #2ecc71);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .cta-link:hover {
-            background-color: #27ae60;
+            background-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
+        .main-nav a.button::after { /* Effetto underline da index */
+             content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+             background-color: var(--tertiary-green); transition: width 0.3s ease;
+        }
+        .main-nav a.button:hover::after { width: 100%; }
 
-        .cta-section h3 {
-            color: #333;
-            margin-bottom: 1rem;
+        /* Bottone verde CTA (da index.html - se necessario) */
+        .green-button {
+            padding: 8px 20px; background-color: var(--primary-green); border-radius: 20px;
+            color: white; text-decoration: none; font-weight: 500; transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); border: none; cursor: pointer;
+            position: relative; overflow: hidden; white-space: nowrap; margin: 0 5px; display: inline-block;
+        }
+        .green-button::before { /* Effetto shine */
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        .green-button:hover {
+            background-color: var(--secondary-green); transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .green-button:hover::before { left: 100%; }
+
+        /* Hamburger Menu Button (da index.html) */
+        .hamburger-btn { /* Nome corretto per JS */
+            display: none; cursor: pointer; background: none; border: none;
+            color: white; font-size: 24px; padding: 5px;
         }
 
-        .cta-section p {
-            margin-bottom: 1rem;
+        /* Navigazione Mobile (da index.html) */
+        .mobile-nav {
+            display: none; flex-direction: column;
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
+            padding: 15px; border-radius: 0 0 10px 10px; margin-top: -10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); position: relative; z-index: 999;
+        }
+        .mobile-nav.active { /* Classe per mostrarlo da index JS */
+             display: flex;
+        }
+        .mobile-nav a.button,
+        .mobile-nav .green-button {
+            color: white; text-decoration: none; padding: 10px 15px; margin: 5px 0;
+            border-radius: 5px; transition: background-color 0.3s, transform 0.3s;
+            text-align: center; display: block; width: 100%; box-sizing: border-box;
+        }
+        .mobile-nav a.button:hover,
+        .mobile-nav .green-button:hover {
+            background-color: rgba(255, 255, 255, 0.15); transform: translateX(5px);
+            box-shadow: none;
+        }
+        .mobile-nav .green-button:hover::before { left: -100%; }
+
+        /* Language Selector Styles (da index.html) */
+        .language-selector { position: relative; margin-left: 10px; }
+        .language-btn {
+            background: none; border: none; font-size: 1.5rem; cursor: pointer;
+            padding: 5px 8px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; color: white; transition: background-color 0.3s; line-height: 1;
+        }
+        .language-btn:hover { background-color: rgba(255, 255, 255, 0.15); }
+        .language-dropdown {
+            position: absolute; top: calc(100% + 10px); right: 0; background-color: white;
+            border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); min-width: 160px;
+            z-index: 1100; display: none; overflow: hidden; padding: 5px 0;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 10px 15px; cursor: pointer; transition: background-color 0.2s ease-in-out;
+            display: flex; align-items: center; font-size: 0.95rem; color: var(--dark-gray);
+        }
+        .language-option:hover { background-color: var(--background-green); }
+        .language-flag { margin-right: 10px; font-size: 1.1rem; line-height: 1; }
+        /* Mobile Language Selector */
+        .mobile-nav .language-selector { width: 100%; margin: 15px 0 5px 0; position: relative; }
+        .mobile-nav .language-btn {
+            width: 100%; justify-content: center; padding: 10px 15px; border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px; background-color: transparent; color: white; font-size: 1rem; text-align: center;
+        }
+        .mobile-nav .language-btn:hover { background-color: rgba(255, 255, 255, 0.1); transform: none; }
+        .mobile-nav .language-dropdown {
+            position: static; width: 100%; box-shadow: none; border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: none; border-radius: 0 0 5px 5px; margin-top: -1px; background-color: rgba(0,0,0, 0.1);
+            max-height: 200px; overflow-y: auto; padding: 0;
+        }
+        .mobile-nav .language-option { color: white; padding: 12px 20px; }
+        .mobile-nav .language-option:hover { background-color: rgba(255, 255, 255, 0.15); }
+
+        /* Banner con effetto gradiente (da index.html) */
+        .banner {
+            background: linear-gradient(90deg, #2d463a, #3b594a, #2d463a);
+            background-size: 200% 100%; color: white; padding: 12px 20px;
+            margin: 10px 0 20px 0; border-radius: 8px; text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            animation: gradientShift 8s ease infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .cta-section a {
-            color: var(--primary-green, #2ecc71);
-            text-decoration: none;
+        /* Stili Sezioni Generali (da index.html) */
+        .section { padding: var(--spacing-lg) 0; position: relative; }
+        .section-title { /* Stile generico per titoli sezioni se usati */
+            text-align: center; margin-bottom: var(--spacing-md);
+            font-size: 2.5rem; color: #2a5548; font-weight: 600;
         }
-        
-        /* Documenti legali */
+        .text-center { text-align: center; }
+
+        /* Stili Bottoni Generali (da index.html - se necessario) */
+        .btn {
+            display: inline-block; padding: 0.9rem 1.8rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
+            color: white; text-decoration: none; border-radius: 6px; transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); position: relative;
+            overflow: hidden; z-index: 1; margin: 10px 5px; border: none; cursor: pointer;
+            text-align: center;
+        }
+        .btn::before { /* Effetto shine */
+             content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+             transition: left 0.7s; z-index: -1;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15); }
+        .btn:hover::before { left: 100%; }
+
+        /* Footer (da index.html) */
+        .site-footer {
+            background-color: #2d3a35; padding: 2rem 0; margin-top: 4rem;
+            text-align: center; position: relative; z-index: 2;
+        }
+        .copyright-text { color: var(--light-gray); font-size: 0.9rem; line-height: 1.5; }
+        .copyright-text a { color: var(--secondary-green); text-decoration: none; transition: color 0.3s; }
+        .copyright-text a:hover { color: var(--tertiary-green); }
+
+        /* Background decorations (da index.html) */
+        .bg-decoration {
+            position: fixed; background-color: var(--tertiary-green); border-radius: 50%;
+            opacity: 0.4; filter: blur(70px); z-index: 0; pointer-events: none;
+        }
+        .decoration-1 { width: 400px; height: 400px; top: -100px; left: -100px; }
+        .decoration-2 { width: 350px; height: 350px; bottom: -50px; right: -50px; }
+
+        /* === END: Styles Copied/Adapted from index.html === */
+
+
+        /* === START: Styles Specific to Legal Documents Page (Risk Policy), adapted === */
+
         .legal-container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 1000px; /* Mantiene larghezza specifica */
+            margin: var(--spacing-md) auto; /* Usa variabile per margine */
+            padding: var(--spacing-md); /* Usa variabile */
+            background-color: var(--card-bg-color); /* Sfondo card da index */
+            border-radius: 12px; /* Stesso radius card index */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Stessa ombra card index */
         }
-        
+
+        /* Navigazione interna documenti (Mantenuta per coerenza) */
         .legal-nav {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            gap: var(--spacing-sm); /* Usa variabile */
+            margin-bottom: var(--spacing-md); /* Usa variabile */
+            padding-bottom: var(--spacing-sm); /* Usa variabile */
             border-bottom: 1px solid #eee;
         }
-        
+
         .legal-nav a {
-            padding: 8px 15px;
-            background-color: var(--primary-green);
+            padding: 0.6rem 1.2rem; /* Padding */
+            background-color: var(--primary-green); /* Colore primario */
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px; /* Stesso radius bottoni */
             transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
-        
+
         .legal-nav a:hover {
-            background-color: #4a9632;
+            background-color: var(--secondary-green); /* Colore secondario */
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        
+
+        /* Contenuto Documento Legale */
         .documento-legale {
-            padding: 10px;
+            padding: var(--spacing-sm) 0; /* Rimuove padding laterale */
         }
-        
+
         .documento-legale h1 {
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            color: #2a5548; /* Verde scuro titolo principale */
+            font-size: 2.0rem; /* Ridotto leggermente per titolo lungo */
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
             border-bottom: 2px solid var(--primary-green);
+            font-weight: 600;
+            text-align: center; /* Centra titolo documento */
         }
-        
+
         .documento-legale h2 {
-            color: var(--primary-green);
-            margin: 30px 0 15px;
+            color: var(--primary-blue); /* Blu primario per sezioni */
+            font-size: 1.6rem; /* Dimensione titoli sezione */
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+            padding-left: 0.5rem; /* Leggero indent */
+            border-left: 3px solid var(--primary-blue); /* Linea laterale */
         }
-        
-        .documento-legale h3 {
-            color: var(--dark-gray);
-            margin: 20px 0 10px;
-        }
-        
+
+         .documento-legale h3 { /* Stile per sotto-sezioni */
+             color: var(--primary-green); /* Verde per sotto-sezioni */
+             font-size: 1.2rem;
+             margin-top: var(--spacing-sm);
+             margin-bottom: 0.5rem;
+             font-weight: 600; /* Bold */
+         }
+
         .documento-legale section {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            margin-bottom: var(--spacing-md); /* Spazio tra sezioni */
+            padding-bottom: 0;
+            border-bottom: none;
         }
-        
+         .documento-legale section:last-of-type {
+             margin-bottom: 0;
+         }
+
+        .documento-legale p {
+             margin-bottom: 1rem;
+             line-height: 1.6;
+             color: var(--dark-gray);
+             font-size: 1rem;
+        }
+        .documento-legale ul {
+             margin-left: 1.5rem; /* Indentazione lista */
+             margin-bottom: 1rem;
+             list-style: disc; /* Stile lista standard */
+        }
+        .documento-legale ul li {
+             margin-bottom: 0.5rem;
+             line-height: 1.6;
+             color: var(--dark-gray);
+             font-size: 1rem;
+        }
+         .documento-legale strong { /* Evidenzia testo importante */
+             font-weight: 600;
+             color: var(--primary-blue);
+         }
+         /* Stile specifico per Avvertenza Generale */
+         .documento-legale section:first-of-type {
+             background-color: #fff3cd; /* Giallo warning */
+             color: #856404;
+             padding: var(--spacing-sm);
+             border-radius: 8px;
+             border: 1px solid #ffeeba;
+         }
+         .documento-legale section:first-of-type h2 {
+             color: #856404; /* Colore warning per titolo */
+             border-left: none; /* Rimuove bordo blu */
+             padding-left: 0;
+             margin-top: 0;
+         }
+         .documento-legale section:first-of-type p,
+         .documento-legale section:first-of-type ul li {
+             color: #856404; /* Colore warning per testo */
+         }
+         .documento-legale section:first-of-type strong {
+              color: #664d03; /* Colore warning più scuro per strong */
+         }
+         .documento-legale section:first-of-type em { /* Evidenzia nota in corsivo */
+              display: block; /* Su riga separata */
+              margin-top: 1rem;
+              font-weight: 500;
+         }
+
+
+        /* Ultimo Aggiornamento */
         .ultimo-aggiornamento {
-            margin-top: 30px;
-            padding-top: 15px;
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-sm);
             border-top: 1px solid #ddd;
             font-style: italic;
             color: #666;
+            font-size: 0.9rem;
         }
-        
         .ultimo-aggiornamento p {
-            margin-top: 15px;
+            margin-top: 0.5rem; /* Riduci margine */
+            margin-bottom: 0;
         }
-        
-        .site-footer {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 20px 0;
-            margin-top: 40px;
+
+        /* === END: Styles Specific to Legal Documents Page === */
+
+
+        /* === START: Responsive Styles === */
+        @media (max-width: 992px) {
+            .main-nav { gap: 5px; }
+            .main-nav a.button, .main-nav .green-button { padding: 8px 10px; font-size: 0.9rem; }
         }
+
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .hamburger-btn { display: block; }
+            /* .mobile-nav.active gestito */
+
+             .section-title { font-size: 2rem; } /* Se usati */
+             .documento-legale h1 { font-size: 1.6rem; } /* Titolo più piccolo */
+             .documento-legale h2 { font-size: 1.3rem; }
+             .documento-legale h3 { font-size: 1.1rem; }
+             .legal-nav { justify-content: center; } /* Centra link nav legale */
+        }
+
+        @media (max-width: 480px) {
+             :root { --spacing-sm: 0.8rem; --spacing-md: 1.5rem; --spacing-lg: 2.5rem; }
+             .container { padding: 15px; }
+             header { padding: 10px 15px; }
+             .logo img { height: 35px; }
+
+             .legal-container { padding: var(--spacing-sm); margin: var(--spacing-sm) auto; }
+             .documento-legale h1 { font-size: 1.4rem; }
+             .documento-legale h2 { font-size: 1.1rem; }
+             .documento-legale h3 { font-size: 1rem; }
+             .documento-legale p, .documento-legale ul li { font-size: 0.9rem; }
+             .legal-nav a { padding: 0.5rem 1rem; font-size: 0.8rem; }
+
+             .bg-decoration { opacity: 0.2; filter: blur(50px); }
+             .decoration-1 { width: 250px; height: 250px; }
+             .decoration-2 { width: 200px; height: 200px; }
+        }
+        /* === END: Responsive Styles === */
+
     </style>
 </head>
 <body>
-    <!-- Header con logo -->
-    <header>
-        <div class="logo">
-            <img src="./assets/img/logo da email.png" alt="Logo">
-            <span>SynergyRecycle.B</span>
-        </div>
-        <nav class="main-nav">
-            <a href="./" class="button" data-i18n="navigation.home">Home</a>
-            <a href="./servizi.html" class="button" data-i18n="navigation.services">Servizi</a>
-            <a href="./sostenerci.html" class="button" data-i18n="navigation.support">Supportaci</a>
-            <a href="./contattaci.html" class="button" data-i18n="navigation.contact">Contattaci</a>
-            <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
-        </nav>
-        
-        <div class="hamburger-container">
-            <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
-        </div>
-    </header>
+    <!-- Elementi decorativi di sfondo -->
+    <div class="bg-decoration decoration-1"></div>
+    <div class="bg-decoration decoration-2"></div>
 
-    <!-- Navigazione mobile -->
-    <nav class="mobile-nav" id="mobile-nav">
-        <a href="./" class="button">Home</a>
-        <a href="./servizi.html" class="button">Servizi</a>
-        <a href="./sostenerci.html" class="button">Supportaci</a>
-        <a href="./contattaci.html" class="button">Contattaci</a>
-        <a href="./roadmap.html" class="button">Roadmap</a>
-    </nav>
+    <div class="container">
+        <!-- Intestazione -->
+        <header>
+            <a href="./" class="logo"> <!-- Logo link alla home -->
+                <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B">
+                <span>SynergyRecycle.B</span>
+            </a>
+            <nav class="main-nav">
+                <a href="./" class="button">Home</a>
+                <a href="./servizi.html" class="button">Servizi</a>
+                <a href="./sostenerci.html" class="button">Supportaci</a>
+                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./roadmap.html" class="button">Roadmap</a>
+                <!-- START: Language Selector HTML (Desktop) -->
+                <div class="language-selector">
+                    <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
+                    <div class="language-dropdown" id="language-dropdown" role="menu">
+                        <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                        <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                        <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                        <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                        <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    </div>
+                </div>
+                <!-- END: Language Selector HTML (Desktop) -->
+            </nav>
+            <!-- Hamburger button con ID corretto -->
+            <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+        </header>
 
-    <!-- Banner -->
-    <div class="banner">
-        SynergyRecycle.B: "Investi solo quello che ti puoi permettere di perdere"
-    </div>
-    
-    <div class="legal-container">
-        <div class="documento-legale">
-            <h1>Politica dei Rischi nell'Acquisto di Token</h1>
-            
-            <section>
-                <h2>Avvertenza Generale</h2>
-                <p>L'acquisto, la detenzione e lo scambio di token comportano rischi elevati e multifattoriali, inclusa la potenziale perdita totale del capitale investito. Gli investitori sono tenuti a:</p>
-                <ul>
-                    <li>Valutare la propria capacità finanziaria e tolleranza al rischio.</li>
-                    <li>Consultare consulenti legali, fiscali e finanziari indipendenti.</li>
-                    <li>Riconoscere che le criptovalute non sono garantite da autorità centrali (es. fondi di garanzia bancari) e sono esposte a rischi unici.</li>
-                </ul>
-                <p><em>Il presente documento non sostituisce una valutazione personalizzata e potrebbe non includere tutti i rischi emergenti legati all'evoluzione tecnologica o normativa.</em></p>
-            </section>
-
-            <section>
-                <h2>1. Classificazione e Natura dei Token</h2>
-                
-                <h3>1.1 Tipologie di Token</h3>
-                <p>Oltre alle categorie principali (utility e security), i token possono assumere altre forme:</p>
-                <ul>
-                    <li><strong>Payment Token</strong>: Mezzi di scambio non legati a servizi specifici (es. Bitcoin).</li>
-                    <li><strong>Asset-Backed Token</strong>: Collegati a beni fisici (es. oro, immobili) o attività finanziarie tradizionali.</li>
-                    <li><strong>Governance Token</strong>: Conferiscono diritti decisionali all'interno di protocolli decentralizzati (es. votazione su proposte).</li>
-                </ul>
-
-                <h3>1.2 Classificazione del Token SRb</h3>
-                <ul>
-                    <li>Nessun diritto a dividendi, interessi o partecipazione agli utili.</li>
-                    <li>Valore non collegato a performance finanziarie del progetto.</li>
-                    <li>Non costituisce un'azione, un debito o uno strumento derivato.</li>
-                </ul>
-                <p><strong>Nota critica</strong>: La classificazione potrebbe essere rivalutata da autorità competenti in base a nuove interpretazioni giuridiche.</p>
-            </section>
-
-            <section>
-                <h2>2. Rischi Specifici per gli Investitori</h2>
-                
-                <h3>2.1 Rischi di Mercato</h3>
-                <ul>
-                    <li>Volatilità estrema: Fattori esterni (regolamentazioni globali, dichiarazioni di influencer) possono causare fluttuazioni improvvise.</li>
-                    <li>Correlazione con mercati tradizionali: Eventi macroeconomici (es. crisi valutarie) potrebbero impattare indirettamente.</li>
-                </ul>
-
-                <h3>2.2 Rischi Tecnologici</h3>
-                <ul>
-                    <li>Errori negli smart contract anche dopo auditing.</li>
-                    <li>Perdita di chiavi private con conseguente irrecuperabilità dei fondi.</li>
-                </ul>
-
-                <h3>2.3 Rischi Normativi e Fiscali</h3>
-                <ul>
-                    <li>Divieti giurisdizionali su criptovalute: Alcuni Paesi potrebbero vietare l'uso di criptovalute, limitandone l'utilizzo o il trasferimento.</li>
-                    <li>Tassazione: Trattamento fiscale incerto (es. plusvalenze, IVA) con possibili retromisure da parte delle autorità.</li>
-                    <li>Conformità AML/KYC: Obblighi di identificazione potrebbero ritardare o bloccare transazioni.</li>
-                </ul>
-
-                <h3>2.4 Rischi Operativi e di Progetto</h3>
-                <ul>
-                    <li>Dipendenza dal team SRb: Ritardi nello sviluppo, mancanza di fondi, o cambi di roadmap potrebbero ridurre l'utilità del token.</li>
-                    <li>Adozione limitata: Il valore del token dipende dall'effettivo utilizzo dell'ecosistema SRb da parte degli utenti.</li>
-                    <li>Concorrenza: Emergenza di progetti concorrenti con tecnologie superiori o servizi analoghi.</li>
-                </ul>
-
-                <h3>2.5 Rischi Sistemici</h3>
-                <ul>
-                    <li>Controparte centralizzata: Fallimento di exchange o custodian terzi dove sono depositati i token.</li>
-                    <li>Attacchi alla rete: 51% attack su blockchain di riferimento o collassi di protocolli di consenso.</li>
-                </ul>
-
-                <h3>2.6 Rischi Ambientali</h3>
-                <ul>
-                    <li>Se il token opera su blockchain ad alto consumo energetico (es. proof-of-work), potrebbe essere esposto a critiche o restrizioni legate a politiche ESG.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>3. Misure di Mitigazione e Best Practice</h2>
-                
-                <h3>3.1 Per gli Investitori</h3>
-                <ul>
-                    <li>Custodia sicura: Utilizzo di wallet hardware o soluzioni cold storage per ridurre il rischio di hacking.</li>
-                    <li>Diversificazione del portafoglio (max 5-10% in crypto).</li>
-                    <li>Monitoraggio continuo: Tenere traccia di aggiornamenti normativi, annunci del progetto SRb, e indicatori di mercato.</li>
-                </ul>
-
-                <h3>3.2 Impegni del Progetto SRb</h3>
-                <ul>
-                    <li>Pubblicazione regolare di report verificati.</li>
-                    <li>Adeguamento proattivo alle normative UE (es. MiCA).</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>4. Dichiarazioni Esplicite e Disclaimer</h2>
-                <ul>
-                    <li>Nessuna garanzia di ROI: Il token non è un prodotto di risparmio e il suo valore potrebbe azzerarsi.</li>
-                    <li>Assenza di protezione assicurativa: I token non rientrano in schemi di tutela come il Fondo Interbancario di Tutela dei Depositi.</li>
-                    <li>Rischi non prevedibili: Nuove tipologie di rischio (es. quantum computing) potrebbero emergere in futuro.</li>
-                    <li>Rinuncia al reclamo: Gli investitori accettano esplicitamente di non rivalersi sul Progetto SRb per perdite dirette o indirette.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>5. Riferimenti e Approfondimenti</h2>
-                <ul>
-                    <li>Regolamenti UE: MiCA (2024), DORA (Digital Operational Resilience Act), Direttiva ViCA.</li>
-                    <li>Autorità: ESMA, CONSOB, Autorità Bancaria Europea (EBA).</li>
-                    <li>Whitepaper del progetto SRb.</li>
-                </ul>
-            </section>
-
-            <section>
-                <p><strong>Nota Finale</strong>: Questo documento sarà aggiornato annualmente o in risposta a cambiamenti normativi significativi. Gli investitori sono tenuti a consultare la versione più recente prima di qualsiasi operazione.</p>
-            </section>
-                
-            <div class="ultimo-aggiornamento">
-                <p><strong>Ultimo Aggiornamento</strong>: 26-03-2025</p>
-                <p><strong>Versione</strong>: 1.0</p>
+        <!-- Navigazione mobile -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="./" class="button">Home</a>
+            <a href="./servizi.html" class="button">Servizi</a>
+            <a href="./sostenerci.html" class="button">Supportaci</a>
+            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./roadmap.html" class="button">Roadmap</a>
+             <!-- START: Language Selector HTML (Mobile) -->
+            <div class="language-selector">
+                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
+                <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                </div>
             </div>
+            <!-- END: Language Selector HTML (Mobile) -->
+        </nav>
+
+        <!-- Banner -->
+        <div class="banner">
+            SynergyRecycle.B: "Investi responsabilmente: comprendi i rischi associati ai token." <!-- Testo banner aggiornato -->
         </div>
-    </div>
+    </div> <!-- Fine container header/banner -->
+
+    <!-- Contenuto Principale - Documento Politica Rischi -->
+    <main class="legal-container"> <!-- Applica classe container principale -->
+
+         <!-- Navigazione interna (opzionale se ci sono altri documenti nella stessa pagina) -->
+         <nav class="legal-nav">
+             <a href="[Link a Privacy Policy].html#privacy-policy">Privacy Policy</a>
+             <a href="[Link a Termini].html#termini-condizioni">Termini e Condizioni</a>
+             <a href="[Link a Disclaimer].html#disclaimer">Disclaimer</a>
+             <a href="[Link a Cookie Policy].html#cookie-policy">Cookie Policy</a>
+             <a href="#">Politica dei Rischi</a> <!-- Link attivo per questa pagina -->
+             <a href="kyc-aml-policy.html">KYC / AML Policy</a>
+         </nav>
+
+
+        <div class="documento-legale" id="risk-policy"> <!-- ID Aggiunto -->
+            <h1>Politica dei Rischi nell'Acquisto di Token (SRB)</h1>
+
+            <section>
+                <h2>Avvertenza Generale e Fondamentale</h2>
+                 <p><strong>L'acquisto, la detenzione, lo scambio e l'utilizzo di utility token come SRB comportano rischi finanziari, tecnologici e normativi significativi. Questi rischi possono portare alla perdita parziale o totale del capitale investito.</strong></p>
+                 <p>Prima di procedere con qualsiasi operazione relativa ai token SRB, è <strong>imperativo</strong> che tu:</p>
+                <ul>
+                    <li>Comprenda appieno la natura degli asset digitali e della tecnologia blockchain.</li>
+                    <li>Valuti attentamente la tua situazione finanziaria personale, la tua tolleranza al rischio e i tuoi obiettivi di investimento.</li>
+                     <li>Investa solo fondi che puoi permetterti di perdere senza compromettere la tua stabilità finanziaria.</li>
+                    <li>Conduca la tua ricerca indipendente ("Do Your Own Research" - DYOR) sul progetto SynergyRecycle.B, sul team, sulla tecnologia e sul mercato di riferimento.</li>
+                    <li>Consulti consulenti finanziari, legali e fiscali indipendenti e qualificati per ottenere pareri personalizzati basati sulla tua giurisdizione e situazione specifica.</li>
+                 </ul>
+                 <p><strong>SynergyRecycle.B non fornisce consulenza finanziaria o di investimento. Le informazioni contenute in questo documento e in altri materiali del progetto sono fornite a solo scopo informativo e non costituiscono un'offerta o una sollecitazione all'investimento.</strong></p>
+                <p><em>Questo documento descrive i principali rischi identificati, ma non è esaustivo. Potrebbero emergere rischi aggiuntivi non attualmente previsti.</em></p>
+            </section>
+
+             <section>
+                 <h2>1. Natura e Classificazione dei Token SRB</h2>
+
+                 <h3>1.1 Tipologia di Token</h3>
+                 <p>I token SRB sono classificati come <strong>utility token</strong>. Il loro scopo primario è fornire accesso a funzionalità specifiche o vantaggi all'interno dell'ecosistema SynergyRecycle.B (es. ottenere sconti, supportare progetti, accedere a servizi futuri).</p>
+                 <p>È fondamentale comprendere che i token SRB:</p>
+                 <ul>
+                     <li><strong>Non rappresentano</strong> quote di proprietà, azioni o partecipazioni nel progetto SynergyRecycle.B o in qualsiasi entità legale associata.</li>
+                     <li><strong>Non conferiscono</strong> diritti a ricevere dividendi, interessi, profitti o qualsiasi altra forma di rendimento finanziario derivante dalle attività del progetto.</li>
+                     <li><strong>Non sono</strong> strumenti finanziari ai sensi delle normative MiFID II o equivalenti in altre giurisdizioni (salvo diversa classificazione futura da parte delle autorità).</li>
+                     <li>Il loro valore è intrinsecamente legato all'utilità e all'adozione della piattaforma SynergyRecycle.B e non è direttamente correlato alle performance finanziarie dell'entità che sviluppa il progetto.</li>
+                 </ul>
+
+                 <h3>1.2 Possibili Riclassificazioni Normative</h3>
+                 <p>Il quadro normativo per gli asset digitali è in continua evoluzione a livello globale (es. MiCA in Europa). Esiste il rischio che le autorità di regolamentazione possano, in futuro, classificare gli utility token come SRB in modo diverso (ad esempio, come strumenti finanziari o e-money), imponendo requisiti normativi aggiuntivi o restrizioni che potrebbero influenzare l'operatività del progetto o la negoziabilità dei token.</p>
+             </section>
+
+             <section>
+                 <h2>2. Rischi Specifici per gli Acquirenti/Detentori di Token</h2>
+
+                 <h3>2.1 Rischi di Mercato e Volatilità</h3>
+                 <ul>
+                     <li><strong>Estrema Volatilità dei Prezzi:</strong> Il valore dei token SRB, qualora scambiati su mercati secondari (DEX/CEX), può subire fluttuazioni molto ampie e rapide, anche in brevi periodi. Fattori come la domanda e l'offerta, notizie di mercato, sentiment generale verso le criptovalute, cambiamenti normativi e eventi macroeconomici possono influenzare drasticamente il prezzo.</li>
+                     <li><strong>Rischio di Liquidità:</strong> Non vi è alcuna garanzia che si svilupperà un mercato secondario attivo e liquido per i token SRB. Potrebbe essere difficile o impossibile vendere i token al prezzo desiderato o in tempi rapidi.</li>
+                     <li><strong>Manipolazione del Mercato:</strong> I mercati delle criptovalute possono essere soggetti a manipolazioni (es. "pump and dump") a causa della minore regolamentazione rispetto ai mercati tradizionali.</li>
+                     <li><strong>Correlazione con Altre Criptovalute:</strong> Il valore di SRB potrebbe essere influenzato dalle fluttuazioni di criptovalute principali come Bitcoin (BTC) o Ethereum (ETH), anche in assenza di notizie specifiche sul progetto SynergyRecycle.B.</li>
+                 </ul>
+
+                 <h3>2.2 Rischi Tecnologici e di Sicurezza</h3>
+                 <ul>
+                     <li><strong>Vulnerabilità degli Smart Contract:</strong> Nonostante gli audit, gli smart contract che gestiscono i token SRB o le funzionalità della piattaforma potrebbero contenere bug, errori o vulnerabilità sfruttabili da malintenzionati, con conseguente perdita di token o malfunzionamento dei servizi.</li>
+                     <li><strong>Rischi della Blockchain Sottostante (Polygon):</strong> Il funzionamento dei token SRB dipende dalla sicurezza e dall'operatività della blockchain Polygon. Problemi sulla rete Polygon (es. congestione, hard fork, attacchi 51%) potrebbero impattare negativamente i token SRB.</li>
+                     <li><strong>Rischi di Hacking e Furto:</strong> I wallet personali o gli account su piattaforme di scambio possono essere compromessi tramite phishing, malware o altre tecniche di attacco, portando al furto dei token.</li>
+                     <li><strong>Perdita delle Chiavi Private:</strong> La perdita o il furto delle chiavi private associate al wallet contenente i token SRB comporta la perdita irrecuperabile e definitiva dei token stessi. La custodia sicura delle chiavi è esclusiva responsabilità dell'utente.</li>
+                     <li><strong>Errori Utente:</strong> Invii di token all'indirizzo sbagliato o su una rete blockchain incompatibile sono generalmente irreversibili e comportano la perdita dei fondi.</li>
+                 </ul>
+
+                 <h3>2.3 Rischi Normativi, Legali e Fiscali</h3>
+                 <ul>
+                     <li><strong>Incertezza Normativa:</strong> Come menzionato, le normative sono in evoluzione. Nuove leggi o interpretazioni potrebbero limitare o vietare l'emissione, la detenzione, lo scambio o l'utilizzo dei token SRB in specifiche giurisdizioni.</li>
+                     <li><strong>Obblighi AML/KYC:</strong> L'utilizzo di determinate funzionalità o lo scambio su piattaforme terze potrebbe richiedere il completamento di procedure di verifica dell'identità, che potrebbero essere complesse o non disponibili per tutti gli utenti.</li>
+                     <li><strong>Trattamento Fiscale:</strong> La tassazione dei guadagni derivanti dalla vendita o dallo scambio di token è complessa e varia da paese a paese. È responsabilità dell'utente informarsi e adempiere ai propri obblighi fiscali. Le autorità fiscali potrebbero introdurre nuove regole con effetto retroattivo.</li>
+                     <li><strong>Azioni Regolatorie:</strong> Autorità di vigilanza potrebbero intraprendere azioni contro il progetto, piattaforme di scambio o l'intero settore, influenzando negativamente il valore e l'utilità dei token.</li>
+                 </ul>
+
+                 <h3>2.4 Rischi Operativi e Legati al Progetto</h3>
+                 <ul>
+                     <li><strong>Rischio di Esecuzione:</strong> Il successo del progetto dipende dalla capacità del team di SynergyRecycle.B di sviluppare e implementare la tecnologia, l'app, le partnership e le funzionalità descritte nella roadmap. Ritardi, difficoltà tecniche o mancanza di fondi potrebbero compromettere il progetto.</li>
+                     <li><strong>Rischio di Adozione:</strong> L'utilità e il potenziale valore dei token SRB dipendono dall'adozione della piattaforma da parte di utenti (riciclatori), aziende partner e punti di raccolta. Una scarsa adozione limiterebbe l'utilità dei token.</li>
+                     <li><strong>Rischio di Concorrenza:</strong> Il settore della sostenibilità e della blockchain è competitivo. Nuovi progetti concorrenti potrebbero emergere offrendo soluzioni alternative o migliori.</li>
+                     <li><strong>Dipendenza da Terze Parti:</strong> Il progetto potrebbe dipendere da fornitori di servizi esterni (es. hosting, audit, partner per il riciclo) il cui fallimento o inadempienza potrebbe impattare negativamente.</li>
+                     <li><strong>Cambiamenti nella Visione del Progetto:</strong> Il team potrebbe dover modificare la strategia o le funzionalità del progetto in risposta a cambiamenti di mercato o normativi, influenzando l'utilità prevista dei token.</li>
+                 </ul>
+
+                  <h3>2.5 Rischi di Controparte e Sistemici</h3>
+                  <ul>
+                      <li><strong>Rischio Exchange/Custode:</strong> Se detieni i token SRB su una piattaforma di scambio centralizzata (CEX) o tramite un servizio di custodia, sei esposto al rischio di fallimento, hacking o blocco dei fondi da parte di tale piattaforma. "Not your keys, not your coins".</li>
+                      <li><strong>Rischio Interoperabilità:</strong> Problemi nell'interazione tra la blockchain Polygon e altre reti o servizi potrebbero limitare l'utilizzo dei token.</li>
+                      <li><strong>Crisi Sistemiche nel Settore Crypto:</strong> Eventi negativi di vasta portata nel settore delle criptovalute (es. fallimenti di grandi progetti, crolli di mercato generalizzati) possono influenzare negativamente anche progetti solidi come SynergyRecycle.B.</li>
+                  </ul>
+
+             </section>
+
+            <section>
+                 <h2>3. Misure di Mitigazione e Consigli per gli Utenti</h2>
+
+                 <h3>3.1 Responsabilità dell'Utente</h3>
+                 <p>È fondamentale che tu adotti le seguenti misure:</p>
+                 <ul>
+                     <li><strong>Ricerca Approfondita (DYOR):</strong> Non basare le tue decisioni solo sui nostri materiali. Leggi il whitepaper, studia il progetto, comprendi la tecnologia e valuta il mercato.</li>
+                     <li><strong>Valutazione del Rischio Personale:</strong> Comprendi la tua tolleranza al rischio e investi solo una somma che puoi permetterti di perdere completamente.</li>
+                     <li><strong>Diversificazione:</strong> Non investire tutti i tuoi fondi in un unico progetto o asset digitale. La diversificazione è una strategia chiave per la gestione del rischio.</li>
+                     <li><strong>Custodia Sicura:</strong> Se detieni token SRB, utilizza wallet sicuri (preferibilmente hardware/cold storage per somme significative) e proteggi meticolosamente le tue chiavi private e/o frasi di recupero. Non condividerle mai con nessuno.</li>
+                     <li><strong>Sicurezza Informatica:</strong> Mantieni aggiornati i tuoi dispositivi, utilizza password robuste e uniche, attiva l'autenticazione a due fattori (2FA) ove possibile e sii estremamente cauto riguardo a tentativi di phishing o truffe.</li>
+                     <li><strong>Monitoraggio Continuo:</strong> Rimani aggiornato sugli sviluppi del progetto SynergyRecycle.B, sui cambiamenti normativi e sulle condizioni generali del mercato crypto.</li>
+                     <li><strong>Comprensione Fiscale:</strong> Informati sugli obblighi fiscali relativi alle criptovalute nella tua giurisdizione e consulta un commercialista se necessario.</li>
+                 </ul>
+
+                 <h3>3.2 Impegni del Progetto SynergyRecycle.B</h3>
+                 <p>Da parte nostra, ci impegniamo a:</p>
+                 <ul>
+                     <li>Operare con trasparenza, fornendo aggiornamenti regolari sullo sviluppo del progetto.</li>
+                     <li>Sottoporre i nostri smart contract a audit di sicurezza da parte di terze parti qualificate.</li>
+                     <li>Adottare best practice per la sicurezza della piattaforma e dei dati utente.</li>
+                     <li>Monitorare l'evoluzione normativa e adeguarci per quanto possibile alle leggi applicabili.</li>
+                     <li>Fornire documentazione chiara (come questo documento e il whitepaper) sui rischi associati.</li>
+                 </ul>
+                 <p>Tuttavia, questi impegni non eliminano i rischi intrinseci descritti in precedenza.</p>
+             </section>
+
+             <section>
+                 <h2>4. Dichiarazione Finale e Accettazione del Rischio</h2>
+                 <p><strong>Acquistando, detenendo o utilizzando i token SRB, dichiari di aver letto, compreso e accettato integralmente tutti i rischi descritti in questa Politica dei Rischi e negli altri materiali informativi del progetto.</strong></p>
+                 <p><strong>Riconosci che stai agendo a tuo esclusivo rischio e che SynergyRecycle.B non è responsabile per eventuali perdite finanziarie o di altro tipo che potresti subire. Rinunci a qualsiasi diritto di rivalsa nei confronti di SynergyRecycle.B, del suo team, dei suoi partner o affiliati per perdite derivanti dai rischi qui delineati o da altri rischi imprevisti.</strong></p>
+                 <p><strong>Questo documento costituisce parte integrante dei Termini e Condizioni di utilizzo dei servizi di SynergyRecycle.B.</strong></p>
+             </section>
+
+             <section>
+                 <h2>5. Riferimenti Utili</h2>
+                 <p>Per approfondimenti sui rischi generali legati alle criptovalute, si consiglia di consultare fonti autorevoli come:</p>
+                 <ul>
+                     <li>Siti web delle autorità di vigilanza finanziaria nazionali (es. CONSOB, BaFin).</li>
+                     <li>Siti web delle autorità europee (es. ESMA, EBA).</li>
+                     <li>Pubblicazioni di organizzazioni internazionali (es. GAFI/FATF, FMI, BRI).</li>
+                     <li>Risorse educative indipendenti sul funzionamento della blockchain e delle criptovalute.</li>
+                 </ul>
+             </section>
+
+
+            <div class="ultimo-aggiornamento">
+                <p><strong>Ultimo Aggiornamento:</strong> 26 Marzo 2025</p>
+                <p><strong>Versione:</strong> 1.0</p>
+            </div>
+        </div> <!-- Fine documento-legale -->
+
+    </main>
 
     <!-- Footer Copyright -->
     <footer class="site-footer">
         <div class="container">
             <p class="copyright-text">
-                © <span id="copyright-year"></span> SynergyRecycle.B. 
-                Tutti i contenuti di questa pagina sono protetti da copyright 
-                ai sensi della legge internazionale.
+                © <span id="copyright-year"></span> SynergyRecycle.B.
+                Tutti i contenuti di questa pagina sono protetti da copyright ai sensi della legge internazionale.
             </p>
         </div>
     </footer>
 
     <!-- Script JS -->
     <script>
-        // Aggiorna l'anno di copyright
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
-        
-        // Menu mobile toggle
-        document.getElementById('hamburger-btn').addEventListener('click', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- COMMON HELPER FUNCTIONS ---
+            const toggleAriaExpanded = (element) => {
+                 if (!element) return;
+                 const isExpanded = element.getAttribute('aria-expanded') === 'true';
+                 element.setAttribute('aria-expanded', !isExpanded);
+            };
+
+            // --- COPYRIGHT YEAR ---
+            const yearSpan = document.getElementById('copyright-year');
+             if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+             }
+             // Gestisce anche ID vecchio se presente per errore
+             const yearSpanOld = document.getElementById('copyright-2024');
+             if (yearSpanOld) { yearSpanOld.textContent = new Date().getFullYear(); }
+
+
+            // --- HAMBURGER MENU TOGGLE ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
             const mobileNav = document.getElementById('mobile-nav');
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            
-            this.setAttribute('aria-expanded', !isExpanded);
-            if (!isExpanded) {
-                mobileNav.classList.add('active');
+            const bodyEl = document.body;
+
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     const isActive = mobileNav.classList.toggle('active');
+                     toggleAriaExpanded(this);
+                     bodyEl.classList.toggle('menu-open', isActive);
+                 });
+
+                 // Chiudi il menu quando si clicca su un link (escluso lingua)
+                 const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
+                 mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (!link.closest('.language-selector')) {
+                             mobileNav.classList.remove('active');
+                             bodyEl.classList.remove('menu-open');
+                            if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                                toggleAriaExpanded(hamburgerBtn);
+                            }
+                        }
+                    });
+                 });
+
+                 // Chiudi cliccando fuori dal menu
+                 document.addEventListener('click', function(event) {
+                     if (mobileNav.classList.contains('active') &&
+                         !hamburgerBtn.contains(event.target) &&
+                         !mobileNav.contains(event.target))
+                    {
+                         mobileNav.classList.remove('active');
+                         bodyEl.classList.remove('menu-open');
+                         if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                            toggleAriaExpanded(hamburgerBtn);
+                        }
+                     }
+                 });
+
+                 // Chiudi con tasto ESC
+                 document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && mobileNav.classList.contains('active')) {
+                         mobileNav.classList.remove('active');
+                         bodyEl.classList.remove('menu-open');
+                         if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                             toggleAriaExpanded(hamburgerBtn);
+                         }
+                     }
+                 });
+
             } else {
-                mobileNav.classList.remove('active');
+                 console.error("Hamburger button o mobile nav non trovati.");
             }
-        });
-        
-        // Chiudi menu mobile quando si clicca su un link
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('mobile-nav').classList.remove('active');
-                document.getElementById('hamburger-btn').setAttribute('aria-expanded', 'false');
-            });
-        });
-        
-        // Gestione scroll - nascondi il menu mobile quando si scrolla
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > 50) {
-                // Scroll verso il basso
-                document.getElementById('mobile-nav').classList.remove('active');
-                document.getElementById('hamburger-btn').setAttribute('aria-expanded', 'false');
-            }
-            lastScrollTop = scrollTop;
-        });
+
+
+            // --- LANGUAGE SELECTOR LOGIC ---
+             const languageBtn = document.getElementById('language-btn');
+             const languageDropdown = document.getElementById('language-dropdown');
+             const mobileLanguageBtn = document.getElementById('mobile-language-btn');
+             const mobileLanguageDropdown = document.getElementById('mobile-language-dropdown');
+             const allLanguageOptions = document.querySelectorAll('.language-option');
+
+             const closeAllLanguageDropdowns = () => {
+                 if (languageDropdown) languageDropdown.classList.remove('show');
+                 if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+                 if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
+                 if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+             };
+
+             if (languageBtn && languageDropdown) {
+                 languageBtn.addEventListener('click', function(e) {
+                     e.stopPropagation();
+                     const isShown = languageDropdown.classList.toggle('show');
+                     languageBtn.setAttribute('aria-expanded', isShown);
+                     if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
+                     if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+                 });
+             }
+
+             if (mobileLanguageBtn && mobileLanguageDropdown) {
+                 mobileLanguageBtn.addEventListener('click', function(e) {
+                     e.stopPropagation();
+                      const isShown = mobileLanguageDropdown.classList.toggle('show');
+                      mobileLanguageBtn.setAttribute('aria-expanded', isShown);
+                     if (languageDropdown) languageDropdown.classList.remove('show');
+                     if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+                 });
+             }
+
+             if (allLanguageOptions.length > 0) {
+                 allLanguageOptions.forEach(option => {
+                     option.addEventListener('click', function() {
+                         const lang = this.getAttribute('data-lang');
+                         changeLang(lang);
+                         closeAllLanguageDropdowns();
+                     });
+                 });
+             }
+
+             // Attach listener to document for closing language dropdowns
+             document.addEventListener('click', function(event) {
+                 if (languageBtn && languageDropdown && !languageBtn.contains(event.target) && !languageDropdown.contains(event.target)) {
+                     languageDropdown.classList.remove('show');
+                     languageBtn.setAttribute('aria-expanded', 'false');
+                 }
+                 if (mobileLanguageBtn && mobileLanguageDropdown && !mobileLanguageBtn.contains(event.target) && !mobileLanguageDropdown.contains(event.target)) {
+                     mobileLanguageDropdown.classList.remove('show');
+                     mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+                 }
+             });
+
+             // Prevent clicks inside dropdowns from closing them immediately
+             if (languageDropdown) languageDropdown.addEventListener('click', e => e.stopPropagation());
+             if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
+
+             function changeLang(lang) { // Placeholder
+                 console.log(`Lingua selezionata: ${lang}`);
+                 localStorage.setItem('selectedLanguage', lang);
+                 alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+                 // document.documentElement.lang = lang;
+             }
+
+             const savedLang = localStorage.getItem('selectedLanguage');
+             if (savedLang) {
+                  console.log(`Lingua salvata trovata: ${savedLang}.`);
+                 // changeLang(savedLang); // Applica se vuoi
+                 // document.documentElement.lang = savedLang;
+             }
+            // --- END: Language Selector Logic ---
+
+             // --- SMOOTH SCROLL FOR LEGAL NAV (Optional but good UX) ---
+              const legalNavLinks = document.querySelectorAll('.legal-nav a[href^="#"]');
+              legalNavLinks.forEach(link => {
+                 link.addEventListener('click', function (e) {
+                     const targetId = this.getAttribute('href');
+                     // Only prevent default and scroll if it's an internal anchor
+                     if (targetId && targetId.startsWith('#')) {
+                         e.preventDefault();
+                         const targetElement = document.getElementById(targetId.substring(1));
+
+                         if (targetElement) {
+                             const headerOffset = document.querySelector('header')?.offsetHeight || 0;
+                             const elementPosition = targetElement.getBoundingClientRect().top;
+                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
+
+                             window.scrollTo({
+                                 top: offsetPosition,
+                                 behavior: "smooth"
+                             });
+
+                             // Close mobile menu if open
+                             if (mobileNav && mobileNav.classList.contains('active')) {
+                                 mobileNav.classList.remove('active');
+                                 bodyEl.classList.remove('menu-open');
+                                 if (hamburgerBtn && hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                                     toggleAriaExpanded(hamburgerBtn);
+                                 }
+                             }
+                         }
+                     }
+                 });
+              });
+
+        }); // Fine DOMContentLoaded
     </script>
+
 </body>
 </html>
