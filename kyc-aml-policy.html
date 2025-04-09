@@ -4,45 +4,58 @@
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SynergyRecycle.B - Documenti Legali/Regolamenti </title>
+    <title>KYC/AML Policy - SynergyRecycle.B</title> <!-- Updated Title -->
     <style>
-        /* Variabili */
+        /* === START: Styles Copied/Adapted from index.html === */
+
+        /* Variabili con palette di colori ecologica e tecnologica (da index.html) */
         :root {
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
             --spacing-lg: 4rem;
             --container-width: 1200px;
-            --primary-blue: #0c546b;
+            --primary-blue: #3a7c8c;       /* Blu più soft */
             --dark-gray: #333;
             --light-gray: #ccc;
-            --primary-green: #58a845;
-            --secondary-green: #8BC34A;
-            --background-green: #f5f5f5; /* Colore di sfondo verde chiaro */
+            --primary-green: #5aad57;      /* Verde ecologico */
+            --secondary-green: #8BC34A;    /* Verde più chiaro */
+            --tertiary-green: #c2e6c0;     /* Verde molto soft */
+            --background-green: #f5f9f5;   /* Sfondo verde chiarissimo */
+            --blockchain-blue: #4c7f9c;    /* Blu per la blockchain */
+            --card-bg-color: #fff;         /* Sfondo per card/contenitori */
+            --light-bg-section: #f8f9fa;   /* Sfondo alternato sezioni */
+            --link-color: var(--primary-green); /* Colore link base */
+            --link-hover-color: var(--secondary-green);
         }
-        
-        /* Reset e base */
+
+        /* Reset e base (da index.html) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            font-family: system-ui, -apple-system, sans-serif; 
-            line-height: 1.5; 
-            color: #333;
-            background-color: var(--background-green);
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif; /* Font da index */
+            line-height: 1.5;
+            color: var(--dark-gray); /* Colore base da index */
+            background-color: var(--background-green); /* Sfondo da index */
+            position: relative;
+            overflow-x: hidden;
+            margin: 0;
         }
-        
-        /* Layout container */
-        .container { 
-            max-width: 1200px; 
+
+        /* Layout container (da index.html) */
+        .container {
+            max-width: var(--container-width);
             width: 100%;
-            margin: 0 auto; 
-            padding: 20px; 
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
         }
-        
-        /* Header e navigazione */
+
+        /* Header e navigazione con effetto gradiente (da index.html) */
         header {
-            background-color: var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
             color: white;
-            padding: 10px 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -56,702 +69,892 @@
         .logo {
             display: flex;
             align-items: center;
+            color: white;
+            text-decoration: none;
         }
 
         .logo img {
             height: 40px;
             margin-right: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+             transform: scale(1.05);
         }
 
+        /* Main Nav - Stile da index.html */
         .main-nav {
             display: flex;
-            gap: 15px;
-            justify-content: flex-end; /* Allinea gli elementi alla fine (destra) del container */
-            width: 70%; /* Opzionale: regola questa percentuale in base alle tue preferenze */
-       }
-        
-        .main-nav a.button {
+            gap: 5px; /* Ridotto per lingua */
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .main-nav a.button { /* Classe .button usata per i link nav */
             padding: 8px 15px;
             border-radius: 20px;
             text-decoration: none;
             color: white;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
         }
 
         .main-nav a.button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Banner */
-        .banner {
-            background-color: #334a38;
-            color: white;
-            padding: 8px 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            text-align: center;
-        }
-        
-        /* Menu mobile e responsività */
-        .hamburger-btn {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-        }
-
-        .mobile-nav {
-            display: none;
-            flex-direction: column;
-            background-color: var(--primary-blue);
-            padding: 15px;
-            border-radius: 0 0 10px 10px;
-            margin-top: -10px;
-        }
-
-        .mobile-nav a.button {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            margin: 5px 0;
-            border-radius: 5px;
-        }
-        
-        /* Hero section */
-        .hero { 
-            min-height: 60vh; 
-            display: flex; 
-            align-items: center; 
-            background-color: var(--background-green); 
-            padding: var(--spacing-lg) 0; 
-        }
-        
-        .hero-content { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            text-align: center; 
-        }
-        
-        .hero-title { 
-            font-size: 3rem; 
-            margin-bottom: var(--spacing-md); 
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-lg);
-            color: #666;
-        }
-        
-        /* Form di contatto */
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            padding: 1rem;
-        }
-        
-        .company-info {
-            flex: 0 0 250px;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            margin-left: 2rem;
-            height: fit-content;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background-color: var(--primary-green, #2ecc71);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-
-        .copyright-text {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .copyright-text a {
-            color: var(--primary-green);
-            text-decoration: none;
-        }
-        
-        .submit-btn:hover {
-            background-color: #27ae60;
-        }
-        
-        .info-title {
-            margin-bottom: 1.5rem;
-            color: var(--primary-green, #2ecc71);
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .info-icon {
-            margin-right: 0.75rem;
-            width: 16px;
-            height: 16px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        @media (max-width: 768px) {
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .main-nav {
-                display: none;
-            }
-            
-            .hamburger-btn {
-                display: block;
-            }
-            
-            .mobile-nav.active {
-                display: flex;
-            }
-            
-            .company-info {
-                margin-left: 0;
-                margin-top: 2rem;
-            }
-        }
-        
-        .tab-navigation {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-button {
-            padding: 1rem 1.5rem;
-            margin: 0 0.5rem 1rem;
-            background-color: transparent;
-            border: 1px solid var(--primary-green, #2ecc71);
-            color: var(--primary-green, #2ecc71);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tab-button.active, .tab-button:hover {
-            background-color: var(--primary-green, #2ecc71);
-            color: white;
-        }
-
-        .tab-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .tab-pane {
-            display: none;
-        }
-
-        .tab-pane.active {
-            display: block;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        .toggle-icon {
-            font-size: 1.5rem;
-            color: var(--primary-green, #2ecc71);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            margin-top: 3rem;
-            text-align: center;
-            padding: 2rem;
-            background-color: #f2f2f2;
-            border-radius: 8px;
-        }
-
-        .cta-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 1rem 0 2rem;
-        }
-
-        .cta-link {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            margin: 0.5rem;
-            background-color: var(--primary-green, #2ecc71);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .cta-link:hover {
-            background-color: #27ae60;
+            background-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
+        .main-nav a.button::after { /* Effetto underline da index */
+             content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+             background-color: var(--tertiary-green); transition: width 0.3s ease;
+        }
+        .main-nav a.button:hover::after { width: 100%; }
 
-        .cta-section h3 {
-            color: #333;
-            margin-bottom: 1rem;
+        /* Bottone verde CTA (da index.html - se necessario) */
+        .green-button {
+            padding: 8px 20px; background-color: var(--primary-green); border-radius: 20px;
+            color: white; text-decoration: none; font-weight: 500; transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); border: none; cursor: pointer;
+            position: relative; overflow: hidden; white-space: nowrap; margin: 0 5px; display: inline-block;
+        }
+        .green-button::before { /* Effetto shine */
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        .green-button:hover {
+            background-color: var(--secondary-green); transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .green-button:hover::before { left: 100%; }
+
+        /* Hamburger Menu Button (da index.html) */
+        .hamburger-btn { /* Nome corretto per JS */
+            display: none; cursor: pointer; background: none; border: none;
+            color: white; font-size: 24px; padding: 5px;
         }
 
-        .cta-section p {
-            margin-bottom: 1rem;
+        /* Navigazione Mobile (da index.html) */
+        .mobile-nav {
+            display: none; flex-direction: column;
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
+            padding: 15px; border-radius: 0 0 10px 10px; margin-top: -10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); position: relative; z-index: 999;
+        }
+        .mobile-nav.active { /* Classe per mostrarlo da index JS */
+             display: flex;
+        }
+        .mobile-nav a.button,
+        .mobile-nav .green-button {
+            color: white; text-decoration: none; padding: 10px 15px; margin: 5px 0;
+            border-radius: 5px; transition: background-color 0.3s, transform 0.3s;
+            text-align: center; display: block; width: 100%; box-sizing: border-box;
+        }
+        .mobile-nav a.button:hover,
+        .mobile-nav .green-button:hover {
+            background-color: rgba(255, 255, 255, 0.15); transform: translateX(5px);
+            box-shadow: none;
+        }
+        .mobile-nav .green-button:hover::before { left: -100%; }
+
+        /* Language Selector Styles (da index.html) */
+        .language-selector { position: relative; margin-left: 10px; }
+        .language-btn {
+            background: none; border: none; font-size: 1.5rem; cursor: pointer;
+            padding: 5px 8px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; color: white; transition: background-color 0.3s; line-height: 1;
+        }
+        .language-btn:hover { background-color: rgba(255, 255, 255, 0.15); }
+        .language-dropdown {
+            position: absolute; top: calc(100% + 10px); right: 0; background-color: white;
+            border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); min-width: 160px;
+            z-index: 1100; display: none; overflow: hidden; padding: 5px 0;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 10px 15px; cursor: pointer; transition: background-color 0.2s ease-in-out;
+            display: flex; align-items: center; font-size: 0.95rem; color: var(--dark-gray);
+        }
+        .language-option:hover { background-color: var(--background-green); }
+        .language-flag { margin-right: 10px; font-size: 1.1rem; line-height: 1; }
+        /* Mobile Language Selector */
+        .mobile-nav .language-selector { width: 100%; margin: 15px 0 5px 0; position: relative; }
+        .mobile-nav .language-btn {
+            width: 100%; justify-content: center; padding: 10px 15px; border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px; background-color: transparent; color: white; font-size: 1rem; text-align: center;
+        }
+        .mobile-nav .language-btn:hover { background-color: rgba(255, 255, 255, 0.1); transform: none; }
+        .mobile-nav .language-dropdown {
+            position: static; width: 100%; box-shadow: none; border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: none; border-radius: 0 0 5px 5px; margin-top: -1px; background-color: rgba(0,0,0, 0.1);
+            max-height: 200px; overflow-y: auto; padding: 0;
+        }
+        .mobile-nav .language-option { color: white; padding: 12px 20px; }
+        .mobile-nav .language-option:hover { background-color: rgba(255, 255, 255, 0.15); }
+
+        /* Banner con effetto gradiente (da index.html) */
+        .banner {
+            background: linear-gradient(90deg, #2d463a, #3b594a, #2d463a);
+            background-size: 200% 100%; color: white; padding: 12px 20px;
+            margin: 10px 0 20px 0; border-radius: 8px; text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            animation: gradientShift 8s ease infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .cta-section a {
-            color: var(--primary-green, #2ecc71);
-            text-decoration: none;
+        /* Stili Sezioni Generali (da index.html) */
+        .section { padding: var(--spacing-lg) 0; position: relative; }
+        .section-title { /* Stile generico per titoli sezioni se usati */
+            text-align: center; margin-bottom: var(--spacing-md);
+            font-size: 2.5rem; color: #2a5548; font-weight: 600;
         }
-        
-        /* Documenti legali */
+        .text-center { text-align: center; }
+
+        /* Stili Bottoni Generali (da index.html - se necessario) */
+        .btn {
+            display: inline-block; padding: 0.9rem 1.8rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
+            color: white; text-decoration: none; border-radius: 6px; transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); position: relative;
+            overflow: hidden; z-index: 1; margin: 10px 5px; border: none; cursor: pointer;
+            text-align: center;
+        }
+        .btn::before { /* Effetto shine */
+             content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+             transition: left 0.7s; z-index: -1;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15); }
+        .btn:hover::before { left: 100%; }
+
+        /* Footer (da index.html) */
+        .site-footer {
+            background-color: #2d3a35; padding: 2rem 0; margin-top: 4rem;
+            text-align: center; position: relative; z-index: 2;
+        }
+        .copyright-text { color: var(--light-gray); font-size: 0.9rem; line-height: 1.5; }
+        .copyright-text a { color: var(--secondary-green); text-decoration: none; transition: color 0.3s; }
+        .copyright-text a:hover { color: var(--tertiary-green); }
+
+        /* Background decorations (da index.html) */
+        .bg-decoration {
+            position: fixed; background-color: var(--tertiary-green); border-radius: 50%;
+            opacity: 0.4; filter: blur(70px); z-index: 0; pointer-events: none;
+        }
+        .decoration-1 { width: 400px; height: 400px; top: -100px; left: -100px; }
+        .decoration-2 { width: 350px; height: 350px; bottom: -50px; right: -50px; }
+
+        /* === END: Styles Copied/Adapted from index.html === */
+
+
+        /* === START: Styles Specific to Legal Documents Page (KYC/AML), adapted === */
+
         .legal-container {
             max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: var(--spacing-md) auto; /* Usa variabile per margine */
+            padding: var(--spacing-md); /* Usa variabile */
+            background-color: var(--card-bg-color); /* Sfondo card da index */
+            border-radius: 12px; /* Stesso radius card index */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Stessa ombra card index */
         }
-        
+
+        /* Navigazione interna documenti (Mantenuta per coerenza se aggiungi altri link) */
         .legal-nav {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            gap: var(--spacing-sm); /* Usa variabile */
+            margin-bottom: var(--spacing-md); /* Usa variabile */
+            padding-bottom: var(--spacing-sm); /* Usa variabile */
             border-bottom: 1px solid #eee;
         }
-        
+
         .legal-nav a {
-            padding: 8px 15px;
-            background-color: var(--primary-green);
+            padding: 0.6rem 1.2rem; /* Padding */
+            background-color: var(--primary-green); /* Colore primario */
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px; /* Stesso radius bottoni */
             transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
-        
+
         .legal-nav a:hover {
-            background-color: #4a9632;
+            background-color: var(--secondary-green); /* Colore secondario */
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        
+
+        /* Contenuto Documento Legale */
         .documento-legale {
-            padding: 10px;
+            padding: var(--spacing-sm) 0; /* Rimuove padding laterale, gestito da container */
         }
-        
+
         .documento-legale h1 {
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            color: #2a5548; /* Verde scuro titolo principale */
+            font-size: 2.0rem; /* Ridotto leggermente per titolo lungo */
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
             border-bottom: 2px solid var(--primary-green);
+            font-weight: 600;
+            text-align: center; /* Centra titolo documento */
         }
-        
+
         .documento-legale h2 {
-            color: var(--primary-green);
-            margin: 30px 0 15px;
+            color: var(--primary-blue); /* Blu primario per sezioni */
+            font-size: 1.6rem; /* Dimensione titoli sezione */
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+            padding-left: 0.5rem; /* Leggero indent */
+            border-left: 3px solid var(--primary-blue); /* Linea laterale */
         }
-        
+
+         .documento-legale h3 { /* Stile per sotto-sezioni */
+             color: var(--primary-green); /* Verde per sotto-sezioni */
+             font-size: 1.2rem;
+             margin-top: var(--spacing-sm);
+             margin-bottom: 0.5rem;
+             font-weight: 600; /* Bold */
+         }
+         .documento-legale h4 { /* Stile per sotto-sotto-sezioni */
+              color: var(--dark-gray);
+              font-size: 1.1rem;
+              margin-top: var(--spacing-sm);
+              margin-bottom: 0.3rem;
+              font-weight: 500;
+         }
+
+
         .documento-legale section {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            margin-bottom: var(--spacing-md); /* Spazio tra sezioni */
+            padding-bottom: 0; /* Rimosso padding sotto section */
+            border-bottom: none; /* Rimosso bordo sotto section */
         }
-        
+         .documento-legale section:last-of-type {
+             margin-bottom: 0; /* Rimuove margine sotto ultima sezione */
+         }
+
+        .documento-legale p {
+             margin-bottom: 1rem;
+             line-height: 1.6;
+             color: var(--dark-gray);
+             font-size: 1rem;
+        }
+        .documento-legale ul {
+             margin-left: 1.5rem; /* Indentazione lista */
+             margin-bottom: 1rem;
+             list-style: disc; /* Stile lista standard */
+        }
+         .documento-legale ol { /* Stile per liste ordinate */
+             margin-left: 1.5rem;
+             margin-bottom: 1rem;
+             list-style: decimal;
+         }
+        .documento-legale ul li, .documento-legale ol li {
+             margin-bottom: 0.5rem;
+             line-height: 1.6;
+             color: var(--dark-gray);
+             font-size: 1rem;
+        }
+         .documento-legale strong { /* Evidenzia testo importante */
+             font-weight: 600;
+             color: var(--primary-blue);
+         }
+         .documento-legale a { /* Stile link interni al testo */
+              color: var(--link-color);
+              text-decoration: underline;
+         }
+          .documento-legale a:hover {
+               color: var(--link-hover-color);
+          }
+
+        /* Ultimo Aggiornamento */
         .ultimo-aggiornamento {
-            margin-top: 30px;
-            padding-top: 15px;
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-sm);
             border-top: 1px solid #ddd;
             font-style: italic;
             color: #666;
+            font-size: 0.9rem;
         }
-        
         .ultimo-aggiornamento p {
-            margin-top: 15px;
+            margin-top: 0.5rem; /* Riduci margine */
+            margin-bottom: 0;
         }
+
+        /* === END: Styles Specific to Legal Documents Page === */
+
+
+        /* === START: Responsive Styles === */
+        @media (max-width: 992px) {
+            .main-nav { gap: 5px; }
+            .main-nav a.button, .main-nav .green-button { padding: 8px 10px; font-size: 0.9rem; }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .hamburger-btn { display: block; }
+            /* .mobile-nav.active gestito */
+
+             .section-title { font-size: 2rem; } /* Se usati */
+             .documento-legale h1 { font-size: 1.6rem; } /* Titolo più piccolo */
+             .documento-legale h2 { font-size: 1.3rem; }
+             .documento-legale h3 { font-size: 1.1rem; }
+             .legal-nav { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+             :root { --spacing-sm: 0.8rem; --spacing-md: 1.5rem; --spacing-lg: 2.5rem; }
+             .container { padding: 15px; }
+             header { padding: 10px 15px; }
+             .logo img { height: 35px; }
+
+             .legal-container { padding: var(--spacing-sm); margin: var(--spacing-sm) auto; }
+             .documento-legale h1 { font-size: 1.4rem; }
+             .documento-legale h2 { font-size: 1.1rem; }
+             .documento-legale h3 { font-size: 1rem; }
+             .documento-legale p, .documento-legale ul li, .documento-legale ol li { font-size: 0.9rem; }
+             .legal-nav a { padding: 0.5rem 1rem; font-size: 0.8rem; }
+
+             .bg-decoration { opacity: 0.2; filter: blur(50px); }
+             .decoration-1 { width: 250px; height: 250px; }
+             .decoration-2 { width: 200px; height: 200px; }
+        }
+        /* === END: Responsive Styles === */
+
     </style>
 </head>
 <body>
-    <!-- Header con logo -->
-    <header>
-        <div class="logo">
-            <img src="./assets/img/logo da email.png" alt="Logo">
-            <span>SynergyRecycle.B</span>
-        </div>
-        <nav class="main-nav">
-            <a href="./" class="button" data-i18n="navigation.home">Home</a>
-            <a href="./servizi.html" class="button" data-i18n="navigation.services">Servizi</a>
-            <a href="./sostenerci.html" class="button" data-i18n="navigation.support">Supportaci</a>
-            <a href="./contattaci.html" class="button" data-i18n="navigation.contact">Contattaci</a>
-            <a href="./roadmap.html" class="button" data-i18n="navigation.roadmap">Roadmap</a>
+    <!-- Elementi decorativi di sfondo -->
+    <div class="bg-decoration decoration-1"></div>
+    <div class="bg-decoration decoration-2"></div>
+
+    <div class="container">
+        <!-- Intestazione -->
+        <header>
+            <a href="./" class="logo"> <!-- Logo link alla home -->
+                <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B">
+                <span>SynergyRecycle.B</span>
+            </a>
+            <nav class="main-nav">
+                <a href="./" class="button">Home</a>
+                <a href="./servizi.html" class="button">Servizi</a>
+                <a href="./sostenerci.html" class="button">Supportaci</a>
+                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./roadmap.html" class="button">Roadmap</a>
+                <!-- START: Language Selector HTML (Desktop) -->
+                <div class="language-selector">
+                    <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
+                    <div class="language-dropdown" id="language-dropdown" role="menu">
+                        <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                        <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                        <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                        <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                        <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    </div>
+                </div>
+                <!-- END: Language Selector HTML (Desktop) -->
+            </nav>
+            <!-- Hamburger button con ID corretto -->
+            <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+        </header>
+
+        <!-- Navigazione mobile -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="./" class="button">Home</a>
+            <a href="./servizi.html" class="button">Servizi</a>
+            <a href="./sostenerci.html" class="button">Supportaci</a>
+            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./roadmap.html" class="button">Roadmap</a>
+             <!-- START: Language Selector HTML (Mobile) -->
+            <div class="language-selector">
+                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
+                <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                </div>
+            </div>
+            <!-- END: Language Selector HTML (Mobile) -->
         </nav>
-        
-        <div class="hamburger-container">
-            <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+
+        <!-- Banner -->
+        <div class="banner">
+            SynergyRecycle.B: "Documentazione KYC/AML: Il nostro impegno per la sicurezza e la conformità normativa."
         </div>
-    </header>
+    </div> <!-- Fine container header/banner -->
 
-    <!-- Navigazione mobile -->
-    <nav class="mobile-nav" id="mobile-nav">
-        <a href="./" class="button">Home</a>
-        <a href="./servizi.html" class="button">Servizi</a>
-        <a href="./sostenerci.html" class="button">Supportaci</a>
-        <a href="./contattaci.html" class="button">Contattaci</a>
-        <a href="./roadmap.html" class="button">Roadmap</a>
-    </nav>
+    <!-- Contenuto Principale - Documento KYC/AML -->
+    <main class="legal-container"> <!-- Applica classe container principale -->
 
-    <!-- Banner -->
-    <div class="banner">
-        SynergyRecycle.B: "Benvenuti nei documenti legali, qui troverete tutte le informazioni relative ai nostri impegni legali e alle nostre politiche."
-    </div>
-    
-<div class="documento-legale">
-    <h1>POLITICA KNOW YOUR CUSTOMER (KYC) E ANTIRICICLAGGIO (AML)</h1>
-    
-    <section>
-        <h2>1. DEFINIZIONI E OBIETTIVI</h2>
-        
-        <h3>1.1 Introduzione</h3>
-        <p>La presente Politica Know Your Customer (KYC) e Antiriciclaggio (AML) definisce i principi e le procedure adottate da SynergyRecycle.B per prevenire e contrastare il riciclaggio di denaro, il finanziamento del terrorismo e altre attività illecite attraverso i nostri servizi.</p>
-        
-        <h3>1.2 Quadro Normativo di Riferimento</h3>
-        <ul>
-            <li>Direttiva (UE) 2015/849 (Quarta Direttiva Antiriciclaggio)</li>
-            <li>Direttiva (UE) 2018/843 (Quinta Direttiva Antiriciclaggio)</li>
-            <li>D.Lgs. 231/2007 e successive modifiche</li>
-            <li>Regolamento (UE) 2016/679 (GDPR)</li>
-            <li>Raccomandazioni del GAFI (Gruppo di Azione Finanziaria Internazionale)</li>
-        </ul>
-        
-        <h3>1.3 Obiettivi della Politica</h3>
-        <ul>
-            <li>Prevenire l'utilizzo dei nostri servizi per attività illecite</li>
-            <li>Verificare l'identità dei clienti e monitorare le attività</li>
-            <li>Rilevare e segnalare operazioni sospette</li>
-            <li>Garantire la conformità normativa</li>
-            <li>Proteggere la reputazione aziendale</li>
-        </ul>
-        
-        <h3>1.4 Ambito di Applicazione</h3>
-        <p>Si applica a:</p>
-        <ul>
-            <li>Tutti i clienti e transazioni</li>
-            <li>Dipendenti e collaboratori</li>
-            <li>Terze parti operanti per conto nostro</li>
-        </ul>
-    </section>
+        <!-- Navigazione interna (opzionale se ci sono altri documenti nella stessa pagina) -->
+        <nav class="legal-nav">
+            <a href="[Link a Privacy Policy].html#privacy-policy">Privacy Policy</a>
+            <a href="[Link a Termini].html#termini-condizioni">Termini e Condizioni</a>
+            <a href="[Link a Disclaimer].html#disclaimer">Disclaimer</a>
+            <a href="[Link a Cookie Policy].html#cookie-policy">Cookie Policy</a>
+            <a href="risk-policy.html">Politica dei Rischi</a>
+            <a href="#">KYC / AML Policy</a> <!-- Link attivo per questa pagina -->
+        </nav>
 
-    <section>
-        <h2>2. PROCEDURE DI VERIFICA DELL'IDENTITÀ (KYC)</h2>
-        
-        <h3>2.1 Livelli di Due Diligence</h3>
-        <ol>
-            <li><strong>Semplificata (SDD)</strong>: Per clienti a basso rischio</li>
-            <li><strong>Standard (CDD)</strong>: Per la maggioranza dei clienti</li>
-            <li><strong>Rafforzata (EDD)</strong>: Per clienti ad alto rischio</li>
-        </ol>
-        
-        <h3>2.2 Processo di Identificazione</h3>
-        
-        <h4>2.2.1 Persone Fisiche</h4>
-        <p><strong>Documenti:</strong></p>
-        <ul>
-            <li>Documento d'identità valido</li>
-            <li>Codice fiscale</li>
-            <li>Prova di residenza</li>
-        </ul>
-        
-        <p><strong>Procedura:</strong></p>
-        <ol>
-            <li>Acquisizione documenti</li>
-            <li>Verifica autenticità</li>
-            <li>Controllo liste sanzioni/PEP</li>
-        </ol>
-        
-        <h4>2.2.2 Persone Giuridiche</h4>
-        <p><strong>Documenti:</strong></p>
-        <ul>
-            <li>Certificato Camera di Commercio</li>
-            <li>Statuto societario</li>
-            <li>Identificazione titolare effettivo</li>
-        </ul>
-        
-        <h3>2.3 Aggiornamento Informazioni</h3>
-        <ul>
-            <li>Clienti standard: ogni 12-24 mesi</li>
-            <li>Alto rischio: ogni 6-12 mesi</li>
-            <li>Aggiornamento immediato per cambiamenti significativi</li>
-        </ul>
-        
-        <h3>2.4 Classificazione del Rischio</h3>
-        <p>Basata su:</p>
-        <ul>
-            <li>Tipo cliente e attività</li>
-            <li>Paese di origine</li>
-            <li>Volume transazioni</li>
-            <li>Status PEP</li>
-        </ul>
-    </section>
+        <!-- Documento: KYC/AML Policy -->
+        <div class="documento-legale" id="kyc-aml-policy">
+            <h1>POLITICA KNOW YOUR CUSTOMER (KYC) E ANTIRICICLAGGIO (AML)</h1>
 
-    <section>
-        <h2>3. MISURE ANTIRICICLAGGIO (AML)</h2>
-        
-        <h3>3.1 Monitoraggio Transazioni</h3>
-        <ul>
-            <li>Monitoraggio continuo</li>
-            <li>Sistemi automatizzati</li>
-            <li>Soglie di attenzione</li>
-            <li>Revisione manuale</li>
-        </ul>
-        
-        <h3>3.2 Rilevamento Attività Sospette</h3>
-        <p>Indicatori:</p>
-        <ul>
-            <li>Transazioni insolite</li>
-            <li>Operazioni non coerenti</li>
-            <li>Paesi ad alto rischio</li>
-            <li>Strutturazione transazioni</li>
-        </ul>
-        
-        <h3>3.3 Segnalazione Operazioni Sospette</h3>
-        <ul>
-            <li>Responsabile dedicato</li>
-            <li>Procedura interna</li>
-            <li>Segnalazione a UIF</li>
-            <li>Divieto di tipping off</li>
-        </ul>
-        
-        <h3>3.4 Formazione del Personale</h3>
-        <ul>
-            <li>Corsi regolari</li>
-            <li>Aggiornamenti normativi</li>
-            <li>Test periodici</li>
-        </ul>
-    </section>
+            <section>
+                <h2>1. DEFINIZIONI E OBIETTIVI</h2>
 
-    <section>
-        <h2>4. CONSERVAZIONE E SICUREZZA DEI DATI</h2>
-        
-        <h3>4.1 Archiviazione</h3>
-        <ul>
-            <li>Sistema centralizzato</li>
-            <li>Tracciabilità accessi</li>
-            <li>Backup regolari</li>
-        </ul>
-        
-        <h3>4.2 Periodo Conservazione</h3>
-        <ul>
-            <li>Documentazione KYC: 10+ anni</li>
-            <li>Registrazioni transazioni: 10+ anni</li>
-        </ul>
-        
-        <h3>4.3 Protezione Dati</h3>
-        <ul>
-            <li>Crittografia avanzata</li>
-            <li>Controllo accessi</li>
-            <li>Audit trail</li>
-        </ul>
-    </section>
+                <h3>1.1 Introduzione</h3>
+                <p>La presente Politica Know Your Customer (KYC) e Antiriciclaggio (AML) definisce i principi e le procedure adottate da SynergyRecycle.B per prevenire e contrastare il riciclaggio di denaro, il finanziamento del terrorismo e altre attività illecite attraverso i nostri servizi e l'utilizzo dei token SRB.</p>
 
-    <section>
-        <h2>5. DIRITTI DEGLI UTENTI</h2>
-        
-        <h3>5.1 Informativa Privacy</h3>
-        <ul>
-            <li>Trasparenza sulle finalità</li>
-            <li>Accessibilità multicanale</li>
-        </ul>
-        
-        <h3>5.2 Diritto di Accesso</h3>
-        <ul>
-            <li>Risposta entro 30 giorni</li>
-            <li>Formato elettronico</li>
-        </ul>
-        
-        <h3>5.3 Limitazioni</h3>
-        <ul>
-            <li>Eccezioni legali AML</li>
-            <li>Obbligo conservazione</li>
-        </ul>
-    </section>
+                <h3>1.2 Quadro Normativo di Riferimento</h3>
+                <p>La nostra politica si basa sulle normative e linee guida internazionali e nazionali pertinenti, tra cui:</p>
+                <ul>
+                    <li>Direttiva (UE) 2015/849 (Quarta Direttiva Antiriciclaggio - 4AMLD).</li>
+                    <li>Direttiva (UE) 2018/843 (Quinta Direttiva Antiriciclaggio - 5AMLD) e successive modifiche.</li>
+                    <li>Legislazione nazionale di recepimento (es. D.Lgs. 231/2007 in Italia, Geldwäschegesetz - GwG in Germania).</li>
+                    <li>Regolamento (UE) 2016/679 (GDPR) per gli aspetti relativi al trattamento dei dati personali raccolti per finalità KYC/AML.</li>
+                    <li>Raccomandazioni del GAFI (Gruppo di Azione Finanziaria Internazionale - FATF).</li>
+                    <li>Potenziali future normative specifiche per gli asset virtuali (es. MiCA - Markets in Crypto-Assets Regulation).</li>
+                </ul>
 
-    <section>
-        <h2>6. PROCEDURE DI REVISIONE</h2>
-        
-        <h3>6.1 Audit Interno</h3>
-        <ul>
-            <li>Verifiche annuali</li>
-            <li>Reporting al management</li>
-        </ul>
-        
-        <h3>6.2 Revisione Politica</h3>
-        <ul>
-            <li>Aggiornamento annuale</li>
-            <li>Modifiche per cambiamenti normativi</li>
-        </ul>
-    </section>
+                <h3>1.3 Obiettivi della Politica</h3>
+                <p>Gli obiettivi principali di questa politica sono:</p>
+                <ul>
+                    <li>Prevenire che la piattaforma SynergyRecycle.B e i token SRB vengano utilizzati per scopi di riciclaggio di denaro, finanziamento del terrorismo o altre attività finanziarie illecite.</li>
+                    <li>Stabilire procedure efficaci per l'identificazione e la verifica dell'identità dei nostri clienti (KYC).</li>
+                    <li>Implementare un sistema di monitoraggio delle transazioni e delle attività degli utenti per individuare comportamenti sospetti.</li>
+                    <li>Definire le modalità di segnalazione delle operazioni sospette alle autorità competenti.</li>
+                    <li>Garantire la conformità con tutte le leggi e i regolamenti AML/CFT applicabili.</li>
+                    <li>Proteggere l'integrità e la reputazione di SynergyRecycle.B.</li>
+                </ul>
 
-    <section>
-        <h2>7. VALUTAZIONE DEL RISCHIO</h2>
-        
-        <h3>7.1 Risk Assessment</h3>
-        <ul>
-            <li>Valutazione annuale</li>
-            <li>Analisi clienti/prodotti/aree</li>
-        </ul>
-        
-        <h3>7.2 Mitigazione</h3>
-        <ul>
-            <li>Misure specifiche</li>
-            <li>Allocazione risorse</li>
-        </ul>
-    </section>
+                <h3>1.4 Ambito di Applicazione</h3>
+                <p>Questa politica si applica a:</p>
+                <ul>
+                    <li>Tutti gli utenti che interagiscono con funzionalità specifiche della piattaforma che richiedono verifica (es. acquisto/vendita di token oltre determinate soglie, accesso a servizi avanzati).</li>
+                    <li>Tutte le transazioni che coinvolgono token SRB o fondi fiat gestiti attraverso la piattaforma (se applicabile).</li>
+                    <li>Tutti i dipendenti, collaboratori e dirigenti di SynergyRecycle.B coinvolti nei processi KYC/AML.</li>
+                    <li>Eventuali partner o fornitori di servizi terzi che operano per nostro conto in ambiti rilevanti per KYC/AML.</li>
+                </ul>
+            </section>
 
-    <section>
-        <h2>8. GOVERNANCE</h2>
-        
-        <h3>8.1 Struttura</h3>
-        <ul>
-            <li>Board of Directors</li>
-            <li>Comitato AML</li>
-            <li>Responsabile dedicato</li>
-        </ul>
-        
-        <h3>8.2 Responsabilità</h3>
-        <ul>
-            <li>Approvazione: CdA</li>
-            <li>Implementazione: Senior Management</li>
-        </ul>
-    </section>
+            <section>
+                <h2>2. PROCEDURE DI VERIFICA DELL'IDENTITÀ (KYC)</h2>
 
-    <section>
-        <h2>9. DISPOSIZIONI FINALI</h2>
-        
-        <h3>9.1 Entrata in Vigore</h3>
-        <p>Dal <strong>26-03-2025</strong></p>
-        
-        <h3>9.2 Diffusione</h3>
-        <ul>
-            <li>Intranet aziendale</li>
-            <li>Formazione personale</li>
-        </ul>
-        
-        <h3>9.3 Contatti</h3>
-        <p><strong>Responsabile AML:</strong> info-SRb@gmail.com</p>
-    </section>
+                 <h3>2.1 Approccio Basato sul Rischio (Risk-Based Approach)</h3>
+                 <p>Adottiamo un approccio basato sul rischio per determinare il livello appropriato di due diligence da applicare a ciascun utente. La classificazione del rischio tiene conto di vari fattori, tra cui:</p>
+                 <ul>
+                     <li><strong>Profilo dell'utente:</strong> Tipo di utente (persona fisica, giuridica), natura dell'attività dichiarata.</li>
+                     <li><strong>Geografia:</strong> Paese di residenza, nazionalità, paesi associati alle transazioni (considerando liste di paesi ad alto rischio o sanzionati).</li>
+                     <li><strong>Prodotto/Servizio Utilizzato:</strong> Livello di accesso richiesto, funzionalità utilizzate (es. limiti di transazione).</li>
+                     <li><strong>Comportamento Transazionale:</strong> Volume, frequenza e natura delle transazioni previste o osservate.</li>
+                     <li><strong>Status PEP:</strong> Verifica se l'utente o i suoi stretti collaboratori sono Persone Politicamente Esposte (PEP).</li>
+                 </ul>
 
-    <div class="ultimo-aggiornamento">
-        <p><strong>Ultimo Aggiornamento</strong>: 26-03-2025</p>
-        <p><strong>Versione</strong>: 1.0</p>
-    </div>
-</div>
+                 <h3>2.2 Livelli di Due Diligence</h3>
+                 <p>In base alla valutazione del rischio, applichiamo i seguenti livelli di verifica:</p>
+                 <ol>
+                     <li><strong>Due Diligence Semplificata (SDD - Simplified Due Diligence):</strong> Applicabile in situazioni di rischio intrinsecamente basso (es. utenti con accesso limitato, transazioni di valore molto basso). Potrebbe richiedere solo informazioni di base (es. email verificata).</li>
+                     <li><strong>Due Diligence Standard (CDD - Customer Due Diligence):</strong> Il livello standard applicato alla maggior parte degli utenti che accedono a funzionalità chiave. Richiede l'identificazione e la verifica dell'identità.</li>
+                     <li><strong>Due Diligence Rafforzata (EDD - Enhanced Due Diligence):</strong> Applicata a utenti o situazioni classificate ad alto rischio (es. PEP, utenti da giurisdizioni ad alto rischio, transazioni complesse o insolitamente elevate). Richiede informazioni e verifiche aggiuntive, come fonte dei fondi, informazioni sul patrimonio, monitoraggio intensificato.</li>
+                 </ol>
 
+                <h3>2.3 Processo di Identificazione e Verifica</h3>
+
+                <h4>2.3.1 Persone Fisiche (CDD/EDD)</h4>
+                <p>Richiediamo la raccolta e la verifica delle seguenti informazioni:</p>
+                <ul>
+                    <li><strong>Dati Identificativi Completi:</strong> Nome, cognome, data di nascita, luogo di nascita, nazionalità, indirizzo di residenza completo.</li>
+                    <li><strong>Documento d'Identità Valido:</strong> Copia di un documento rilasciato da un'autorità governativa (passaporto, carta d'identità nazionale, patente di guida) in corso di validità, contenente una fotografia.</li>
+                    <li><strong>Verifica del Documento:</strong> Utilizzo di database affidabili e indipendenti o di fornitori specializzati per verificare l'autenticità del documento e la corrispondenza dei dati.</li>
+                    <li><strong>Verifica dell'Indirizzo:</strong> Prova di residenza recente (es. bolletta utenze, estratto conto bancario, certificato di residenza - datato entro gli ultimi 3 mesi).</li>
+                    <li><strong>Selfie o Video Verifica (Liveness Check):</strong> Potrebbe essere richiesto un selfie dell'utente con il documento d'identità o una breve video-verifica per confermare che la persona che presenta il documento sia effettivamente l'utente.</li>
+                    <li><strong>Verifica Liste Sanzioni e PEP:</strong> Controllo incrociato dei dati con liste internazionali di sanzioni (es. OFAC, ONU, UE) e database PEP.</li>
+                    <li><strong>Informazioni Aggiuntive (EDD):</strong> Per EDD, possono essere richieste informazioni sulla fonte dei fondi/patrimonio, scopo della relazione commerciale, occupazione.</li>
+                </ul>
+
+                <h4>2.3.2 Persone Giuridiche (CDD/EDD)</h4>
+                <p>Richiediamo la raccolta e la verifica delle seguenti informazioni:</p>
+                <ul>
+                    <li><strong>Dati Societari:</strong> Denominazione legale, forma giuridica, numero di registrazione, indirizzo della sede legale e operativa.</li>
+                    <li><strong>Documentazione Ufficiale:</strong> Certificato di registrazione/visura camerale, statuto/atto costitutivo.</li>
+                    <li><strong>Identificazione dei Legali Rappresentanti:</strong> Identificazione e verifica dei soggetti autorizzati ad agire per conto dell'ente (secondo le procedure per le persone fisiche).</li>
+                    <li><strong>Identificazione dei Titolari Effettivi (UBO - Ultimate Beneficial Owners):</strong> Identificazione e verifica dell'identità delle persone fisiche che detengono, direttamente o indirettamente, una partecipazione significativa (generalmente >25%) o esercitano il controllo sull'ente. Richiede documentazione di supporto (es. struttura proprietaria).</li>
+                    <li><strong>Natura dell'Attività:</strong> Descrizione dettagliata dell'attività commerciale svolta.</li>
+                    <li><strong>Verifica Liste Sanzioni:</strong> Controllo dell'ente e dei titolari effettivi/rappresentanti.</li>
+                    <li><strong>Informazioni Aggiuntive (EDD):</strong> Struttura proprietaria e di controllo complessa, fonte dei fondi, scopo dettagliato della relazione.</li>
+                </ul>
+
+                 <h3>2.4 Aggiornamento e Revisione Periodica delle Informazioni KYC</h3>
+                 <p>Le informazioni KYC devono essere mantenute aggiornate. Effettuiamo revisioni periodiche:</p>
+                 <ul>
+                     <li><strong>Alto Rischio:</strong> Almeno annualmente o più frequentemente se necessario.</li>
+                     <li><strong>Rischio Standard/Basso:</strong> Ogni 2-5 anni, o a seguito di eventi scatenanti (trigger events) come cambiamenti significativi nei dati dell'utente o nel comportamento transazionale.</li>
+                 </ul>
+                 <p>Gli utenti sono tenuti a informarci tempestivamente di eventuali cambiamenti nei loro dati identificativi.</p>
+
+            </section>
+
+            <section>
+                <h2>3. MISURE ANTIRICICLAGGIO (AML)</h2>
+
+                <h3>3.1 Monitoraggio delle Transazioni</h3>
+                <p>Implementiamo sistemi di monitoraggio, sia automatizzati che manuali, per analizzare le transazioni effettuate sulla piattaforma alla ricerca di attività insolite o potenzialmente sospette. Il monitoraggio considera:</p>
+                <ul>
+                    <li><strong>Volume e Frequenza:</strong> Transazioni insolitamente elevate o frequenti rispetto al profilo dell'utente.</li>
+                    <li><strong>Pattern Transazionali:</strong> Tentativi di strutturazione (smurfing), transazioni circolari, utilizzo di più account.</li>
+                    <li><strong>Controparti e Giurisdizioni:</strong> Transazioni da/verso indirizzi wallet noti per attività illecite o da/verso giurisdizioni ad alto rischio o non cooperative.</li>
+                    <li><strong>Deviazioni dal Profilo:</strong> Attività incoerenti con il profilo di rischio o l'attività dichiarata dell'utente.</li>
+                </ul>
+
+                <h3>3.2 Rilevamento e Gestione delle Attività Sospette</h3>
+                 <p>Qualsiasi attività che sollevi dubbi o non abbia una spiegazione economica o legale apparente viene considerata potenzialmente sospetta. Gli indicatori (red flags) includono, ma non si limitano a:</p>
+                 <ul>
+                     <li>Tentativi di eludere le procedure KYC/CDD.</li>
+                     <li>Fornitura di informazioni false o fuorvianti.</li>
+                     <li>Transazioni senza apparente scopo lecito.</li>
+                     <li>Richieste insolite di riservatezza.</li>
+                     <li>Coinvolgimento di soggetti presenti in liste di sanzioni.</li>
+                     <li>Operazioni complesse e non giustificate.</li>
+                 </ul>
+                 <p>Le attività potenzialmente sospette vengono escalate internamente al Responsabile AML per un'analisi approfondita.</p>
+
+                <h3>3.3 Segnalazione di Operazioni Sospette (SOS/STR)</h3>
+                <p>Se, a seguito dell'analisi, un'operazione viene ritenuta sospetta ai sensi della normativa AML, il Responsabile AML provvederà a:</p>
+                <ul>
+                    <li>Predisporre una Segnalazione di Operazione Sospetta (SOS/STR - Suspicious Transaction Report).</li>
+                    <li>Inviare la segnalazione all'Unità di Informazione Finanziaria (UIF) competente (es. FIU tedesca - Zentralstelle für Finanztransaktionsuntersuchungen) o all'autorità equivalente secondo la giurisdizione applicabile, nei tempi e modi previsti dalla legge.</li>
+                    <li>Mantenere la riservatezza sulla segnalazione effettuata (divieto di "tipping off"), non informando l'utente interessato.</li>
+                </ul>
+
+                <h3>3.4 Formazione del Personale</h3>
+                 <p>Tutti i dipendenti e collaboratori con mansioni rilevanti ai fini AML/CFT ricevono una formazione specifica e periodica su:</p>
+                 <ul>
+                     <li>Normativa AML/CFT vigente e suoi aggiornamenti.</li>
+                     <li>Procedure KYC/CDD/EDD interne.</li>
+                     <li>Tecniche di riciclaggio e finanziamento del terrorismo.</li>
+                     <li>Riconoscimento degli indicatori di attività sospette.</li>
+                     <li>Procedure interne di segnalazione.</li>
+                     <li>Obblighi di riservatezza e divieto di tipping-off.</li>
+                 </ul>
+                 <p>La partecipazione alla formazione è obbligatoria e tracciata.</p>
+            </section>
+
+            <section>
+                <h2>4. CONSERVAZIONE E SICUREZZA DEI DATI</h2>
+
+                <h3>4.1 Archiviazione Sicura</h3>
+                 <p>Tutta la documentazione e le informazioni raccolte durante i processi KYC/AML, nonché le registrazioni delle transazioni e delle analisi effettuate, sono conservate in modo sicuro, garantendo:</p>
+                 <ul>
+                     <li><strong>Integrità:</strong> Protezione da modifiche non autorizzate.</li>
+                     <li><strong>Riservatezza:</strong> Accesso limitato al solo personale autorizzato con specifiche necessità lavorative.</li>
+                     <li><strong>Disponibilità:</strong> Recuperabilità dei dati per le autorità competenti e per audit interni/esterni.</li>
+                     <li><strong>Tracciabilità:</strong> Registrazione degli accessi ai dati (audit trail).</li>
+                 </ul>
+                 <p>Utilizziamo sistemi di archiviazione digitali sicuri con misure di protezione adeguate (crittografia, controllo accessi, backup).</p>
+
+                <h3>4.2 Periodo di Conservazione</h3>
+                 <p>La documentazione KYC e le registrazioni delle transazioni sono conservate per il periodo minimo richiesto dalla normativa AML applicabile (generalmente 5 anni, ma può estendersi a 10 anni in alcune giurisdizioni, a partire dalla cessazione del rapporto con il cliente o dalla data dell'ultima transazione). Questo periodo può essere esteso se richiesto da specifiche indagini o procedimenti legali.</p>
+
+                <h3>4.3 Protezione dei Dati Personali (GDPR)</h3>
+                 <p>Il trattamento dei dati personali raccolti per finalità KYC/AML avviene nel pieno rispetto del GDPR. Garantiamo che i dati siano trattati solo per le finalità previste dalla normativa AML, che siano adeguati, pertinenti e limitati a quanto necessario. Gli utenti mantengono i loro diritti ai sensi del GDPR, compatibilmente con gli obblighi di conservazione e segnalazione previsti dalla normativa AML (come specificato nella sezione 5).</p>
+            </section>
+
+            <section>
+                 <h2>5. DIRITTI DEGLI UTENTI E TRATTAMENTO DATI</h2>
+
+                 <h3>5.1 Informativa Privacy Specifica</h3>
+                 <p>Gli utenti vengono informati, tramite la nostra Privacy Policy generale e specifiche informative al momento della raccolta dati KYC, sulle finalità del trattamento AML/CFT, sulla base giuridica (obbligo legale), sui tipi di dati trattati, sui periodi di conservazione e sui loro diritti.</p>
+
+                 <h3>5.2 Esercizio dei Diritti GDPR</h3>
+                 <p>Gli utenti possono esercitare i diritti previsti dal GDPR (accesso, rettifica, ecc.) contattando il Titolare del Trattamento. Tuttavia, l'esercizio di alcuni diritti (come il diritto alla cancellazione o all'opposizione) può essere limitato dagli obblighi legali imposti dalla normativa AML/CFT, in particolare per quanto riguarda:</p>
+                 <ul>
+                     <li>L'obbligo di conservazione dei dati per i periodi stabiliti dalla legge.</li>
+                     <li>L'obbligo di segnalare operazioni sospette e il divieto di informare l'interessato (tipping off).</li>
+                 </ul>
+                 <p>Valuteremo ogni richiesta caso per caso, bilanciando i diritti dell'interessato con gli obblighi normativi.</p>
+
+                 <h3>5.3 Trasparenza</h3>
+                 <p>Ci impegniamo a fornire la massima trasparenza possibile sul trattamento dei dati per finalità KYC/AML, nei limiti consentiti dalla legge e senza compromettere l'efficacia delle misure antiriciclaggio.</p>
+             </section>
+
+             <section>
+                 <h2>6. REVISIONE E AGGIORNAMENTO DELLA POLITICA</h2>
+
+                 <h3>6.1 Revisione Periodica</h3>
+                 <p>Questa Politica KYC/AML è soggetta a revisione periodica, almeno annuale, e comunque ogni qualvolta si verifichino cambiamenti significativi nel quadro normativo, nelle operazioni aziendali, nei rischi identificati o nelle best practice del settore.</p>
+
+                 <h3>6.2 Audit Interno ed Esterno</h3>
+                 <p>L'efficacia delle procedure KYC/AML viene verificata attraverso audit interni regolari. Potremmo anche avvalerci di audit esterni indipendenti per garantire l'adeguatezza e la conformità della nostra politica e delle nostre procedure.</p>
+
+                 <h3>6.3 Approvazione e Diffusione</h3>
+                 <p>Ogni revisione sostanziale della politica deve essere approvata dal Senior Management o dall'organo di governance competente. La versione aggiornata viene comunicata a tutto il personale pertinente e resa disponibile agli stakeholder come appropriato.</p>
+             </section>
+
+            <!-- Sezioni 7, 8, 9 dall'originale sembrano corrette nella struttura -->
+             <section>
+                 <h2>7. VALUTAZIONE DEL RISCHIO</h2>
+                 <h3>7.1 Risk Assessment</h3>
+                 <p>Effettuiamo una valutazione del rischio AML/CFT almeno annualmente (o più frequentemente se necessario) per identificare, analizzare e comprendere i rischi specifici a cui SynergyRecycle.B è esposta. La valutazione considera:</p>
+                 <ul>
+                     <li>Rischi legati ai clienti (tipologia, comportamento, geografia).</li>
+                     <li>Rischi legati ai prodotti/servizi offerti (caratteristiche, vulnerabilità).</li>
+                     <li>Rischi legati ai canali di distribuzione e alle interfacce utilizzate.</li>
+                     <li>Rischi geografici (paesi di operatività, paesi dei clienti).</li>
+                 </ul>
+                 <h3>7.2 Mitigazione del Rischio</h3>
+                 <p>Sulla base dei risultati della valutazione del rischio, implementiamo misure di mitigazione adeguate e proporzionate, che possono includere:</p>
+                 <ul>
+                     <li>Applicazione di livelli di due diligence differenziati.</li>
+                     <li>Impostazione di limiti operativi specifici.</li>
+                     <li>Rafforzamento dei controlli di monitoraggio.</li>
+                     <li>Formazione specifica per il personale.</li>
+                     <li>Decisione di non avviare/interrompere rapporti con clienti ad altissimo rischio non mitigabile.</li>
+                 </ul>
+             </section>
+
+             <section>
+                 <h2>8. GOVERNANCE E RESPONSABILITÀ</h2>
+                 <h3>8.1 Struttura Organizzativa</h3>
+                 <p>La governance AML/CFT prevede:</p>
+                 <ul>
+                     <li><strong>Senior Management/Organo Direttivo:</strong> Responsabilità ultima dell'approvazione della politica e della supervisione della sua implementazione.</li>
+                     <li><strong>Responsabile AML (Compliance Officer):</strong> Figura dedicata responsabile dell'implementazione quotidiana della politica, del monitoraggio, della gestione delle segnalazioni sospette, della formazione e del reporting al management.</li>
+                     <li><strong>Funzioni di Controllo Interno/Audit:</strong> Verifica indipendente dell'adeguatezza e dell'efficacia delle procedure AML.</li>
+                 </ul>
+                 <h3>8.2 Responsabilità Chiare</h3>
+                 <p>Le responsabilità specifiche per ogni ruolo coinvolto nei processi KYC/AML sono chiaramente definite e comunicate all'interno dell'organizzazione.</p>
+             </section>
+
+             <section>
+                 <h2>9. DISPOSIZIONI FINALI</h2>
+                 <h3>9.1 Entrata in Vigore</h3>
+                 <p>La presente versione della Politica KYC/AML entra in vigore a partire dalla data indicata nell'ultimo aggiornamento.</p>
+                 <h3>9.2 Diffusione Interna</h3>
+                 <p>La politica è resa disponibile a tutto il personale pertinente tramite i canali di comunicazione interna ed è parte integrante dei programmi di formazione obbligatoria.</p>
+                 <h3>9.3 Contatti per Questioni AML/KYC</h3>
+                 <p>Per qualsiasi domanda o chiarimento specifico relativo a questa politica, è possibile contattare il Responsabile AML all'indirizzo: <a href="mailto:compliance.srb@example.com" style="color: var(--link-color);">compliance.srb@example.com</a> (Nota: Sostituire con l'email corretta).</p>
+             </section>
+
+
+            <div class="ultimo-aggiornamento">
+                <p><strong>Ultimo Aggiornamento:</strong> 26 Marzo 2025</p>
+                <p><strong>Versione:</strong> 1.0</p>
+            </div>
+        </div> <!-- Fine documento-legale -->
+
+    </main>
+
+    <!-- Footer Copyright -->
     <footer class="site-footer">
         <div class="container">
             <p class="copyright-text">
-                © <span id="copyright-2024"></span> SynergyRecycle.B. 
-                - Tutti i diritti riservati
-                Herford, Germany |
+                © <span id="copyright-year"></span> SynergyRecycle.B.
+                 - Tutti i diritti riservati
+                 <br> <!-- Aggiunto break -->
+                Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a>
             </p>
         </div>
     </footer>
 
-    </div>
-</body>
-</html>
-
-    <!-- Script JS -->
+    <!-- Script JS Combinato -->
     <script>
-        // Aggiorna l'anno di copyright
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
-        
-        // Menu mobile toggle
-        document.getElementById('hamburger-btn').addEventListener('click', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- COMMON HELPER FUNCTIONS ---
+            const toggleAriaExpanded = (element) => {
+                 if (!element) return;
+                 const isExpanded = element.getAttribute('aria-expanded') === 'true';
+                 element.setAttribute('aria-expanded', !isExpanded);
+            };
+
+            // --- COPYRIGHT YEAR ---
+            const yearSpan = document.getElementById('copyright-year');
+             if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+             }
+              // Gestisce anche ID vecchio se presente per errore
+             const yearSpanOld = document.getElementById('copyright-2024');
+             if (yearSpanOld) { yearSpanOld.textContent = new Date().getFullYear(); }
+
+
+            // --- HAMBURGER MENU TOGGLE ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
             const mobileNav = document.getElementById('mobile-nav');
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            
-            this.setAttribute('aria-expanded', !isExpanded);
-            if (!isExpanded) {
-                mobileNav.classList.add('active');
+            const bodyEl = document.body;
+
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     const isActive = mobileNav.classList.toggle('active');
+                     toggleAriaExpanded(this);
+                     bodyEl.classList.toggle('menu-open', isActive);
+                 });
+
+                 // Chiudi il menu quando si clicca su un link (escluso lingua)
+                 const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
+                 mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (!link.closest('.language-selector')) {
+                             mobileNav.classList.remove('active');
+                             bodyEl.classList.remove('menu-open');
+                            if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                                toggleAriaExpanded(hamburgerBtn);
+                            }
+                        }
+                    });
+                 });
+
+                 // Chiudi cliccando fuori dal menu
+                 document.addEventListener('click', function(event) {
+                     if (mobileNav.classList.contains('active') &&
+                         !hamburgerBtn.contains(event.target) &&
+                         !mobileNav.contains(event.target))
+                    {
+                         mobileNav.classList.remove('active');
+                         bodyEl.classList.remove('menu-open');
+                         if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                            toggleAriaExpanded(hamburgerBtn);
+                        }
+                     }
+                 });
+
+                 // Chiudi con tasto ESC
+                 document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && mobileNav.classList.contains('active')) {
+                         mobileNav.classList.remove('active');
+                         bodyEl.classList.remove('menu-open');
+                         if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                             toggleAriaExpanded(hamburgerBtn);
+                         }
+                     }
+                 });
+
             } else {
-                mobileNav.classList.remove('active');
+                 console.error("Hamburger button o mobile nav non trovati.");
             }
-        });
-        
-        // Chiudi menu mobile quando si clicca su un link
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('mobile-nav').classList.remove('active');
-                document.getElementById('hamburger-btn').setAttribute('aria-expanded', 'false');
-            });
-        });
-        
-        // Gestione scroll - nascondi il menu mobile quando si scrolla
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > 50) {
-                // Scroll verso il basso
-                document.getElementById('mobile-nav').classList.remove('active');
-                document.getElementById('hamburger-btn').setAttribute('aria-expanded', 'false');
-            }
-            lastScrollTop = scrollTop;
-        });
+
+
+            // --- LANGUAGE SELECTOR LOGIC ---
+             const languageBtn = document.getElementById('language-btn');
+             const languageDropdown = document.getElementById('language-dropdown');
+             const mobileLanguageBtn = document.getElementById('mobile-language-btn');
+             const mobileLanguageDropdown = document.getElementById('mobile-language-dropdown');
+             const allLanguageOptions = document.querySelectorAll('.language-option');
+
+             const closeAllLanguageDropdowns = () => {
+                 if (languageDropdown) languageDropdown.classList.remove('show');
+                 if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+                 if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
+                 if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+             };
+
+             if (languageBtn && languageDropdown) {
+                 languageBtn.addEventListener('click', function(e) {
+                     e.stopPropagation();
+                     const isShown = languageDropdown.classList.toggle('show');
+                     languageBtn.setAttribute('aria-expanded', isShown);
+                     if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
+                     if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+                 });
+             }
+
+             if (mobileLanguageBtn && mobileLanguageDropdown) {
+                 mobileLanguageBtn.addEventListener('click', function(e) {
+                     e.stopPropagation();
+                      const isShown = mobileLanguageDropdown.classList.toggle('show');
+                      mobileLanguageBtn.setAttribute('aria-expanded', isShown);
+                     if (languageDropdown) languageDropdown.classList.remove('show');
+                     if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+                 });
+             }
+
+             if (allLanguageOptions.length > 0) {
+                 allLanguageOptions.forEach(option => {
+                     option.addEventListener('click', function() {
+                         const lang = this.getAttribute('data-lang');
+                         changeLang(lang);
+                         closeAllLanguageDropdowns();
+                     });
+                 });
+             }
+
+             // Attach listener to document for closing language dropdowns
+             document.addEventListener('click', function(event) {
+                 if (languageBtn && languageDropdown && !languageBtn.contains(event.target) && !languageDropdown.contains(event.target)) {
+                     languageDropdown.classList.remove('show');
+                     languageBtn.setAttribute('aria-expanded', 'false');
+                 }
+                 if (mobileLanguageBtn && mobileLanguageDropdown && !mobileLanguageBtn.contains(event.target) && !mobileLanguageDropdown.contains(event.target)) {
+                     mobileLanguageDropdown.classList.remove('show');
+                     mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+                 }
+             });
+
+             // Prevent clicks inside dropdowns from closing them immediately
+             if (languageDropdown) languageDropdown.addEventListener('click', e => e.stopPropagation());
+             if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
+
+             function changeLang(lang) { // Placeholder
+                 console.log(`Lingua selezionata: ${lang}`);
+                 localStorage.setItem('selectedLanguage', lang);
+                 alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+                 // document.documentElement.lang = lang;
+             }
+
+             const savedLang = localStorage.getItem('selectedLanguage');
+             if (savedLang) {
+                  console.log(`Lingua salvata trovata: ${savedLang}.`);
+                 // changeLang(savedLang); // Applica se vuoi
+                 // document.documentElement.lang = savedLang;
+             }
+            // --- END: Language Selector Logic ---
+
+            // --- SMOOTH SCROLL FOR LEGAL NAV (Optional but good UX) ---
+             const legalNavLinks = document.querySelectorAll('.legal-nav a[href^="#"]');
+             legalNavLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    // Only prevent default and scroll if it's an internal anchor
+                    if (targetId && targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.getElementById(targetId.substring(1));
+
+                        if (targetElement) {
+                            const headerOffset = document.querySelector('header')?.offsetHeight || 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+
+                            // Close mobile menu if open
+                            if (mobileNav && mobileNav.classList.contains('active')) {
+                                mobileNav.classList.remove('active');
+                                bodyEl.classList.remove('menu-open');
+                                if (hamburgerBtn && hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                                    toggleAriaExpanded(hamburgerBtn);
+                                }
+                            }
+                        }
+                    }
+                    // If it's a link to another file (like risk-policy.html), let the browser handle it normally.
+                });
+             });
+
+        }); // Fine DOMContentLoaded
     </script>
+
 </body>
 </html>
