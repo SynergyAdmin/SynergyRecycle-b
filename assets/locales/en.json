@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "title": "SynergyRecycle.B",
+    "lang": "en"
+  },
+  "header": {
+    "logoAlt": "SynergyRecycle.B Logo",
+    "logoText": "SynergyRecycle.B",
+    "nav": {
+      "actionButton": "\"One Action, A Thousand Impacts.\"",
+      "home": "Home",
+      "services": "Services",
+      "supportUs": "Support Us",
+      "contactUs": "Contact Us",
+      "roadmap": "Roadmap"
+    },
+    "langSelector": {
+      "ariaLabel": "Select language",
+      "en": "English",
+      "es": "Spanish",
+      "de": "German",
+      "it": "Italian",
+      "fr": "French"
+    },
+    "hamburgerAriaLabel": "Menu",
+    "mobileNav": {
+      "langSelectorButton": "🌐 Language"
+    }
+  },
+  "banner": {
+    "text": "SynergyRecycle.B: \"Every action counts, together we make the difference.\""
+  },
+  "hero": {
+    "title": "\"Our Platform: to help us, help the World.\"",
+    "subtitle": "We build digital experiences, revolutionize the way things are done, let's stand out."
+  },
+  "blockchain": {
+    "title": "With the Polygon Blockchain, the future will be sustainable",
+    "paragraph": "Our technology based on the Polygon blockchain connects every stage of recycling to maximize positive impact, ensuring transparency and traceability.",
+    "labels": {
+      "collection": "Collection",
+      "verification": "Verification",
+      "processing": "Processing",
+      "recycling": "Recycling",
+      "reuse": "Reuse"
+    }
+  },
+  "success": {
+    "title": "We Drive Success through: Efficiency, Reliability, Innovation, Scalability.",
+    "paragraph1": "We fine-tune a unique customer experience.",
+    "paragraph2": "Digital strategies and tailored research based on Reliability and Innovation."
+  },
+  "pillars": {
+    "title": "Our fundamental pillars",
+    "efficiency": {
+      "title": "Efficiency",
+      "text": "We optimize processes and resources for maximum results with minimum waste.",
+      "imgAlt": "Efficiency Icon"
+    },
+    "reliability": {
+      "title": "Reliability",
+      "text": "We guarantee transparency and security thanks to blockchain technology.",
+      "imgAlt": "Reliability Icon"
+    },
+    "innovation": {
+      "title": "Innovation",
+      "text": "We constantly develop cutting-edge solutions for sustainability.",
+      "imgAlt": "Innovation Icon"
+    },
+    "scalability": {
+      "title": "Scalability",
+      "text": "We design flexible systems ready to grow with our community.",
+      "imgAlt": "Scalability Icon"
+    }
+  },
+  "building": {
+    "title": "Discover what we are Building.",
+    "subtitle1": "Digital Transformation for Sustainability",
+    "paragraph1": "We help people and companies thrive in an ever-evolving eco-conscious landscape.",
+    "subtitle2": "Dedicated Web & App Development",
+    "paragraph2": "We leverage our experience to provide intuitive and powerful tools, empowering everyone to contribute and grow.",
+    "appButton": {
+      "appStore": "Coming Soon: App Store",
+      "googlePlay": "Coming Soon: Google Play"
+    },
+    "imgAlt": "Person interacting with sustainable technology"
+  },
+  "cta": {
+    "title1": "All People do a lot for themselves, but still too little for our Planet.",
+    "title2": "Become part of SynergyRecycle.B: together we could revolutionize the future of our World.",
+    "paragraph": "Join us to improve, and together we will improve our Planet.",
+    "button": "Start now"
+  },
+  "footer": {
+    "copyright": "© {year} SynergyRecycle.B. - All rights reserved\nHerford, Germany | SynergyRecycle.B@gmail.com",
+    "allRightsReserved": "All rights reserved"
+  },
+  "alerts": {
+    "languageChange": "Language changed to: {lang}. (Translation logic to be implemented)"
+  }
+}
