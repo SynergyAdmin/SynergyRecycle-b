@@ -111,18 +111,18 @@
              width: 150px; /* Control size */
              height: 150px;
              margin-bottom: var(--spacing-sm);
-             /* Replace SVG with a themed graphic or animation */
+             /* Themed graphic using gradient and SVG */
              background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
              border-radius: 50%;
              display: flex;
              align-items: center;
              justify-content: center;
              color: white;
-             font-size: 3rem; /* Placeholder Icon */
              box-shadow: 0 4px 15px rgba(90, 173, 87, 0.3);
         }
-         .hero-graphic span { /* Simple recycle icon */
-             transform: scaleX(-1); display: inline-block;
+         .hero-graphic svg { /* Style the SVG placeholder */
+             width: 60%;
+             height: 60%;
          }
 
 
@@ -225,8 +225,9 @@
             transition: opacity 0.3s ease;
         }
         .modal.active { /* Class to show modal */
-             display: flex;
+             /* display: flex; Already flex by default now */
              opacity: 1;
+             pointer-events: auto; /* Make interactable */
         }
 
         .modal-content {
@@ -260,6 +261,7 @@
             line-height: 1;
             padding: 5px;
             transition: color 0.3s ease;
+            z-index: 10; /* Ensure button is clickable */
         }
         .close-button:hover {
              color: var(--primary-blue); /* Color on hover */
@@ -355,6 +357,8 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border-top: 4px solid var(--secondary-green); /* Different accent color */
+            display: flex; /* Allow flex for donation card */
+            flex-direction: column;
         }
 
         .result-value {
@@ -383,8 +387,8 @@
         /* Donation Card & Visualization IMPROVEMENT */
         .donation-card { /* Use result-card base */
              border-top-color: var(--primary-green); /* Different accent */
-             display: flex;
-             flex-direction: column;
+             /* display: flex; inherited */
+             /* flex-direction: column; inherited */
         }
 
         .donation-visualizer { /* New container for icons */
@@ -408,13 +412,11 @@
         }
 
         .token-icon { /* Specific icon styles */
-             /* Color set by variable or default emoji color */
             z-index: 2; /* Token initially on top */
             opacity: 1; /* Start visible */
         }
 
         .tree-icon {
-             /* Color set by variable or default emoji color */
              z-index: 1;
              opacity: 0; /* Start hidden */
              transform: translate(-50%, -50%) scale(0.8); /* Start slightly smaller */
@@ -515,7 +517,8 @@
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .hero-graphic { width: 120px; height: 120px; font-size: 2.5rem; }
+            .hero-graphic { width: 120px; height: 120px; }
+            .hero-graphic svg { width: 55%; height: 55%; }
             .hero-text { margin-top: var(--spacing-sm); }
             .total-stats, .total-stats-modal, .results { grid-template-columns: 1fr; } /* Stack cards */
             .stat-card, .result-card { max-width: 100%; }
@@ -526,7 +529,8 @@
              .submit-button { width: 90%; }
         }
          @media (max-width: 480px) {
-            .hero-graphic { width: 100px; height: 100px; font-size: 2rem; }
+            .hero-graphic { width: 100px; height: 100px; }
+            .hero-graphic svg { width: 50%; height: 50%; }
             .hero-text { font-size: 1.6rem; }
             .cta-button { padding: 0.8rem 1.5rem; font-size: 1rem; }
              .stat-value { font-size: 1.6rem; }
@@ -557,7 +561,14 @@
         <!-- Hero Section -->
         <div class="hero">
             <div class="hero-graphic">
-                 <span>♻️</span> <!-- Simple Recycle Icon -->
+                 <!-- Placeholder SVG Icon -->
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                     <style> .leaf-color { stroke: white; } .circle-color { stroke: rgba(255,255,255,0.5); stroke-dasharray: 5 3;} </style>
+                     <circle cx="50" cy="50" r="45" class="circle-color"/>
+                     <path d="M50 90 V 50 C 50 30, 70 30, 70 50 C 70 70, 50 70, 50 90" class="leaf-color" fill="rgba(255,255,255,0.1)"/>
+                     <path d="M50 90 V 50 C 50 30, 30 30, 30 50 C 30 70, 50 70, 50 90" class="leaf-color" fill="rgba(255,255,255,0.1)"/>
+                     <path d="M50 55 V 30" class="leaf-color"/>
+                 </svg>
             </div>
             <h1 class="hero-text">
                 Ricicla, Guadagna,<br>
@@ -614,7 +625,7 @@
                     <div class="earnings-value" id="money-earned">~€0.00</div> <!-- Example initial -->
                 </div>
                 <div class="result-card donation-card"> <!-- Specific Donation Card -->
-                     <div class="result-label" style="margin-bottom: 5px; font-weight: 10638;">Dona per Piantare Alberi</div>
+                     <div class="result-label" style="margin-bottom: 5px; font-weight: 500;">Dona per Piantare Alberi</div>
                      <div class="donation-visualizer" id="donation-visualizer"> <!-- ID added -->
                         <span class="donation-icon token-icon">🪙</span>
                         <span class="donation-icon tree-icon">🌳</span>
@@ -657,227 +668,299 @@
     </div>
 
     <script>
-        // --- Constants ---
-        const PET_CO2_SAVING_GRAMS = 90; // grams per bottle
-        const CAN_CO2_SAVING_GRAMS = 185; // grams per can
-        const TOKENS_PER_ITEM = 1; // SRB earned per item recycled
-        const TOKEN_VALUE_EUR = 0.000535; // € per token (example value)
-        const TOKENS_PER_TREE_THRESHOLD = 10638; // SRB needed to trigger planting ONE tree
+        // Wrap everything in DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM fully loaded and parsed");
 
-        // --- Global State Variables ---
-        let totalRecycledGlobal = 1240560;
-        let totalCO2SavedGlobalKg = 198490;
-        let totalTreesPlantedGlobal = 113;
-        let currentMaterial = 'pet'; // 'pet' or 'can'
-        let sessionDonatedTokensAccumulator = 0; // Accumulates donations within the session for tree calculation
+            // --- Constants ---
+            const PET_CO2_SAVING_GRAMS = 90;
+            const CAN_CO2_SAVING_GRAMS = 185;
+            const TOKENS_PER_ITEM = 1;
+            const TOKEN_VALUE_EUR = 0.000235;
+            const TOKENS_PER_TREE_THRESHOLD = 10638; // Changed for testing visualization
+            console.log("Constants defined:", { PET_CO2_SAVING_GRAMS, CAN_CO2_SAVING_GRAMS, TOKENS_PER_ITEM, TOKEN_VALUE_EUR, TOKENS_PER_TREE_THRESHOLD });
 
-        // --- DOM Elements ---
-        const modal = document.getElementById('calculator-modal');
-        const openModalButton = document.getElementById('open-calculator-button');
-        const closeModalButton = document.getElementById('close-modal');
-        const quantityInput = document.getElementById('quantity-input');
-        const co2SavedElement = document.getElementById('co2-saved');
-        const tokensEarnedElement = document.getElementById('tokens-earned');
-        const moneyEarnedElement = document.getElementById('money-earned');
-        const donationSlider = document.getElementById('donation-slider');
-        const donatedAmountElement = document.getElementById('donated-amount');
-        const donationVisualizer = document.getElementById('donation-visualizer'); // Visualizer container
-        const tokenIcon = donationVisualizer?.querySelector('.token-icon'); // Use optional chaining
-        const treeIcon = donationVisualizer?.querySelector('.tree-icon');   // Use optional chaining
-        const treeValueModalElement = document.getElementById('tree-value-modal');
-        // Modal Stats
-        const modalRecycledCounter = document.getElementById('modal-recycled-counter');
-        const modalCO2Saved = document.getElementById('modal-co2-saved');
-        const modalTrees = document.getElementById('modal-trees');
-        // Main Page Stats
-        const mainRecycledCounter = document.getElementById('main-recycled-counter');
-        const mainCO2Saved = document.getElementById('main-co2-saved');
-        const mainTrees = document.getElementById('main-trees');
-        // Buttons
-        const petButton = document.getElementById('pet-button');
-        const canButton = document.getElementById('can-button');
-        const submitButton = document.getElementById('submit-calculation');
+            // --- Global State Variables ---
+            let totalRecycledGlobal = 1240560;
+            let totalCO2SavedGlobalKg = 198490;
+            let totalTreesPlantedGlobal = 113;
+            let currentMaterial = 'pet';
+            let sessionDonatedTokensAccumulator = 0;
+            console.log("Initial global state:", { totalRecycledGlobal, totalCO2SavedGlobalKg, totalTreesPlantedGlobal, currentMaterial, sessionDonatedTokensAccumulator });
 
-        // --- Helper Functions ---
-        const formatNumber = (num) => num.toLocaleString('it-IT'); // Format numbers with Italian locale
+            // --- DOM Elements ---
+            console.log("Selecting DOM Elements...");
+            const modal = document.getElementById('calculator-modal');
+            const openModalButton = document.getElementById('open-calculator-button');
+            const closeModalButton = document.getElementById('close-modal');
+            const quantityInput = document.getElementById('quantity-input');
+            const co2SavedElement = document.getElementById('co2-saved');
+            const tokensEarnedElement = document.getElementById('tokens-earned');
+            const moneyEarnedElement = document.getElementById('money-earned');
+            const donationSlider = document.getElementById('donation-slider');
+            const donatedAmountElement = document.getElementById('donated-amount');
+            const donationVisualizer = document.getElementById('donation-visualizer');
+            const tokenIcon = donationVisualizer?.querySelector('.token-icon');
+            const treeIcon = donationVisualizer?.querySelector('.tree-icon');
+            const treeValueModalElement = document.getElementById('tree-value-modal');
+            // Modal Stats
+            const modalRecycledCounter = document.getElementById('modal-recycled-counter');
+            const modalCO2Saved = document.getElementById('modal-co2-saved');
+            const modalTrees = document.getElementById('modal-trees');
+            // Main Page Stats
+            const mainRecycledCounter = document.getElementById('main-recycled-counter');
+            const mainCO2Saved = document.getElementById('main-co2-saved');
+            const mainTrees = document.getElementById('main-trees');
+            // Buttons
+            const petButton = document.getElementById('pet-button');
+            const canButton = document.getElementById('can-button');
+            const submitButton = document.getElementById('submit-calculation');
+            const bodyEl = document.body;
+            console.log("DOM Elements selected:", { modal, openModalButton, closeModalButton, quantityInput /* ... add others if needed */ });
 
-        // --- Core Calculation and UI Update Logic ---
-        function updateResultsAndVisuals() {
-            const quantity = parseInt(quantityInput.value) || 0;
-            quantity = Math.max(0, quantity); // Ensure quantity is not negative
-
-            // 1. Calculate CO2 Savings
-            const co2PerUnitGrams = currentMaterial === 'pet' ? PET_CO2_SAVING_GRAMS : CAN_CO2_SAVING_GRAMS;
-            const co2SavedKg = (quantity * co2PerUnitGrams) / 1000;
-
-            // 2. Calculate Tokens Earned
-            const tokensEarned = quantity * TOKENS_PER_ITEM;
-
-            // 3. Calculate Monetary Value (Example)
-            const moneyEarned = tokensEarned * TOKEN_VALUE_EUR;
-
-            // 4. Calculate Donation based on Slider
-            const donationPercentage = parseInt(donationSlider.value) / 100;
-            const donatedTokens = tokensEarned * donationPercentage;
-
-            // 5. Calculate POTENTIAL Trees from THIS donation amount
-            // This shows the user the immediate potential if they donate this amount
-            const potentialTreesFromCurrentDonation = donatedTokens / TOKENS_PER_TREE_THRESHOLD;
-
-            // 6. Update UI Text Elements
-            co2SavedElement.textContent = co2SavedKg.toFixed(1);
-            tokensEarnedElement.textContent = tokensEarned.toFixed(1);
-            moneyEarnedElement.textContent = `~€${moneyEarned.toFixed(4)}`; // Show more precision maybe
-            donatedAmountElement.textContent = `${donatedTokens.toFixed(1)} SRB`;
-            treeValueModalElement.textContent = potentialTreesFromCurrentDonation.toFixed(3); // Show potential trees
-
-            // 7. Update Donation Visualizer (Token/Tree Fade based on *potential*)
-            // Update visualization based on whether the *current* donation amount crosses the threshold
-            if (tokenIcon && treeIcon) { // Check if elements exist
-                if (donatedTokens >= TOKENS_PER_TREE_THRESHOLD) {
-                    // Enough for at least one tree *from this specific donation amount*
-                    donationVisualizer.classList.add('tree-funded');
-                } else {
-                    // Not enough for a tree *from this specific donation amount*
-                    donationVisualizer.classList.remove('tree-funded');
-                }
-                // Also adjust opacity based on slider percentage for a smoother transition effect
-                const opacityPercentage = Math.min(1, donatedTokens / (TOKENS_PER_TREE_THRESHOLD * 0.8)); // Reach full tree opacity slightly before 100% threshold if desired
-                tokenIcon.style.opacity = 1 - opacityPercentage;
-                treeIcon.style.opacity = opacityPercentage;
-
-            } else {
-                console.error("Donation visualizer icons not found");
-            }
-        }
-
-
-        // --- Submit Logic ---
-        function submitCalculation() {
-            const quantity = parseInt(quantityInput.value) || 0;
-            if (quantity <= 0) {
-                alert("Inserisci una quantità valida maggiore di zero.");
-                return;
-            }
-
-            // Recalculate values based on current input for accuracy
-            const co2PerUnitGrams = currentMaterial === 'pet' ? PET_CO2_SAVING_GRAMS : CAN_CO2_SAVING_GRAMS;
-            const co2SavedKg = (quantity * co2PerUnitGrams) / 1000;
-            const tokensEarned = quantity * TOKENS_PER_ITEM;
-            const donationPercentage = parseInt(donationSlider.value) / 100;
-            const donatedTokens = tokensEarned * donationPercentage;
-
-            // 1. Update Global Counters
-            totalRecycledGlobal += quantity;
-            totalCO2SavedGlobalKg += co2SavedKg;
-
-            // 2. Accumulate donated tokens for this session
-            sessionDonatedTokensAccumulator += donatedTokens;
-
-            // 3. Calculate how many NEW trees are planted from the ACCUMULATED donation
-            const newTreesPlanted = Math.floor(sessionDonatedTokensAccumulator / TOKENS_PER_TREE_THRESHOLD);
-
-            // 4. Update Global Tree Counter
-            totalTreesPlantedGlobal += newTreesPlanted;
-
-            // 5. Calculate the remainder tokens in the accumulator
-            sessionDonatedTokensAccumulator = sessionDonatedTokensAccumulator % TOKENS_PER_TREE_THRESHOLD;
-            // console.log("Accumulated Tokens Remaining:", sessionDonatedTokensAccumulator); // For debugging
-
-            // 6. Update UI (Modal and Main Page)
-            modalRecycledCounter.textContent = formatNumber(totalRecycledGlobal);
-            modalCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg));
-            modalTrees.textContent = formatNumber(totalTreesPlantedGlobal);
-
-            mainRecycledCounter.textContent = formatNumber(totalRecycledGlobal);
-            mainCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg));
-            mainTrees.textContent = formatNumber(totalTreesPlantedGlobal);
-
-            // 7. Provide Feedback (Optional)
-            alert(`${quantity} ${currentMaterial === 'pet' ? 'bottiglie' : 'lattine'} riciclate!\nCO2 Risparmiati: ${co2SavedKg.toFixed(1)} kg\nSRB Guadagnati: ${tokensEarned.toFixed(1)}\nSRB Donati: ${donatedTokens.toFixed(1)}\nNuovi Alberi Piantati: ${newTreesPlanted}`);
-
-            // 8. Reset input for next calculation
-            quantityInput.value = "20"; // Reset to default or 0
-            donationSlider.value = "50"; // Reset slider
-            updateResultsAndVisuals(); // Update display with reset values
-
-            // 9. Optionally close the modal
-            // closeModal();
-        }
-
-        // --- Modal Handling ---
-        function openModal() {
-            if(modal) {
-                modal.classList.add('active'); // Use class for transition
-                document.body.style.overflow = "hidden"; // Prevent background scroll
-                // Update modal stats when opening
-                modalRecycledCounter.textContent = formatNumber(totalRecycledGlobal);
-                modalCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg));
-                modalTrees.textContent = formatNumber(totalTreesPlantedGlobal);
-                updateResultsAndVisuals(); // Recalculate based on default values
-            }
-        }
-
-        function closeModal() {
-             if(modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = "auto"; // Re-enable scroll
-             }
-        }
-
-        // --- Event Listeners ---
-        if (openModalButton) openModalButton.addEventListener('click', openModal);
-        if (closeModalButton) closeModalButton.addEventListener('click', closeModal);
-
-        // Close modal on outside click
-        if (modal) {
-            modal.addEventListener('click', function(event) {
-                if (event.target === modal) { // Click was directly on the overlay
-                    closeModal();
-                }
-            });
-        }
-        // Close modal with Escape key
-         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && modal && modal.classList.contains('active')) {
-                 closeModal();
-            }
-         });
-
-
-        if (quantityInput) quantityInput.addEventListener('input', updateResultsAndVisuals);
-        if (donationSlider) donationSlider.addEventListener('input', updateResultsAndVisuals);
-
-        if (petButton && canButton) {
-            petButton.addEventListener('click', () => {
-                if (currentMaterial !== 'pet') {
-                    currentMaterial = 'pet';
-                    petButton.classList.add('active');
-                    canButton.classList.remove('active');
-                    updateResultsAndVisuals();
-                }
-            });
-
-            canButton.addEventListener('click', () => {
-                 if (currentMaterial !== 'can') {
-                    currentMaterial = 'can';
-                    canButton.classList.add('active');
-                    petButton.classList.remove('active');
-                    updateResultsAndVisuals();
+             // --- Helper Functions ---
+             const formatNumber = (num) => {
+                 // Check if num is a valid number before formatting
+                 if (typeof num !== 'number' || isNaN(num)) {
+                     console.warn("formatNumber received non-numeric value:", num);
+                     return "N/A"; // Or return 0 or an empty string
                  }
-            });
-        }
+                 return num.toLocaleString('it-IT');
+             };
+             console.log("Helper functions defined.");
 
-        if (submitButton) submitButton.addEventListener('click', submitCalculation);
+            // --- Core Calculation and UI Update Logic ---
+            function updateResultsAndVisuals() {
+                console.log("updateResultsAndVisuals called. Current material:", currentMaterial);
+                if (!quantityInput || !donationSlider) {
+                    console.error("Input or slider element missing in updateResultsAndVisuals");
+                    return;
+                }
 
-        // --- Initial UI Update ---
-        // Update main page stats on load
-         if(mainRecycledCounter) mainRecycledCounter.textContent = formatNumber(totalRecycledGlobal);
-         if(mainCO2Saved) mainCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg));
-         if(mainTrees) mainTrees.textContent = formatNumber(totalTreesPlantedGlobal);
-         // Initial calculation for modal defaults (but modal is hidden initially)
-         // updateResultsAndVisuals(); // Call this in openModal instead
+                let quantity = parseInt(quantityInput.value) || 0;
+                quantity = Math.max(0, quantity); // Ensure non-negative
+                console.log("Quantity:", quantity);
 
+                const co2PerUnitGrams = currentMaterial === 'pet' ? PET_CO2_SAVING_GRAMS : CAN_CO2_SAVING_GRAMS;
+                const co2SavedKg = (quantity * co2PerUnitGrams) / 1000;
+                const tokensEarned = quantity * TOKENS_PER_ITEM;
+                const moneyEarned = tokensEarned * TOKEN_VALUE_EUR;
+                const donationPercentage = parseInt(donationSlider.value) / 100;
+                const donatedTokens = tokensEarned * donationPercentage;
+                const potentialTreesFromCurrentDonation = donatedTokens / TOKENS_PER_TREE_THRESHOLD;
+                console.log("Calculated:", { co2SavedKg, tokensEarned, moneyEarned, donationPercentage, donatedTokens, potentialTreesFromCurrentDonation });
+
+                // Update UI Text Elements (with checks)
+                if(co2SavedElement) co2SavedElement.textContent = co2SavedKg.toFixed(1); else console.warn("co2SavedElement not found");
+                if(tokensEarnedElement) tokensEarnedElement.textContent = tokensEarned.toFixed(1); else console.warn("tokensEarnedElement not found");
+                if(moneyEarnedElement) moneyEarnedElement.textContent = `~€${moneyEarned.toFixed(4)}`; else console.warn("moneyEarnedElement not found");
+                if(donatedAmountElement) donatedAmountElement.textContent = `${donatedTokens.toFixed(1)} SRB`; else console.warn("donatedAmountElement not found");
+                if(treeValueModalElement) treeValueModalElement.textContent = potentialTreesFromCurrentDonation.toFixed(3); else console.warn("treeValueModalElement not found");
+
+                // Update Donation Visualizer
+                if (donationVisualizer && tokenIcon && treeIcon) {
+                    const isTreeFunded = donatedTokens >= TOKENS_PER_TREE_THRESHOLD;
+                    console.log("Is tree funded by current donation?", isTreeFunded, "(Donated:", donatedTokens, "Threshold:", TOKENS_PER_TREE_THRESHOLD, ")");
+                    donationVisualizer.classList.toggle('tree-funded', isTreeFunded);
+
+                    // Opacity based on percentage towards threshold
+                    // Ensure threshold is not zero to avoid division by zero
+                    const safeThreshold = TOKENS_PER_TREE_THRESHOLD || 1; // Use 1 if threshold is 0
+                    const opacityPercentage = Math.min(1, donatedTokens / (safeThreshold * 0.9)); // Reach full tree opacity slightly before threshold
+                    console.log("Opacity Percentage:", opacityPercentage);
+                    tokenIcon.style.opacity = 1 - opacityPercentage;
+                    treeIcon.style.opacity = opacityPercentage;
+                } else {
+                    if (!donationVisualizer) console.error("Donation visualizer container not found");
+                    if (!tokenIcon) console.error("Token icon not found");
+                    if (!treeIcon) console.error("Tree icon not found");
+                }
+            }
+
+
+            // --- Submit Logic ---
+            function submitCalculation() {
+                console.log("submitCalculation called.");
+                if (!quantityInput || !donationSlider) {
+                     console.error("Input or slider missing in submitCalculation");
+                     return;
+                }
+
+                let quantity = parseInt(quantityInput.value) || 0;
+                quantity = Math.max(0, quantity);
+
+                if (quantity <= 0) {
+                    alert("Inserisci una quantità valida maggiore di zero.");
+                    console.warn("Submit attempt with quantity <= 0");
+                    return;
+                }
+                console.log("Submitting quantity:", quantity, "Material:", currentMaterial);
+
+                // Recalculate values for submission
+                const co2PerUnitGrams = currentMaterial === 'pet' ? PET_CO2_SAVING_GRAMS : CAN_CO2_SAVING_GRAMS;
+                const co2SavedKg = (quantity * co2PerUnitGrams) / 1000;
+                const tokensEarned = quantity * TOKENS_PER_ITEM;
+                const donationPercentage = parseInt(donationSlider.value) / 100;
+                const donatedTokens = tokensEarned * donationPercentage;
+                console.log("Submit calculated:", { co2SavedKg, tokensEarned, donationPercentage, donatedTokens });
+
+                // Update Globals & Session Accumulator
+                totalRecycledGlobal += quantity;
+                totalCO2SavedGlobalKg += co2SavedKg;
+                sessionDonatedTokensAccumulator += donatedTokens;
+                console.log("Global state before tree calc:", { totalRecycledGlobal, totalCO2SavedGlobalKg, sessionDonatedTokensAccumulator });
+
+                // Ensure threshold is not zero
+                const safeThresholdForCalc = TOKENS_PER_TREE_THRESHOLD || Infinity; // Use Infinity if threshold is 0 to prevent infinite loops/errors
+                const newTreesPlanted = safeThresholdForCalc === Infinity ? 0 : Math.floor(sessionDonatedTokensAccumulator / safeThresholdForCalc);
+                console.log("New trees planted:", newTreesPlanted);
+
+                totalTreesPlantedGlobal += newTreesPlanted;
+                sessionDonatedTokensAccumulator = safeThresholdForCalc === Infinity ? sessionDonatedTokensAccumulator : sessionDonatedTokensAccumulator % safeThresholdForCalc;
+                console.log("Global state after tree calc:", { totalTreesPlantedGlobal, sessionDonatedTokensAccumulator });
+
+                // Update UI (Modal and Main Page)
+                if(modalRecycledCounter) modalRecycledCounter.textContent = formatNumber(totalRecycledGlobal); else console.warn("modalRecycledCounter not found");
+                if(modalCO2Saved) modalCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg)); else console.warn("modalCO2Saved not found");
+                if(modalTrees) modalTrees.textContent = formatNumber(totalTreesPlantedGlobal); else console.warn("modalTrees not found");
+                if(mainRecycledCounter) mainRecycledCounter.textContent = formatNumber(totalRecycledGlobal); else console.warn("mainRecycledCounter not found");
+                if(mainCO2Saved) mainCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg)); else console.warn("mainCO2Saved not found");
+                if(mainTrees) mainTrees.textContent = formatNumber(totalTreesPlantedGlobal); else console.warn("mainTrees not found");
+
+                // Feedback
+                alert(`${quantity} ${currentMaterial === 'pet' ? 'bottiglie' : 'lattine'} riciclate!\nCO2 Risparmiati: ${co2SavedKg.toFixed(1)} kg\nSRB Guadagnati: ${tokensEarned.toFixed(1)}\nSRB Donati: ${donatedTokens.toFixed(1)}\nNuovi Alberi Piantati (da donazioni totali): ${newTreesPlanted}`);
+
+                // Reset input
+                if(quantityInput) quantityInput.value = "20";
+                if(donationSlider) donationSlider.value = "50";
+                updateResultsAndVisuals();
+                console.log("Inputs reset and UI updated after submit.");
+            }
+
+            // --- Modal Handling ---
+            function openModal() {
+                console.log("openModal called");
+                if(modal) {
+                    modal.classList.add('active');
+                    bodyEl.style.overflow = "hidden";
+                    console.log("Modal opened");
+                    // Update modal stats on opening
+                    if(modalRecycledCounter) modalRecycledCounter.textContent = formatNumber(totalRecycledGlobal);
+                    if(modalCO2Saved) modalCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg));
+                    if(modalTrees) modalTrees.textContent = formatNumber(totalTreesPlantedGlobal);
+                    updateResultsAndVisuals(); // Recalculate based on default/current values in modal
+                } else {
+                    console.error("Modal element not found in openModal");
+                }
+            }
+
+            function closeModal() {
+                 console.log("closeModal called");
+                 if(modal) {
+                    modal.classList.remove('active');
+                    bodyEl.style.overflow = "auto";
+                    console.log("Modal closed");
+                 } else {
+                     console.error("Modal element not found in closeModal");
+                 }
+            }
+
+            // --- Event Listeners ---
+            console.log("Setting up event listeners...");
+
+            // ***** FIX for the main button *****
+            if (openModalButton) {
+                console.log("Attaching click listener to openModalButton");
+                openModalButton.addEventListener('click', openModal);
+            } else {
+                console.error("!!! Open Modal Button (#open-calculator-button) NOT FOUND!");
+            }
+            // ***** END FIX *****
+
+            if (closeModalButton) {
+                console.log("Attaching click listener to closeModalButton");
+                closeModalButton.addEventListener('click', closeModal);
+            } else {
+                 console.error("Close Modal Button not found!");
+            }
+
+            // Modal external click/ESC listeners
+            if (modal) {
+                console.log("Attaching modal background click listener");
+                modal.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        console.log("Modal background clicked");
+                        closeModal();
+                    }
+                });
+                 console.log("Attaching ESC key listener for modal");
+                 document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && modal.classList.contains('active')) {
+                         console.log("ESC key pressed, closing modal");
+                         closeModal();
+                    }
+                 });
+            } else {
+                 console.error("Modal element not found, cannot add background/ESC listeners");
+            }
+
+
+            // Input listeners
+            if (quantityInput) {
+                console.log("Attaching input listener to quantityInput");
+                quantityInput.addEventListener('input', updateResultsAndVisuals);
+            } else {
+                 console.error("Quantity Input not found!");
+            }
+            if (donationSlider) {
+                console.log("Attaching input listener to donationSlider");
+                donationSlider.addEventListener('input', updateResultsAndVisuals);
+            } else {
+                 console.error("Donation Slider not found!");
+            }
+
+            // Material toggle listeners
+            if (petButton && canButton) {
+                console.log("Attaching click listeners to material buttons");
+                petButton.addEventListener('click', () => {
+                    if (currentMaterial !== 'pet') {
+                        console.log("Switching to PET");
+                        currentMaterial = 'pet';
+                        petButton.classList.add('active');
+                        canButton.classList.remove('active');
+                        updateResultsAndVisuals();
+                    }
+                });
+                canButton.addEventListener('click', () => {
+                     if (currentMaterial !== 'can') {
+                        console.log("Switching to CAN");
+                        currentMaterial = 'can';
+                        canButton.classList.add('active');
+                        petButton.classList.remove('active');
+                        updateResultsAndVisuals();
+                     }
+                });
+            } else {
+                 console.error("Material toggle buttons (PET or CAN) not found!");
+            }
+
+            // Submit listener
+            if (submitButton) {
+                console.log("Attaching click listener to submitButton");
+                submitButton.addEventListener('click', submitCalculation);
+            } else {
+                 console.error("Submit Button not found!");
+            }
+
+            // --- Initial UI Update ---
+            console.log("Performing initial UI update for main page stats...");
+             if(mainRecycledCounter) mainRecycledCounter.textContent = formatNumber(totalRecycledGlobal); else console.warn("mainRecycledCounter not found");
+             if(mainCO2Saved) mainCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg)); else console.warn("mainCO2Saved not found");
+             if(mainTrees) mainTrees.textContent = formatNumber(totalTreesPlantedGlobal); else console.warn("mainTrees not found");
+             console.log("Initial UI update complete.");
+
+        }); // Fine DOMContentLoaded
     </script>
+
 </body>
 </html>
