@@ -1,92 +1,94 @@
 // assets/js/i18n.js
 
+// Variabile globale per le traduzioni (accessibile anche dallo script inline)
+window.currentTranslations = {};
+
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("i18n.js: DOMContentLoaded event fired."); // DEBUG
+
     // --- CONFIGURATION ---
-    const defaultLang = 'it'; // Lingua predefinita se nessuna è salvata/selezionata
-    const localesPath = './assets/locales/'; // Percorso relativo a index.html
+    const defaultLang = 'it';
+    const localesPath = './assets/locales/'; // Assicurati che sia corretto!
 
     // --- STATE VARIABLES ---
-    let currentLang = defaultLang;
-    let translations = {}; // Oggetto per contenere le traduzioni caricate
+    let currentLang = defaultLang; // Verrà sovrascritto dall'inizializzazione
 
     // --- DOM ELEMENTS ---
+    // Li cerchiamo qui dentro DOMContentLoaded
     const languageBtn = document.getElementById('language-btn');
     const languageDropdown = document.getElementById('language-dropdown');
     const mobileLanguageBtn = document.getElementById('mobile-language-btn');
     const mobileLanguageDropdown = document.getElementById('mobile-language-dropdown');
-    const allLanguageOptions = document.querySelectorAll('.language-option[data-lang]'); // Seleziona solo quelli con data-lang
+    const allLanguageOptions = document.querySelectorAll('.language-option[data-lang]');
+
+    // Verifica se gli elementi sono stati trovati
+    if (!languageBtn) console.error("i18n.js: Element with ID 'language-btn' not found!");
+    if (!languageDropdown) console.error("i18n.js: Element with ID 'language-dropdown' not found!");
+    if (!mobileLanguageBtn) console.error("i18n.js: Element with ID 'mobile-language-btn' not found!");
+    if (!mobileLanguageDropdown) console.error("i18n.js: Element with ID 'mobile-language-dropdown' not found!");
+    if (allLanguageOptions.length === 0) console.warn("i18n.js: No elements with '.language-option[data-lang]' found.");
 
     // --- HELPER FUNCTIONS ---
-
-    /**
-     * Ottiene il valore della traduzione da una chiave potenzialmente annidata.
-     * @param {string} key - La chiave della traduzione (es. "hero.title").
-     * @returns {string|null} Il testo tradotto o null se non trovato.
-     */
     function getTranslationValue(key) {
-        if (!translations || typeof key !== 'string') return null;
+        if (!window.currentTranslations || typeof key !== 'string') return null;
         return key.split('.').reduce((obj, part) => {
             return obj && obj[part] !== undefined ? obj[part] : null;
-        }, translations);
+        }, window.currentTranslations);
     }
 
-    /**
-     * Chiude entrambi i menu a tendina della lingua.
-     */
     function closeAllLanguageDropdowns() {
-        if (languageDropdown) languageDropdown.classList.remove('show');
-        if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
-        if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
-        if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+        if (languageDropdown && languageDropdown.classList.contains('show')) {
+            languageDropdown.classList.remove('show');
+            if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+            console.log("i18n.js: Closed desktop dropdown."); // DEBUG
+        }
+        if (mobileLanguageDropdown && mobileLanguageDropdown.classList.contains('show')) {
+            mobileLanguageDropdown.classList.remove('show');
+            if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+            console.log("i18n.js: Closed mobile dropdown."); // DEBUG
+        }
     }
 
     // --- CORE I18N FUNCTIONS ---
-
-    /**
-     * Carica il file JSON della lingua specificata.
-     * @param {string} lang - Il codice della lingua (es. "en", "de").
-     * @returns {Promise<boolean>} True se caricato con successo, altrimenti False.
-     */
     async function loadTranslations(lang) {
+        console.log(`i18n.js: Attempting to load translations for ${lang}...`); // DEBUG
         try {
-            const response = await fetch(`${localesPath}${lang}.json?v=${Date.now()}`); // Aggiungi cache busting
+            const response = await fetch(`${localesPath}${lang}.json?v=${Date.now()}`); // Cache busting
             if (!response.ok) {
+                 console.error(`i18n.js: HTTP error! status: ${response.status} for ${lang}.json`); // DEBUG
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            translations = await response.json();
-            console.log(`Translations loaded for: ${lang}`);
+            window.currentTranslations = await response.json(); // Salva globalmente
+            console.log(`i18n.js: Translations successfully loaded for: ${lang}`); // DEBUG
             return true;
         } catch (error) {
-            console.error(`Error loading translation file for ${lang}:`, error);
-            translations = {}; // Resetta le traduzioni in caso di errore
+            console.error(`i18n.js: Error loading translation file for ${lang}:`, error); // DEBUG
+            window.currentTranslations = {}; // Resetta
             return false;
         }
     }
 
-    /**
-     * Applica le traduzioni attualmente caricate agli elementi del DOM.
-     */
     function applyTranslations() {
-        if (Object.keys(translations).length === 0) {
-            console.warn("Attempted to apply translations, but none are loaded.");
+        console.log("i18n.js: Applying translations..."); // DEBUG
+        if (Object.keys(window.currentTranslations).length === 0) {
+            console.warn("i18n.js: No translations loaded to apply."); // DEBUG
             return;
         }
 
-        // Applica traduzioni al testo interno degli elementi
+        let appliedCount = 0;
+        let attrAppliedCount = 0;
+
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             const translation = getTranslationValue(key);
             if (translation !== null) {
-                // Sostituisci placeholder {year} se presente (es. nel footer)
                 element.textContent = translation.replace('{year}', new Date().getFullYear());
+                appliedCount++;
             } else {
-                console.warn(`Missing translation for key: ${key}`);
-                // Potresti voler lasciare il testo originale o mettere un placeholder
-                // element.textContent = key; // Mostra la chiave se la traduzione manca
+                console.warn(`i18n.js: Missing translation for key: ${key}`);
             }
         });
 
-        // Applica traduzioni agli attributi degli elementi
         document.querySelectorAll('[data-i18n-attr]').forEach(element => {
             const config = element.getAttribute('data-i18n-attr');
             const parts = config.split(':');
@@ -96,171 +98,147 @@ document.addEventListener('DOMContentLoaded', () => {
                 const translation = getTranslationValue(key);
                 if (translation !== null) {
                     element.setAttribute(attributeName, translation);
+                    attrAppliedCount++;
                 } else {
-                    console.warn(`Missing translation for attribute key: ${key}`);
+                    console.warn(`i18n.js: Missing translation for attribute key: ${key}`);
                 }
             } else {
-                console.warn(`Invalid data-i18n-attr format: ${config}`);
+                console.warn(`i18n.js: Invalid data-i18n-attr format: ${config}`);
             }
         });
 
-        // Aggiorna l'attributo lang della pagina
         document.documentElement.lang = currentLang;
+        console.log(`i18n.js: Applied ${appliedCount} text translations and ${attrAppliedCount} attribute translations for ${currentLang}. Updated lang attribute.`); // DEBUG
 
-        // Potrebbe essere necessario aggiornare componenti dinamici qui,
-        // ad esempio le etichette della visualizzazione blockchain se è già stata inizializzata.
-        // Se la logica della blockchain è in un altro file, potrebbe essere necessario
-        // inviare un evento personalizzato o chiamare una funzione globale per aggiornarla.
-        const blockchainVizContainer = document.getElementById('blockchain-viz');
-        if (blockchainVizContainer && typeof window.createBlockchainVisualization === 'function') {
-             // Verifica se la funzione esiste globalmente
-             if (blockchainVizContainer.dataset.initialized === 'true') {
-                 console.log('Requesting blockchain visualization update due to language change.');
-                 blockchainVizContainer.removeAttribute('data-initialized'); // Permette la ricreazione
-                 window.createBlockchainVisualization(); // Chiama la funzione per aggiornare le etichette
+        // Richiama l'aggiornamento della blockchain se la funzione globale esiste
+        if (typeof window.createBlockchainVisualization === 'function') {
+             console.log("i18n.js: Requesting blockchain visualization update."); // DEBUG
+             if(document.getElementById('blockchain-viz')) {
+                  document.getElementById('blockchain-viz').removeAttribute('data-initialized'); // Permette la ricreazione
              }
-        } else if(blockchainVizContainer) {
-             // Se la funzione non è globale, potresti dover gestire l'aggiornamento
-             // in modo diverso, magari leggendo direttamente le etichette tradotte
-             // nello script della blockchain quando viene eseguito.
-             console.log("Blockchain visualization found, but update function is not globally accessible or viz not initialized.");
+             window.createBlockchainVisualization();
+        } else {
+             console.warn("i18n.js: window.createBlockchainVisualization is not defined. Cannot update blockchain labels."); // DEBUG
         }
-
     }
 
-    /**
-     * Funzione principale per cambiare la lingua.
-     * @param {string} lang - Il codice della lingua a cui passare.
-     */
     async function changeLanguage(lang) {
-        if (!lang || lang === currentLang && Object.keys(translations).length > 0) {
-            console.log(`Language ${lang} is already active or invalid.`);
+        if (!lang || (lang === currentLang && Object.keys(window.currentTranslations).length > 0)) {
+            console.log(`i18n.js: Language ${lang} is already active or invalid. Aborting change.`); // DEBUG
             closeAllLanguageDropdowns();
-            return; // Non fare nulla se la lingua è la stessa o non valida
+            return;
         }
+        console.log(`i18n.js: Changing language to: ${lang}`); // DEBUG
+        currentLang = lang; // Aggiorna subito lo stato interno
 
-        console.log(`Changing language to: ${lang}`);
-        currentLang = lang;
-
-        // Carica le nuove traduzioni
         const loaded = await loadTranslations(lang);
-
         if (loaded) {
-            // Applica le traduzioni al DOM
             applyTranslations();
-            // Salva la preferenza dell'utente
-            try {
-                 localStorage.setItem('selectedLanguage', lang);
-            } catch (e) {
-                 console.warn("Could not save language preference to localStorage:", e);
-            }
+            try { localStorage.setItem('selectedLanguage', lang); }
+            catch (e) { console.warn("i18n.js: Could not save language preference:", e); }
         } else {
-            // Gestisci il fallimento del caricamento (es. torna alla lingua precedente o default)
-            console.error(`Failed to load translations for ${lang}. Reverting might be needed.`);
-            // Potresti voler ricaricare la lingua precedente qui
+            console.error(`i18n.js: Failed to load translations for ${lang}. Language change aborted.`); // DEBUG
+            // Considera di ripristinare currentLang alla lingua precedente qui
         }
-
         closeAllLanguageDropdowns();
     }
 
     // --- EVENT LISTENERS SETUP ---
-
-    /**
-     * Gestisce il click su un'opzione di lingua nel dropdown.
-     * @param {Event} event - L'oggetto evento del click.
-     */
     function handleLanguageSelect(event) {
-        const target = event.currentTarget; // L'elemento .language-option cliccato
+        const target = event.currentTarget;
         const lang = target.getAttribute('data-lang');
+        console.log(`i18n.js: Language option clicked: ${lang}`); // DEBUG
         if (lang) {
             changeLanguage(lang);
+        } else {
+             console.warn("i18n.js: Clicked language option missing data-lang attribute."); // DEBUG
         }
     }
 
-    // Aggiungi listener a tutte le opzioni di lingua
     if (allLanguageOptions.length > 0) {
         allLanguageOptions.forEach(option => {
             option.addEventListener('click', handleLanguageSelect);
         });
-    } else {
-        console.warn("No language options with [data-lang] attribute found.");
     }
 
-    // Aggiungi listener per aprire/chiudere i dropdown
+    // Listener per aprire/chiudere dropdown desktop
     if (languageBtn && languageDropdown) {
         languageBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isShown = languageDropdown.classList.toggle('show');
-            languageBtn.setAttribute('aria-expanded', isShown);
-            // Chiudi l'altro dropdown se aperto
+            const isCurrentlyShown = languageDropdown.classList.contains('show');
+            // Chiudi sempre l'altro prima di aprirne uno
             if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
             if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+            // Ora apri/chiudi quello corrente
+            languageDropdown.classList.toggle('show');
+            languageBtn.setAttribute('aria-expanded', !isCurrentlyShown);
+            console.log(`i18n.js: Desktop language button clicked. Dropdown is now ${!isCurrentlyShown ? 'shown' : 'hidden'}.`); // DEBUG
         });
     }
 
+    // Listener per aprire/chiudere dropdown mobile
     if (mobileLanguageBtn && mobileLanguageDropdown) {
         mobileLanguageBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isShown = mobileLanguageDropdown.classList.toggle('show');
-            mobileLanguageBtn.setAttribute('aria-expanded', isShown);
-            // Chiudi l'altro dropdown se aperto
+            const isCurrentlyShown = mobileLanguageDropdown.classList.contains('show');
+             // Chiudi sempre l'altro prima di aprirne uno
             if (languageDropdown) languageDropdown.classList.remove('show');
             if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+            // Ora apri/chiudi quello corrente
+            mobileLanguageDropdown.classList.toggle('show');
+            mobileLanguageBtn.setAttribute('aria-expanded', !isCurrentlyShown);
+             console.log(`i18n.js: Mobile language button clicked. Dropdown is now ${!isCurrentlyShown ? 'shown' : 'hidden'}.`); // DEBUG
         });
     }
 
-    // Aggiungi listener per chiudere i dropdown cliccando fuori
-    document.addEventListener('click', closeAllLanguageDropdowns);
+    // Listener per chiudere cliccando fuori
+    document.addEventListener('click', (e) => {
+        // Controlla se il click è avvenuto FUORI dai bottoni E dai dropdown
+        let clickedOutside = true;
+        if (languageBtn && languageBtn.contains(e.target)) clickedOutside = false;
+        if (languageDropdown && languageDropdown.contains(e.target)) clickedOutside = false;
+        if (mobileLanguageBtn && mobileLanguageBtn.contains(e.target)) clickedOutside = false;
+        if (mobileLanguageDropdown && mobileLanguageDropdown.contains(e.target)) clickedOutside = false;
 
-    // Impedisci la chiusura quando si clicca *dentro* i dropdown
-    if (languageDropdown) {
-        languageDropdown.addEventListener('click', e => e.stopPropagation());
-    }
-    if (mobileLanguageDropdown) {
-        mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
-    }
+        if (clickedOutside) {
+            // Solo se abbiamo effettivamente cliccato fuori, chiudi tutto
+            // console.log("i18n.js: Clicked outside language selectors, closing dropdowns."); // DEBUG (può essere rumoroso)
+            closeAllLanguageDropdowns();
+        }
+    });
+
+    // Impedire ai click *dentro* i dropdown di propagare e chiudere il dropdown stesso
+    // (Questo potrebbe non essere strettamente necessario con il check document.addEventListener sopra, ma è una sicurezza)
+    if (languageDropdown) languageDropdown.addEventListener('click', e => e.stopPropagation());
+    if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
 
 
     // --- INITIALIZATION ---
-
-    /**
-     * Inizializza il sistema i18n caricando la lingua appropriata.
-     */
     async function initializeI18n() {
          let initialLang = defaultLang;
          try {
              const savedLang = localStorage.getItem('selectedLanguage');
-             if (savedLang) {
-                 // Verifica se abbiamo un file JSON per la lingua salvata (opzionale ma buono)
-                 // Potresti fare un fetch HEAD qui, ma per ora assumiamo sia valida
-                 initialLang = savedLang;
-             }
-         } catch(e) {
-             console.warn("Could not read language preference from localStorage:", e);
-         }
+             if (savedLang) initialLang = savedLang;
+         } catch(e) { console.warn("i18n.js: Could not read language preference:", e); }
 
+        console.log(`i18n.js: Initializing with language: ${initialLang}`); // DEBUG
+        currentLang = initialLang; // Imposta stato interno
 
-        console.log(`Initializing i18n with language: ${initialLang}`);
-        currentLang = initialLang; // Imposta subito currentLang
-
-        // Carica e applica le traduzioni iniziali
         const loaded = await loadTranslations(initialLang);
         if (loaded) {
             applyTranslations();
         } else {
-            // Se il caricamento fallisce (es. lingua salvata non valida), prova con il default
             if (initialLang !== defaultLang) {
-                console.warn(`Failed to load initial language ${initialLang}, falling back to ${defaultLang}`);
-                currentLang = defaultLang; // Aggiorna currentLang al default
+                console.warn(`i18n.js: Failed initial load for ${initialLang}, falling back to ${defaultLang}`); // DEBUG
+                currentLang = defaultLang; // Aggiorna stato
                 const fallbackLoaded = await loadTranslations(defaultLang);
                 if (fallbackLoaded) {
                     applyTranslations();
                 } else {
-                     console.error(`CRITICAL: Could not load default language file (${defaultLang}). Internationalization may not work.`);
-                     // A questo punto, la pagina mostrerà il testo HTML originale
+                     console.error(`i18n.js: CRITICAL: Could not load default language file (${defaultLang}).`); // DEBUG
                 }
             } else {
-                 console.error(`CRITICAL: Could not load default language file (${defaultLang}). Internationalization may not work.`);
+                 console.error(`i18n.js: CRITICAL: Could not load default language file (${defaultLang}).`); // DEBUG
             }
         }
     }
