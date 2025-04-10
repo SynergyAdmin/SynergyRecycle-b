@@ -1,21 +1,842 @@
 <!DOCTYPE html>
-<!-- L'attributo lang verrà aggiornato da i18n.js -->
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Il title può essere aggiornato da JS se necessario, o rimanere generico -->
     <title>SynergyRecycle.B</title>
     <style>
-        /* --- STILI CSS INVARIATI --- */
-        :root { --spacing-sm: 1rem; --spacing-md: 2rem; --spacing-lg: 4rem; --container-width: 1200px; --primary-blue: #3a7c8c; --dark-gray: #333; --light-gray: #ccc; --primary-green: #5aad57; --secondary-green: #8BC34A; --tertiary-green: #c2e6c0; --background-green: #f5f9f5; --blockchain-blue: #4c7f9c; --laser-color: #9c27b0; }
+        /* Variabili con nuova palette di colori più ecologica e tecnologica */
+        :root {
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --container-width: 1200px;
+            --primary-blue: #3a7c8c;       /* Blu più soft */
+            --dark-gray: #333;
+            --light-gray: #ccc;
+            --primary-green: #5aad57;      /* Verde ecologico */
+            --secondary-green: #8BC34A;    /* Verde più chiaro */
+            --tertiary-green: #c2e6c0;     /* Verde molto soft */
+            --background-green: #f5f9f5;   /* Sfondo verde chiarissimo */
+            --blockchain-blue: #4c7f9c;    /* Blu per la blockchain */
+            --laser-color: #9c27b0;        /* Colore viola */
+        }
+
+        /* Reset e base */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; line-height: 1.5; color: #333; background-color: var(--background-green); position: relative; overflow-x: hidden; }
-        .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
-        /* ... (tutti gli altri stili CSS rimangono invariati) ... */
-        .language-dropdown { /* Assicurati che non ci sia display: none !important; */ display: none; /* ... altri stili dropdown ... */ }
-        .language-dropdown.show { display: block; } /* Questa classe viene aggiunta/rimossa da JS */
-         /* --- FINE STILI CSS --- */
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background-color: var(--background-green);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Layout container */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px; /* Questo crea lo spazio sopra l'header */
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button { /* Questo stile sembra non usato nel body, ma lo lascio per ora */
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            background-color: var(--primary-green);
+            transition: all 0.3s;
+            margin: 0 10px;
+            text-align: center;
+            font-weight: 500;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header e navigazione con effetto gradiente */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white; /* Assicura testo bianco */
+            text-decoration: none; /* Se fosse un link */
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 5px; /* Ridotto per far spazio lingua */
+            align-items: center; /* Allinea link e bottone lingua */
+            justify-content: flex-end;
+            /* width: 70%; Non più necessario con flex-end */
+       }
+
+        .main-nav a.button {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .main-nav a.button:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .main-nav a.button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--tertiary-green);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a.button:hover::after {
+            width: 100%;
+        }
+
+        .green-button {
+            padding: 8px 20px;
+            background-color: var(--primary-green);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 5px; /* Margine per separare */
+            display: inline-block; /* Necessario per margine */
+        }
+
+        .green-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .green-button:hover {
+            background-color: var(--secondary-green);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .green-button:hover::before {
+            left: 100%;
+        }
+
+        /* Banner con effetto gradiente e animazione */
+        .banner {
+            background: linear-gradient(90deg, #2d463a, #3b594a, #2d463a);
+            background-size: 200% 100%;
+            color: white;
+            padding: 12px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Menu mobile e responsività */
+        .hamburger-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 5px;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            margin-top: -10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative; /* Necessario per z-index e dropdown lingua */
+            z-index: 999; /* Sotto header ma sopra il resto */
+        }
+
+        .mobile-nav.active { /* Classe per mostrarlo */
+             display: flex;
+        }
+
+        .mobile-nav a.button,
+        .mobile-nav .green-button { /* Stile uniforme link/bottoni mobile */
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            text-align: center;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .mobile-nav a.button:hover,
+        .mobile-nav .green-button:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+             /* Rimuove effetto hover specifico del green-button in mobile */
+             box-shadow: none;
+        }
+         .mobile-nav .green-button:hover::before {
+            left: -100%; /* Nasconde effetto shine */
+         }
+
+        /* START: Language Selector Styles (copied from servizi.html styles) */
+        .language-selector {
+            position: relative;
+            margin-left: 10px; /* Spazio a sinistra nel nav desktop */
+        }
+
+        .language-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem; /* Icona leggermente più grande */
+            cursor: pointer;
+            padding: 5px 8px; /* Padding per area cliccabile */
+            border-radius: 50%; /* Cerchio */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Colore icona */
+            transition: background-color 0.3s;
+            line-height: 1; /* Evita altezza extra */
+        }
+
+        .language-btn:hover {
+            background-color: rgba(255, 255, 255, 0.15); /* Stesso hover dei link nav */
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: calc(100% + 10px); /* Spazio tra bottone e dropdown */
+            right: 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            min-width: 160px; /* Larghezza minima */
+            z-index: 1100; /* Sopra l'header */
+            display: none; /* Nascosto di default */
+            overflow: hidden;
+            padding: 5px 0;
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+        }
+
+        .language-option:hover {
+            background-color: var(--background-green);
+        }
+
+        .language-flag {
+            margin-right: 10px;
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        /* Language selector mobile */
+        .mobile-nav .language-selector {
+            width: 100%;
+            margin: 15px 0 5px 0;
+            position: relative;
+        }
+
+        .mobile-nav .language-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 10px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            background-color: transparent;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+        }
+         .mobile-nav .language-btn:hover {
+             background-color: rgba(255, 255, 255, 0.1);
+             transform: none; /* Sovrascrive transform base dei bottoni mobile */
+         }
+
+        .mobile-nav .language-dropdown {
+            position: static; /* Appare sotto nel flusso */
+            width: 100%;
+            box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            margin-top: -1px;
+            background-color: rgba(0,0,0, 0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 0;
+        }
+         .mobile-nav .language-option {
+             color: white;
+             padding: 12px 20px;
+         }
+         .mobile-nav .language-option:hover {
+             background-color: rgba(255, 255, 255, 0.15);
+         }
+        /* END: Language Selector Styles */
+
+
+        .building-content { /* Da index originale */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .building-text { /* Da index originale */
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .building-text .btn { /* Da index originale */
+            margin-top: var(--spacing-sm);
+            align-self: flex-start;
+        }
+
+        /* Hero section con effetto overlay migliorato */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--background-green);
+            padding: var(--spacing-lg) 0;
+            position: relative;
+        }
+
+        .hero-content { /* Da index originale */
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: #2a5548;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: #557669;
+        }
+
+        .image-container { /* Stile specifico HERO index.html */
+            background-image: url('./assets/img/4.1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            margin: 4rem 0;
+            min-height: 400px; /* Usa min-height invece di height */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; /* Centra contenuto orizzontalmente */
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(202, 233, 210, 0.8));
+            z-index: 0;
+            border-radius: 15px;
+        }
+
+        .image-container > * {
+            position: relative;
+            z-index: 1;
+            max-width: 90%; /* Limita larghezza contenuto interno */
+        }
+
+        /* Sezioni */
+        .section {
+            padding: var(--spacing-lg) 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            font-size: 2.5rem;
+            color: #2a5548;
+            font-weight: 600;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Values grid con effetti migliorati */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .value-card {
+            padding: var(--spacing-md);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 2; /* Sopra le decorazioni di sfondo */
+             display: flex; /* Per allineare contenuto */
+             flex-direction: column;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-green), var(--tertiary-green));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .value-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+         .value-card p { /* Aggiunto per possibile testo */
+             margin-bottom: 15px;
+             flex-grow: 1; /* Occupa spazio */
+         }
+
+        .value-card img {
+            max-width: 100%;
+            height: auto;
+            margin-top: auto; /* Spinge immagine in basso se c'è testo sopra */
+            padding-top: var(--spacing-sm); /* Spazio sopra img se c'è testo */
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Button/CTA styles */
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 1.8rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #2d3a35;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copyright-text {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .copyright-text a {
+            color: var(--secondary-green);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .copyright-text a:hover {
+            color: var(--tertiary-green);
+        }
+
+        /* Blockchain Visualization - Animated blocks connected by laser lines */
+        .blockchain-visualization {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            margin: 40px 0;
+            overflow: hidden;
+        }
+
+        .block {
+            width: 80px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-green), var(--tertiary-green));
+            position: absolute;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            z-index: 3;
+            transition: transform 0.3s ease;
+            /* Nuova forma esagonale */
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+
+        .block:hover {
+            transform: scale(1.1);
+        }
+
+        .laser {
+            height: 2px;
+            background-color: var(--laser-color); /* Usa variabile viola */
+            position: absolute;
+            transform-origin: left;
+            z-index: 2;
+            filter: drop-shadow(0 0 3px var(--laser-color)); /* Bagliore viola */
+            animation: laserPulse 2s infinite;
+        }
+
+        @keyframes laserPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+
+        /* Background decorations */
+        .bg-decoration {
+            position: fixed; /* Cambiato da fixed per evitare problemi con sticky header forse? No, fixed è corretto per l'effetto */
+            background-color: var(--tertiary-green);
+            border-radius: 50%;
+            opacity: 0.4;
+            filter: blur(70px);
+            z-index: 0; /* Dietro a tutto */
+            pointer-events: none; /* Non interagibile */
+        }
+
+        .decoration-1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
+        }
+
+        .decoration-2 {
+            width: 350px;
+            height: 350px;
+            bottom: -50px;
+            right: -50px;
+        }
+
+        .building-section { /* Da index originale */
+            position: relative;
+            overflow: hidden; /* Nasconde decorazione che esce */
+             padding: var(--spacing-md) 0; /* Aggiunto padding */
+        }
+
+        .building-section::before { /* Decorazione specifica sezione */
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            right: -150px;
+            top: 100px;
+            background-color: var(--tertiary-green);
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(80px);
+            z-index: 1; /* Sopra sfondo base, sotto contenuto */
+        }
+         .building-image img { /* Stile immagine sezione building */
+             max-width: 100%;
+             height: auto;
+             border-radius: 12px;
+             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+         }
+         .app-download-buttons .btn { /* Stile specifico bottoni app */
+             margin-top: var(--spacing-sm);
+         }
+
+
+        /* Responsive */
+        @media (max-width: 992px) {
+             .main-nav {
+                 gap: 5px;
+             }
+             .main-nav a.button, .main-nav .green-button {
+                 padding: 8px 10px;
+                 font-size: 0.9rem;
+             }
+             .green-button {
+                  padding: 8px 15px;
+             }
+             .image-container {
+                 min-height: 350px;
+                 padding: 2rem;
+                 margin: 3rem 0;
+             }
+             .hero-title { font-size: 2.5rem; }
+             .hero-subtitle { font-size: 1.3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .hamburger-btn {
+                display: block;
+            }
+
+            /* .mobile-nav.active gestito sopra */
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                 font-size: 1.1rem;
+                 margin-bottom: var(--spacing-md);
+            }
+             .image-container {
+                 min-height: 300px;
+                 margin: 2rem 0;
+             }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .building-content {
+                grid-template-columns: 1fr;
+                text-align: center; /* Centra testo su mobile */
+            }
+             .building-text {
+                 order: 2; /* Testo sotto immagine */
+                 align-items: center; /* Centra bottoni */
+             }
+             .building-image {
+                 order: 1; /* Immagine sopra testo */
+                 margin-bottom: var(--spacing-md);
+             }
+              .building-text .btn {
+                 align-self: center; /* Assicura centratura */
+              }
+
+            .blockchain-visualization {
+                height: 180px;
+            }
+            .block {
+                 width: 60px;
+                 height: 50px;
+                 font-size: 0.8rem;
+             }
+
+            /* Future button non sembra esistere nell'HTML, commentato
+            #future-button {
+                padding: 8px 15px;
+                border-radius: 20px;
+                text-decoration: none;
+                color: white;
+                background-color: var(--primary-green);
+                transition: all 0.3s;
+                margin: 0 15px;
+                white-space: nowrap;
+            }
+
+            #future-button:hover {
+                background-color: var(--secondary-green);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+            */
+
+            /* Non serve più, .green-button è già gestito sopra
+            .green-button {
+               padding: 6px 15px;
+               font-size: 14px;
+            } */
+        }
+
+        @media (max-width: 480px) {
+             :root {
+                 --spacing-sm: 0.8rem;
+                 --spacing-md: 1.5rem;
+                 --spacing-lg: 2.5rem;
+             }
+            .blockchain-visualization {
+               height: 250px; /* Aumentata altezza per far spazio ai blocchi */
+               margin-bottom: 20px; /* Aggiunto spazio sotto */
+            }
+
+            .block { /* Blocchi ancora più piccoli e font ridotto */
+                 width: 50px;
+                 height: 42px;
+                 font-size: 0.65rem;
+                 /* Ricalcolare posizione se necessario */
+            }
+             .laser {
+                 height: 1px; /* Laser più sottile */
+             }
+
+             .hero-title { font-size: 1.8rem; }
+             .hero-subtitle { font-size: 1rem; }
+             .section-title { font-size: 1.6rem; }
+             .btn { padding: 0.7rem 1.2rem; font-size: 0.9rem;}
+             .value-card { padding: var(--spacing-sm); }
+             .image-container { padding: 1.5rem; }
+
+             .bg-decoration { /* Riduci o nascondi decorazioni */
+                 opacity: 0.2;
+                 filter: blur(50px);
+             }
+             .decoration-1 { width: 250px; height: 250px; }
+             .decoration-2 { width: 200px; height: 200px; }
+        }
+
     </style>
 </head>
 <body>
@@ -26,57 +847,58 @@
     <div class="container">
         <!-- Intestazione -->
         <header>
-            <a href="./" class="logo">
-                <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B" data-i18n-attr="alt:header.logoAlt">
-                <span data-i18n="header.logoText">SynergyRecycle.B</span>
+            <a href="./" class="logo"> <!-- Aggiunto link alla home sul logo -->
+                <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B">
+                <span>SynergyRecycle.B</span>
             </a>
             <nav class="main-nav">
-                <a href="./contatore.html" class="green-button" data-i18n="header.nav.actionButton">"Un'azione, Mille Impatti."</a>
-                <a href="./" class="button" data-i18n="header.nav.home">Home</a>
-                <a href="./servizi.html" class="button" data-i18n="header.nav.services">Servizi</a>
-                <a href="./sostenerci.html" class="button" data-i18n="header.nav.supportUs">Supportaci</a>
-                <a href="./contattaci.html" class="button" data-i18n="header.nav.contactUs">Contattaci</a>
-                <a href="./roadmap.html" class="button" data-i18n="header.nav.roadmap">Roadmap</a>
-                <!-- Language Selector HTML (Desktop) -->
+                <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
+                <a href="./" class="button">Home</a>
+                <a href="./servizi.html" class="button">Servizi</a>
+                <a href="./sostenerci.html" class="button">Supportaci</a>
+                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./roadmap.html" class="button">Roadmap</a>
+                <!-- START: Language Selector HTML (Desktop) -->
                 <div class="language-selector">
-                    <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" data-i18n-attr="aria-label:header.langSelector.ariaLabel" aria-haspopup="true" aria-expanded="false">🌐</button>
+                    <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
                     <div class="language-dropdown" id="language-dropdown" role="menu">
-                        <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> <span data-i18n="header.langSelector.en">English</span></div>
-                        <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> <span data-i18n="header.langSelector.es">Español</span></div>
-                        <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> <span data-i18n="header.langSelector.de">Deutsch</span></div>
-                        <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> <span data-i18n="header.langSelector.it">Italiano</span></div>
-                        <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> <span data-i18n="header.langSelector.fr">Français</span></div>
+                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
                     </div>
                 </div>
-                <!-- END Language Selector HTML (Desktop) -->
+                <!-- END: Language Selector HTML (Desktop) -->
             </nav>
-            <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu" data-i18n-attr="aria-label:header.hamburgerAriaLabel">☰</button>
+            <!-- Hamburger container non serve, il bottone può stare direttamente nell'header -->
+            <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
         </header>
 
         <!-- Navigazione mobile -->
         <nav class="mobile-nav" id="mobile-nav">
-            <a href="./contatore.html" class="green-button" data-i18n="header.nav.actionButton">"Un'azione, Mille Impatti."</a>
-            <a href="./" class="button" data-i18n="header.nav.home">Home</a>
-            <a href="./servizi.html" class="button" data-i18n="header.nav.services">Servizi</a>
-            <a href="./sostenerci.html" class="button" data-i18n="header.nav.supportUs">Supportaci</a>
-            <a href="./contattaci.html" class="button" data-i18n="header.nav.contactUs">Contattaci</a>
-            <a href="./roadmap.html" class="button" data-i18n="header.nav.roadmap">Roadmap</a>
-            <!-- Language Selector HTML (Mobile) -->
+            <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
+            <a href="./" class="button">Home</a>
+            <a href="./servizi.html" class="button">Servizi</a>
+            <a href="./sostenerci.html" class="button">Supportaci</a>
+            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./roadmap.html" class="button">Roadmap</a>
+            <!-- START: Language Selector HTML (Mobile) -->
             <div class="language-selector">
-                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 <span data-i18n="header.mobileNav.langSelectorButton">Lingua</span></button>
+                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
                 <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
-                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> <span data-i18n="header.langSelector.en">English</span></div>
-                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> <span data-i18n="header.langSelector.es">Español</span></div>
-                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> <span data-i18n="header.langSelector.de">Deutsch</span></div>
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> <span data-i18n="header.langSelector.it">Italiano</span></div>
-                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> <span data-i18n="header.langSelector.fr">Français</span></div>
+                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
                 </div>
             </div>
-            <!-- END Language Selector HTML (Mobile) -->
+            <!-- END: Language Selector HTML (Mobile) -->
         </nav>
 
         <!-- Banner -->
-        <div class="banner" data-i18n="banner.text">
+        <div class="banner">
             SynergyRecycle.B: "Ogni gesto conta, noi insieme facciamo la differenza."
         </div>
     </div> <!-- Fine container per header/banner -->
@@ -85,9 +907,11 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
+                <!-- Contenuto Hero section originale (image-container) -->
                 <div class="image-container">
-                     <h1 class="hero-title" data-i18n="hero.title">"La nostra Piattaforma: per aiutarci, ad aiutare il Mondo."</h1>
-                     <p class="hero-subtitle" data-i18n="hero.subtitle">Costruiamo esperienze digitali, rivoluzioniamo il modo di fare, distinguiamoci.</p>
+                     <h1 class="hero-title">"La nostra Piattaforma: per aiutarci, ad aiutare il Mondo."</h1>
+                     <p class="hero-subtitle">Costruiamo esperienze digitali, rivoluzioniamo il modo di fare, distinguiamoci.</p>
+                     <!-- Eventuale bottone CTA qui dentro se necessario -->
                 </div>
             </div>
         </section>
@@ -95,10 +919,10 @@
         <!-- Blockchain Visualization Section -->
         <section class="section">
             <div class="container">
-                <h2 class="section-title" data-i18n="blockchain.title">Con la Blockchain Polygon il futuro sarà sostenibile</h2>
-                <p class="text-center" style="color: #557669; max-width: 700px; margin: -20px auto 30px auto;" data-i18n="blockchain.paragraph">La nostra tecnologia basata su blockchain Polygon connette ogni fase del riciclo per massimizzare l'impatto positivo, garantendo trasparenza e tracciabilità.</p>
+                <h2 class="section-title">Con la Blockchain Polygon il futuro sarà sostenibile</h2>
+                <p class="text-center" style="color: #557669; max-width: 700px; margin: -20px auto 30px auto;">La nostra tecnologia basata su blockchain Polygon connette ogni fase del riciclo per massimizzare l'impatto positivo, garantendo trasparenza e tracciabilità.</p>
                 <div class="blockchain-visualization" id="blockchain-viz">
-                    <!-- Riempito da JS -->
+                    <!-- This will be filled by JavaScript -->
                 </div>
             </div>
         </section>
@@ -106,71 +930,73 @@
         <!-- Strategia Section -->
         <section class="section" style="background: linear-gradient(135deg, var(--background-green), #eaf3ea); padding-bottom: var(--spacing-md);">
              <div class="container">
-                <h2 class="section-title" data-i18n="success.title">Guidiamo il Successo attraverso: Efficienza, Affidabilità, Innovazione, Scalabilità.</h2>
-                <p class="text-center" style="color: #557669;" data-i18n="success.paragraph1">Mettiamo a punto un'esperienza clienti unica.</p>
-                <p class="text-center" style="color: #557669; margin-bottom: 0;" data-i18n="success.paragraph2">Strategie digitali e ricerche su misura basate su Affidabilità e Innovazione.</p>
+                <h2 class="section-title">Guidiamo il Successo attraverso: Efficienza, Affidabilità, Innovazione, Scalabilità.</h2>
+                <p class="text-center" style="color: #557669;">Mettiamo a punto un'esperienza clienti unica.</p>
+                <p class="text-center" style="color: #557669; margin-bottom: 0;">Strategie digitali e ricerche su misura basate su Affidabilità e Innovazione.</p>
             </div>
         </section>
 
         <!-- Valori Section -->
         <section class="section">
             <div class="container">
-                <h2 class="section-title" data-i18n="pillars.title">I nostri pilastri fondamentali</h2>
+                <h2 class="section-title">I nostri pilastri fondamentali</h2>
                 <div class="values-grid">
                     <div class="value-card">
-                        <h3 data-i18n="pillars.efficiency.title">Efficienza</h3>
-                        <p data-i18n="pillars.efficiency.text">Ottimizziamo processi e risorse per il massimo risultato con il minimo spreco.</p>
-                        <img src="./assets/img/efficienz.jpeg" alt="Icona Efficienza" data-i18n-attr="alt:pillars.efficiency.imgAlt">
+                        <h3>Efficienza</h3>
+                        <p>Ottimizziamo processi e risorse per il massimo risultato con il minimo spreco.</p>
+                        <img src="./assets/img/efficienz.jpeg" alt="Icona Efficienza">
                     </div>
                     <div class="value-card">
-                        <h3 data-i18n="pillars.reliability.title">Affidabilità</h3>
-                         <p data-i18n="pillars.reliability.text">Garantiamo trasparenza e sicurezza grazie alla tecnologia blockchain.</p>
-                        <img src="./assets/img/affidabilita.jpeg" alt="Icona Affidabilità" data-i18n-attr="alt:pillars.reliability.imgAlt">
+                        <h3>Affidabilità</h3>
+                         <p>Garantiamo trasparenza e sicurezza grazie alla tecnologia blockchain.</p>
+                        <img src="./assets/img/affidabilita.jpeg" alt="Icona Affidabilità">
                     </div>
                     <div class="value-card">
-                        <h3 data-i18n="pillars.innovation.title">Innovazione</h3>
-                         <p data-i18n="pillars.innovation.text">Sviluppiamo costantemente soluzioni all'avanguardia per la sostenibilità.</p>
-                        <img src="./assets/img/innovazione.jpeg" alt="Icona Innovazione" data-i18n-attr="alt:pillars.innovation.imgAlt">
+                        <h3>Innovazione</h3>
+                         <p>Sviluppiamo costantemente soluzioni all'avanguardia per la sostenibilità.</p>
+                        <img src="./assets/img/innovazione.jpeg" alt="Icona Innovazione">
                     </div>
                     <div class="value-card">
-                        <h3 data-i18n="pillars.scalability.title">Scalabilità</h3>
-                        <p data-i18n="pillars.scalability.text">Progettiamo sistemi flessibili pronti a crescere con la nostra community.</p>
-                        <img src="./assets/img/donna.png" alt="Icona Scalabilità" data-i18n-attr="alt:pillars.scalability.imgAlt">
+                        <h3>Scalabilità</h3>
+                        <p>Progettiamo sistemi flessibili pronti a crescere con la nostra community.</p>
+                        <img src="./assets/img/donna.png" alt="Icona Scalabilità">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Offerta Section -->
-        <section class="section building-section">
+        <section class="section building-section"> <!-- Aggiunta classe building-section -->
             <div class="container">
-                <h2 class="section-title" data-i18n="building.title">Scopri cosa stiamo Costruendo.</h2>
+                <h2 class="section-title">Scopri cosa stiamo Costruendo.</h2>
+                <!-- Rimossa div .building-section interna superflua -->
                 <div class="building-content">
                     <div class="building-text">
-                        <h3 data-i18n="building.subtitle1">Trasformazione digitale per la Sostenibilità</h3>
-                        <p data-i18n="building.paragraph1">Aiutiamo persone e aziende a prosperare in un panorama eco-consapevole in continua evoluzione.</p>
-                        <h3 data-i18n="building.subtitle2">Sviluppo Web & App Dedicati</h3>
-                        <p data-i18n="building.paragraph2">Mettiamo a frutto la nostra esperienza per fornire strumenti intuitivi e potenti, dando a tutti la possibilità di contribuire e crescere.</p>
+                        <h3>Trasformazione digitale per la Sostenibilità</h3>
+                        <p>Aiutiamo persone e aziende a prosperare in un panorama eco-consapevole in continua evoluzione.</p>
+                        <h3>Sviluppo Web & App Dedicati</h3>
+                        <p>Mettiamo a frutto la nostra esperienza per fornire strumenti intuitivi e potenti, dando a tutti la possibilità di contribuire e crescere.</p>
                         <div class="app-download-buttons">
-                            <a href="#" class="btn" target="_blank" style="opacity: 0.7; cursor: not-allowed;" data-i18n="building.appButton.appStore">Coming Soon: App Store</a>
-                            <a href="#" class="btn" target="_blank" style="opacity: 0.7; cursor: not-allowed;" data-i18n="building.appButton.googlePlay">Coming Soon: Google Play</a>
+                            <a href="#" class="btn" target="_blank" style="opacity: 0.7; cursor: not-allowed;">Coming Soon: App Store</a> <!-- Link disabilitato -->
+                            <a href="#" class="btn" target="_blank" style="opacity: 0.7; cursor: not-allowed;">Coming Soon: Google Play</a> <!-- Link disabilitato -->
                         </div>
                     </div>
                     <div class="building-image">
-                        <img src="./assets/img/persona.jpeg" alt="Persona che interagisce con tecnologia sostenibile" data-i18n-attr="alt:building.imgAlt">
+                        <img src="./assets/img/persona.jpeg" alt="Persona che interagisce con tecnologia sostenibile">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action -->
+        <!-- Modificato stile per coerenza con l'altro CTA -->
         <section class="section" style="background: linear-gradient(135deg, #f0f7ee, var(--tertiary-green));">
             <div class="container">
-                <h2 class="section-title" style="font-size: 1.8rem;" data-i18n="cta.title1">Tutte le Persone fanno molto per se stessi, ma ancora poco per il nostro Pianeta.</h2>
-                <h2 class="section-title" style="font-size: 2rem;" data-i18n="cta.title2">Entra a far parte di SynergyRecycle.B: insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
-                <p class="text-center" style="color: #557669;" data-i18n="cta.paragraph">Unisciti a noi per migliorare, e insieme miglioreremo il nostro Pianeta.</p>
+                <h2 class="section-title" style="font-size: 1.8rem;">Tutte le Persone fanno molto per se stessi, ma ancora poco per il nostro Pianeta.</h2>
+                <h2 class="section-title" style="font-size: 2rem;">Entra a far parte di SynergyRecycle.B: insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
+                <p class="text-center" style="color: #557669;">Unisciti a noi per migliorare, e insieme miglioreremo il nostro Pianeta.</p>
                 <div style="text-align: center; margin-top: var(--spacing-md);">
-                    <a href="./sostenerci.html" class="btn" data-i18n="cta.button">Inizia ora</a>
+                    <a href="./sostenerci.html" class="btn">Inizia ora</a> <!-- Linkato a supportaci -->
                 </div>
             </div>
         </section>
@@ -180,154 +1006,271 @@
     <footer class="site-footer">
         <div class="container">
             <p class="copyright-text">
-                © <span id="copyright-year"></span> <span data-i18n="header.logoText">SynergyRecycle.B</span>.
-                 - <span data-i18n="footer.allRightsReserved">Tutti i diritti riservati</span>
-                 <br>
+                © <span id="copyright-year"></span> SynergyRecycle.B.
+                 - Tutti i diritti riservati
+                 <br> <!-- Aggiunto break -->
                 Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a>
             </p>
         </div>
     </footer>
 
-    <!-- Script JS Inline (Solo per Hamburger, Copyright, Blockchain) -->
+    <!-- Script JS -->
     <script>
-        // Funzioni Blockchain definite globalmente
-        const blockchainVizContainer = document.getElementById('blockchain-viz');
-
-        window.createBlockchainVisualization = function() {
-            // La logica è la stessa di prima, ma ora è globale
-            if (!blockchainVizContainer || blockchainVizContainer.dataset.initialized === 'true') return;
-            blockchainVizContainer.innerHTML = '';
-            blockchainVizContainer.dataset.initialized = 'true';
-            console.log("createBlockchainVisualization called"); // DEBUG
-
-            const currentTranslations = window.currentTranslations || {}; // Legge traduzioni globali
-            const labels = currentTranslations.blockchain?.labels;
-            const blockLabels = labels
-                ? [labels.collection, labels.verification, labels.processing, labels.recycling, labels.reuse]
-                : ['Raccolta', 'Verifica', 'Processo', 'Riciclo', 'Riutilizzo']; // Fallback IT
-
-            console.log("Using blockchain labels:", blockLabels); // DEBUG
-
-            const blocks = [];
-            const isMobile = window.innerWidth <= 768;
-            const isSmallMobile = window.innerWidth <= 480;
-
-            blockLabels.forEach((label, i) => {
-                const block = document.createElement('div');
-                block.className = 'block';
-                block.textContent = label || `Block ${i+1}`;
-                let topPos = 40; let leftPos;
-                if (isSmallMobile && blockLabels.length > 3) {
-                    topPos = (i * 20) + 5; leftPos = 40;
-                    const blockWidthEstimate = 50;
-                    block.style.left = `calc(${leftPos}% - ${blockWidthEstimate / 2}px)`;
-                    block.style.top = `${topPos}%`;
-                } else {
-                    leftPos = (i * (100 / blockLabels.length)) + (100 / (blockLabels.length * 2));
-                    block.style.left = `${leftPos}%`; block.style.top = `${topPos}%`;
-                    block.style.transform = 'translateX(-50%)';
-                }
-                blockchainVizContainer.appendChild(block); blocks.push(block);
-                block.style.opacity = '0'; block.style.animation = `fadeIn 0.5s ${i * 0.2}s forwards`;
-            });
-
-            if (!document.getElementById('blockchain-animations')) {
-                 const style = document.createElement('style');
-                 style.id = 'blockchain-animations';
-                 style.textContent = `
-                     @keyframes fadeIn { from { opacity: 0; transform: ${isSmallMobile && blockLabels.length > 3 ? 'translateX(20px)' : 'translateY(20px)'}; } to { opacity: 1; transform: ${isSmallMobile && blockLabels.length > 3 ? 'translateX(0)' : 'translateY(0)'}; } }
-                     @keyframes laserAppear { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
-                 `;
-                 document.head.appendChild(style);
-             }
-
-             let attempts = 0;
-             function connectWhenReady() {
-                 if (blocks.every(b => b.offsetParent !== null && b.offsetWidth > 0) || attempts > 20) {
-                    setTimeout(() => {
-                         for (let i = 0; i < blocks.length - 1; i++) { connectBlocksWithLaser(blocks[i], blocks[i+1]); }
-                    }, 100 + (500 * blockLabels.length));
-                 } else { attempts++; requestAnimationFrame(connectWhenReady); }
-             }
-             requestAnimationFrame(connectWhenReady);
-        }
-
-        window.connectBlocksWithLaser = function(blockA, blockB) {
-            // La logica è la stessa di prima, ma ora è globale
-            if (!blockchainVizContainer || !blockA || !blockB) return;
-            const laser = document.createElement('div'); laser.className = 'laser';
-            const rectA = blockA.getBoundingClientRect(); const rectB = blockB.getBoundingClientRect();
-            const containerRect = blockchainVizContainer.getBoundingClientRect();
-            let x1, y1, x2, y2;
-            const isSmallMobileLayout = window.innerWidth <= 480 && blockA.style.top !== '40%';
-
-            if (isSmallMobileLayout) {
-                x1 = rectA.left + (rectA.width / 2) - containerRect.left; y1 = rectA.top + rectA.height - containerRect.top;
-                x2 = rectB.left + (rectB.width / 2) - containerRect.left; y2 = rectB.top - containerRect.top;
-            } else {
-                 x1 = rectA.left + rectA.width - containerRect.left; y1 = rectA.top + (rectA.height / 2) - containerRect.top;
-                 x2 = rectB.left - containerRect.left; y2 = rectB.top + (rectB.height / 2) - containerRect.top;
-            }
-            const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-            const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-            laser.style.width = `${length}px`; laser.style.left = `${x1}px`; laser.style.top = `${y1}px`;
-            laser.style.transform = `rotate(${angle}deg)`; laser.style.transformOrigin = 'left center';
-            laser.style.opacity = '0'; laser.style.animation = `laserAppear 0.8s forwards, laserPulse 2s infinite 0.8s`;
-            blockchainVizContainer.appendChild(laser);
-        }
-
-        // Esecuzione solo di codice NON i18n dentro DOMContentLoaded
         document.addEventListener('DOMContentLoaded', function() {
-             // --- COPYRIGHT YEAR ---
-             const yearSpan = document.getElementById('copyright-year');
+
+             // --- COMMON HELPER FUNCTIONS ---
+            const toggleAriaExpanded = (element) => {
+                 const isExpanded = element.getAttribute('aria-expanded') === 'true';
+                 element.setAttribute('aria-expanded', !isExpanded);
+            };
+
+            // --- COPYRIGHT YEAR ---
+            const yearSpan = document.getElementById('copyright-year');
              if (yearSpan) {
-                 yearSpan.textContent = new Date().getFullYear();
+                yearSpan.textContent = new Date().getFullYear();
              }
 
-             // --- HAMBURGER MENU TOGGLE ---
-             const hamburgerBtn = document.getElementById('hamburger-btn');
-             const mobileNav = document.getElementById('mobile-nav');
+            // --- HAMBURGER MENU TOGGLE ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileNav = document.getElementById('mobile-nav');
 
-             if (hamburgerBtn && mobileNav) {
-                 const toggleAriaExpanded = (element) => {
-                     const isExpanded = element.getAttribute('aria-expanded') === 'true';
-                     element.setAttribute('aria-expanded', !isExpanded);
-                 };
-
-                 hamburgerBtn.addEventListener('click', function() {
-                     mobileNav.classList.toggle('active');
-                     toggleAriaExpanded(this);
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function() {
+                    mobileNav.classList.toggle('active');
+                    toggleAriaExpanded(this); // Aggiorna aria-expanded
                  });
 
-                 const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
-                 mobileNavLinks.forEach(link => {
-                     link.addEventListener('click', function() {
-                         if (!link.closest('.language-selector')) {
-                             mobileNav.classList.remove('active');
-                             hamburgerBtn.setAttribute('aria-expanded', 'false');
-                         }
+                 // Chiudi il menu quando si clicca su un link al suo interno (escluso lingua)
+                const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (!link.closest('.language-selector')) {
+                            mobileNav.classList.remove('active');
+                            hamburgerBtn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+            }
+
+
+            // --- START: Language Selector Logic (copied from servizi.html script) ---
+             const languageBtn = document.getElementById('language-btn');
+             const languageDropdown = document.getElementById('language-dropdown');
+             const mobileLanguageBtn = document.getElementById('mobile-language-btn');
+             const mobileLanguageDropdown = document.getElementById('mobile-language-dropdown');
+             const allLanguageOptions = document.querySelectorAll('.language-option');
+
+             const closeAllLanguageDropdowns = () => {
+                 if (languageDropdown) languageDropdown.classList.remove('show');
+                 if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+                 if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
+                 if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+             };
+
+             if (languageBtn && languageDropdown) {
+                 languageBtn.addEventListener('click', function(e) {
+                     e.stopPropagation();
+                     const isShown = languageDropdown.classList.toggle('show');
+                     languageBtn.setAttribute('aria-expanded', isShown);
+                     // Chiudi l'altro dropdown se aperto
+                     if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
+                     if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+                 });
+             }
+
+             if (mobileLanguageBtn && mobileLanguageDropdown) {
+                 mobileLanguageBtn.addEventListener('click', function(e) {
+                     e.stopPropagation();
+                      const isShown = mobileLanguageDropdown.classList.toggle('show');
+                      mobileLanguageBtn.setAttribute('aria-expanded', isShown);
+                     // Chiudi l'altro dropdown se aperto
+                     if (languageDropdown) languageDropdown.classList.remove('show');
+                     if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+                 });
+             }
+
+             // Gestione cambio lingua
+             if (allLanguageOptions.length > 0) {
+                 allLanguageOptions.forEach(option => {
+                     option.addEventListener('click', function() {
+                         const lang = this.getAttribute('data-lang');
+                         changeLang(lang);
+                         closeAllLanguageDropdowns();
                      });
                  });
              }
 
-             // --- Blockchain Resize Listener ---
+             // Cliccare fuori chiude i dropdown lingua
+             document.addEventListener('click', closeAllLanguageDropdowns);
+
+             // Impedisce ai click *dentro* i dropdown di chiuderli
+             if (languageDropdown) languageDropdown.addEventListener('click', e => e.stopPropagation());
+             if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
+
+
+             // Funzione per cambiare lingua (placeholder - implementare logica reale)
+             function changeLang(lang) {
+                 console.log(`Lingua selezionata: ${lang}`);
+                 localStorage.setItem('selectedLanguage', lang);
+                 // QUI VA LA LOGICA DI TRADUZIONE:
+                 alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+                 // document.documentElement.lang = lang; // Aggiorna attributo lang
+             }
+
+              // Applica lingua salvata all'avvio (opzionale)
+             const savedLang = localStorage.getItem('selectedLanguage');
+             if (savedLang) {
+                  console.log(`Lingua salvata trovata: ${savedLang}. Applicare se necessario.`);
+                 // changeLang(savedLang); // Decommenta per applicare subito
+                 // document.documentElement.lang = savedLang; // Aggiorna subito attributo lang
+             }
+            // --- END: Language Selector Logic ---
+
+
+            // --- Blockchain Visualization ---
+            const blockchainVizContainer = document.getElementById('blockchain-viz');
+
+            // Funzione per creare la visualizzazione (assicurati che non venga chiamata più volte inutilmente)
+             function createBlockchainVisualization() {
+                 if (!blockchainVizContainer || blockchainVizContainer.dataset.initialized === 'true') return; // Verifica container e flag inizializzazione
+                 blockchainVizContainer.innerHTML = ''; // Pulisci prima di ricreare
+                 blockchainVizContainer.dataset.initialized = 'true'; // Imposta flag
+
+                 const blockLabels = ['Raccolta', 'Verifica', 'Processo', 'Riciclo', 'Riutilizzo'];
+                 const blocks = [];
+                 const isMobile = window.innerWidth <= 768;
+                 const isSmallMobile = window.innerWidth <= 480;
+
+                 // Crea i blocchi
+                 blockLabels.forEach((label, i) => {
+                     const block = document.createElement('div');
+                     block.className = 'block';
+                     block.textContent = label;
+
+                     // Posizionamento più robusto e responsivo
+                     let topPos = 40; // Percentuale default
+                     let leftPos;
+
+                      if (isSmallMobile && blockLabels.length > 3) { // Layout verticale su mobile piccolo se ci sono molti blocchi
+                          topPos = (i * 20) + 5; // Posiziona verticalmente
+                          leftPos = 40; // Centra orizzontalmente (circa)
+                          block.style.left = `calc(${leftPos}% - ${block.offsetWidth / 2}px)`; // Centra meglio
+                          block.style.top = `${topPos}%`;
+                      } else { // Layout orizzontale
+                           leftPos = (i * (100 / blockLabels.length)) + (100 / (blockLabels.length * 2)); // Distribuisce equamente
+                           block.style.left = `${leftPos}%`;
+                           block.style.top = `${topPos}%`;
+                           block.style.transform = 'translateX(-50%)'; // Centra il blocco orizzontalmente sulla sua posizione %
+                      }
+
+
+                     blockchainVizContainer.appendChild(block);
+                     blocks.push(block);
+
+                     block.style.opacity = '0';
+                     block.style.animation = `fadeIn 0.5s ${i * 0.2}s forwards`;
+                 });
+
+                 // Crea keyframes se non esistono
+                 if (!document.getElementById('blockchain-animations')) {
+                     const style = document.createElement('style');
+                     style.id = 'blockchain-animations';
+                     style.textContent = `
+                         @keyframes fadeIn {
+                             from { opacity: 0; transform: ${isSmallMobile && blockLabels.length > 3 ? 'translateX(20px)' : 'translateY(20px)'}; } /* Adatta direzione fade */
+                             to { opacity: 1; transform: ${isSmallMobile && blockLabels.length > 3 ? 'translateX(0)' : 'translateY(0)'}; }
+                         }
+                         @keyframes laserAppear {
+                             from { transform: scaleX(0); opacity: 0; }
+                             to { transform: scaleX(1); opacity: 1; }
+                         }
+                     `;
+                     document.head.appendChild(style);
+                 }
+
+                 // Collega i blocchi con i laser dopo un ritardo
+                 // Usare requestAnimationFrame per assicurarsi che le posizioni siano calcolate dopo il rendering
+                 let attempts = 0;
+                 function connectWhenReady() {
+                     if (blocks.every(b => b.offsetParent !== null) || attempts > 10) { // Se tutti i blocchi sono renderizzati o abbiamo provato abbastanza volte
+                         // Calcola connessioni solo DOPO che i blocchi sono visibili e posizionati
+                        setTimeout(() => {
+                             for (let i = 0; i < blocks.length - 1; i++) {
+                                connectBlocksWithLaser(blocks[i], blocks[i+1]);
+                            }
+                        }, 500 * blockLabels.length); // Aspetta fine animazione fade-in
+                     } else {
+                         attempts++;
+                         requestAnimationFrame(connectWhenReady);
+                     }
+                 }
+                 requestAnimationFrame(connectWhenReady);
+
+             } // Fine createBlockchainVisualization
+
+             function connectBlocksWithLaser(blockA, blockB) {
+                if (!blockchainVizContainer || !blockA || !blockB) return;
+
+                const laser = document.createElement('div');
+                laser.className = 'laser';
+
+                const rectA = blockA.getBoundingClientRect();
+                const rectB = blockB.getBoundingClientRect();
+                const containerRect = blockchainVizContainer.getBoundingClientRect(); // Usa il container specifico
+
+                // Calcola punti di connessione relativi al container
+                 // Adattato per layout orizzontale e verticale (mobile)
+                let x1, y1, x2, y2;
+                const isSmallMobileLayout = window.innerWidth <= 480 && blockA.style.top !== '40%';
+
+                if (isSmallMobileLayout) { // Connessione verticale
+                    x1 = rectA.left + (rectA.width / 2) - containerRect.left;
+                    y1 = rectA.top + rectA.height - containerRect.top; // Dal basso del blocco A
+                    x2 = rectB.left + (rectB.width / 2) - containerRect.left;
+                    y2 = rectB.top - containerRect.top; // All'inizio del blocco B
+                } else { // Connessione orizzontale
+                     x1 = rectA.left + rectA.width - containerRect.left; // Da destra del blocco A
+                     y1 = rectA.top + (rectA.height / 2) - containerRect.top;
+                     x2 = rectB.left - containerRect.left; // A sinistra del blocco B
+                     y2 = rectB.top + (rectB.height / 2) - containerRect.top;
+                }
+
+
+                const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+
+                laser.style.width = `${length}px`;
+                laser.style.left = `${x1}px`;
+                laser.style.top = `${y1}px`; // y1 è già relativo al container
+                laser.style.transform = `rotate(${angle}deg)`;
+                laser.style.transformOrigin = 'left center';
+
+                laser.style.opacity = '0';
+                laser.style.animation = `laserAppear 0.8s forwards, laserPulse 2s infinite 0.8s`;
+
+                blockchainVizContainer.appendChild(laser);
+            }
+
+
+            // Inizializza la visualizzazione blockchain
+            if (blockchainVizContainer) { // Verifica che esista prima di chiamare
+                 createBlockchainVisualization();
+            }
+
+            // Gestione responsive per la visualizzazione blockchain (debounce per performance)
              let resizeTimer;
              window.addEventListener('resize', function() {
                  clearTimeout(resizeTimer);
                  resizeTimer = setTimeout(function() {
-                     if (blockchainVizContainer && typeof window.createBlockchainVisualization === 'function') {
-                         blockchainVizContainer.removeAttribute('data-initialized');
-                         window.createBlockchainVisualization();
-                     }
-                 }, 250);
+                     // Rimuovi flag per permettere ricreazione
+                     if (blockchainVizContainer) {
+                        blockchainVizContainer.removeAttribute('data-initialized');
+                        createBlockchainVisualization();
+                    }
+                 }, 250); // Aspetta 250ms dopo la fine del resize
              });
 
-             console.log("Inline script (Hamburger, Copyright, Resize) executed."); // DEBUG
-        });
+        }); // Fine DOMContentLoaded
     </script>
-
-    <!-- Script I18N Esterno (DEVE ESSERE DOPO L'HTML E DOPO LO SCRIPT INLINE CHE DEFINISCE LE FUNZIONI GLOBALI) -->
-    <script src="./assets/js/i18n.js" defer></script>
-
 </body>
 </html>
