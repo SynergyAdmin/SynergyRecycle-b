@@ -3,964 +3,722 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcola Impatto - SynergyRecycle.B</title> <!-- Title Updated -->
+    <title>SynergyRecycle.B</title>
     <style>
-        /* Import consistent variables from index.html */
         :root {
-            --spacing-sm: 1rem;
-            --spacing-md: 2rem;
-            --spacing-lg: 4rem;
-            --container-width: 1000px; /* Max width for this specific page content */
-            --primary-blue: #3a7c8c;
-            --dark-gray: #333;
-            --light-gray: #ccc;
-            --primary-green: #5aad57;
-            --secondary-green: #8BC34A;
-            --tertiary-green: #c2e6c0;
-            --background-green: #f5f9f5;
-            --blockchain-blue: #4c7f9c;
-            --card-bg-color: #fff;
-            --input-bg-color: #fff;
-            --input-border-color: #ddd;
+            --primary-color: #006565;
+            --secondary-color: #008F8F;
+            --light-color: #EFFBFB;
+            --accent-color: #1DC973;
+            --input-bg: #EFFBFB;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
-            font-size: 100%; /* Base font size */
+            font-family: 'Arial', sans-serif;
         }
 
         body {
-            font-family: "Segoe UI", system-ui, -apple-system, sans-serif; /* Consistent font */
-            line-height: 1.6; /* Improved line height */
-            color: var(--dark-gray);
-            background-color: var(--background-green); /* Consistent background */
+            background-color: var(--primary-color);
+            color: white;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: var(--spacing-md); /* Add some top padding */
-            position: relative;
+            justify-content: flex-start;
             overflow-x: hidden;
+            width: 100%;
+            position: relative;
         }
 
-        /* Subtle Background decorations */
-        .bg-decoration {
-            position: fixed;
-            background-color: var(--tertiary-green);
-            border-radius: 50%;
-            opacity: 0.3; /* More subtle */
-            filter: blur(80px); /* More blur */
-            z-index: -1; /* Behind content */
-            pointer-events: none;
-        }
-        .decoration-1 { width: 350px; height: 350px; top: -80px; left: -150px; }
-        .decoration-2 { width: 300px; height: 300px; bottom: -50px; right: -100px; opacity: 0.2; }
-
-
-        /* Simplified Header for this page */
-        .page-header {
-            padding: 0 var(--spacing-sm) var(--spacing-sm);
+        .header {
+            padding: 20px;
             display: flex;
             align-items: center;
             width: 100%;
-            max-width: var(--container-width);
-            margin: 0 auto; /* Center header content */
-            color: var(--primary-blue); /* Use theme color */
+            max-width: 1000px;
         }
 
-        .page-header .logo { /* Re-use logo style */
-            height: 35px; /* Slightly smaller */
-            margin-right: 10px;
-            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+        .logo {
+            width: 25px;
+            height: 25px;
+            margin-right: 15px;
+            background-color: white;
+            border-radius: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .page-header .logo-text {
-            font-size: 1.5rem; /* Adjusted size */
-            font-weight: 600; /* Bold */
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
         }
 
-        /* Main Content Area */
         .main-content {
-            padding: 0 var(--spacing-sm);
+            padding: 0 20px;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content horizontally */
             flex-grow: 1;
             width: 100%;
-            max-width: var(--container-width);
-            margin: 0 auto; /* Center content block */
+            max-width: 1000px;
         }
 
-        /* Hero Section Styling */
         .hero {
             display: flex;
-            flex-direction: column; /* Stack elements vertically on all screens */
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-            margin-bottom: var(--spacing-md);
+            margin-bottom: 40px;
             width: 100%;
-            padding: var(--spacing-sm) 0;
         }
 
-        .hero-graphic { /* Container for graphic */
-             width: 150px; /* Control size */
-             height: 150px;
-             margin-bottom: var(--spacing-sm);
-             /* Themed graphic using gradient and SVG */
-             background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-             border-radius: 50%;
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             color: white;
-             box-shadow: 0 4px 15px rgba(90, 173, 87, 0.3);
+        .bottle-graphic {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            max-width: 40%;
         }
-         .hero-graphic svg { /* Style the SVG placeholder */
-             width: 60%;
-             height: 60%;
-         }
 
+        .bottle-img {
+            width: 100%;
+            max-width: 200px;
+        }
 
         .hero-text {
-            font-size: clamp(1.8rem, 5vw, 2.8rem); /* Responsive font size */
-            font-weight: 600;
+            flex: 1;
+            text-align: left;
+            font-size: 2.5rem;
+            font-weight: bold;
             line-height: 1.2;
-            color: #2a5548; /* Consistent heading color */
-            max-width: 600px; /* Limit text width */
         }
-         .hero-text span { /* Highlight word */
-             color: var(--primary-green);
-         }
 
-        /* CTA Button Styling (consistent with .btn) */
         .cta-button {
-            display: inline-block;
-            padding: 0.9rem 2rem; /* Consistent padding */
-            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue)); /* Consistent gradient */
+            background-color: transparent;
             color: white;
-            text-decoration: none;
-            border: none; /* Remove border */
-            border-radius: 30px; /* Consistent radius */
-            font-size: 1.1rem; /* Adjusted size */
-            font-weight: 500;
+            border: 2px solid white;
+            border-radius: 30px;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
             cursor: pointer;
-            margin: var(--spacing-sm) 0;
+            margin: 20px 0;
             text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-button::before { /* Shine effect */
-             content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-             transition: left 0.7s; z-index: 0;
-        }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15);
-        }
-        .cta-button:hover::before { left: 100%; }
-
-
-        /* Main Page Stats Styling (Card style) */
-        .total-stats {
-            margin-top: var(--spacing-md);
-            display: grid; /* Use grid for layout */
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
-            gap: var(--spacing-sm);
             width: 100%;
+            transition: all 0.3s ease;
         }
 
-        .stat-card {
-            background-color: var(--card-bg-color); /* White background */
-            border-radius: 12px; /* Consistent radius */
-            padding: var(--spacing-sm);
-            text-align: center;
-            color: var(--dark-gray); /* Dark text */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Consistent shadow */
-            border-top: 4px solid var(--primary-green); /* Accent border */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-         .stat-card:hover {
-             transform: translateY(-5px);
-             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-         }
-
-        .stat-value {
-            font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive size */
-            font-weight: 600; /* Bold */
-            margin-bottom: 0.25rem;
-            color: var(--primary-blue); /* Use theme color */
+        .cta-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .stat-label {
-            font-size: 0.9rem;
-            color: #557669; /* Softer text color */
-        }
-         .stat-label sub { /* Ensure subscript is readable */
-             font-size: 0.7em;
-             vertical-align: sub;
-         }
-
-        /* Modal/Popup styles - Themed */
+        /* Modal/Popup styles */
         .modal {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
-            inset: 0; /* Cover entire screen */
-            background-color: rgba(0, 40, 50, 0.7); /* Darker overlay */
-            backdrop-filter: blur(5px); /* Frosted glass effect */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 1000;
-            overflow-y: auto; /* Allow scrolling if content overflows */
-            display: flex; /* Use flex to center content */
+            overflow-y: auto;
             justify-content: center;
             align-items: center;
-            padding: var(--spacing-sm); /* Padding for small screens */
-            opacity: 0; /* Start hidden for transition */
-            transition: opacity 0.3s ease;
-        }
-        .modal.active { /* Class to show modal */
-             /* display: flex; Already flex by default now */
-             opacity: 1;
-             pointer-events: auto; /* Make interactable */
         }
 
         .modal-content {
-            background-color: var(--background-green); /* Light background */
-            border-radius: 15px; /* Consistent radius */
-            padding: var(--spacing-md); /* Consistent padding */
-            color: var(--dark-gray);
-            width: 95%;
-            max-width: 800px; /* Max width */
-            max-height: 90vh; /* Limit height */
-            overflow-y: auto; /* Scroll inside modal if needed */
+            background-color: var(--light-color);
+            border-radius: 20px;
+            padding: 30px 20px;
+            color: var(--primary-color);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transform: scale(0.95); /* Start slightly smaller */
-            transition: transform 0.3s ease;
-        }
-        .modal.active .modal-content {
-            transform: scale(1); /* Scale in animation */
+            margin: 20px auto;
         }
 
         .close-button {
             position: absolute;
-            top: 10px; /* Adjust position */
-            right: 10px;
-            font-size: 1.8rem; /* Larger X */
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
             font-weight: bold;
             cursor: pointer;
-            color: var(--light-gray); /* Light gray X */
-            background: none; /* No background */
-            border: none;
-            line-height: 1;
-            padding: 5px;
-            transition: color 0.3s ease;
-            z-index: 10; /* Ensure button is clickable */
-        }
-        .close-button:hover {
-             color: var(--primary-blue); /* Color on hover */
+            color: var(--primary-color);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.1);
         }
 
-        /* Input Section in Modal - Themed */
         .input-section {
-            margin-bottom: var(--spacing-md);
-            padding-bottom: var(--spacing-md);
-            border-bottom: 1px solid #e0e0e0; /* Separator line */
+            margin-bottom: 30px;
         }
 
         .input-label {
-            font-size: 1.5rem; /* Adjusted size */
-            font-weight: 600;
-            color: var(--primary-blue);
+            font-size: 1.8rem;
+            font-weight: bold;
             text-align: center;
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: 20px;
         }
 
         .input-container {
             display: flex;
             justify-content: center;
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: 20px;
         }
 
         .input-field {
-            background-color: var(--input-bg-color);
-            border: 1px solid var(--input-border-color); /* Subtle border */
-            border-radius: 8px; /* Consistent radius */
-            padding: 0.8rem 1rem;
-            font-size: 1.8rem; /* Adjusted size */
+            background-color: white;
+            border: 2px solid var(--secondary-color);
+            border-radius: 20px;
+            padding: 15px;
+            font-size: 2rem;
             text-align: center;
             width: 150px;
-            color: var(--dark-gray);
-             transition: border-color 0.3s, box-shadow 0.3s;
+            color: var(--primary-color);
         }
-         .input-field:focus {
-             outline: none;
-             border-color: var(--primary-blue);
-             box-shadow: 0 0 0 3px rgba(58, 124, 140, 0.2);
-         }
-         /* Hide number spinners */
-         .input-field::-webkit-outer-spin-button,
-         .input-field::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-         .input-field[type=number] { -moz-appearance: textfield; }
-
 
         .material-toggle {
             display: flex;
             justify-content: center;
-            margin-top: var(--spacing-sm);
-            gap: var(--spacing-sm);
+            margin-top: 10px;
+            gap: 15px;
         }
 
-        .material-button { /* Style like secondary buttons */
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--primary-green);
-            color: var(--primary-green);
-            border-radius: 20px; /* Rounded pill shape */
-            padding: 0.6rem 1.2rem;
-            font-weight: 500;
-            font-size: 0.9rem;
+        .material-button {
+            background-color: var(--light-color);
+            border: 2px solid var(--secondary-color);
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .material-button.active, .material-button:hover {
-            background-color: var(--primary-green);
+        .material-button.active {
+            background-color: var(--secondary-color);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-         .material-button:hover:not(.active) {
-             background-color: var(--tertiary-green); /* Light green hover if not active */
-             color: #2a5548;
-         }
 
-
-        /* Results Section in Modal */
         .results {
-            display: grid; /* Use grid for better control */
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
-            gap: var(--spacing-sm);
-            margin-top: var(--spacing-sm);
-             margin-bottom: var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 15px;
+            width: 100%;
         }
 
-        .result-card { /* Use consistent card style */
-            background-color: var(--card-bg-color);
-            border-radius: 12px;
-            padding: var(--spacing-sm);
+        .result-card {
+            background-color: rgba(29, 201, 115, 0.2);
+            border-radius: 15px;
+            padding: 15px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid var(--secondary-green); /* Different accent color */
-            display: flex; /* Allow flex for donation card */
-            flex-direction: column;
+            flex: 1;
+            max-width: calc(33.33% - 10px);
         }
 
         .result-value {
-            font-size: clamp(1.4rem, 4vw, 1.8rem); /* Responsive */
-            font-weight: 600;
-            color: var(--primary-blue);
-            margin-bottom: 0.25rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
         .result-label {
-            font-size: 0.85rem;
-            color: #557669;
-        }
-         .result-label sub {
-             font-size: 0.7em;
-             vertical-align: sub;
-         }
-
-        .earnings-value { /* Style for monetary value */
             font-size: 0.9rem;
-            margin-top: 5px;
-            color: var(--primary-green);
-            font-weight: 500;
         }
 
-        /* Donation Card & Visualization IMPROVEMENT */
-        .donation-card { /* Use result-card base */
-             border-top-color: var(--primary-green); /* Different accent */
-             /* display: flex; inherited */
-             /* flex-direction: column; inherited */
+        .donated-card {
+            position: relative;
         }
 
-        .donation-visualizer { /* New container for icons */
-             height: 50px; /* Fixed height */
-             position: relative;
-             margin-bottom: 10px;
-             display: flex;
-             align-items: center;
-             justify-content: center;
+        .token-tree-container {
+            height: 60px;
+            position: relative;
+            margin-bottom: 10px;
+            overflow: hidden;
         }
 
-        .donation-icon { /* Common style for icons */
-            width: 35px;
-            height: 35px;
-            font-size: 1.8rem; /* Emoji size */
+        .token-icon, .tree-icon {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            width: 40px;
+            height: 40px;
+            transition: all 0.5s ease;
         }
 
-        .token-icon { /* Specific icon styles */
-            z-index: 2; /* Token initially on top */
-            opacity: 1; /* Start visible */
+        .token-icon {
+            top: 0;
+            left: calc(50% - 20px);
+            color: var(--accent-color);
+            font-size: 24px;
+            line-height: 40px;
         }
 
         .tree-icon {
-             z-index: 1;
-             opacity: 0; /* Start hidden */
-             transform: translate(-50%, -50%) scale(0.8); /* Start slightly smaller */
+            bottom: 0;
+            left: calc(50% - 20px);
+            color: var(--accent-color);
+            font-size: 24px;
+            line-height: 40px;
         }
-
-         /* Class added by JS when donation covers a tree */
-         .donation-visualizer.tree-funded .token-icon {
-             opacity: 0;
-             transform: translate(-50%, -50%) scale(0.5); /* Fade and shrink token */
-         }
-         .donation-visualizer.tree-funded .tree-icon {
-             opacity: 1;
-             transform: translate(-50%, -50%) scale(1.1); /* Show and grow tree slightly */
-         }
-
 
         .slider-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: auto; /* Push slider to bottom */
-            padding-top: var(--spacing-sm);
         }
 
         .donation-slider {
             width: 100%;
-            margin: 5px 0;
+            margin: 10px 0;
             cursor: pointer;
-            /* Custom Slider Styles (Optional but Recommended) */
-            appearance: none; -webkit-appearance: none;
-            height: 8px; background: var(--tertiary-green);
-            border-radius: 4px; outline: none;
         }
-        .donation-slider::-webkit-slider-thumb {
-             -webkit-appearance: none; appearance: none;
-             width: 18px; height: 18px; background: var(--primary-green);
-             border-radius: 50%; cursor: pointer;
+
+        .total-counter {
+            margin-top: 30px;
+            text-align: center;
         }
-        .donation-slider::-moz-range-thumb {
-             width: 18px; height: 18px; background: var(--primary-green);
-             border-radius: 50%; cursor: pointer; border: none;
+
+        .counter-label {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .counter-value {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 2rem;
+            font-weight: bold;
+            display: inline-block;
+            color: white;
+            min-width: 250px;
         }
 
         .donation-info {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             display: flex;
             justify-content: space-between;
             width: 100%;
-            color: var(--dark-gray);
         }
-         .donation-info span:last-child { font-weight: 500; color: var(--primary-green); }
 
-        /* Tree count section in Modal */
-        .tree-counter-modal { /* Specific class for modal */
-            margin-top: var(--spacing-sm);
+        /* Tree count section */
+        .tree-counter {
+            margin-top: 20px;
             text-align: center;
-            background-color: var(--tertiary-green); /* Light green background */
-            padding: var(--spacing-sm);
-            border-radius: 8px;
         }
 
-        .tree-label-modal {
-            font-size: 0.9rem;
+        .tree-label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .tree-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .total-stats {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .stat-card {
+            flex: 1;
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            color: white;
+            max-width: calc(33.33% - 10px);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
             margin-bottom: 5px;
-            color: #2a5548;
         }
 
-        .tree-value-modal {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--primary-green);
+        .stat-label {
+            font-size: 0.9rem;
         }
 
-        /* Total Stats inside Modal (use same style as main page) */
-        .total-stats-modal {
-             margin-top: var(--spacing-md);
-             display: grid;
-             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-             gap: var(--spacing-sm);
-             width: 100%;
+        .earnings-value {
+            font-size: 1.2rem;
+            margin-top: 5px;
+            color: var(--accent-color);
         }
-         /* .stat-card styling is reused */
 
-
-        /* Submit Button in Modal */
         .submit-button {
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); /* Green gradient */
-            color: white; border: none; border-radius: 30px;
-            padding: 0.9rem 2rem; font-size: 1.1rem; font-weight: 500;
-            cursor: pointer; margin: var(--spacing-md) auto 0; display: block;
-            width: 80%; max-width: 300px; transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(90, 173, 87, 0.3);
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            width: 80%;
+            max-width: 300px;
+            transition: all 0.3s ease;
         }
+
         .submit-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(90, 173, 87, 0.4);
+            background-color: var(--primary-color);
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .hero-graphic { width: 120px; height: 120px; }
-            .hero-graphic svg { width: 55%; height: 55%; }
-            .hero-text { margin-top: var(--spacing-sm); }
-            .total-stats, .total-stats-modal, .results { grid-template-columns: 1fr; } /* Stack cards */
-            .stat-card, .result-card { max-width: 100%; }
-             .modal-content { padding: var(--spacing-sm); }
-             .input-label { font-size: 1.2rem; }
-             .input-field { font-size: 1.5rem; width: 120px;}
-             .result-value { font-size: 1.5rem; }
-             .submit-button { width: 90%; }
-        }
-         @media (max-width: 480px) {
-            .hero-graphic { width: 100px; height: 100px; }
-            .hero-graphic svg { width: 50%; height: 50%; }
-            .hero-text { font-size: 1.6rem; }
-            .cta-button { padding: 0.8rem 1.5rem; font-size: 1rem; }
-             .stat-value { font-size: 1.6rem; }
-             .stat-label { font-size: 0.8rem; }
-             .input-label { font-size: 1.1rem; }
-             .input-field { font-size: 1.4rem; width: 100px;}
-             .material-button { padding: 0.5rem 1rem; font-size: 0.8rem;}
-             .result-value { font-size: 1.3rem; }
-             .donation-info { font-size: 0.8rem; }
-             .submit-button { padding: 0.8rem 1.5rem; font-size: 1rem; }
-         }
+            .hero {
+                flex-direction: column;
+            }
 
+            .container {
+                padding: 0 10px;
+            }
+
+            .bottle-graphic, .hero-text {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .hero-text {
+                margin-top: 20px;
+                font-size: 2rem;
+            }
+
+            .results {
+                flex-direction: column;
+            }
+
+            .result-card {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .total-stats {
+                flex-direction: column;
+            }
+
+            .stat-card {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Background decorations -->
-    <div class="bg-decoration decoration-1"></div>
-    <div class="bg-decoration decoration-2"></div>
-
-    <!-- Simplified Header -->
-    <div class="page-header">
-        <img src="./assets/img/logo da email.png" alt="Logo" class="logo">
-        <span class="logo-text">SynergyRecycle.B</span>
+    <div class="header">
+        <div class="logo">
+            <img src="./assets/img/logo da email.png" alt="Logo">
+        </div>
+        <span>SynergyRecycle.B</span>
     </div>
 
-    <!-- Main Content Area -->
     <div class="main-content">
-        <!-- Hero Section -->
         <div class="hero">
-            <div class="hero-graphic">
-                 <!-- Placeholder SVG Icon -->
-                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-                     <style> .leaf-color { stroke: white; } .circle-color { stroke: rgba(255,255,255,0.5); stroke-dasharray: 5 3;} </style>
-                     <circle cx="50" cy="50" r="45" class="circle-color"/>
-                     <path d="M50 90 V 50 C 50 30, 70 30, 70 50 C 70 70, 50 70, 50 90" class="leaf-color" fill="rgba(255,255,255,0.1)"/>
-                     <path d="M50 90 V 50 C 50 30, 30 30, 30 50 C 30 70, 50 70, 50 90" class="leaf-color" fill="rgba(255,255,255,0.1)"/>
-                     <path d="M50 55 V 30" class="leaf-color"/>
-                 </svg>
+            <div class="bottle-graphic">
+                <svg xmlns="https://www.dropbox.com/scl/fi/v0yw8z9bujyed4qzd31mz/contatore.mp4?rlkey=innbgtowmqucxazf6hzzyvgmi&st=4lu27dt7&dl=0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                </svg>
+                
+                <!-- Token -->
+                <g id="token-container" opacity="0">
+                    <circle cx="100" cy="175" r="70" fill="#1DC973"/>
+                    <text x="100" y="180" font-size="24" fill="white" text-anchor="middle" font-weight="bold"></text>
+                    <circle cx="100" cy="175" r="60" stroke="white" stroke-width="3" fill="none"/>
+                </g>
+                
+                <!-- Tree -->
+                <g id="tree-container" opacity="0">
+                    <!-- Tree Trunk -->
+                    <rect x="90" y="200" width="20" height="100" fill="#8B4513"/>
+                    <!-- Tree Leaves -->
+                    <path d="M100 50 L30 200 L170 200 Z" fill="#228B22"/>
+                    <path d="M100 80 L40 180 L160 180 Z" fill="#2E8B57"/>
+                    <path d="M100 110 L50 160 L150 160 Z" fill="#3CB371"/>
+                </g>
+                
+                <!-- Recycling Symbol -->
+                <g id="recycling-symbol">
+                    <path d="M100 330 C70 330, 50 310, 50 280 C50 250, 70 230, 100 230" stroke="#1DC973" stroke-width="5" fill="none"/>
+                    <path d="M100 230 C130 230, 150 250, 150 280 C150 310, 130 330, 100 330" stroke="#1DC973" stroke-width="5" fill="none"/>
+                    <path d="M85 280 L115 280" stroke="#1DC973" stroke-width="5"/>
+                    <path d="M85 280 L95 270" stroke="#1DC973" stroke-width="5"/>
+                    <path d="M85 280 L95 290" stroke="#1DC973" stroke-width="5"/>
+                </g>
             </div>
-            <h1 class="hero-text">
-                Ricicla, Guadagna,<br>
-                <span>Salva</span> il Pianeta
-            </h1>
+            <div class="hero-text">
+                Recycle,<br>
+                Earn<br>
+                Impact<br>
+                the World
+            </div>
         </div>
 
-        <!-- CTA Button -->
-        <button class="cta-button" id="open-calculator-button">Calcola il Tuo Impatto Ora</button>
+        <button class="cta-button" id="open-calculator-button">Calculate your impact now</button>
 
-        <!-- Main Page Stats -->
+        <!-- Stats section for the main page -->
         <div class="total-stats">
             <div class="stat-card">
                 <div class="stat-value" id="main-recycled-counter">1,240,560</div>
-                <div class="stat-label">Oggetti Riciclati</div>
+                <div class="stat-label">Items Recycled</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="main-co2-saved">198,490</div>
-                <div class="stat-label">kg CO<sub>2</sub> Risparmiati</div>
+                <div class="stat-label">kg CO<sub>2</sub> Saved</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="main-trees">113</div>
-                <div class="stat-label">Alberi Piantati</div>
+                <div class="stat-label">Trees Planted</div>
             </div>
         </div>
     </div>
 
     <!-- Modal/Popup -->
-    <div id="calculator-modal" class="modal"> <!-- Start hidden via CSS opacity -->
+    <div id="calculator-modal" class="modal">
         <div class="modal-content">
-            <button class="close-button" id="close-modal" aria-label="Chiudi">×</button>
-
-            <!-- Input Section -->
+            <span class="close-button" id="close-modal">&times;</span>
+            
             <div class="input-section">
-                <div class="input-label">Quante bottiglie o lattine?</div>
+                <div class="input-label">Enter the number of bottles or cans</div>
                 <div class="input-container">
-                    <input type="number" id="quantity-input" class="input-field" value="20" min="0" inputmode="numeric" pattern="[0-9]*">
+                    <input type="number" id="quantity-input" class="input-field" value="20" min="0">
                 </div>
                 <div class="material-toggle">
-                    <button class="material-button active" id="pet-button" data-material="pet">Bottiglie PET</button>
-                    <button class="material-button" id="can-button" data-material="can">Lattine Alluminio</button>
+                    <button class="material-button active" id="pet-button">PET Bottles</button>
+                    <button class="material-button" id="can-button">Aluminum Cans</button>
                 </div>
             </div>
 
-            <!-- Results Section -->
             <div class="results">
                 <div class="result-card">
-                    <div class="result-value" id="co2-saved">1.8</div> <!-- Example initial -->
-                    <div class="result-label">kg CO<sub>2</sub> Risparmiati</div>
+                    <div class="result-value" id="co2-saved">11</div>
+                    <div class="result-label">kg CO<sub>2</sub> Saved</div>
                 </div>
                 <div class="result-card">
-                    <div class="result-value" id="tokens-earned">20.0</div> <!-- Example initial -->
-                    <div class="result-label">SRB Guadagnati</div>
-                    <div class="earnings-value" id="money-earned">~€0.00</div> <!-- Example initial -->
+                    <div class="result-value" id="tokens-earned">3.5</div>
+                    <div class="result-label">SRb Earned</div>
+                    <div class="earnings-value" id="money-earned">€0.08</div>
                 </div>
-                <div class="result-card donation-card"> <!-- Specific Donation Card -->
-                     <div class="result-label" style="margin-bottom: 5px; font-weight: 500;">Dona per Piantare Alberi</div>
-                     <div class="donation-visualizer" id="donation-visualizer"> <!-- ID added -->
-                        <span class="donation-icon token-icon">🪙</span>
-                        <span class="donation-icon tree-icon">🌳</span>
+                <div class="result-card donated-card">
+                    <div class="token-tree-container">
+                        <div class="token-icon">🪙</div>
+                        <div class="tree-icon">🌳</div>
                     </div>
+                    <div class="result-label">Donated</div>
                     <div class="slider-container">
-                        <input type="range" min="0" max="100" value="50" class="donation-slider" id="donation-slider" aria-label="Percentuale donazione">
+                        <input type="range" min="0" max="100" value="50" class="donation-slider" id="donation-slider">
                         <div class="donation-info">
-                            <span id="donated-amount">10.0 SRB</span>
-                            <span>Touttree</span> <!-- Assuming Touttree is the partner -->
+                            <span id="donated-amount">1.8 SRb</span>
+                            <span>Touttree</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tree Planting Result -->
-            <div class="tree-counter-modal" id="tree-counter-modal">
-                <div class="tree-label-modal">Alberi piantabili con questa donazione:</div>
-                <div class="tree-value-modal" id="tree-value-modal">0.000</div>
+            <div class="tree-counter" id="tree-counter">
+                <div class="tree-label">Trees planted from this donation:</div>
+                <div class="tree-value" id="tree-value">0</div>
             </div>
 
-            <!-- Total Stats Inside Modal -->
-            <div class="total-stats-modal">
-                 <div class="stat-card">
-                    <div class="stat-value" id="modal-recycled-counter">1,240,560</div>
-                    <div class="stat-label">Totale Riciclati</div>
+            <div class="total-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="recycled-counter">1,240,560</div>
+                    <div class="stat-label">Items Recycled</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value" id="modal-co2-saved">198,490</div>
-                    <div class="stat-label">Totale CO<sub>2</sub> Risparmiati</div>
+                    <div class="stat-value" id="total-co2-saved">198,490</div>
+                    <div class="stat-label">kg CO<sub>2</sub> Saved</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value" id="modal-trees">113</div>
-                    <div class="stat-label">Totale Alberi Piantati</div>
+                    <div class="stat-value" id="total-trees">113</div>
+                    <div class="stat-label">Trees Planted</div>
                 </div>
             </div>
 
-            <!-- Submit Button -->
-            <button class="submit-button" id="submit-calculation">Conferma Riciclo</button>
+            <button class="submit-button" id="submit-calculation">Submit</button>
         </div>
     </div>
 
     <script>
-        // Wrap everything in DOMContentLoaded
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log("DOM fully loaded and parsed");
+        // Constants
+        const PET_CO2_SAVING = 90; // grams per bottle
+        const CAN_CO2_SAVING = 185; // grams per can
+        const TOKEN_VALUE = 0.000235; // € per token
+        const TOKENS_PER_TREE = 106380; // tokens needed to plant one tree
 
-            // --- Constants ---
-            const PET_CO2_SAVING_GRAMS = 90;
-            const CAN_CO2_SAVING_GRAMS = 185;
-            const TOKENS_PER_ITEM = 1;
-            const TOKEN_VALUE_EUR = 0.000235;
-            const TOKENS_PER_TREE_THRESHOLD = 10638; // Changed for testing visualization
-            console.log("Constants defined:", { PET_CO2_SAVING_GRAMS, CAN_CO2_SAVING_GRAMS, TOKENS_PER_ITEM, TOKEN_VALUE_EUR, TOKENS_PER_TREE_THRESHOLD });
+        // Global variables
+        let totalRecycled = 1240560;
+        let totalCO2Saved = 198490;
+        let totalTreesPlanted = 113;
+        let currentMaterial = 'pet';
+        let sessionDonatedTokens = 0;
 
-            // --- Global State Variables ---
-            let totalRecycledGlobal = 1240560;
-            let totalCO2SavedGlobalKg = 198490;
-            let totalTreesPlantedGlobal = 113;
-            let currentMaterial = 'pet';
-            let sessionDonatedTokensAccumulator = 0;
-            console.log("Initial global state:", { totalRecycledGlobal, totalCO2SavedGlobalKg, totalTreesPlantedGlobal, currentMaterial, sessionDonatedTokensAccumulator });
+        // DOM Elements
+        const modal = document.getElementById('calculator-modal');
+        const openModalButton = document.getElementById('open-calculator-button');
+        const closeModalButton = document.getElementById('close-modal');
+        const quantityInput = document.getElementById('quantity-input');
+        const co2SavedElement = document.getElementById('co2-saved');
+        const tokensEarnedElement = document.getElementById('tokens-earned');
+        const moneyEarnedElement = document.getElementById('money-earned');
+        const donationSlider = document.getElementById('donation-slider');
+        const donatedAmountElement = document.getElementById('donated-amount');
+        const recycledCounterElement = document.getElementById('recycled-counter');
+        const totalCO2SavedElement = document.getElementById('total-co2-saved');
+        const totalTreesElement = document.getElementById('total-trees');
+        const mainRecycledCounterElement = document.getElementById('main-recycled-counter');
+        const mainCO2SavedElement = document.getElementById('main-co2-saved');
+        const mainTreesElement = document.getElementById('main-trees');
+        const petButton = document.getElementById('pet-button');
+        const canButton = document.getElementById('can-button');
+        const treeValueElement = document.getElementById('tree-value');
+        const submitButton = document.getElementById('submit-calculation');
+        const tokenIcon = document.querySelector('.token-icon');
+        const treeIcon = document.querySelector('.tree-icon');
 
-            // --- DOM Elements ---
-            console.log("Selecting DOM Elements...");
-            const modal = document.getElementById('calculator-modal');
-            const openModalButton = document.getElementById('open-calculator-button');
-            const closeModalButton = document.getElementById('close-modal');
-            const quantityInput = document.getElementById('quantity-input');
-            const co2SavedElement = document.getElementById('co2-saved');
-            const tokensEarnedElement = document.getElementById('tokens-earned');
-            const moneyEarnedElement = document.getElementById('money-earned');
-            const donationSlider = document.getElementById('donation-slider');
-            const donatedAmountElement = document.getElementById('donated-amount');
-            const donationVisualizer = document.getElementById('donation-visualizer');
-            const tokenIcon = donationVisualizer?.querySelector('.token-icon');
-            const treeIcon = donationVisualizer?.querySelector('.tree-icon');
-            const treeValueModalElement = document.getElementById('tree-value-modal');
-            // Modal Stats
-            const modalRecycledCounter = document.getElementById('modal-recycled-counter');
-            const modalCO2Saved = document.getElementById('modal-co2-saved');
-            const modalTrees = document.getElementById('modal-trees');
-            // Main Page Stats
-            const mainRecycledCounter = document.getElementById('main-recycled-counter');
-            const mainCO2Saved = document.getElementById('main-co2-saved');
-            const mainTrees = document.getElementById('main-trees');
-            // Buttons
-            const petButton = document.getElementById('pet-button');
-            const canButton = document.getElementById('can-button');
-            const submitButton = document.getElementById('submit-calculation');
-            const bodyEl = document.body;
-            console.log("DOM Elements selected:", { modal, openModalButton, closeModalButton, quantityInput /* ... add others if needed */ });
+        // Calculate and update results
+        function updateResults() {
+            const quantity = parseInt(quantityInput.value) || 0;
+            
+            // Calculate CO2 savings based on material type
+            const co2PerUnit = currentMaterial === 'pet' ? PET_CO2_SAVING : CAN_CO2_SAVING;
+            const totalCO2 = (quantity * co2PerUnit) / 1000; // Convert to kg
+            
+            // Calculate tokens earned (1 token per unit)
+            const tokensEarned = quantity;
+            
+            // Calculate money earned
+            const moneyEarned = tokensEarned * TOKEN_VALUE;
+            
+            // Calculate donated amount based on slider percentage
+            const donationPercentage = donationSlider.value / 100;
+            const donatedTokens = tokensEarned * donationPercentage;
+            
+            // Update UI
+            co2SavedElement.textContent = totalCO2.toFixed(1);
+            tokensEarnedElement.textContent = tokensEarned.toFixed(1);
+            moneyEarnedElement.textContent = '€' + moneyEarned.toFixed(2);
+            donatedAmountElement.textContent = donatedTokens.toFixed(1) + ' SRb';
+            
+            // Update token-tree animation based on slider
+            const sliderValue = donationSlider.value;
+            tokenIcon.style.transform = `translateY(${sliderValue * 0.6}px)`;
+            treeIcon.style.transform = `translateY(-${sliderValue * 0.6}px)`;
+            
+            // Calculate trees planted from current donation
+            const treesFromDonation = donatedTokens / TOKENS_PER_TREE;
+            treeValueElement.textContent = treesFromDonation.toFixed(3);
+        }
 
-             // --- Helper Functions ---
-             const formatNumber = (num) => {
-                 // Check if num is a valid number before formatting
-                 if (typeof num !== 'number' || isNaN(num)) {
-                     console.warn("formatNumber received non-numeric value:", num);
-                     return "N/A"; // Or return 0 or an empty string
-                 }
-                 return num.toLocaleString('it-IT');
-             };
-             console.log("Helper functions defined.");
+        // Submit calculation
+        function submitCalculation() {
+            const quantity = parseInt(quantityInput.value) || 0;
+            if (quantity <= 0) return;
+            
+            // Calculate CO2 savings
+            const co2PerUnit = currentMaterial === 'pet' ? PET_CO2_SAVING : CAN_CO2_SAVING;
+            const totalCO2 = (quantity * co2PerUnit) / 1000; // Convert to kg
+            
+            // Calculate tokens and donations
+            const tokensEarned = quantity;
+            const donationPercentage = donationSlider.value / 100;
+            const donatedTokens = tokensEarned * donationPercentage;
+            
+            // Update global counters
+            totalRecycled += quantity;
+            totalCO2Saved += totalCO2;
+            
+            // Add to session donations but calculate trees properly
+            sessionDonatedTokens += donatedTokens;
+            const newTreesPlanted = Math.floor(sessionDonatedTokens / TOKENS_PER_TREE);
+            
+            // Calculate the remainder tokens that didn't make a tree
+            const remainderTokens = sessionDonatedTokens % TOKENS_PER_TREE;
+            
+            // Reset session donations to just the remainder
+            sessionDonatedTokens = remainderTokens;
+            
+            // Update total trees planted
+            totalTreesPlanted += newTreesPlanted;
+            
+            // Update UI in modal
+            recycledCounterElement.textContent = totalRecycled.toLocaleString();
+            totalCO2SavedElement.textContent = totalCO2Saved.toFixed(0).toLocaleString();
+            totalTreesElement.textContent = totalTreesPlanted.toLocaleString();
+            
+            // Update UI in main page
+            mainRecycledCounterElement.textContent = totalRecycled.toLocaleString();
+            mainCO2SavedElement.textContent = totalCO2Saved.toFixed(0).toLocaleString();
+            mainTreesElement.textContent = totalTreesPlanted.toLocaleString();
+            
+            // Reset input
+            quantityInput.value = "20";
+            updateResults();
+            
+            // Close modal after submission (optional)
+            // closeModal();
+        }
 
-            // --- Core Calculation and UI Update Logic ---
-            function updateResultsAndVisuals() {
-                console.log("updateResultsAndVisuals called. Current material:", currentMaterial);
-                if (!quantityInput || !donationSlider) {
-                    console.error("Input or slider element missing in updateResultsAndVisuals");
-                    return;
-                }
+        // Open modal
+        function openModal() {
+            modal.style.display = "flex";
+            document.body.style.overflow = "hidden"; // Prevent scrolling of background
+        }
 
-                let quantity = parseInt(quantityInput.value) || 0;
-                quantity = Math.max(0, quantity); // Ensure non-negative
-                console.log("Quantity:", quantity);
+        // Close modal
+        function closeModal() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+        }
 
-                const co2PerUnitGrams = currentMaterial === 'pet' ? PET_CO2_SAVING_GRAMS : CAN_CO2_SAVING_GRAMS;
-                const co2SavedKg = (quantity * co2PerUnitGrams) / 1000;
-                const tokensEarned = quantity * TOKENS_PER_ITEM;
-                const moneyEarned = tokensEarned * TOKEN_VALUE_EUR;
-                const donationPercentage = parseInt(donationSlider.value) / 100;
-                const donatedTokens = tokensEarned * donationPercentage;
-                const potentialTreesFromCurrentDonation = donatedTokens / TOKENS_PER_TREE_THRESHOLD;
-                console.log("Calculated:", { co2SavedKg, tokensEarned, moneyEarned, donationPercentage, donatedTokens, potentialTreesFromCurrentDonation });
-
-                // Update UI Text Elements (with checks)
-                if(co2SavedElement) co2SavedElement.textContent = co2SavedKg.toFixed(1); else console.warn("co2SavedElement not found");
-                if(tokensEarnedElement) tokensEarnedElement.textContent = tokensEarned.toFixed(1); else console.warn("tokensEarnedElement not found");
-                if(moneyEarnedElement) moneyEarnedElement.textContent = `~€${moneyEarned.toFixed(4)}`; else console.warn("moneyEarnedElement not found");
-                if(donatedAmountElement) donatedAmountElement.textContent = `${donatedTokens.toFixed(1)} SRB`; else console.warn("donatedAmountElement not found");
-                if(treeValueModalElement) treeValueModalElement.textContent = potentialTreesFromCurrentDonation.toFixed(3); else console.warn("treeValueModalElement not found");
-
-                // Update Donation Visualizer
-                if (donationVisualizer && tokenIcon && treeIcon) {
-                    const isTreeFunded = donatedTokens >= TOKENS_PER_TREE_THRESHOLD;
-                    console.log("Is tree funded by current donation?", isTreeFunded, "(Donated:", donatedTokens, "Threshold:", TOKENS_PER_TREE_THRESHOLD, ")");
-                    donationVisualizer.classList.toggle('tree-funded', isTreeFunded);
-
-                    // Opacity based on percentage towards threshold
-                    // Ensure threshold is not zero to avoid division by zero
-                    const safeThreshold = TOKENS_PER_TREE_THRESHOLD || 1; // Use 1 if threshold is 0
-                    const opacityPercentage = Math.min(1, donatedTokens / (safeThreshold * 0.9)); // Reach full tree opacity slightly before threshold
-                    console.log("Opacity Percentage:", opacityPercentage);
-                    tokenIcon.style.opacity = 1 - opacityPercentage;
-                    treeIcon.style.opacity = opacityPercentage;
-                } else {
-                    if (!donationVisualizer) console.error("Donation visualizer container not found");
-                    if (!tokenIcon) console.error("Token icon not found");
-                    if (!treeIcon) console.error("Tree icon not found");
-                }
+        // Event listeners
+        openModalButton.addEventListener('click', openModal);
+        closeModalButton.addEventListener('click', closeModal);
+        
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModal();
             }
+        });
+        
+        quantityInput.addEventListener('input', updateResults);
+        donationSlider.addEventListener('input', updateResults);
+        
+        petButton.addEventListener('click', () => {
+            currentMaterial = 'pet';
+            petButton.classList.add('active');
+            canButton.classList.remove('active');
+            updateResults();
+        });
+        
+        canButton.addEventListener('click', () => {
+            currentMaterial = 'can';
+            canButton.classList.add('active');
+            petButton.classList.remove('active');
+            updateResults();
+        });
+        
+        submitButton.addEventListener('click', submitCalculation);
 
-
-            // --- Submit Logic ---
-            function submitCalculation() {
-                console.log("submitCalculation called.");
-                if (!quantityInput || !donationSlider) {
-                     console.error("Input or slider missing in submitCalculation");
-                     return;
-                }
-
-                let quantity = parseInt(quantityInput.value) || 0;
-                quantity = Math.max(0, quantity);
-
-                if (quantity <= 0) {
-                    alert("Inserisci una quantità valida maggiore di zero.");
-                    console.warn("Submit attempt with quantity <= 0");
-                    return;
-                }
-                console.log("Submitting quantity:", quantity, "Material:", currentMaterial);
-
-                // Recalculate values for submission
-                const co2PerUnitGrams = currentMaterial === 'pet' ? PET_CO2_SAVING_GRAMS : CAN_CO2_SAVING_GRAMS;
-                const co2SavedKg = (quantity * co2PerUnitGrams) / 1000;
-                const tokensEarned = quantity * TOKENS_PER_ITEM;
-                const donationPercentage = parseInt(donationSlider.value) / 100;
-                const donatedTokens = tokensEarned * donationPercentage;
-                console.log("Submit calculated:", { co2SavedKg, tokensEarned, donationPercentage, donatedTokens });
-
-                // Update Globals & Session Accumulator
-                totalRecycledGlobal += quantity;
-                totalCO2SavedGlobalKg += co2SavedKg;
-                sessionDonatedTokensAccumulator += donatedTokens;
-                console.log("Global state before tree calc:", { totalRecycledGlobal, totalCO2SavedGlobalKg, sessionDonatedTokensAccumulator });
-
-                // Ensure threshold is not zero
-                const safeThresholdForCalc = TOKENS_PER_TREE_THRESHOLD || Infinity; // Use Infinity if threshold is 0 to prevent infinite loops/errors
-                const newTreesPlanted = safeThresholdForCalc === Infinity ? 0 : Math.floor(sessionDonatedTokensAccumulator / safeThresholdForCalc);
-                console.log("New trees planted:", newTreesPlanted);
-
-                totalTreesPlantedGlobal += newTreesPlanted;
-                sessionDonatedTokensAccumulator = safeThresholdForCalc === Infinity ? sessionDonatedTokensAccumulator : sessionDonatedTokensAccumulator % safeThresholdForCalc;
-                console.log("Global state after tree calc:", { totalTreesPlantedGlobal, sessionDonatedTokensAccumulator });
-
-                // Update UI (Modal and Main Page)
-                if(modalRecycledCounter) modalRecycledCounter.textContent = formatNumber(totalRecycledGlobal); else console.warn("modalRecycledCounter not found");
-                if(modalCO2Saved) modalCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg)); else console.warn("modalCO2Saved not found");
-                if(modalTrees) modalTrees.textContent = formatNumber(totalTreesPlantedGlobal); else console.warn("modalTrees not found");
-                if(mainRecycledCounter) mainRecycledCounter.textContent = formatNumber(totalRecycledGlobal); else console.warn("mainRecycledCounter not found");
-                if(mainCO2Saved) mainCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg)); else console.warn("mainCO2Saved not found");
-                if(mainTrees) mainTrees.textContent = formatNumber(totalTreesPlantedGlobal); else console.warn("mainTrees not found");
-
-                // Feedback
-                alert(`${quantity} ${currentMaterial === 'pet' ? 'bottiglie' : 'lattine'} riciclate!\nCO2 Risparmiati: ${co2SavedKg.toFixed(1)} kg\nSRB Guadagnati: ${tokensEarned.toFixed(1)}\nSRB Donati: ${donatedTokens.toFixed(1)}\nNuovi Alberi Piantati (da donazioni totali): ${newTreesPlanted}`);
-
-                // Reset input
-                if(quantityInput) quantityInput.value = "20";
-                if(donationSlider) donationSlider.value = "50";
-                updateResultsAndVisuals();
-                console.log("Inputs reset and UI updated after submit.");
-            }
-
-            // --- Modal Handling ---
-            function openModal() {
-                console.log("openModal called");
-                if(modal) {
-                    modal.classList.add('active');
-                    bodyEl.style.overflow = "hidden";
-                    console.log("Modal opened");
-                    // Update modal stats on opening
-                    if(modalRecycledCounter) modalRecycledCounter.textContent = formatNumber(totalRecycledGlobal);
-                    if(modalCO2Saved) modalCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg));
-                    if(modalTrees) modalTrees.textContent = formatNumber(totalTreesPlantedGlobal);
-                    updateResultsAndVisuals(); // Recalculate based on default/current values in modal
-                } else {
-                    console.error("Modal element not found in openModal");
-                }
-            }
-
-            function closeModal() {
-                 console.log("closeModal called");
-                 if(modal) {
-                    modal.classList.remove('active');
-                    bodyEl.style.overflow = "auto";
-                    console.log("Modal closed");
-                 } else {
-                     console.error("Modal element not found in closeModal");
-                 }
-            }
-
-            // --- Event Listeners ---
-            console.log("Setting up event listeners...");
-
-            // ***** FIX for the main button *****
-            if (openModalButton) {
-                console.log("Attaching click listener to openModalButton");
-                openModalButton.addEventListener('click', openModal);
-            } else {
-                console.error("!!! Open Modal Button (#open-calculator-button) NOT FOUND!");
-            }
-            // ***** END FIX *****
-
-            if (closeModalButton) {
-                console.log("Attaching click listener to closeModalButton");
-                closeModalButton.addEventListener('click', closeModal);
-            } else {
-                 console.error("Close Modal Button not found!");
-            }
-
-            // Modal external click/ESC listeners
-            if (modal) {
-                console.log("Attaching modal background click listener");
-                modal.addEventListener('click', function(event) {
-                    if (event.target === modal) {
-                        console.log("Modal background clicked");
-                        closeModal();
-                    }
-                });
-                 console.log("Attaching ESC key listener for modal");
-                 document.addEventListener('keydown', function(event) {
-                    if (event.key === 'Escape' && modal.classList.contains('active')) {
-                         console.log("ESC key pressed, closing modal");
-                         closeModal();
-                    }
-                 });
-            } else {
-                 console.error("Modal element not found, cannot add background/ESC listeners");
-            }
-
-
-            // Input listeners
-            if (quantityInput) {
-                console.log("Attaching input listener to quantityInput");
-                quantityInput.addEventListener('input', updateResultsAndVisuals);
-            } else {
-                 console.error("Quantity Input not found!");
-            }
-            if (donationSlider) {
-                console.log("Attaching input listener to donationSlider");
-                donationSlider.addEventListener('input', updateResultsAndVisuals);
-            } else {
-                 console.error("Donation Slider not found!");
-            }
-
-            // Material toggle listeners
-            if (petButton && canButton) {
-                console.log("Attaching click listeners to material buttons");
-                petButton.addEventListener('click', () => {
-                    if (currentMaterial !== 'pet') {
-                        console.log("Switching to PET");
-                        currentMaterial = 'pet';
-                        petButton.classList.add('active');
-                        canButton.classList.remove('active');
-                        updateResultsAndVisuals();
-                    }
-                });
-                canButton.addEventListener('click', () => {
-                     if (currentMaterial !== 'can') {
-                        console.log("Switching to CAN");
-                        currentMaterial = 'can';
-                        canButton.classList.add('active');
-                        petButton.classList.remove('active');
-                        updateResultsAndVisuals();
-                     }
-                });
-            } else {
-                 console.error("Material toggle buttons (PET or CAN) not found!");
-            }
-
-            // Submit listener
-            if (submitButton) {
-                console.log("Attaching click listener to submitButton");
-                submitButton.addEventListener('click', submitCalculation);
-            } else {
-                 console.error("Submit Button not found!");
-            }
-
-            // --- Initial UI Update ---
-            console.log("Performing initial UI update for main page stats...");
-             if(mainRecycledCounter) mainRecycledCounter.textContent = formatNumber(totalRecycledGlobal); else console.warn("mainRecycledCounter not found");
-             if(mainCO2Saved) mainCO2Saved.textContent = formatNumber(Math.round(totalCO2SavedGlobalKg)); else console.warn("mainCO2Saved not found");
-             if(mainTrees) mainTrees.textContent = formatNumber(totalTreesPlantedGlobal); else console.warn("mainTrees not found");
-             console.log("Initial UI update complete.");
-
-        }); // Fine DOMContentLoaded
+        // Initialize
+        updateResults();
     </script>
-
 </body>
 </html>
