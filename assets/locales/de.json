@@ -1,41 +1,101 @@
 {
-  "navigation": {
-    "home": "Startseite",
-    "services": "Dienstleistungen",
-    "support": "Unterstütze uns",
-    "contact": "Kontakt",
-    "roadmap": "Roadmap"
+  "meta": {
+    "title": "SynergyRecycle.B",
+    "lang": "de"
   },
-  "contact": {
-    "title": "Kontaktiere uns",
-    "subtitle": "Möchten Sie weitere Informationen? Kontaktieren Sie uns. Wir werden jede E-Mail so schnell wie möglich beantworten.",
-    "form": {
-      "name": "Name *",
-      "phone": "Telefonnummer",
-      "email": "E-Mail *",
-      "company": "Unternehmen",
-      "subject": "Betreff *",
-      "subjectPlaceholder": "Wählen Sie ein Thema",
-      "subjectOptions": {
-        "support": "Technischer Support",
-        "partnership": "Partnerschaft",
-        "info": "Allgemeine Informationen"
-      },
-      "message": "Frage *",
-      "submit": "Nachricht senden"
+  "header": {
+    "logoAlt": "SynergyRecycle.B Logo",
+    "logoText": "SynergyRecycle.B",
+    "nav": {
+      "actionButton": "„Eine Aktion, Tausend Auswirkungen.“",
+      "home": "Startseite",
+      "services": "Dienstleistungen",
+      "supportUs": "Unterstützen Sie uns",
+      "contactUs": "Kontaktieren Sie uns",
+      "roadmap": "Roadmap"
     },
-    "companyInfo": {
-      "title": "Unser Standort",
-      "address": "32052, Herford, Deutschland",
-      "phone": "+49 030 1234567",
-      "email": "SynergyRecycle.b@gmail.com"
+    "langSelector": {
+      "ariaLabel": "Sprache auswählen",
+      "en": "Englisch",
+      "es": "Spanisch",
+      "de": "Deutsch",
+      "it": "Italienisch",
+      "fr": "Französisch"
+    },
+    "hamburgerAriaLabel": "Menü",
+    "mobileNav": {
+      "langSelectorButton": "🌐 Sprache"
     }
   },
+  "banner": {
+    "text": "SynergyRecycle.B: „Jede Geste zählt, gemeinsam machen wir den Unterschied.“"
+  },
+  "hero": {
+    "title": "„Unsere Plattform: um uns zu helfen, der Welt zu helfen.“",
+    "subtitle": "Wir schaffen digitale Erlebnisse, revolutionieren die Art und Weise, wie Dinge getan werden, heben wir uns ab."
+  },
+  "blockchain": {
+    "title": "Mit der Polygon-Blockchain wird die Zukunft nachhaltig sein",
+    "paragraph": "Unsere auf der Polygon-Blockchain basierende Technologie verbindet jede Phase des Recyclings, um die positive Wirkung zu maximieren und Transparenz und Rückverfolgbarkeit zu gewährleisten.",
+    "labels": {
+      "collection": "Sammlung",
+      "verification": "Überprüfung",
+      "processing": "Verarbeitung",
+      "recycling": "Recycling",
+      "reuse": "Wiederverwendung"
+    }
+  },
+  "success": {
+    "title": "Wir fördern Erfolg durch: Effizienz, Zuverlässigkeit, Innovation, Skalierbarkeit.",
+    "paragraph1": "Wir entwickeln ein einzigartiges Kundenerlebnis.",
+    "paragraph2": "Digitale Strategien und maßgeschneiderte Forschung basierend auf Zuverlässigkeit und Innovation."
+  },
+  "pillars": {
+    "title": "Unsere Grundpfeiler",
+    "efficiency": {
+      "title": "Effizienz",
+      "text": "Wir optimieren Prozesse und Ressourcen für maximale Ergebnisse bei minimalem Abfall.",
+      "imgAlt": "Effizienz-Symbol"
+    },
+    "reliability": {
+      "title": "Zuverlässigkeit",
+      "text": "Wir garantieren Transparenz und Sicherheit dank Blockchain-Technologie.",
+      "imgAlt": "Zuverlässigkeits-Symbol"
+    },
+    "innovation": {
+      "title": "Innovation",
+      "text": "Wir entwickeln ständig innovative Lösungen für Nachhaltigkeit.",
+      "imgAlt": "Innovations-Symbol"
+    },
+    "scalability": {
+      "title": "Skalierbarkeit",
+      "text": "Wir entwerfen flexible Systeme, die bereit sind, mit unserer Community zu wachsen.",
+      "imgAlt": "Skalierbarkeits-Symbol"
+    }
+  },
+  "building": {
+    "title": "Entdecken Sie, was wir bauen.",
+    "subtitle1": "Digitale Transformation für Nachhaltigkeit",
+    "paragraph1": "Wir helfen Menschen und Unternehmen, in einer sich ständig weiterentwickelnden umweltbewussten Landschaft erfolgreich zu sein.",
+    "subtitle2": "Dedizierte Web- & App-Entwicklung",
+    "paragraph2": "Wir nutzen unsere Erfahrung, um intuitive und leistungsstarke Tools bereitzustellen, die es jedem ermöglichen, beizutragen und zu wachsen.",
+    "appButton": {
+      "appStore": "Bald verfügbar: App Store",
+      "googlePlay": "Bald verfügbar: Google Play"
+    },
+    "imgAlt": "Person interagiert mit nachhaltiger Technologie"
+  },
   "cta": {
-    "title": "Mehr als 50.000 Menschen haben viel für sich selbst getan, aber nicht so viel für die Welt.",
-    "subtitle": "Schließen Sie sich uns an, um unseren Planeten zu verbessern."
+    "title1": "Alle Menschen tun viel für sich selbst, aber immer noch zu wenig für unseren Planeten.",
+    "title2": "Werden Sie Teil von SynergyRecycle.B: Gemeinsam könnten wir die Zukunft unserer Welt revolutionieren.",
+    "paragraph": "Schließen Sie sich uns an, um uns zu verbessern, und gemeinsam werden wir unseren Planeten verbessern.",
+    "button": "Jetzt starten"
   },
   "footer": {
-    "copyright": "© 2024 SynergyRecycle.B. Alle Inhalte dieser Seite sind durch das italienische und internationale Recht urheberrechtlich geschützt."
+    "copyright": "© {year} SynergyRecycle.B. - Alle Rechte vorbehalten\nHerford, Deutschland | SynergyRecycle.B@gmail.com",
+    "allRightsReserved": "Alle Rechte vorbehalten"
+  },
+  "alerts": {
+    "languageChange": "Sprache geändert zu: {lang}. (Übersetzungslogik muss implementiert werden)"
   }
 }
