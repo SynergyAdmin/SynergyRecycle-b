@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en"> <!-- Changed language -->
 <head>
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politica dei Rischi Token - SynergyRecycle.B</title> <!-- Updated Title -->
+    <title>Token Risk Policy - SynergyRecycle.B</title> <!-- Translated Title -->
     <style>
         /* === START: Styles Copied/Adapted from index.html === */
 
@@ -292,7 +292,7 @@
         }
 
         /* Contenuto Documento Legale */
-        .documento-legale {
+        .documento-legale { /* Kept class name */
             padding: var(--spacing-sm) 0; /* Rimuove padding laterale */
         }
 
@@ -380,10 +380,18 @@
               margin-top: 1rem;
               font-weight: 500;
          }
+         /* Style for links within legal text */
+         .documento-legale a {
+            color: var(--link-color);
+            text-decoration: underline;
+         }
+         .documento-legale a:hover {
+            color: var(--link-hover-color);
+         }
 
 
         /* Ultimo Aggiornamento */
-        .ultimo-aggiornamento {
+        .ultimo-aggiornamento { /* Kept class name */
             margin-top: var(--spacing-md);
             padding-top: var(--spacing-sm);
             border-top: 1px solid #ddd;
@@ -439,56 +447,60 @@
     </style>
 </head>
 <body>
-    <!-- Elementi decorativi di sfondo -->
+    <!-- Background decorative elements -->
     <div class="bg-decoration decoration-1"></div>
     <div class="bg-decoration decoration-2"></div>
 
     <div class="container">
-        <!-- Intestazione -->
+        <!-- Header -->
         <header>
-            <a href="./" class="logo"> <!-- Logo link alla home -->
-                <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B">
-                <span>SynergyRecycle.B</span>
+            <a href="./" class="logo"> <!-- Logo link to home -->
+                <img src="./assets/img/logo da email.png" alt="SynergyRecycle.B Logo"> <!-- Kept path, translated alt -->
+                <span>SynergyRecycle.B</span> <!-- Kept brand name -->
             </a>
             <nav class="main-nav">
+                 <!-- Translated nav links -->
                 <a href="./" class="button">Home</a>
-                <a href="./servizi.html" class="button">Servizi</a>
-                <a href="./sostenerci.html" class="button">Supportaci</a>
-                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./servizi.html" class="button">Services</a>
+                <a href="./sostenerci.html" class="button">Support Us</a>
+                <a href="./contattaci.html" class="button">Contact Us</a>
                 <a href="./roadmap.html" class="button">Roadmap</a>
                 <!-- START: Language Selector HTML (Desktop) -->
                 <div class="language-selector">
-                    <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
+                    <button class="language-btn" id="language-btn" aria-label="Select language" aria-haspopup="true" aria-expanded="false">🌐</button> <!-- Translated aria-label -->
                     <div class="language-dropdown" id="language-dropdown" role="menu">
-                        <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                        <!-- Translated language options -->
+                        <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
                         <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                        <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                        <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                        <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                        <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
+                        <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
+                        <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
                     </div>
                 </div>
                 <!-- END: Language Selector HTML (Desktop) -->
             </nav>
-            <!-- Hamburger button con ID corretto -->
-            <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+            <!-- Hamburger button with correct ID -->
+            <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button> <!-- aria-label already English -->
         </header>
 
-        <!-- Navigazione mobile -->
+        <!-- Mobile navigation -->
         <nav class="mobile-nav" id="mobile-nav">
+             <!-- Translated nav links -->
             <a href="./" class="button">Home</a>
-            <a href="./servizi.html" class="button">Servizi</a>
-            <a href="./sostenerci.html" class="button">Supportaci</a>
-            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./servizi.html" class="button">Services</a>
+            <a href="./sostenerci.html" class="button">Support Us</a>
+            <a href="./contattaci.html" class="button">Contact Us</a>
             <a href="./roadmap.html" class="button">Roadmap</a>
              <!-- START: Language Selector HTML (Mobile) -->
             <div class="language-selector">
-                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
+                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Language</button> <!-- Translated button text -->
                 <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    <!-- Translated language options -->
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
                     <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
                 </div>
             </div>
             <!-- END: Language Selector HTML (Mobile) -->
@@ -496,156 +508,160 @@
 
         <!-- Banner -->
         <div class="banner">
-            SynergyRecycle.B: "Investi responsabilmente: comprendi i rischi associati ai token." <!-- Testo banner aggiornato -->
+            <!-- Translated banner text -->
+            SynergyRecycle.B: "Invest responsibly: understand the risks associated with tokens."
         </div>
-    </div> <!-- Fine container header/banner -->
+    </div> <!-- End header/banner container -->
 
-    <!-- Contenuto Principale - Documento Politica Rischi -->
-    <main class="legal-container"> <!-- Applica classe container principale -->
+    <!-- Main Content - Risk Policy Document -->
+    <main class="legal-container"> <!-- Apply main container class -->
 
-         <!-- Navigazione interna (opzionale se ci sono altri documenti nella stessa pagina) -->
+         <!-- Internal navigation (optional if other documents are on the same page) -->
          <nav class="legal-nav">
-             <a href="[Link a Privacy Policy].html#privacy-policy">Privacy Policy</a>
-             <a href="[Link a Termini].html#termini-condizioni">Termini e Condizioni</a>
-             <a href="[Link a Disclaimer].html#disclaimer">Disclaimer</a>
-             <a href="[Link a Cookie Policy].html#cookie-policy">Cookie Policy</a>
-             <a href="#">Politica dei Rischi</a> <!-- Link attivo per questa pagina -->
+              <!-- Translated link text, kept placeholder links/filenames -->
+             <a href="[Link to Privacy Policy].html#privacy-policy">Privacy Policy</a>
+             <a href="[Link to Terms].html#termini-condizioni">Terms and Conditions</a>
+             <a href="[Link to Disclaimer].html#disclaimer">Disclaimer</a>
+             <a href="[Link to Cookie Policy].html#cookie-policy">Cookie Policy</a>
+             <a href="#">Risk Policy</a> <!-- Active link for this page -->
              <a href="kyc-aml-policy.html">KYC / AML Policy</a>
          </nav>
 
 
-        <div class="documento-legale" id="risk-policy"> <!-- ID Aggiunto -->
-            <h1>Politica dei Rischi nell'Acquisto di Token (SRB)</h1>
+        <div class="documento-legale" id="risk-policy"> <!-- Added ID -->
+            <h1>Token Purchase Risk Policy (SRB)</h1> <!-- Translated title -->
 
             <section>
-                <h2>Avvertenza Generale e Fondamentale</h2>
-                 <p><strong>L'acquisto, la detenzione, lo scambio e l'utilizzo di utility token come SRB comportano rischi finanziari, tecnologici e normativi significativi. Questi rischi possono portare alla perdita parziale o totale del capitale investito.</strong></p>
-                 <p>Prima di procedere con qualsiasi operazione relativa ai token SRB, è <strong>imperativo</strong> che tu:</p>
+                <!-- Translated section content -->
+                <h2>General and Fundamental Warning</h2>
+                 <p><strong>The purchase, holding, exchange, and use of utility tokens such as SRB involve significant financial, technological, and regulatory risks. These risks can lead to the partial or total loss of the invested capital.</strong></p>
+                 <p>Before proceeding with any operation related to SRB tokens, it is <strong>imperative</strong> that you:</p>
                 <ul>
-                    <li>Comprenda appieno la natura degli asset digitali e della tecnologia blockchain.</li>
-                    <li>Valuti attentamente la tua situazione finanziaria personale, la tua tolleranza al rischio e i tuoi obiettivi di investimento.</li>
-                     <li>Investa solo fondi che puoi permetterti di perdere senza compromettere la tua stabilità finanziaria.</li>
-                    <li>Conduca la tua ricerca indipendente ("Do Your Own Research" - DYOR) sul progetto SynergyRecycle.B, sul team, sulla tecnologia e sul mercato di riferimento.</li>
-                    <li>Consulti consulenti finanziari, legali e fiscali indipendenti e qualificati per ottenere pareri personalizzati basati sulla tua giurisdizione e situazione specifica.</li>
+                    <li>Fully understand the nature of digital assets and blockchain technology.</li>
+                    <li>Carefully evaluate your personal financial situation, risk tolerance, and investment objectives.</li>
+                     <li>Invest only funds that you can afford to lose without compromising your financial stability.</li>
+                    <li>Conduct your own independent research ("Do Your Own Research" - DYOR) on the SynergyRecycle.B project, the team, the technology, and the target market.</li>
+                    <li>Consult independent and qualified financial, legal, and tax advisors to obtain personalized opinions based on your specific jurisdiction and situation.</li>
                  </ul>
-                 <p><strong>SynergyRecycle.B non fornisce consulenza finanziaria o di investimento. Le informazioni contenute in questo documento e in altri materiali del progetto sono fornite a solo scopo informativo e non costituiscono un'offerta o una sollecitazione all'investimento.</strong></p>
-                <p><em>Questo documento descrive i principali rischi identificati, ma non è esaustivo. Potrebbero emergere rischi aggiuntivi non attualmente previsti.</em></p>
+                 <p><strong>SynergyRecycle.B does not provide financial or investment advice. The information contained in this document and other project materials is provided for informational purposes only and does not constitute an offer or solicitation to invest.</strong></p>
+                <p><em>This document describes the main identified risks, but it is not exhaustive. Additional risks not currently foreseen may arise.</em></p>
             </section>
 
              <section>
-                 <h2>1. Natura e Classificazione dei Token SRB</h2>
+                 <h2>1. Nature and Classification of SRB Tokens</h2>
 
-                 <h3>1.1 Tipologia di Token</h3>
-                 <p>I token SRB sono classificati come <strong>utility token</strong>. Il loro scopo primario è fornire accesso a funzionalità specifiche o vantaggi all'interno dell'ecosistema SynergyRecycle.B (es. ottenere sconti, supportare progetti, accedere a servizi futuri).</p>
-                 <p>È fondamentale comprendere che i token SRB:</p>
+                 <h3>1.1 Token Type</h3>
+                 <p>SRB tokens are classified as <strong>utility tokens</strong>. Their primary purpose is to provide access to specific features or benefits within the SynergyRecycle.B ecosystem (e.g., obtaining discounts, supporting projects, accessing future services).</p>
+                 <p>It is essential to understand that SRB tokens:</p>
                  <ul>
-                     <li><strong>Non rappresentano</strong> quote di proprietà, azioni o partecipazioni nel progetto SynergyRecycle.B o in qualsiasi entità legale associata.</li>
-                     <li><strong>Non conferiscono</strong> diritti a ricevere dividendi, interessi, profitti o qualsiasi altra forma di rendimento finanziario derivante dalle attività del progetto.</li>
-                     <li><strong>Non sono</strong> strumenti finanziari ai sensi delle normative MiFID II o equivalenti in altre giurisdizioni (salvo diversa classificazione futura da parte delle autorità).</li>
-                     <li>Il loro valore è intrinsecamente legato all'utilità e all'adozione della piattaforma SynergyRecycle.B e non è direttamente correlato alle performance finanziarie dell'entità che sviluppa il progetto.</li>
+                     <li><strong>Do not represent</strong> ownership shares, equity, or participations in the SynergyRecycle.B project or any associated legal entity.</li>
+                     <li><strong>Do not confer</strong> rights to receive dividends, interest, profits, or any other form of financial return deriving from the project's activities.</li>
+                     <li><strong>Are not</strong> financial instruments under MiFID II regulations or equivalents in other jurisdictions (unless otherwise classified in the future by authorities).</li>
+                     <li>Their value is intrinsically linked to the utility and adoption of the SynergyRecycle.B platform and is not directly correlated to the financial performance of the entity developing the project.</li>
                  </ul>
 
-                 <h3>1.2 Possibili Riclassificazioni Normative</h3>
-                 <p>Il quadro normativo per gli asset digitali è in continua evoluzione a livello globale (es. MiCA in Europa). Esiste il rischio che le autorità di regolamentazione possano, in futuro, classificare gli utility token come SRB in modo diverso (ad esempio, come strumenti finanziari o e-money), imponendo requisiti normativi aggiuntivi o restrizioni che potrebbero influenzare l'operatività del progetto o la negoziabilità dei token.</p>
+                 <h3>1.2 Possible Regulatory Reclassifications</h3>
+                 <p>The regulatory framework for digital assets is constantly evolving globally (e.g., MiCA in Europe). There is a risk that regulatory authorities may, in the future, classify utility tokens like SRB differently (for example, as financial instruments or e-money), imposing additional regulatory requirements or restrictions that could affect the project's operations or the tokens' tradability.</p>
              </section>
 
              <section>
-                 <h2>2. Rischi Specifici per gli Acquirenti/Detentori di Token</h2>
+                 <h2>2. Specific Risks for Token Buyers/Holders</h2>
 
-                 <h3>2.1 Rischi di Mercato e Volatilità</h3>
+                 <h3>2.1 Market and Volatility Risks</h3>
                  <ul>
-                     <li><strong>Estrema Volatilità dei Prezzi:</strong> Il valore dei token SRB, qualora scambiati su mercati secondari (DEX/CEX), può subire fluttuazioni molto ampie e rapide, anche in brevi periodi. Fattori come la domanda e l'offerta, notizie di mercato, sentiment generale verso le criptovalute, cambiamenti normativi e eventi macroeconomici possono influenzare drasticamente il prezzo.</li>
-                     <li><strong>Rischio di Liquidità:</strong> Non vi è alcuna garanzia che si svilupperà un mercato secondario attivo e liquido per i token SRB. Potrebbe essere difficile o impossibile vendere i token al prezzo desiderato o in tempi rapidi.</li>
-                     <li><strong>Manipolazione del Mercato:</strong> I mercati delle criptovalute possono essere soggetti a manipolazioni (es. "pump and dump") a causa della minore regolamentazione rispetto ai mercati tradizionali.</li>
-                     <li><strong>Correlazione con Altre Criptovalute:</strong> Il valore di SRB potrebbe essere influenzato dalle fluttuazioni di criptovalute principali come Bitcoin (BTC) o Ethereum (ETH), anche in assenza di notizie specifiche sul progetto SynergyRecycle.B.</li>
+                     <li><strong>Extreme Price Volatility:</strong> The value of SRB tokens, if traded on secondary markets (DEX/CEX), can experience very large and rapid fluctuations, even over short periods. Factors such as supply and demand, market news, general sentiment towards cryptocurrencies, regulatory changes, and macroeconomic events can drastically influence the price.</li>
+                     <li><strong>Liquidity Risk:</strong> There is no guarantee that an active and liquid secondary market for SRB tokens will develop. It might be difficult or impossible to sell the tokens at the desired price or quickly.</li>
+                     <li><strong>Market Manipulation:</strong> Cryptocurrency markets can be subject to manipulation (e.g., "pump and dump") due to less regulation compared to traditional markets.</li>
+                     <li><strong>Correlation with Other Cryptocurrencies:</strong> The value of SRB could be influenced by the fluctuations of major cryptocurrencies like Bitcoin (BTC) or Ethereum (ETH), even in the absence of specific news about the SynergyRecycle.B project.</li>
                  </ul>
 
-                 <h3>2.2 Rischi Tecnologici e di Sicurezza</h3>
+                 <h3>2.2 Technological and Security Risks</h3>
                  <ul>
-                     <li><strong>Vulnerabilità degli Smart Contract:</strong> Nonostante gli audit, gli smart contract che gestiscono i token SRB o le funzionalità della piattaforma potrebbero contenere bug, errori o vulnerabilità sfruttabili da malintenzionati, con conseguente perdita di token o malfunzionamento dei servizi.</li>
-                     <li><strong>Rischi della Blockchain Sottostante (Polygon):</strong> Il funzionamento dei token SRB dipende dalla sicurezza e dall'operatività della blockchain Polygon. Problemi sulla rete Polygon (es. congestione, hard fork, attacchi 51%) potrebbero impattare negativamente i token SRB.</li>
-                     <li><strong>Rischi di Hacking e Furto:</strong> I wallet personali o gli account su piattaforme di scambio possono essere compromessi tramite phishing, malware o altre tecniche di attacco, portando al furto dei token.</li>
-                     <li><strong>Perdita delle Chiavi Private:</strong> La perdita o il furto delle chiavi private associate al wallet contenente i token SRB comporta la perdita irrecuperabile e definitiva dei token stessi. La custodia sicura delle chiavi è esclusiva responsabilità dell'utente.</li>
-                     <li><strong>Errori Utente:</strong> Invii di token all'indirizzo sbagliato o su una rete blockchain incompatibile sono generalmente irreversibili e comportano la perdita dei fondi.</li>
+                     <li><strong>Smart Contract Vulnerabilities:</strong> Despite audits, the smart contracts managing SRB tokens or platform functionalities might contain bugs, errors, or vulnerabilities exploitable by malicious actors, resulting in token loss or service malfunction.</li>
+                     <li><strong>Underlying Blockchain Risks (Polygon):</strong> The functioning of SRB tokens depends on the security and operation of the Polygon blockchain. Problems on the Polygon network (e.g., congestion, hard forks, 51% attacks) could negatively impact SRB tokens.</li>
+                     <li><strong>Hacking and Theft Risks:</strong> Personal wallets or accounts on exchange platforms can be compromised through phishing, malware, or other attack techniques, leading to token theft.</li>
+                     <li><strong>Loss of Private Keys:</strong> The loss or theft of private keys associated with the wallet holding SRB tokens results in the irrecoverable and permanent loss of the tokens themselves. Secure custody of keys is the user's sole responsibility.</li>
+                     <li><strong>User Errors:</strong> Sending tokens to the wrong address or on an incompatible blockchain network is generally irreversible and results in the loss of funds.</li>
                  </ul>
 
-                 <h3>2.3 Rischi Normativi, Legali e Fiscali</h3>
+                 <h3>2.3 Regulatory, Legal, and Tax Risks</h3>
                  <ul>
-                     <li><strong>Incertezza Normativa:</strong> Come menzionato, le normative sono in evoluzione. Nuove leggi o interpretazioni potrebbero limitare o vietare l'emissione, la detenzione, lo scambio o l'utilizzo dei token SRB in specifiche giurisdizioni.</li>
-                     <li><strong>Obblighi AML/KYC:</strong> L'utilizzo di determinate funzionalità o lo scambio su piattaforme terze potrebbe richiedere il completamento di procedure di verifica dell'identità, che potrebbero essere complesse o non disponibili per tutti gli utenti.</li>
-                     <li><strong>Trattamento Fiscale:</strong> La tassazione dei guadagni derivanti dalla vendita o dallo scambio di token è complessa e varia da paese a paese. È responsabilità dell'utente informarsi e adempiere ai propri obblighi fiscali. Le autorità fiscali potrebbero introdurre nuove regole con effetto retroattivo.</li>
-                     <li><strong>Azioni Regolatorie:</strong> Autorità di vigilanza potrebbero intraprendere azioni contro il progetto, piattaforme di scambio o l'intero settore, influenzando negativamente il valore e l'utilità dei token.</li>
+                     <li><strong>Regulatory Uncertainty:</strong> As mentioned, regulations are evolving. New laws or interpretations could restrict or prohibit the issuance, holding, exchange, or use of SRB tokens in specific jurisdictions.</li>
+                     <li><strong>AML/KYC Obligations:</strong> Using certain features or trading on third-party platforms may require completing identity verification procedures, which could be complex or unavailable to all users.</li>
+                     <li><strong>Tax Treatment:</strong> The taxation of gains from selling or exchanging tokens is complex and varies by country. It is the user's responsibility to stay informed and fulfill their tax obligations. Tax authorities might introduce new rules with retroactive effect.</li>
+                     <li><strong>Regulatory Actions:</strong> Supervisory authorities could take action against the project, exchange platforms, or the entire sector, negatively impacting the value and utility of the tokens.</li>
                  </ul>
 
-                 <h3>2.4 Rischi Operativi e Legati al Progetto</h3>
+                 <h3>2.4 Operational and Project-Related Risks</h3>
                  <ul>
-                     <li><strong>Rischio di Esecuzione:</strong> Il successo del progetto dipende dalla capacità del team di SynergyRecycle.B di sviluppare e implementare la tecnologia, l'app, le partnership e le funzionalità descritte nella roadmap. Ritardi, difficoltà tecniche o mancanza di fondi potrebbero compromettere il progetto.</li>
-                     <li><strong>Rischio di Adozione:</strong> L'utilità e il potenziale valore dei token SRB dipendono dall'adozione della piattaforma da parte di utenti (riciclatori), aziende partner e punti di raccolta. Una scarsa adozione limiterebbe l'utilità dei token.</li>
-                     <li><strong>Rischio di Concorrenza:</strong> Il settore della sostenibilità e della blockchain è competitivo. Nuovi progetti concorrenti potrebbero emergere offrendo soluzioni alternative o migliori.</li>
-                     <li><strong>Dipendenza da Terze Parti:</strong> Il progetto potrebbe dipendere da fornitori di servizi esterni (es. hosting, audit, partner per il riciclo) il cui fallimento o inadempienza potrebbe impattare negativamente.</li>
-                     <li><strong>Cambiamenti nella Visione del Progetto:</strong> Il team potrebbe dover modificare la strategia o le funzionalità del progetto in risposta a cambiamenti di mercato o normativi, influenzando l'utilità prevista dei token.</li>
+                     <li><strong>Execution Risk:</strong> The project's success depends on the SynergyRecycle.B team's ability to develop and implement the technology, app, partnerships, and features described in the roadmap. Delays, technical difficulties, or lack of funding could jeopardize the project.</li>
+                     <li><strong>Adoption Risk:</strong> The utility and potential value of SRB tokens depend on the platform's adoption by users (recyclers), partner companies, and collection points. Poor adoption would limit the tokens' utility.</li>
+                     <li><strong>Competition Risk:</strong> The sustainability and blockchain sectors are competitive. New competing projects might emerge offering alternative or better solutions.</li>
+                     <li><strong>Dependence on Third Parties:</strong> The project might depend on external service providers (e.g., hosting, audits, recycling partners) whose failure or non-performance could have a negative impact.</li>
+                     <li><strong>Changes in Project Vision:</strong> The team might need to modify the project's strategy or features in response to market or regulatory changes, affecting the tokens' expected utility.</li>
                  </ul>
 
-                  <h3>2.5 Rischi di Controparte e Sistemici</h3>
+                  <h3>2.5 Counterparty and Systemic Risks</h3>
                   <ul>
-                      <li><strong>Rischio Exchange/Custode:</strong> Se detieni i token SRB su una piattaforma di scambio centralizzata (CEX) o tramite un servizio di custodia, sei esposto al rischio di fallimento, hacking o blocco dei fondi da parte di tale piattaforma. "Not your keys, not your coins".</li>
-                      <li><strong>Rischio Interoperabilità:</strong> Problemi nell'interazione tra la blockchain Polygon e altre reti o servizi potrebbero limitare l'utilizzo dei token.</li>
-                      <li><strong>Crisi Sistemiche nel Settore Crypto:</strong> Eventi negativi di vasta portata nel settore delle criptovalute (es. fallimenti di grandi progetti, crolli di mercato generalizzati) possono influenzare negativamente anche progetti solidi come SynergyRecycle.B.</li>
+                      <li><strong>Exchange/Custodian Risk:</strong> If you hold SRB tokens on a centralized exchange platform (CEX) or through a custody service, you are exposed to the risk of failure, hacking, or fund freezes by that platform. "Not your keys, not your coins".</li>
+                      <li><strong>Interoperability Risk:</strong> Issues in the interaction between the Polygon blockchain and other networks or services could limit token usage.</li>
+                      <li><strong>Systemic Crises in the Crypto Sector:</strong> Widespread negative events in the cryptocurrency sector (e.g., failures of large projects, generalized market crashes) can negatively affect even solid projects like SynergyRecycle.B.</li>
                   </ul>
 
              </section>
 
             <section>
-                 <h2>3. Misure di Mitigazione e Consigli per gli Utenti</h2>
+                 <h2>3. Mitigation Measures and User Recommendations</h2>
 
-                 <h3>3.1 Responsabilità dell'Utente</h3>
-                 <p>È fondamentale che tu adotti le seguenti misure:</p>
+                 <h3>3.1 User Responsibility</h3>
+                 <p>It is crucial that you take the following measures:</p>
                  <ul>
-                     <li><strong>Ricerca Approfondita (DYOR):</strong> Non basare le tue decisioni solo sui nostri materiali. Leggi il whitepaper, studia il progetto, comprendi la tecnologia e valuta il mercato.</li>
-                     <li><strong>Valutazione del Rischio Personale:</strong> Comprendi la tua tolleranza al rischio e investi solo una somma che puoi permetterti di perdere completamente.</li>
-                     <li><strong>Diversificazione:</strong> Non investire tutti i tuoi fondi in un unico progetto o asset digitale. La diversificazione è una strategia chiave per la gestione del rischio.</li>
-                     <li><strong>Custodia Sicura:</strong> Se detieni token SRB, utilizza wallet sicuri (preferibilmente hardware/cold storage per somme significative) e proteggi meticolosamente le tue chiavi private e/o frasi di recupero. Non condividerle mai con nessuno.</li>
-                     <li><strong>Sicurezza Informatica:</strong> Mantieni aggiornati i tuoi dispositivi, utilizza password robuste e uniche, attiva l'autenticazione a due fattori (2FA) ove possibile e sii estremamente cauto riguardo a tentativi di phishing o truffe.</li>
-                     <li><strong>Monitoraggio Continuo:</strong> Rimani aggiornato sugli sviluppi del progetto SynergyRecycle.B, sui cambiamenti normativi e sulle condizioni generali del mercato crypto.</li>
-                     <li><strong>Comprensione Fiscale:</strong> Informati sugli obblighi fiscali relativi alle criptovalute nella tua giurisdizione e consulta un commercialista se necessario.</li>
+                     <li><strong>Thorough Research (DYOR):</strong> Do not base your decisions solely on our materials. Read the whitepaper, study the project, understand the technology, and evaluate the market.</li>
+                     <li><strong>Personal Risk Assessment:</strong> Understand your risk tolerance and invest only an amount you can afford to lose completely.</li>
+                     <li><strong>Diversification:</strong> Do not invest all your funds in a single project or digital asset. Diversification is a key risk management strategy.</li>
+                     <li><strong>Secure Custody:</strong> If you hold SRB tokens, use secure wallets (preferably hardware/cold storage for significant amounts) and meticulously protect your private keys and/or recovery phrases. Never share them with anyone.</li>
+                     <li><strong>Cybersecurity:</strong> Keep your devices updated, use strong and unique passwords, enable two-factor authentication (2FA) where possible, and be extremely cautious about phishing attempts or scams.</li>
+                     <li><strong>Continuous Monitoring:</strong> Stay updated on the developments of the SynergyRecycle.B project, regulatory changes, and general crypto market conditions.</li>
+                     <li><strong>Tax Understanding:</strong> Inform yourself about the tax obligations related to cryptocurrencies in your jurisdiction and consult an accountant if necessary.</li>
                  </ul>
 
-                 <h3>3.2 Impegni del Progetto SynergyRecycle.B</h3>
-                 <p>Da parte nostra, ci impegniamo a:</p>
+                 <h3>3.2 SynergyRecycle.B Project Commitments</h3>
+                 <p>On our part, we commit to:</p>
                  <ul>
-                     <li>Operare con trasparenza, fornendo aggiornamenti regolari sullo sviluppo del progetto.</li>
-                     <li>Sottoporre i nostri smart contract a audit di sicurezza da parte di terze parti qualificate.</li>
-                     <li>Adottare best practice per la sicurezza della piattaforma e dei dati utente.</li>
-                     <li>Monitorare l'evoluzione normativa e adeguarci per quanto possibile alle leggi applicabili.</li>
-                     <li>Fornire documentazione chiara (come questo documento e il whitepaper) sui rischi associati.</li>
+                     <li>Operating with transparency, providing regular updates on project development.</li>
+                     <li>Submitting our smart contracts to security audits by qualified third parties.</li>
+                     <li>Adopting best practices for platform and user data security.</li>
+                     <li>Monitoring regulatory developments and adapting as much as possible to applicable laws.</li>
+                     <li>Providing clear documentation (like this document and the whitepaper) on the associated risks.</li>
                  </ul>
-                 <p>Tuttavia, questi impegni non eliminano i rischi intrinseci descritti in precedenza.</p>
+                 <p>However, these commitments do not eliminate the inherent risks described earlier.</p>
              </section>
 
              <section>
-                 <h2>4. Dichiarazione Finale e Accettazione del Rischio</h2>
-                 <p><strong>Acquistando, detenendo o utilizzando i token SRB, dichiari di aver letto, compreso e accettato integralmente tutti i rischi descritti in questa Politica dei Rischi e negli altri materiali informativi del progetto.</strong></p>
-                 <p><strong>Riconosci che stai agendo a tuo esclusivo rischio e che SynergyRecycle.B non è responsabile per eventuali perdite finanziarie o di altro tipo che potresti subire. Rinunci a qualsiasi diritto di rivalsa nei confronti di SynergyRecycle.B, del suo team, dei suoi partner o affiliati per perdite derivanti dai rischi qui delineati o da altri rischi imprevisti.</strong></p>
-                 <p><strong>Questo documento costituisce parte integrante dei Termini e Condizioni di utilizzo dei servizi di SynergyRecycle.B.</strong></p>
+                 <h2>4. Final Statement and Acceptance of Risk</h2>
+                 <p><strong>By purchasing, holding, or using SRB tokens, you declare that you have read, understood, and fully accepted all the risks described in this Risk Policy and in the other informational materials of the project.</strong></p>
+                 <p><strong>You acknowledge that you are acting at your sole risk and that SynergyRecycle.B is not responsible for any financial or other losses you may incur. You waive any right of recourse against SynergyRecycle.B, its team, its partners, or affiliates for losses arising from the risks outlined herein or other unforeseen risks.</strong></p>
+                 <p><strong>This document forms an integral part of the Terms and Conditions for using SynergyRecycle.B services.</strong></p>
              </section>
 
              <section>
-                 <h2>5. Riferimenti Utili</h2>
-                 <p>Per approfondimenti sui rischi generali legati alle criptovalute, si consiglia di consultare fonti autorevoli come:</p>
+                 <h2>5. Useful References</h2>
+                 <p>For further information on the general risks associated with cryptocurrencies, it is recommended to consult authoritative sources such as:</p>
                  <ul>
-                     <li>Siti web delle autorità di vigilanza finanziaria nazionali (es. CONSOB, BaFin).</li>
-                     <li>Siti web delle autorità europee (es. ESMA, EBA).</li>
-                     <li>Pubblicazioni di organizzazioni internazionali (es. GAFI/FATF, FMI, BRI).</li>
-                     <li>Risorse educative indipendenti sul funzionamento della blockchain e delle criptovalute.</li>
+                     <li>Websites of national financial supervisory authorities (e.g., CONSOB, BaFin). <!-- Kept specific examples --></li>
+                     <li>Websites of European authorities (e.g., ESMA, EBA).</li>
+                     <li>Publications by international organizations (e.g., FATF, IMF, BIS).</li>
+                     <li>Independent educational resources on the functioning of blockchain and cryptocurrencies.</li>
                  </ul>
              </section>
 
 
-            <div class="ultimo-aggiornamento">
-                <p><strong>Ultimo Aggiornamento:</strong> 26 Marzo 2025</p>
-                <p><strong>Versione:</strong> 1.0</p>
+            <div class="ultimo-aggiornamento"> <!-- Kept class name -->
+                 <!-- Translated text -->
+                <p><strong>Last Updated:</strong> March 26, 2025</p>
+                <p><strong>Version:</strong> 1.0</p>
             </div>
-        </div> <!-- Fine documento-legale -->
+        </div> <!-- End documento-legale -->
 
     </main>
 
@@ -654,12 +670,13 @@
         <div class="container">
             <p class="copyright-text">
                 © <span id="copyright-year"></span> SynergyRecycle.B.
-                Tutti i contenuti di questa pagina sono protetti da copyright ai sensi della legge internazionale.
+                 <!-- Translated footer text -->
+                All contents of this page are protected by copyright under international law.
             </p>
         </div>
     </footer>
 
-    <!-- Script JS -->
+    <!-- JS Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -733,7 +750,7 @@
                  });
 
             } else {
-                 console.error("Hamburger button o mobile nav non trovati.");
+                 console.error("Hamburger button or mobile nav not found.");
             }
 
 
@@ -798,16 +815,18 @@
              if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
 
              function changeLang(lang) { // Placeholder
-                 console.log(`Lingua selezionata: ${lang}`);
+                 // Translated console/alert messages
+                 console.log(`Language selected: ${lang}`);
                  localStorage.setItem('selectedLanguage', lang);
-                 alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+                 alert(`Language changed to: ${lang}. (Translation logic to be implemented)`);
                  // document.documentElement.lang = lang;
              }
 
              const savedLang = localStorage.getItem('selectedLanguage');
              if (savedLang) {
-                  console.log(`Lingua salvata trovata: ${savedLang}.`);
-                 // changeLang(savedLang); // Applica se vuoi
+                  // Translated console message
+                  console.log(`Saved language found: ${savedLang}.`);
+                 // changeLang(savedLang); // Apply if desired
                  // document.documentElement.lang = savedLang;
              }
             // --- END: Language Selector Logic ---
@@ -825,7 +844,7 @@
                          if (targetElement) {
                              const headerOffset = document.querySelector('header')?.offsetHeight || 0;
                              const elementPosition = targetElement.getBoundingClientRect().top;
-                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
+                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20; // Extra 20px offset
 
                              window.scrollTo({
                                  top: offsetPosition,
@@ -842,10 +861,11 @@
                              }
                          }
                      }
+                     // Allow default behavior for external links
                  });
               });
 
-        }); // Fine DOMContentLoaded
+        }); // End DOMContentLoaded
     </script>
 
 </body>
