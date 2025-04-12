@@ -1,49 +1,49 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en"> <!-- Changed language -->
 <head>
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contattaci - SynergyRecycle.B</title> <!-- Updated Title -->
+    <title>Contact Us - SynergyRecycle.B</title> <!-- Updated Title -->
 
     <style>
         /* === START: Styles Copied/Adapted from index.html === */
 
-        /* Variabili con palette di colori ecologica e tecnologica (da index.html) */
+        /* Variables with ecological and technological color palette (from index.html) */ /* Translated comment */
         :root {
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
             --spacing-lg: 4rem;
             --container-width: 1200px;
-            --primary-blue: #3a7c8c;       /* Blu più soft */
+            --primary-blue: #3a7c8c;       /* Softer blue */ /* Translated comment */
             --dark-gray: #333;
             --light-gray: #ccc;
-            --primary-green: #5aad57;      /* Verde ecologico */
-            --secondary-green: #8BC34A;    /* Verde più chiaro */
-            --tertiary-green: #c2e6c0;     /* Verde molto soft */
-            --background-green: #f5f9f5;   /* Sfondo verde chiarissimo */
-            --blockchain-blue: #4c7f9c;    /* Blu per la blockchain */
-            /* Aggiunte per coerenza */
+            --primary-green: #5aad57;      /* Ecological green */ /* Translated comment */
+            --secondary-green: #8BC34A;    /* Lighter green */ /* Translated comment */
+            --tertiary-green: #c2e6c0;     /* Very soft green */ /* Translated comment */
+            --background-green: #f5f9f5;   /* Very light green background */ /* Translated comment */
+            --blockchain-blue: #4c7f9c;    /* Blue for blockchain */ /* Translated comment */
+            /* Added for consistency */ /* Translated comment */
             --input-border-color: #ddd;
             --input-bg-color: #fff;
             --card-bg-color: #fff;
-            --light-bg-section: #f8f9fa; /* Sfondo leggermente grigio per sezioni alternate */
+            --light-bg-section: #f8f9fa; /* Slightly gray background for alternating sections */ /* Translated comment */
         }
 
-        /* Reset e base (da index.html) */
+        /* Reset and base (from index.html) */ /* Translated comment */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: "Segoe UI", system-ui, -apple-system, sans-serif; /* Font da index */
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif; /* Font from index */ /* Translated comment */
             line-height: 1.5;
-            color: var(--dark-gray); /* Colore base da index */
-            background-color: var(--background-green); /* Sfondo da index */
+            color: var(--dark-gray); /* Base color from index */ /* Translated comment */
+            background-color: var(--background-green); /* Background from index */ /* Translated comment */
             position: relative;
             overflow-x: hidden;
-            margin: 0; /* Assicura nessun margine body */
+            margin: 0; /* Ensures no body margin */ /* Translated comment */
         }
 
-        /* Layout container (da index.html) */
+        /* Layout container (from index.html) */ /* Technical comment, kept */
         .container {
             max-width: var(--container-width);
             width: 100%;
@@ -53,7 +53,7 @@
             z-index: 2;
         }
 
-        /* Header e navigazione con effetto gradiente (da index.html) */
+        /* Header and navigation with gradient effect (from index.html) */ /* Translated comment */
         header {
             background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
             color: white;
@@ -87,7 +87,7 @@
 
         .main-nav {
             display: flex;
-            gap: 5px; /* Ridotto per lingua */
+            gap: 5px; /* Reduced for language */ /* Translated comment */
             align-items: center;
             justify-content: flex-end;
         }
@@ -107,7 +107,7 @@
             background-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
-        .main-nav a.button::after { /* Effetto underline da index */
+        .main-nav a.button::after { /* Underline effect from index */ /* Translated comment */
              content: '';
              position: absolute;
              bottom: 0;
@@ -121,8 +121,8 @@
              width: 100%;
         }
 
-        /* Bottone verde CTA (da index.html) */
-        /* Nota: non sembra esserci un green-button nell'HTML di questa pagina, ma lo stile è qui per coerenza se aggiunto */
+        /* Green CTA button (from index.html) */ /* Translated comment */
+        /* Note: there doesn't seem to be a green-button in the HTML of this page, but the style is here for consistency if added */ /* Translated comment */
         .green-button {
             padding: 8px 20px;
             background-color: var(--primary-green);
@@ -140,7 +140,7 @@
             margin: 0 5px;
             display: inline-block;
         }
-        .green-button::before { /* Effetto shine da index */
+        .green-button::before { /* Shine effect from index */ /* Translated comment */
             content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.6s ease;
@@ -151,20 +151,20 @@
         }
         .green-button:hover::before { left: 100%; }
 
-        /* Hamburger Menu Button (da index.html) */
-        .hamburger-btn { /* Nome corretto per JS */
+        /* Hamburger Menu Button (from index.html) */ /* Technical comment, kept */
+        .hamburger-btn { /* Correct name for JS */ /* Translated comment */
             display: none; cursor: pointer; background: none; border: none;
             color: white; font-size: 24px; padding: 5px;
         }
 
-        /* Navigazione Mobile (da index.html) */
+        /* Mobile Navigation (from index.html) */ /* Translated comment */
         .mobile-nav {
             display: none; flex-direction: column;
             background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
             padding: 15px; border-radius: 0 0 10px 10px; margin-top: -10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); position: relative; z-index: 999;
         }
-        .mobile-nav.active { /* Classe per mostrarlo da index JS */
+        .mobile-nav.active { /* Class to show it from index JS */ /* Translated comment */
              display: flex;
         }
         .mobile-nav a.button,
@@ -180,7 +180,7 @@
         }
         .mobile-nav .green-button:hover::before { left: -100%; }
 
-        /* Language Selector Styles (da index.html) */
+        /* Language Selector Styles (from index.html) */ /* Technical comment, kept */
         .language-selector { position: relative; margin-left: 10px; }
         .language-btn {
             background: none; border: none; font-size: 1.5rem; cursor: pointer;
@@ -200,7 +200,7 @@
         }
         .language-option:hover { background-color: var(--background-green); }
         .language-flag { margin-right: 10px; font-size: 1.1rem; line-height: 1; }
-        /* Mobile Language Selector */
+        /* Mobile Language Selector */ /* Technical comment, kept */
         .mobile-nav .language-selector { width: 100%; margin: 15px 0 5px 0; position: relative; }
         .mobile-nav .language-btn {
             width: 100%; justify-content: center; padding: 10px 15px; border: 1px solid rgba(255, 255, 255, 0.2);
@@ -215,7 +215,7 @@
         .mobile-nav .language-option { color: white; padding: 12px 20px; }
         .mobile-nav .language-option:hover { background-color: rgba(255, 255, 255, 0.15); }
 
-        /* Banner con effetto gradiente (da index.html) */
+        /* Banner with gradient effect (from index.html) */ /* Translated comment */
         .banner {
             background: linear-gradient(90deg, #2d463a, #3b594a, #2d463a);
             background-size: 200% 100%; color: white; padding: 12px 20px;
@@ -228,7 +228,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Stili Sezioni Generali (da index.html) */
+        /* General Section Styles (from index.html) */ /* Translated comment */
         .section { padding: var(--spacing-lg) 0; position: relative; }
         .section-title {
             text-align: center; margin-bottom: var(--spacing-md);
@@ -236,8 +236,8 @@
         }
         .text-center { text-align: center; }
 
-        /* Stili Bottoni Generali (da index.html) */
-        .btn { /* Usato per il CTA finale */
+        /* General Button Styles (from index.html) */ /* Translated comment */
+        .btn { /* Used for the final CTA */ /* Translated comment */
             display: inline-block; padding: 0.9rem 1.8rem;
             background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
             color: white; text-decoration: none; border-radius: 6px; transition: all 0.3s;
@@ -245,7 +245,7 @@
             overflow: hidden; z-index: 1; margin: 10px 5px; border: none; cursor: pointer;
             text-align: center;
         }
-        .btn::before { /* Effetto shine */
+        .btn::before { /* Shine effect */ /* Translated comment */
              content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
              background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
              transition: left 0.7s; z-index: -1;
@@ -253,9 +253,9 @@
         .btn:hover { transform: translateY(-3px); box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15); }
         .btn:hover::before { left: 100%; }
 
-        /* Footer (da index.html) */
+        /* Footer (from index.html) */ /* Technical comment, kept */
         .site-footer {
-            background-color: #2d3a35; /* Colore scuro da index */
+            background-color: #2d3a35; /* Dark color from index */ /* Translated comment */
             padding: 2rem 0; margin-top: 4rem; text-align: center;
             position: relative; z-index: 2;
         }
@@ -263,7 +263,7 @@
         .copyright-text a { color: var(--secondary-green); text-decoration: none; transition: color 0.3s; }
         .copyright-text a:hover { color: var(--tertiary-green); }
 
-        /* Background decorations (da index.html) */
+        /* Background decorations (from index.html) */ /* Technical comment, kept */
         .bg-decoration {
             position: fixed; background-color: var(--tertiary-green); border-radius: 50%;
             opacity: 0.4; filter: blur(70px); z-index: 0; pointer-events: none;
@@ -271,8 +271,8 @@
         .decoration-1 { width: 400px; height: 400px; top: -100px; left: -100px; }
         .decoration-2 { width: 350px; height: 350px; bottom: -50px; right: -50px; }
 
-        /* Card con bordo inferiore animato (da index.html, se necessario) */
-        .card-fx-border { /* Applicare alle card se si vuole l'effetto */
+        /* Card with animated bottom border (from index.html, if needed) */ /* Translated comment */
+        .card-fx-border { /* Apply to cards if the effect is desired */ /* Translated comment */
             position: relative; overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -287,50 +287,50 @@
         /* === END: Styles Copied/Adapted from index.html === */
 
 
-        /* === START: Styles Specific to contattaci.html, adapted === */
+        /* === START: Styles Specific to contact-us.html, adapted === */ /* Changed filename */
 
-        /* Hero section (semplificata, senza immagine) */
+        /* Hero section (simplified, no image) */ /* Translated comment */
         .hero {
-            /* min-height: 60vh; Rimosso min-height specifico */
+            /* min-height: 60vh; Removed specific min-height */ /* Translated comment */
             display: flex;
             align-items: center;
-            background-color: var(--background-green); /* Usa variabile */
-            padding: var(--spacing-md) 0; /* Padding ridotto */
+            background-color: var(--background-green); /* Use variable */ /* Translated comment */
+            padding: var(--spacing-md) 0; /* Reduced padding */ /* Translated comment */
         }
-        .hero-content { /* Contenuto centrato */
+        .hero-content { /* Centered content */ /* Translated comment */
             max-width: 800px; margin: 0 auto; text-align: center;
         }
-        .hero-title { /* Titolo da index */
-            font-size: 2.8rem; /* Leggermente più piccolo */
+        .hero-title { /* Title from index */ /* Translated comment */
+            font-size: 2.8rem; /* Slightly smaller */ /* Translated comment */
             margin-bottom: var(--spacing-sm);
             color: #2a5548;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-        .hero-subtitle { /* Sottotitolo da index */
+        .hero-subtitle { /* Subtitle from index */ /* Translated comment */
             font-size: 1.3rem;
-            margin-bottom: var(--spacing-md); /* Meno margine */
-            color: #557669; /* Colore da index */
+            margin-bottom: var(--spacing-md); /* Less margin */ /* Translated comment */
+            color: #557669; /* Color from index */ /* Translated comment */
         }
 
-        /* Form di contatto & Info Azienda */
+        /* Contact Form & Company Info */ /* Translated comment */
         .contact-container {
             display: flex;
             flex-wrap: wrap;
-            gap: var(--spacing-md); /* Usa variabile per gap */
-            /* max-width: 1200px; Già gestito da .container */
-            /* margin: 0 auto; Già gestito da .container */
-            padding: var(--spacing-md) 0; /* Padding verticale */
+            gap: var(--spacing-md); /* Use variable for gap */ /* Translated comment */
+            /* max-width: 1200px; Already handled by .container */ /* Translated comment */
+            /* margin: 0 auto; Already handled by .container */ /* Translated comment */
+            padding: var(--spacing-md) 0; /* Vertical padding */ /* Translated comment */
         }
 
         .contact-form {
-            flex: 1; /* Occupa spazio disponibile */
-            min-width: 300px; /* Larghezza minima */
-            background-color: var(--card-bg-color); /* Sfondo bianco card */
-            padding: var(--spacing-md); /* Padding interno */
-            border-radius: 12px; /* Stesso radius card index */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Stessa ombra card index */
+            flex: 1; /* Takes available space */ /* Translated comment */
+            min-width: 300px; /* Minimum width */ /* Translated comment */
+            background-color: var(--card-bg-color); /* White card background */ /* Translated comment */
+            padding: var(--spacing-md); /* Internal padding */ /* Translated comment */
+            border-radius: 12px; /* Same radius as index card */ /* Translated comment */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Same shadow as index card */ /* Translated comment */
         }
-         .contact-form h2 { /* Titolo opzionale per form */
+         .contact-form h2 { /* Optional title for form */ /* Translated comment */
              color: var(--primary-blue);
              margin-bottom: var(--spacing-md);
              font-size: 1.8rem;
@@ -338,16 +338,16 @@
          }
 
         .company-info {
-            flex: 0 0 300px; /* Larghezza fissa, leggermente più grande */
-            background-color: var(--light-bg-section); /* Sfondo grigio chiaro */
+            flex: 0 0 300px; /* Fixed width, slightly larger */ /* Translated comment */
+            background-color: var(--light-bg-section); /* Light gray background */ /* Translated comment */
             padding: var(--spacing-md);
             border-radius: 12px;
-            border: 1px solid #e0e0e0; /* Bordo leggero */
-            height: fit-content; /* Altezza basata sul contenuto */
-            /* margin-left: 0; Rimosso, gap gestisce spazio */
+            border: 1px solid #e0e0e0; /* Light border */ /* Translated comment */
+            height: fit-content; /* Height based on content */ /* Translated comment */
+            /* margin-left: 0; Removed, gap handles space */ /* Translated comment */
         }
 
-        .form-group { margin-bottom: var(--spacing-sm); } /* Usa variabile */
+        .form-group { margin-bottom: var(--spacing-sm); } /* Use variable */ /* Translated comment */
 
         .form-group label {
             display: block; margin-bottom: 0.5rem;
@@ -360,9 +360,9 @@
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 0.8rem 1rem; /* Padding leggermente aumentato */
+            padding: 0.8rem 1rem; /* Slightly increased padding */ /* Translated comment */
             border: 1px solid var(--input-border-color);
-            border-radius: 6px; /* Stesso radius bottoni */
+            border-radius: 6px; /* Same radius as buttons */ /* Translated comment */
             font-family: inherit;
             font-size: 1rem;
             background-color: var(--input-bg-color);
@@ -373,29 +373,29 @@
          .form-group textarea:focus {
              outline: none;
              border-color: var(--primary-blue);
-             box-shadow: 0 0 0 3px rgba(58, 124, 140, 0.2); /* Ombra focus */
+             box-shadow: 0 0 0 3px rgba(58, 124, 140, 0.2); /* Focus shadow */ /* Translated comment */
          }
 
         .form-group textarea { resize: vertical; min-height: 120px; }
 
-        .submit-btn { /* Stile bottone invio */
-            background-color: var(--primary-green); /* Usa variabile */
+        .submit-btn { /* Submit button style */ /* Translated comment */
+            background-color: var(--primary-green); /* Use variable */ /* Translated comment */
             color: white; border: none;
-            padding: 0.9rem 1.8rem; /* Stesso padding .btn */
-            border-radius: 6px; /* Stesso radius .btn */
+            padding: 0.9rem 1.8rem; /* Same padding as .btn */ /* Translated comment */
+            border-radius: 6px; /* Same radius as .btn */ /* Translated comment */
             cursor: pointer; font-size: 1rem;
             transition: background-color 0.3s, transform 0.3s;
             font-weight: 500;
-            display: inline-block; /* Per applicare transform */
+            display: inline-block; /* To apply transform */ /* Translated comment */
         }
         .submit-btn:hover {
-            background-color: var(--secondary-green); /* Usa variabile */
-            transform: translateY(-3px); /* Stesso effetto .btn */
+            background-color: var(--secondary-green); /* Use variable */ /* Translated comment */
+            transform: translateY(-3px); /* Same effect as .btn */ /* Translated comment */
         }
 
         .info-title {
-            margin-bottom: var(--spacing-sm); /* Usa variabile */
-            color: var(--primary-blue); /* Blu primario */
+            margin-bottom: var(--spacing-sm); /* Use variable */ /* Translated comment */
+            color: var(--primary-blue); /* Primary blue */ /* Translated comment */
             font-size: 1.5rem;
             font-weight: 600;
         }
@@ -407,34 +407,34 @@
             color: var(--dark-gray);
             font-size: 0.95rem;
         }
-        .info-item p { margin: 0; } /* Rimuove margine default p */
+        .info-item p { margin: 0; } /* Removes default p margin */ /* Translated comment */
         .info-icon {
             margin-right: 0.75rem;
-            width: 20px; /* Icone leggermente più grandi */
+            width: 20px; /* Slightly larger icons */ /* Translated comment */
             height: 20px;
-             opacity: 0.8; /* Leggera trasparenza icona */
+             opacity: 0.8; /* Slight icon transparency */ /* Translated comment */
         }
 
-        /* FAQ e Glossario Section */
+        /* FAQ & Glossary Section */ /* Translated comment */
         .faq-glossary-section {
-            padding: var(--spacing-lg) 0; /* Usa variabile */
-            background-color: var(--light-bg-section); /* Sfondo alternato */
+            padding: var(--spacing-lg) 0; /* Use variable */ /* Translated comment */
+            background-color: var(--light-bg-section); /* Alternating background */ /* Translated comment */
         }
 
         /* Tab Navigation */
         .tab-navigation {
             display: flex; justify-content: center;
-            margin-bottom: var(--spacing-md); /* Usa variabile */
-            flex-wrap: wrap; gap: 0.5rem; /* Aggiunto gap */
+            margin-bottom: var(--spacing-md); /* Use variable */ /* Translated comment */
+            flex-wrap: wrap; gap: 0.5rem; /* Added gap */ /* Translated comment */
         }
 
         .tab-button {
-            padding: 0.8rem 1.5rem; /* Padding leggermente ridotto */
-            /* margin: 0 0.5rem 1rem; Rimosso, usa gap */
+            padding: 0.8rem 1.5rem; /* Slightly reduced padding */ /* Translated comment */
+            /* margin: 0 0.5rem 1rem; Removed, use gap */ /* Translated comment */
             background-color: transparent;
             border: 1px solid var(--primary-green);
             color: var(--primary-green);
-            border-radius: 20px; /* Arrotondamento come bottoni nav */
+            border-radius: 20px; /* Rounded like nav buttons */ /* Translated comment */
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
@@ -449,50 +449,50 @@
 
         .tab-content { max-width: 800px; margin: 0 auto; }
         .tab-pane { display: none; }
-        .tab-pane.active { display: block; animation: fadeIn 0.5s ease; } /* Aggiunta animazione fade */
+        .tab-pane.active { display: block; animation: fadeIn 0.5s ease; } /* Added fade animation */ /* Translated comment */
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* FAQ Styles */
         .faq-item {
             margin-bottom: 1rem;
-            background-color: var(--card-bg-color); /* Sfondo bianco */
+            background-color: var(--card-bg-color); /* White background */ /* Translated comment */
             border: 1px solid #e0e0e0;
-            border-radius: 8px; /* Angoli arrotondati */
+            border-radius: 8px; /* Rounded corners */ /* Translated comment */
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Ombra leggera */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Light shadow */ /* Translated comment */
         }
 
         .faq-question {
-            padding: 1rem 1.5rem; /* Più padding */
-            background-color: transparent; /* Sfondo trasparente */
+            padding: 1rem 1.5rem; /* More padding */ /* Translated comment */
+            background-color: transparent; /* Transparent background */ /* Translated comment */
             display: flex; justify-content: space-between; align-items: center;
-            cursor: pointer; font-weight: 500; /* Testo leggermente bold */
+            cursor: pointer; font-weight: 500; /* Slightly bold text */ /* Translated comment */
         }
         .faq-question h3 { margin: 0; font-size: 1.1rem; color: var(--dark-gray); }
         .toggle-icon {
-            font-size: 1.3rem; /* Dimensione icona */
+            font-size: 1.3rem; /* Icon size */ /* Translated comment */
             color: var(--primary-green);
-            transition: transform 0.3s ease; /* Animazione rotazione */
+            transition: transform 0.3s ease; /* Rotation animation */ /* Translated comment */
             font-weight: bold;
         }
-         .faq-question:hover h3 { /* Colore titolo su hover */
+         .faq-question:hover h3 { /* Title color on hover */ /* Translated comment */
               color: var(--primary-blue);
          }
 
         .faq-answer {
-            padding: 0 1.5rem; /* Padding orizzontale */
+            padding: 0 1.5rem; /* Horizontal padding */ /* Translated comment */
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease; /* Transizione fluida */
+            transition: max-height 0.4s ease, padding 0.4s ease; /* Smooth transition */ /* Translated comment */
             background-color: var(--card-bg-color);
             color: var(--dark-gray);
             font-size: 0.95rem;
         }
         .faq-answer.active {
-            padding: 1rem 1.5rem 1.5rem; /* Padding completo quando attivo */
-            max-height: 500px; /* Altezza massima generosa */
-            border-top: 1px solid #e0e0e0; /* Separatore sottile */
+            padding: 1rem 1.5rem 1.5rem; /* Full padding when active */ /* Translated comment */
+            max-height: 500px; /* Generous max height */ /* Translated comment */
+            border-top: 1px solid #e0e0e0; /* Thin separator */ /* Translated comment */
         }
         .faq-answer p { margin-bottom: 0.8rem; }
         .faq-answer ul { padding-left: 1.5rem; margin-top: 0.8rem; }
@@ -506,43 +506,43 @@
         }
          .glossary-item:last-child { border-bottom: none; }
         .glossary-item h3 {
-            color: var(--primary-blue); /* Blu per termini */
+            color: var(--primary-blue); /* Blue for terms */ /* Translated comment */
             margin-bottom: 0.5rem; font-size: 1.2rem;
         }
         .glossary-item p { color: var(--dark-gray); font-size: 0.95rem; }
 
-        /* CTA Section within FAQ/Glossary */
-        .cta-section-inner { /* Rinnominata per evitare conflitti con .cta-section globale */
+        /* CTA Section within FAQ/Glossary */ /* Technical comment, kept */
+        .cta-section-inner { /* Renamed to avoid conflicts with global .cta-section */ /* Translated comment */
             margin-top: var(--spacing-md);
             text-align: center;
             padding: var(--spacing-md);
-            background-color: #e9ecef; /* Grigio più chiaro */
+            background-color: #e9ecef; /* Lighter gray */ /* Translated comment */
             border-radius: 8px;
         }
         .cta-section-inner h3 {
-            color: var(--primary-blue); /* Blu */
+            color: var(--primary-blue); /* Blue */ /* Translated comment */
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
         .cta-links {
             display: flex; justify-content: center;
-            flex-wrap: wrap; gap: 1rem; /* Usa gap */
+            flex-wrap: wrap; gap: 1rem; /* Use gap */ /* Translated comment */
             margin: 1rem 0 1.5rem;
         }
-        .cta-link { /* Stile bottoni neri/verdi */
+        .cta-link { /* Black/green button style */ /* Translated comment */
             display: inline-block; padding: 0.75rem 1.5rem;
-            /* margin: 0.5rem; Rimosso, usa gap */
-            background-color: var(--dark-gray); /* Grigio scuro base */
-            color: white; text-decoration: none; border-radius: 6px; /* Stesso radius .btn */
+            /* margin: 0.5rem; Removed, use gap */ /* Translated comment */
+            background-color: var(--dark-gray); /* Base dark gray */ /* Translated comment */
+            color: white; text-decoration: none; border-radius: 6px; /* Same radius as .btn */ /* Translated comment */
             transition: all 0.3s ease; font-weight: 500;
         }
         .cta-link:hover {
-            background-color: var(--primary-green); /* Verde su hover */
+            background-color: var(--primary-green); /* Green on hover */ /* Translated comment */
             transform: translateY(-2px);
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         .cta-section-inner p { margin-bottom: 1rem; color: var(--dark-gray); }
-        .cta-section-inner a:not(.cta-link) { /* Stile link testo */
+        .cta-section-inner a:not(.cta-link) { /* Text link style */ /* Translated comment */
             color: var(--primary-green);
             text-decoration: underline;
             font-weight: 500;
@@ -551,42 +551,42 @@
              color: var(--secondary-green);
         }
 
-        /* Body Class for Menu Open (Opzionale, se si vuole bloccare scroll) */
+        /* Body Class for Menu Open (Optional, if you want to block scroll) */ /* Translated comment */
          body.menu-open {
-             /* overflow: hidden; Questo può causare spostamento layout */
+             /* overflow: hidden; This can cause layout shift */ /* Translated comment */
          }
 
-        /* === END: Styles Specific to contattaci.html === */
+        /* === END: Styles Specific to contact-us.html === */
 
 
-        /* === START: Responsive Styles (Merged & Refined) === */
+        /* === START: Responsive Styles (Merged & Refined) === */ /* Technical comment, kept */
         @media (max-width: 992px) {
             .main-nav { gap: 5px; }
             .main-nav a.button, .main-nav .green-button { padding: 8px 10px; font-size: 0.9rem; }
-            /* .green-button { padding: 8px 15px; } Non c'è qui */
+            /* .green-button { padding: 8px 15px; } Not here */ /* Translated comment */
         }
 
         @media (max-width: 768px) {
             .main-nav { display: none; }
             .hamburger-btn { display: block; }
-            /* .mobile-nav.active gestito */
+            /* .mobile-nav.active handled */ /* Translated comment */
 
             .hero-title { font-size: 2.2rem; }
             .hero-subtitle { font-size: 1.1rem; }
             .section-title { font-size: 2rem; }
 
             .contact-container {
-                flex-direction: column; /* Form sopra info */
+                flex-direction: column; /* Form above info */ /* Translated comment */
                 gap: var(--spacing-md);
             }
             .company-info {
-                margin-left: 0; /* Rimuove margine sx */
-                margin-top: 0; /* Rimuove margine top */
-                 flex-basis: auto; /* Larghezza automatica */
-                 width: 100%; /* Occupa tutta larghezza */
+                margin-left: 0; /* Removes left margin */ /* Translated comment */
+                margin-top: 0; /* Removes top margin */ /* Translated comment */
+                 flex-basis: auto; /* Automatic width */ /* Translated comment */
+                 width: 100%; /* Takes full width */ /* Translated comment */
             }
 
-             .tab-navigation { justify-content: flex-start; } /* Allinea tab a sx */
+             .tab-navigation { justify-content: flex-start; } /* Aligns tabs to the left */ /* Translated comment */
              .tab-button { padding: 0.7rem 1.2rem; font-size: 0.9rem;}
         }
 
@@ -615,50 +615,50 @@
     </style>
 </head>
 <body>
-    <!-- Elementi decorativi di sfondo -->
+    <!-- Background decoration elements --> <!-- Translated comment -->
     <div class="bg-decoration decoration-1"></div>
     <div class="bg-decoration decoration-2"></div>
 
     <div class="container">
-        <!-- Intestazione -->
+        <!-- Header --> <!-- Translated comment -->
         <header>
-            <a href="./" class="logo"> <!-- Logo link alla home -->
-                <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B">
-                <span>SynergyRecycle.B</span>
+            <a href="./" class="logo"> <!-- Logo links to home --> <!-- Translated comment -->
+                <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B"> <!-- Kept image path and alt text -->
+                <span>SynergyRecycle.B</span> <!-- Kept brand name -->
             </a>
             <nav class="main-nav">
-                <a href="./" class="button">Home</a>
-                <a href="./servizi.html" class="button">Servizi</a>
-                <a href="./sostenerci.html" class="button">Supportaci</a>
-                <a href="./contattaci.html" class="button">Contattaci</a>
-                <a href="./roadmap.html" class="button">Roadmap</a>
-                <!-- START: Language Selector HTML (Desktop) -->
+                <a href="./" class="button">Home</a> <!-- Keep English -->
+                <a href="./servizi.html" class="button">Services</a> <!-- Translated -->
+                <a href="./sostenerci.html" class="button">Support Us</a> <!-- Translated -->
+                <a href="./contattaci.html" class="button">Contact Us</a> <!-- Translated -->
+                <a href="./roadmap.html" class="button">Roadmap</a> <!-- Keep English -->
+                <!-- START: Language Selector HTML (Desktop) --> <!-- Technical comment, kept -->
                 <div class="language-selector">
-                    <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
+                    <button class="language-btn" id="language-btn" aria-label="Select language" aria-haspopup="true" aria-expanded="false">🌐</button> <!-- Translated aria-label -->
                     <div class="language-dropdown" id="language-dropdown" role="menu">
-                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
-                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div> <!-- Keep English -->
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div> <!-- Keep Spanish -->
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div> <!-- Keep German -->
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div> <!-- Keep Italian -->
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div> <!-- Keep French -->
                     </div>
                 </div>
-                <!-- END: Language Selector HTML (Desktop) -->
+                <!-- END: Language Selector HTML (Desktop) --> <!-- Technical comment, kept -->
             </nav>
-            <!-- Hamburger button con ID corretto -->
-            <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+            <!-- Hamburger button with correct ID --> <!-- Translated comment -->
+            <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button> <!-- Keep English aria-label -->
         </header>
 
-        <!-- Navigazione mobile -->
+        <!-- Mobile navigation --> <!-- Translated comment -->
         <nav class="mobile-nav" id="mobile-nav">
             <a href="./" class="button">Home</a>
-            <a href="./servizi.html" class="button">Servizi</a>
-            <a href="./sostenerci.html" class="button">Supportaci</a>
-            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./servizi.html" class="button">Services</a>
+            <a href="./sostenerci.html" class="button">Support Us</a>
+            <a href="./contattaci.html" class="button">Contact Us</a>
             <a href="./roadmap.html" class="button">Roadmap</a>
-             <!-- START: Language Selector HTML (Mobile) -->
+             <!-- START: Language Selector HTML (Mobile) --> <!-- Technical comment, kept -->
             <div class="language-selector">
-                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
+                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Language</button> <!-- Translated button text -->
                 <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
                     <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
                     <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
@@ -667,271 +667,271 @@
                     <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
                 </div>
             </div>
-            <!-- END: Language Selector HTML (Mobile) -->
+            <!-- END: Language Selector HTML (Mobile) --> <!-- Technical comment, kept -->
         </nav>
 
-        <!-- Banner -->
+        <!-- Banner --> <!-- Technical comment, kept -->
         <div class="banner">
-            SynergyRecycle.B: "Hai domande? Siamo qui per aiutarti a fare la differenza." <!-- Testo banner aggiornato -->
+            SynergyRecycle.B: "Have questions? We're here to help you make a difference." <!-- Updated banner text --> <!-- Translated banner text and comment -->
         </div>
-    </div> <!-- Fine container header/banner -->
+    </div> <!-- End header/banner container --> <!-- Translated comment -->
 
     <main>
-         <!-- Hero Section Semplificata -->
+         <!-- Simplified Hero Section --> <!-- Translated comment -->
         <section class="hero">
             <div class="container">
                  <div class="hero-content">
-                     <h1 class="hero-title">Contattaci</h1>
-                     <p class="hero-subtitle">Siamo felici di rispondere alle tue domande. Compila il modulo sottostante o consulta le nostre FAQ.</p>
+                     <h1 class="hero-title">Contact Us</h1> <!-- Translated -->
+                     <p class="hero-subtitle">We are happy to answer your questions. Fill out the form below or consult our FAQ.</p> <!-- Translated -->
                  </div>
             </div>
         </section>
 
-        <!-- Form di contatto e Info Aziendali -->
-        <section class="section" style="padding-top: var(--spacing-sm);"> <!-- Riduci padding top dopo hero -->
+        <!-- Contact Form and Company Info --> <!-- Translated comment -->
+        <section class="section" style="padding-top: var(--spacing-sm);"> <!-- Reduce top padding after hero --> <!-- Translated comment -->
             <div class="container">
                 <div class="contact-container">
-                    <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST"> <!-- Aggiunto action (sostituire YOUR_FORMSPREE_ID) -->
-                         <h2>Invia la tua Richiesta</h2>
+                    <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST"> <!-- Added action (replace YOUR_FORMSPREE_ID) --> <!-- Translated comment -->
+                         <h2>Send Your Request</h2> <!-- Translated -->
                         <div class="form-group">
-                            <label for="name">Nome *</label>
-                            <input type="text" id="name" name="name" required placeholder="Il tuo nome completo">
+                            <label for="name">Name *</label> <!-- Translated -->
+                            <input type="text" id="name" name="name" required placeholder="Your full name"> <!-- Translated placeholder -->
                         </div>
 
                         <div class="form-group">
-                            <label for="phone">Numero di telefono</label>
-                            <input type="tel" id="phone" name="phone" placeholder="Es. +39 123 4567890">
+                            <label for="phone">Phone number</label> <!-- Translated -->
+                            <input type="tel" id="phone" name="phone" placeholder="E.g., +49 123 4567890"> <!-- Translated placeholder (adjusted prefix if needed) -->
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required placeholder="lamiaemail@dominio.com">
+                            <label for="email">Email *</label> <!-- Translated -->
+                            <input type="email" id="email" name="email" required placeholder="myemail@domain.com"> <!-- Translated placeholder -->
                         </div>
 
                         <div class="form-group">
-                            <label for="company">Azienda (Opzionale)</label>
-                            <input type="text" id="company" name="company" placeholder="Nome della tua azienda">
+                            <label for="company">Company (Optional)</label> <!-- Translated -->
+                            <input type="text" id="company" name="company" placeholder="Your company name"> <!-- Translated placeholder -->
                         </div>
 
                         <div class="form-group">
-                            <label for="subject">Oggetto *</label>
+                            <label for="subject">Subject *</label> <!-- Translated -->
                             <select id="subject" name="subject" required>
-                                <option value="" disabled selected>Seleziona un argomento...</option> <!-- Placeholder -->
-                                <option value="supporto">Supporto Tecnico App/Piattaforma</option>
-                                <option value="partnership">Proposta di Partnership</option>
-                                <option value="investimenti">Informazioni per Investitori</option>
-                                <option value="donazioni">Domande sul Supporto/Donazioni</option>
-                                <option value="generali">Informazioni Generali</option>
-                                <option value="altro">Altro (specifica nel messaggio)</option>
+                                <option value="" disabled selected>Select a topic...</option> <!-- Placeholder --> <!-- Translated text and comment -->
+                                <option value="support">Technical Support App/Platform</option> <!-- Translated -->
+                                <option value="partnership">Partnership Proposal</option> <!-- Translated -->
+                                <option value="investments">Information for Investors</option> <!-- Translated -->
+                                <option value="donations">Questions about Support/Donations</option> <!-- Translated -->
+                                <option value="general">General Information</option> <!-- Translated -->
+                                <option value="other">Other (specify in message)</option> <!-- Translated -->
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Messaggio *</label>
-                            <textarea id="message" name="message" rows="6" required placeholder="Scrivi qui la tua domanda o richiesta..."></textarea> <!-- Aumentato rows -->
+                            <label for="message">Message *</label> <!-- Translated -->
+                            <textarea id="message" name="message" rows="6" required placeholder="Write your question or request here..."></textarea> <!-- Increased rows --> <!-- Translated placeholder and comment -->
                         </div>
 
-                        <!-- Aggiunta Honeypot per anti-spam (opzionale ma raccomandato con Formspree) -->
+                        <!-- Added Honeypot for anti-spam (optional but recommended with Formspree) --> <!-- Translated comment -->
                          <input type="text" name="_gotcha" style="display:none">
 
-                        <button type="submit" class="submit-btn">Invia Messaggio</button>
+                        <button type="submit" class="submit-btn">Send Message</button> <!-- Translated -->
                     </form>
 
-                    <!-- Info Aziendali -->
+                    <!-- Company Info --> <!-- Translated comment -->
                     <div class="company-info">
-                        <h3 class="info-title">Informazioni di Contatto</h3>
+                        <h3 class="info-title">Contact Information</h3> <!-- Translated -->
                         <div class="info-item">
-                            <img src="assets/img/adresse16.png" alt="Icona Indirizzo" class="info-icon">
-                            <p>32052, Herford, North Rhine-Westphalia, Germany</p> <!-- Indirizzo più specifico -->
+                            <img src="assets/img/adresse16.png" alt="Address Icon" class="info-icon"> <!-- Kept path, Translated alt -->
+                            <p>32052, Herford, North Rhine-Westphalia, Germany</p> <!-- More specific address --> <!-- Translated comment -->
                         </div>
 
                         <div class="info-item">
-                            <img src="assets/img/telefon16.png" alt="Icona Telefono" class="info-icon">
-                            <p>+49 123 4567890 (Esempio)</p> <!-- Indicare che è un esempio se non reale -->
+                            <img src="assets/img/telefon16.png" alt="Phone Icon" class="info-icon"> <!-- Kept path, Translated alt -->
+                            <p>+49 123 4567890 (Example)</p> <!-- Indicate if it's an example and not real --> <!-- Translated comment -->
                         </div>
 
                         <div class="info-item">
-                            <img src="assets/img/gmail16.png" alt="Icona Email" class="info-icon">
-                            <!-- Link mailto -->
+                            <img src="assets/img/gmail16.png" alt="Email Icon" class="info-icon"> <!-- Kept path, Translated alt -->
+                            <!-- Link mailto --> <!-- Technical comment, kept -->
                             <p><a href="mailto:SynergyRecycle.b@gmail.com" style="color: var(--dark-gray); text-decoration: none;">SynergyRecycle.b@gmail.com</a></p>
                         </div>
                          <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 1.5rem 0;">
-                         <h3 class="info-title" style="font-size: 1.3rem;">Orari di Supporto</h3>
+                         <h3 class="info-title" style="font-size: 1.3rem;">Support Hours</h3> <!-- Translated -->
                          <div class="info-item">
-                             <img src="assets/img/clock-icon.png" alt="Icona Orario" class="info-icon"> <!-- Icona orologio -->
-                             <p>Lun - Ven: 9:00 - 17:00 (CET)</p>
+                             <img src="assets/img/clock-icon.png" alt="Clock Icon" class="info-icon"> <!-- Clock icon --> <!-- Kept path, Translated alt and comment -->
+                             <p>Mon - Fri: 9:00 AM - 5:00 PM (CET)</p> <!-- Translated and formatted time -->
                          </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sezione FAQ e Glossario -->
+        <!-- FAQ and Glossary Section --> <!-- Translated comment -->
         <section class="faq-glossary-section">
             <div class="container">
-                <h2 class="section-title">Risorse Utili</h2>
-                <!-- Tab Navigation -->
+                <h2 class="section-title">Useful Resources</h2> <!-- Translated -->
+                <!-- Tab Navigation --> <!-- Technical comment, kept -->
                 <div class="tab-navigation">
-                    <button class="tab-button active" data-tab="faq-general" aria-controls="faq-general" role="tab">FAQ Generali</button>
-                    <button class="tab-button" data-tab="faq-investors" aria-controls="faq-investors" role="tab">FAQ Investitori</button>
-                    <button class="tab-button" data-tab="faq-crypto" aria-controls="faq-crypto" role="tab">FAQ Crypto</button>
-                    <button class="tab-button" data-tab="glossary" aria-controls="glossary" role="tab">Glossario</button>
+                    <button class="tab-button active" data-tab="faq-general" aria-controls="faq-general" role="tab">General FAQ</button> <!-- Translated -->
+                    <button class="tab-button" data-tab="faq-investors" aria-controls="faq-investors" role="tab">Investor FAQ</button> <!-- Translated -->
+                    <button class="tab-button" data-tab="faq-crypto" aria-controls="faq-crypto" role="tab">Crypto FAQ</button> <!-- Translated -->
+                    <button class="tab-button" data-tab="glossary" aria-controls="glossary" role="tab">Glossary</button> <!-- Translated -->
                 </div>
 
-                <!-- Tab Content -->
+                <!-- Tab Content --> <!-- Technical comment, kept -->
                 <div class="tab-content">
-                    <!-- FAQ Generali -->
+                    <!-- General FAQ --> <!-- Translated comment -->
                     <div class="tab-pane active" id="faq-general" role="tabpanel" aria-labelledby="faq-general-tab">
-                         <!-- Titolo ridondante rimosso, già c'è quello della sezione -->
+                         <!-- Redundant title removed, already present in the section --> <!-- Translated comment -->
                         <div class="faq-item">
                             <div class="faq-question" role="button" aria-expanded="false">
-                                <h3>Perché dovrei usare SynergyRecycle.B?</h3>
+                                <h3>Why should I use SynergyRecycle.B?</h3> <!-- Translated -->
                                 <span class="toggle-icon" aria-hidden="true">+</span>
                             </div>
                             <div class="faq-answer">
-                                <p>La nostra piattaforma ti premia per il riciclo corretto con utility token (SRB), ti permette di tracciare il tuo impatto ambientale e supportare progetti green globali, rendendo la sostenibilità facile e vantaggiosa.</p>
+                                <p>Our platform rewards you for correct recycling with utility tokens (SRB), allows you to track your environmental impact, and support global green projects, making sustainability easy and rewarding.</p> <!-- Translated -->
                             </div>
                         </div>
                         <div class="faq-item">
                             <div class="faq-question" role="button" aria-expanded="false">
-                                <h3>Come guadagno i token SRB?</h3>
+                                <h3>How do I earn SRB tokens?</h3> <!-- Translated -->
                                 <span class="toggle-icon" aria-hidden="true">+</span>
                             </div>
                             <div class="faq-answer">
-                                <p>Guadagni token SRB principalmente riciclando correttamente attraverso i punti di raccolta convenzionati e registrando le tue azioni tramite la nostra app. Altre opportunità potrebbero includere partecipazione a iniziative speciali o staking (blocco) dei token.</p>
+                                <p>You earn SRB tokens primarily by recycling correctly through partner collection points and registering your actions via our app. Other opportunities might include participating in special initiatives or staking (locking) tokens.</p> <!-- Translated -->
                             </div>
                         </div>
                          <div class="faq-item">
                             <div class="faq-question" role="button" aria-expanded="false">
-                                <h3>Come posso usare i token SRB?</h3>
+                                <h3>How can I use SRB tokens?</h3> <!-- Translated -->
                                 <span class="toggle-icon" aria-hidden="true">+</span>
                             </div>
                             <div class="faq-answer">
-                                <p>I token SRB potranno essere usati per:</p>
+                                <p>SRB tokens can be used to:</p> <!-- Translated -->
                                 <ul>
-                                    <li>Ottenere sconti o servizi da partner convenzionati.</li>
-                                    <li>Supportare progetti ambientali specifici all'interno della piattaforma.</li>
-                                    <li>Scambiarli su exchange decentralizzati (DEX) o centralizzati (CEX) una volta listati.</li>
-                                    <li>Accedere a funzionalità premium dell'ecosistema (in futuro).</li>
+                                    <li>Get discounts or services from affiliated partners.</li> <!-- Translated -->
+                                    <li>Support specific environmental projects within the platform.</li> <!-- Translated -->
+                                    <li>Trade them on decentralized (DEX) or centralized (CEX) exchanges once listed.</li> <!-- Translated -->
+                                    <li>Access premium ecosystem features (in the future).</li> <!-- Translated -->
                                 </ul>
                             </div>
                         </div>
                         <div class="faq-item">
                             <div class="faq-question" role="button" aria-expanded="false">
-                                <h3>Dove trovo i punti di raccolta convenzionati?</h3>
+                                <h3>Where can I find partner collection points?</h3> <!-- Translated -->
                                 <span class="toggle-icon" aria-hidden="true">+</span>
                             </div>
                             <div class="faq-answer">
-                                <p>La mappa dei punti di raccolta convenzionati sarà disponibile all'interno della nostra app mobile (in arrivo). Stiamo lavorando per espandere la nostra rete.</p>
+                                <p>The map of partner collection points will be available within our mobile app (coming soon). We are working to expand our network.</p> <!-- Translated -->
                             </div>
                         </div>
-                        <!-- Altre FAQ Generali -->
+                        <!-- Other General FAQs --> <!-- Translated comment -->
                     </div>
 
-                    <!-- FAQ Investitori -->
+                    <!-- Investor FAQ --> <!-- Translated comment -->
                     <div class="tab-pane" id="faq-investors" role="tabpanel" aria-labelledby="faq-investors-tab">
-                        <!-- Contenuto FAQ Investitori (come prima) -->
-                        <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>Cos'è SynergyRecycle.B?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>SynergyRecycle.B è un progetto innovativo che combina blockchain e sostenibilità. Il nostro obiettivo è incentivare il riciclaggio e la protezione ambientale attraverso un sistema di premi basato su utility token.</p> </div> </div>
-                        <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>Come posso investire nel progetto?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Gli investitori interessati possono partecipare attraverso il nostro programma di Private Sale o successivamente tramite la nostra ICO. È possibile contattarci tramite il modulo su questa pagina o via email per ricevere ulteriori dettagli e documentazione.</p> </div> </div>
-                        <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>Quali sono i benefici per gli investitori?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Gli investitori ottengono:</p> <ul> <li>Accesso anticipato e potenzialmente scontato ai utility token SRB.</li> <li>Coinvolgimento in un progetto con un impatto ambientale concreto e misurabile.</li> <li>Opportunità Unica di partecipare a una piattaforma innovativa in un settore in crescita.</li> </ul> </div> </div>
-                        <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>Qual è la roadmap del progetto?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Puoi consultare la nostra roadmap dettagliata <a href="./roadmap.html">cliccando qui</a>. Include le fasi di sviluppo, lancio dell'app, listing dei token e future espansioni.</p> </div> </div>
-                        <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>Quali sono le misure di sicurezza adottate?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Adottiamo tecnologie blockchain sicure (Polygon), smart contract verificati tramite audit esterni e best practice per la protezione dei dati degli utenti e dei fondi.</p> </div> </div>
-                        <!-- Altre FAQ Investitori -->
+                        <!-- Investor FAQ Content (as before) --> <!-- Translated comment -->
+                        <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>What is SynergyRecycle.B?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>SynergyRecycle.B is an innovative project combining blockchain and sustainability. Our goal is to incentivize recycling and environmental protection through a reward system based on utility tokens.</p> </div> </div> <!-- Translated embedded FAQ -->
+                        <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>How can I invest in the project?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Interested investors can participate through our Private Sale program or later via our ICO. You can contact us using the form on this page or via email to receive further details and documentation.</p> </div> </div> <!-- Translated embedded FAQ -->
+                        <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>What are the benefits for investors?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Investors get:</p> <ul> <li>Early and potentially discounted access to SRB utility tokens.</li> <li>Involvement in a project with a concrete and measurable environmental impact.</li> <li>A unique opportunity to participate in an innovative platform in a growing sector.</li> </ul> </div> </div> <!-- Translated embedded FAQ -->
+                        <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>What is the project roadmap?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>You can consult our detailed roadmap by <a href="./roadmap.html">clicking here</a>. It includes development phases, app launch, token listing, and future expansions.</p> </div> </div> <!-- Translated embedded FAQ -->
+                        <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>What security measures are adopted?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>We adopt secure blockchain technologies (Polygon), smart contracts verified through external audits, and best practices for protecting user data and funds.</p> </div> </div> <!-- Translated embedded FAQ -->
+                        <!-- Other Investor FAQs --> <!-- Translated comment -->
                     </div>
 
-                    <!-- FAQ Crypto -->
+                    <!-- Crypto FAQ --> <!-- Translated comment -->
                      <div class="tab-pane" id="faq-crypto" role="tabpanel" aria-labelledby="faq-crypto-tab">
-                         <!-- Contenuto FAQ Crypto (come prima) -->
-                         <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>Che cos'è una blockchain?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>La blockchain è un registro digitale distribuito, immutabile e trasparente che registra transazioni (o dati) in blocchi concatenati crittograficamente. Ogni nuovo blocco rafforza la sicurezza dei precedenti.</p> </div> </div>
-                         <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>Cosa significa ICO (Initial Coin Offering)?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Una ICO è un metodo di raccolta fondi nel mondo crypto, simile a un'IPO nel mercato azionario. Un nuovo progetto vende i propri token nativi (come SRB) al pubblico per finanziare lo sviluppo.</p> </div> </div>
-                         <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>Cos'è un wallet di criptovalute?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Un wallet (portafoglio) di criptovalute è uno strumento digitale (software o hardware) che ti permette di interagire con la blockchain: inviare, ricevere e conservare le tue criptovalute in modo sicuro gestendo le tue chiavi private.</p> </div> </div>
-                         <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>Quali sono i rischi dell'investimento in criptovalute?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Gli investimenti in criptovalute sono soggetti a rischi significativi, tra cui alta volatilità dei prezzi, incertezza normativa, rischi tecnologici (bug, hack), rischi di custodia e potenziale perdita totale del capitale. È fondamentale fare ricerche approfondite (DYOR - Do Your Own Research) e investire solo ciò che si è disposti a perdere.</p> </div> </div>
-                         <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>Cos'è Polygon (MATIC)?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Polygon è una piattaforma di scaling per Ethereum che mira a migliorare la velocità delle transazioni e ridurre i costi (gas fees), rendendo le applicazioni decentralizzate più efficienti. SRB opera sulla rete Polygon.</p> </div> </div>
-                         <!-- Altre FAQ Crypto -->
+                         <!-- Crypto FAQ Content (as before) --> <!-- Translated comment -->
+                         <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>What is a blockchain?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>A blockchain is a distributed, immutable, and transparent digital ledger that records transactions (or data) in cryptographically linked blocks. Each new block strengthens the security of the previous ones.</p> </div> </div> <!-- Translated embedded FAQ -->
+                         <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>What does ICO (Initial Coin Offering) mean?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>An ICO is a fundraising method in the crypto world, similar to an IPO in the stock market. A new project sells its native tokens (like SRB) to the public to fund development.</p> </div> </div> <!-- Translated embedded FAQ -->
+                         <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>What is a cryptocurrency wallet?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>A cryptocurrency wallet is a digital tool (software or hardware) that allows you to interact with the blockchain: send, receive, and store your cryptocurrencies securely by managing your private keys.</p> </div> </div> <!-- Translated embedded FAQ -->
+                         <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>What are the risks of investing in cryptocurrencies?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Cryptocurrency investments are subject to significant risks, including high price volatility, regulatory uncertainty, technological risks (bugs, hacks), custody risks, and the potential for total capital loss. It is crucial to do thorough research (DYOR - Do Your Own Research) and invest only what you are willing to lose.</p> </div> </div> <!-- Translated embedded FAQ -->
+                         <div class="faq-item"> <div class="faq-question" role="button" aria-expanded="false"> <h3>What is Polygon (MATIC)?</h3> <span class="toggle-icon" aria-hidden="true">+</span> </div> <div class="faq-answer"> <p>Polygon is a scaling platform for Ethereum aimed at improving transaction speed and reducing costs (gas fees), making decentralized applications more efficient. SRB operates on the Polygon network.</p> </div> </div> <!-- Translated embedded FAQ -->
+                         <!-- Other Crypto FAQs --> <!-- Translated comment -->
                      </div>
 
-                    <!-- Glossario -->
+                    <!-- Glossary --> <!-- Translated comment -->
                     <div class="tab-pane" id="glossary" role="tabpanel" aria-labelledby="glossary-tab">
                         <div class="glossary-list">
-                             <!-- Contenuto Glossario (come prima) -->
-                            <div class="glossary-item"> <h3>Utility Token</h3> <p>Un tipo di criptovaluta progettato per fornire accesso a un prodotto o servizio specifico all'interno di un ecosistema blockchain.</p> </div>
-                            <div class="glossary-item"> <h3>Partecipazione Vincolata</h3> <p>Il processo di bloccare (vincolare) una certa quantità di criptovalute in un wallet per supportare le operazioni di una rete blockchain (validazione, sicurezza) in cambio di vantaggi .</p> </div>
-                            <div class="glossary-item"> <h3>DEX (Decentralized Exchange)</h3> <p>Una piattaforma di scambio di criptovalute basata su smart contract che opera senza un intermediario centrale, permettendo scambi peer-to-peer.</p> </div>
-                             <div class="glossary-item"> <h3>CEX (Centralized Exchange)</h3> <p>Una piattaforma di scambio di criptovalute gestita da un'azienda centrale (es. Binance, Coinbase) che facilita gli scambi tra utenti.</p> </div>
-                            <div class="glossary-item"> <h3>Economia Circolare</h3> <p>Un modello economico rigenerativo in cui i materiali vengono mantenuti in uso il più a lungo possibile, estraendo il massimo valore da essi, per poi recuperarli e rigenerarli alla fine del loro ciclo di vita.</p> </div>
-                            <div class="glossary-item"> <h3>Smart Contract</h3> <p>Contratti digitali auto-eseguibili memorizzati su una blockchain, con i termini dell'accordo scritti direttamente nel codice. Eseguono azioni automaticamente quando le condizioni predefinite sono soddisfatte.</p> </div>
-                            <!-- Altri termini del glossario -->
+                             <!-- Glossary Content (as before) --> <!-- Translated comment -->
+                            <div class="glossary-item"> <h3>Utility Token</h3> <p>A type of cryptocurrency designed to provide access to a specific product or service within a blockchain ecosystem.</p> </div> <!-- Translated definition -->
+                            <div class="glossary-item"> <h3>Staking</h3> <p>The process of locking (staking) a certain amount of cryptocurrency in a wallet to support the operations of a blockchain network (validation, security) in exchange for rewards.</p> </div> <!-- Translated term and definition -->
+                            <div class="glossary-item"> <h3>DEX (Decentralized Exchange)</h3> <p>A cryptocurrency exchange platform based on smart contracts that operates without a central intermediary, allowing peer-to-peer trading.</p> </div> <!-- Translated definition -->
+                             <div class="glossary-item"> <h3>CEX (Centralized Exchange)</h3> <p>A cryptocurrency exchange platform managed by a central company (e.g., Binance, Coinbase) that facilitates trades between users.</p> </div> <!-- Translated definition -->
+                            <div class="glossary-item"> <h3>Circular Economy</h3> <p>A regenerative economic model where materials are kept in use for as long as possible, extracting maximum value from them, and then recovering and regenerating them at the end of their life cycle.</p> </div> <!-- Translated term and definition -->
+                            <div class="glossary-item"> <h3>Smart Contract</h3> <p>Self-executing digital contracts stored on a blockchain, with the terms of the agreement written directly into the code. They automatically execute actions when predefined conditions are met.</p> </div> <!-- Translated definition -->
+                            <!-- Other glossary terms --> <!-- Translated comment -->
                         </div>
                     </div>
                 </div>
 
-                <!-- Call to Action Interna -->
-                <div class="cta-section-inner"> <!-- Classe modificata -->
-                    <h3>Non hai trovato quello che cercavi?</h3>
-                     <p>Consulta la documentazione completa o mettiti in contatto con il nostro team.</p>
+                <!-- Internal Call to Action --> <!-- Translated comment -->
+                <div class="cta-section-inner"> <!-- Modified class --> <!-- Translated comment -->
+                    <h3>Didn't find what you were looking for?</h3> <!-- Translated -->
+                     <p>Consult the complete documentation or get in touch with our team.</p> <!-- Translated -->
                     <div class="cta-links">
-                        <a href="whitepaper.pdf" class="cta-link" target="_blank" rel="noopener noreferrer">Leggi il Whitepaper</a> <!-- Aggiunto target blank -->
-                        <a href="./roadmap.html" class="cta-link">Vedi la Roadmap</a>
-                        <a href="regolamenti.html" class="cta-link">Regolamenti</a> 
+                        <a href="whitepaper.pdf" class="cta-link" target="_blank" rel="noopener noreferrer">Read the Whitepaper</a> <!-- Added target blank --> <!-- Translated text and comment -->
+                        <a href="./roadmap.html" class="cta-link">See the Roadmap</a> <!-- Translated -->
+                        <a href="regolamenti.html" class="cta-link">Regulations</a> <!-- Translated -->
                     </div>
-                    <p>Per richieste specifiche, scrivici a: <a href="mailto:synergyrecycle.b@gmail.com">synergyrecycle.b@gmail.com</a></p>
+                    <p>For specific requests, write to us at: <a href="mailto:synergyrecycle.b@gmail.com">synergyrecycle.b@gmail.com</a></p> <!-- Translated -->
                 </div>
             </div>
         </section>
 
-        <!-- Call to Action Globale (Opzionale, se si vuole ripetere) -->
+        <!-- Global Call to Action (Optional, if repetition is desired) --> <!-- Translated comment -->
         <!-- <section class="section cta-section">
-            <div class="container"> ... contenuto CTA ... </div>
+            <div class="container"> ... CTA content ... </div> <!-- Translated comment -->
         </section> -->
     </main>
 
-    <!-- Footer Copyright -->
+    <!-- Footer Copyright --> <!-- Technical comment, kept -->
     <footer class="site-footer">
         <div class="container">
             <p class="copyright-text">
                 © <span id="copyright-year"></span> SynergyRecycle.B.
-                 - Tutti i diritti riservati
-                 <br> <!-- Aggiunto break -->
+                 - All rights reserved <!-- Translated -->
+                 <br> <!-- Added break --> <!-- Translated comment -->
                 Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a>
             </p>
         </div>
     </footer>
 
-    <!-- Script JS Combinato -->
+    <!-- Combined JS Script --> <!-- Translated comment -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // --- COMMON HELPER FUNCTIONS ---
+            // --- COMMON HELPER FUNCTIONS --- // Kept English comment
             const toggleAriaExpanded = (element) => {
                  if (!element) return;
                  const isExpanded = element.getAttribute('aria-expanded') === 'true';
                  element.setAttribute('aria-expanded', !isExpanded);
             };
 
-            // --- COPYRIGHT YEAR ---
+            // --- COPYRIGHT YEAR --- // Kept English comment
             const yearSpan = document.getElementById('copyright-year');
              if (yearSpan) {
                 yearSpan.textContent = new Date().getFullYear();
              }
-             // Gestisce anche ID vecchio se presente per errore
+             // Also handles old ID if present by mistake // Translated comment
              const yearSpanOld = document.getElementById('copyright-2024');
              if (yearSpanOld) { yearSpanOld.textContent = new Date().getFullYear(); }
 
 
-            // --- HAMBURGER MENU TOGGLE ---
+            // --- HAMBURGER MENU TOGGLE --- // Kept English comment
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const mobileNav = document.getElementById('mobile-nav');
-            const bodyEl = document.body; // Reference to body
+            const bodyEl = document.body; // Reference to body // Kept English comment
 
             if (hamburgerBtn && mobileNav) {
                 hamburgerBtn.addEventListener('click', function(event) {
-                     event.stopPropagation(); // Prevent click from closing immediately
+                     event.stopPropagation(); // Prevent click from closing immediately // Kept English comment
                      const isActive = mobileNav.classList.toggle('active');
                      toggleAriaExpanded(this);
-                     bodyEl.classList.toggle('menu-open', isActive); // Toggle body class
+                     bodyEl.classList.toggle('menu-open', isActive); // Toggle body class // Kept English comment
                  });
 
-                 // Chiudi il menu quando si clicca su un link (escluso lingua)
+                 // Close the menu when clicking on a link (excluding language) // Translated comment
                  const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
                  mobileNavLinks.forEach(link => {
                     link.addEventListener('click', function() {
@@ -945,7 +945,7 @@
                     });
                  });
 
-                 // Chiudi cliccando fuori dal menu (se aperto)
+                 // Close by clicking outside the menu (if open) // Translated comment
                  document.addEventListener('click', function(event) {
                      if (mobileNav.classList.contains('active') &&
                          !hamburgerBtn.contains(event.target) &&
@@ -959,7 +959,7 @@
                      }
                  });
 
-                 // Chiudi con tasto ESC
+                 // Close with ESC key // Translated comment
                  document.addEventListener('keydown', function(event) {
                     if (event.key === 'Escape' && mobileNav.classList.contains('active')) {
                          mobileNav.classList.remove('active');
@@ -971,11 +971,11 @@
                  });
 
             } else {
-                 console.error("Hamburger button o mobile nav non trovati.");
+                 console.error("Hamburger button or mobile nav not found."); // Translated error message
             }
 
 
-            // --- LANGUAGE SELECTOR LOGIC ---
+            // --- LANGUAGE SELECTOR LOGIC --- // Kept English comment
              const languageBtn = document.getElementById('language-btn');
              const languageDropdown = document.getElementById('language-dropdown');
              const mobileLanguageBtn = document.getElementById('mobile-language-btn');
@@ -1032,51 +1032,51 @@
                  }
              });
 
-             // Prevent clicks inside dropdowns from closing them immediately
+             // Prevent clicks inside dropdowns from closing them immediately // Kept English comment
              if (languageDropdown) languageDropdown.addEventListener('click', e => e.stopPropagation());
              if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
 
-             function changeLang(lang) { // Placeholder
-                 console.log(`Lingua selezionata: ${lang}`);
+             function changeLang(lang) { // Placeholder function // Translated comment
+                 console.log(`Language selected: ${lang}`); // Translated console log
                  localStorage.setItem('selectedLanguage', lang);
-                 alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+                 alert(`Language changed to: ${lang}. (Translation logic to be implemented)`); // Translated alert message
                  // document.documentElement.lang = lang;
              }
 
              const savedLang = localStorage.getItem('selectedLanguage');
              if (savedLang) {
-                  console.log(`Lingua salvata trovata: ${savedLang}.`);
-                 // changeLang(savedLang); // Applica se vuoi
+                  console.log(`Saved language found: ${savedLang}.`); // Translated console log
+                 // changeLang(savedLang); // Apply if desired // Translated comment
                  // document.documentElement.lang = savedLang;
              }
-            // --- END: Language Selector Logic ---
+            // --- END: Language Selector Logic --- // Kept English comment
 
 
-            // --- TAB FUNCTIONALITY ---
+            // --- TAB FUNCTIONALITY --- // Kept English comment
             const tabButtons = document.querySelectorAll('.tab-button');
             const tabPanes = document.querySelectorAll('.tab-pane');
 
             if (tabButtons.length > 0 && tabPanes.length > 0) {
                 tabButtons.forEach(button => {
                     button.addEventListener('click', function() {
-                        // Deactivate all
+                        // Deactivate all // Kept English comment
                         tabButtons.forEach(btn => btn.classList.remove('active'));
                         tabPanes.forEach(pane => pane.classList.remove('active'));
 
-                        // Activate clicked button and corresponding pane
+                        // Activate clicked button and corresponding pane // Kept English comment
                         this.classList.add('active');
                         const tabId = this.getAttribute('data-tab');
                         const targetPane = document.getElementById(tabId);
                         if (targetPane) {
                             targetPane.classList.add('active');
                         } else {
-                            console.error("Tab pane not found:", tabId);
+                            console.error("Tab pane not found:", tabId); // Kept English error message
                         }
                     });
                 });
             }
 
-            // --- FAQ ACCORDION FUNCTIONALITY ---
+            // --- FAQ ACCORDION FUNCTIONALITY --- // Kept English comment
             const faqQuestions = document.querySelectorAll('.faq-question');
 
             if (faqQuestions.length > 0) {
@@ -1084,12 +1084,12 @@
                     const answer = question.nextElementSibling;
                     const icon = question.querySelector('.toggle-icon');
 
-                    if (!answer || !icon) return; // Skip if elements are missing
+                    if (!answer || !icon) return; // Skip if elements are missing // Kept English comment
 
                     question.addEventListener('click', function() {
                         const isOpening = !answer.classList.contains('active');
 
-                        // Optional: Close others before opening this one
+                        // Optional: Close others before opening this one // Kept English comment
                          /*
                          document.querySelectorAll('.faq-answer.active').forEach(openAnswer => {
                              if (openAnswer !== answer) {
@@ -1103,7 +1103,7 @@
                          });
                          */
 
-                        // Toggle the clicked item
+                        // Toggle the clicked item // Kept English comment
                         answer.classList.toggle('active');
                         question.setAttribute('aria-expanded', isOpening);
                         icon.textContent = isOpening ? '−' : '+';
@@ -1112,19 +1112,19 @@
                 });
             }
 
-             // --- CONTACT FORM HANDLING (Optional: Example using Formspree) ---
+             // --- CONTACT FORM HANDLING (Optional: Example using Formspree) --- // Kept English comment
              const contactForm = document.querySelector('.contact-form');
              if (contactForm && contactForm.action.includes('formspree.io')) {
                 contactForm.addEventListener('submit', function(e) {
-                    // Basic client-side validation can be added here if needed
-                    console.log('Form submitted to Formspree');
-                     // You might want to show a success/loading message here
-                     // Formspree handles the redirection or AJAX success message itself
+                    // Basic client-side validation can be added here if needed // Kept English comment
+                    console.log('Form submitted to Formspree'); // Kept English log
+                     // You might want to show a success/loading message here // Kept English comment
+                     // Formspree handles the redirection or AJAX success message itself // Kept English comment
                 });
              }
 
 
-        }); // Fine DOMContentLoaded
+        }); // End DOMContentLoaded // Translated comment
     </script>
 
 </body>
