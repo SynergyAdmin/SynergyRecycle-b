@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en"> <!-- Changed language -->
 <head>
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documenti Legali - SynergyRecycle.B</title> <!-- Updated Title -->
+    <title>Legal Documents - SynergyRecycle.B</title> <!-- Translated Title -->
 
     <style>
         /* === START: Styles Copied/Adapted from index.html === */
@@ -292,7 +292,7 @@
         }
 
         /* Contenuto Documento Legale */
-        .documento-legale {
+        .documento-legale { /* Kept class name */
             padding: var(--spacing-sm) 0; /* Rimuove padding laterale, gestito da container */
         }
         .documento-legale:not(:last-child) {
@@ -357,9 +357,18 @@
              font-weight: 600;
              color: var(--primary-blue);
          }
+         /* Style added for links within legal text */
+         .documento-legale a {
+            color: var(--link-color);
+            text-decoration: underline;
+         }
+         .documento-legale a:hover {
+            color: var(--link-hover-color);
+         }
+
 
         /* Ultimo Aggiornamento */
-        .ultimo-aggiornamento {
+        .ultimo-aggiornamento { /* Kept class name */
             margin-top: var(--spacing-md);
             padding-top: var(--spacing-sm);
             border-top: 1px solid #ddd;
@@ -416,56 +425,60 @@
     </style>
 </head>
 <body>
-    <!-- Elementi decorativi di sfondo -->
+    <!-- Background decorative elements -->
     <div class="bg-decoration decoration-1"></div>
     <div class="bg-decoration decoration-2"></div>
 
     <div class="container">
-        <!-- Intestazione -->
+        <!-- Header -->
         <header>
-            <a href="./" class="logo"> <!-- Logo link alla home -->
-                <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B">
-                <span>SynergyRecycle.B</span>
+            <a href="./" class="logo"> <!-- Logo link to home -->
+                <img src="./assets/img/logo da email.png" alt="SynergyRecycle.B Logo"> <!-- Kept path, translated alt -->
+                <span>SynergyRecycle.B</span> <!-- Kept brand name -->
             </a>
             <nav class="main-nav">
+                <!-- Translated nav links -->
                 <a href="./" class="button">Home</a>
-                <a href="./servizi.html" class="button">Servizi</a>
-                <a href="./sostenerci.html" class="button">Supportaci</a>
-                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./servizi.html" class="button">Services</a>
+                <a href="./sostenerci.html" class="button">Support Us</a>
+                <a href="./contattaci.html" class="button">Contact Us</a>
                 <a href="./roadmap.html" class="button">Roadmap</a>
                 <!-- START: Language Selector HTML (Desktop) -->
                 <div class="language-selector">
-                    <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
+                    <button class="language-btn" id="language-btn" aria-label="Select language" aria-haspopup="true" aria-expanded="false">🌐</button> <!-- Translated aria-label -->
                     <div class="language-dropdown" id="language-dropdown" role="menu">
-                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
-                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                        <!-- Translated language options -->
+                        <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                        <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
+                        <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
+                        <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
+                        <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
                     </div>
                 </div>
                 <!-- END: Language Selector HTML (Desktop) -->
             </nav>
-            <!-- Hamburger button con ID corretto -->
-            <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+            <!-- Hamburger button with correct ID -->
+            <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button> <!-- aria-label already English -->
         </header>
 
-        <!-- Navigazione mobile -->
+        <!-- Mobile navigation -->
         <nav class="mobile-nav" id="mobile-nav">
+             <!-- Translated nav links -->
             <a href="./" class="button">Home</a>
-            <a href="./servizi.html" class="button">Servizi</a>
-            <a href="./sostenerci.html" class="button">Supportaci</a>
-            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./servizi.html" class="button">Services</a>
+            <a href="./sostenerci.html" class="button">Support Us</a>
+            <a href="./contattaci.html" class="button">Contact Us</a>
             <a href="./roadmap.html" class="button">Roadmap</a>
             <!-- START: Language Selector HTML (Mobile) -->
             <div class="language-selector">
-                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
+                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Language</button> <!-- Translated button text -->
                 <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
+                     <!-- Translated language options -->
                     <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
-                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
                 </div>
             </div>
             <!-- END: Language Selector HTML (Mobile) -->
@@ -473,410 +486,422 @@
 
         <!-- Banner -->
         <div class="banner">
-            SynergyRecycle.B: "Trasparenza e conformità: consulta i nostri documenti legali e le politiche."
+             <!-- Translated banner text -->
+            SynergyRecycle.B: "Transparency and compliance: consult our legal documents and policies."
         </div>
-    </div> <!-- Fine container header/banner -->
+    </div> <!-- End header/banner container -->
 
-    <!-- Contenuto Principale - Documenti Legali -->
-    <main class="legal-container"> <!-- Applica classe container principale -->
+    <!-- Main Content - Legal Documents -->
+    <main class="legal-container"> <!-- Apply main container class -->
 
-        <!-- Navigazione interna -->
+        <!-- Internal navigation -->
         <nav class="legal-nav">
-             <!-- Link ai diversi documenti (potrebbero puntare ad ancore #id o a file separati) -->
+             <!-- Links to different documents (could point to #id anchors or separate files) -->
+             <!-- Translated link text, kept hrefs -->
             <a href="#privacy-policy">Privacy Policy</a>
-            <a href="#termini-condizioni">Termini e Condizioni</a>
+            <a href="#termini-condizioni">Terms and Conditions</a>
             <a href="#disclaimer">Disclaimer</a>
             <a href="#cookie-policy">Cookie Policy</a>
-            <a href="risk-policy.html">Politica dei Rischi</a> <!-- Link a file separato -->
-            <a href="kyc-aml-policy.html">KYC / AML Policy</a> <!-- Link a file separato -->
+            <a href="risk-policy.html">Risk Policy</a> <!-- Link to separate file -->
+            <a href="kyc-aml-policy.html">KYC / AML Policy</a> <!-- Link to separate file -->
         </nav>
 
-        <!-- Documento: Privacy Policy -->
-        <div class="documento-legale" id="privacy-policy">
-            <h1>Privacy Policy</h1>
+        <!-- Document: Privacy Policy -->
+        <div class="documento-legale" id="privacy-policy"> <!-- Kept class name and ID -->
+            <h1>Privacy Policy</h1> <!-- Translated title -->
 
             <section>
-                <h2>1. Introduzione</h2>
-                <p>Benvenuto nella Privacy Policy di SynergyRecycle.B. La tua privacy è importante per noi. Questa policy spiega come raccogliamo, utilizziamo, divulghiamo, trasferiamo e conserviamo le tue informazioni personali quando interagisci con i nostri servizi, sito web e applicazione mobile.</p>
+                <!-- Translated section content -->
+                <h2>1. Introduction</h2>
+                <p>Welcome to the SynergyRecycle.B Privacy Policy. Your privacy is important to us. This policy explains how we collect, use, disclose, transfer, and store your personal information when you interact with our services, website, and mobile application.</p>
             </section>
 
             <section>
-                <h2>2. Dati Raccolti</h2>
-                <h3>2.1 Tipologie di Dati</h3>
-                <p>Possiamo raccogliere diverse categorie di dati personali, tra cui:</p>
+                <h2>2. Data Collected</h2>
+                <h3>2.1 Types of Data</h3>
+                <p>We may collect different categories of personal data, including:</p>
                 <ul>
-                    <li><strong>Dati Identificativi:</strong> nome, cognome, indirizzo email, numero di telefono, data di nascita, indirizzo di residenza.</li>
-                    <li><strong>Dati Tecnici:</strong> indirizzo IP, tipo di browser, sistema operativo, informazioni sul dispositivo, identificatori univoci del dispositivo.</li>
-                    <li><strong>Dati di Utilizzo:</strong> informazioni su come utilizzi i nostri servizi, pagine visitate, tempo trascorso sul sito/app, interazioni, dati di riciclo registrati.</li>
-                    <li><strong>Dati di Geolocalizzazione:</strong> dati sulla tua posizione approssimativa o precisa (con il tuo consenso) per funzionalità come la mappa dei punti di raccolta.</li>
-                    <li><strong>Dati Finanziari:</strong> dettagli relativi a transazioni (se applicabile, ad esempio per acquisto token o servizi premium), indirizzi wallet crypto forniti volontariamente.</li>
-                    <li><strong>Dati KYC/AML:</strong> informazioni richieste per adempiere agli obblighi normativi Know Your Customer (KYC) e Anti-Money Laundering (AML), come documenti d'identità (se necessario per specifiche funzionalità).</li>
+                    <li><strong>Identifying Data:</strong> name, surname, email address, phone number, date of birth, residential address.</li>
+                    <li><strong>Technical Data:</strong> IP address, browser type, operating system, device information, unique device identifiers.</li>
+                    <li><strong>Usage Data:</strong> information on how you use our services, pages visited, time spent on the site/app, interactions, recorded recycling data.</li>
+                    <li><strong>Geolocation Data:</strong> data about your approximate or precise location (with your consent) for features like the collection point map.</li>
+                    <li><strong>Financial Data:</strong> details related to transactions (if applicable, e.g., for token purchases or premium services), voluntarily provided crypto wallet addresses.</li>
+                    <li><strong>KYC/AML Data:</strong> information required to comply with Know Your Customer (KYC) and Anti-Money Laundering (AML) regulatory obligations, such as identity documents (if necessary for specific features).</li>
                 </ul>
 
-                <h3>2.2 Modalità di Raccolta</h3>
-                <p>Raccogliamo i dati personali attraverso varie modalità:</p>
+                <h3>2.2 Collection Methods</h3>
+                <p>We collect personal data through various methods:</p>
                 <ul>
-                    <li><strong>Direttamente da te:</strong> quando ti registri, compili moduli, contatti il supporto, partecipi a sondaggi o promozioni.</li>
-                    <li><strong>Automaticamente:</strong> tramite l'uso di cookie, web beacon e altre tecnologie di tracciamento quando navighi sul nostro sito o usi la nostra app.</li>
-                    <li><strong>Da terze parti:</strong> potremmo ricevere informazioni da partner commerciali, fornitori di servizi di pagamento o piattaforme di analisi (sempre nel rispetto delle normative).</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>3. Base Giuridica del Trattamento</h2>
-                <p>Trattiamo i tuoi dati personali sulla base di uno o più dei seguenti presupposti legali:</p>
-                <ul>
-                    <li><strong>Consenso:</strong> quando ci hai fornito il tuo consenso esplicito per specifiche finalità (es. marketing).</li>
-                    <li><strong>Contratto:</strong> per adempiere agli obblighi derivanti dal contratto di servizio stipulato con te.</li>
-                    <li><strong>Obbligo Legale:</strong> per rispettare le leggi e i regolamenti applicabili (es. KYC/AML, obblighi fiscali).</li>
-                    <li><strong>Interesse Legittimo:</strong> per perseguire i nostri legittimi interessi (es. migliorare i servizi, prevenire frodi, garantire la sicurezza), a condizione che non prevalgano i tuoi diritti e libertà fondamentali.</li>
+                    <li><strong>Directly from you:</strong> when you register, fill out forms, contact support, participate in surveys or promotions.</li>
+                    <li><strong>Automatically:</strong> through the use of cookies, web beacons, and other tracking technologies when you browse our site or use our app.</li>
+                    <li><strong>From third parties:</strong> we may receive information from business partners, payment service providers, or analytics platforms (always in compliance with regulations).</li>
                 </ul>
             </section>
 
             <section>
-                <h2>4. Finalità del Trattamento</h2>
-                <p>Utilizziamo i tuoi dati personali per le seguenti finalità:</p>
+                <h2>3. Legal Basis for Processing</h2>
+                <p>We process your personal data based on one or more of the following legal grounds:</p>
                 <ul>
-                    <li>Fornire, gestire e migliorare i nostri servizi (registrazione, tracciamento riciclo, erogazione premi).</li>
-                    <li>Personalizzare la tua esperienza utente.</li>
-                    <li>Comunicare con te (supporto clienti, notifiche di servizio, aggiornamenti).</li>
-                    <li>Effettuare analisi statistiche e ricerche di mercato (in forma aggregata o anonima).</li>
-                    <li>Prevenire frodi, abusi e garantire la sicurezza della piattaforma.</li>
-                    <li>Adempiere agli obblighi legali e normativi.</li>
-                    <li>Inviarti comunicazioni di marketing e promozionali (solo con il tuo consenso).</li>
+                    <li><strong>Consent:</strong> when you have given us your explicit consent for specific purposes (e.g., marketing).</li>
+                    <li><strong>Contract:</strong> to fulfill obligations arising from the service agreement entered into with you.</li>
+                    <li><strong>Legal Obligation:</strong> to comply with applicable laws and regulations (e.g., KYC/AML, tax obligations).</li>
+                    <li><strong>Legitimate Interest:</strong> to pursue our legitimate interests (e.g., improving services, preventing fraud, ensuring security), provided that your fundamental rights and freedoms do not override these interests.</li>
                 </ul>
             </section>
 
             <section>
-                 <h2>5. Conservazione dei Dati</h2>
-                 <p>Conserviamo i tuoi dati personali solo per il tempo strettamente necessario a raggiungere le finalità per cui sono stati raccolti, nel rispetto dei seguenti criteri:</p>
+                <h2>4. Purposes of Processing</h2>
+                <p>We use your personal data for the following purposes:</p>
+                <ul>
+                    <li>To provide, manage, and improve our services (registration, recycling tracking, reward issuance).</li>
+                    <li>To personalize your user experience.</li>
+                    <li>To communicate with you (customer support, service notifications, updates).</li>
+                    <li>To perform statistical analysis and market research (in aggregate or anonymous form).</li>
+                    <li>To prevent fraud, abuse, and ensure platform security.</li>
+                    <li>To comply with legal and regulatory obligations.</li>
+                    <li>To send you marketing and promotional communications (only with your consent).</li>
+                </ul>
+            </section>
+
+            <section>
+                 <h2>5. Data Retention</h2>
+                 <p>We retain your personal data only for the time strictly necessary to achieve the purposes for which it was collected, in compliance with the following criteria:</p>
                  <ul>
-                     <li>Per la durata del rapporto contrattuale e per adempiere agli obblighi post-contrattuali.</li>
-                     <li>Per il periodo richiesto dalla legge (es. conservazione documenti fiscali).</li>
-                     <li>Fino alla revoca del consenso (per i trattamenti basati sul consenso, es. marketing).</li>
-                     <li>Per un periodo massimo definito in base al principio di necessità e proporzionalità (es. dati di navigazione, log di sicurezza). Solitamente, i dati non necessari per obblighi legali o contrattuali a lungo termine non vengono conservati oltre i 24-36 mesi.</li>
+                     <li>For the duration of the contractual relationship and to fulfill post-contractual obligations.</li>
+                     <li>For the period required by law (e.g., retention of tax documents).</li>
+                     <li>Until consent is withdrawn (for processing based on consent, e.g., marketing).</li>
+                     <li>For a maximum period defined based on the principle of necessity and proportionality (e.g., navigation data, security logs). Typically, data not required for long-term legal or contractual obligations is not kept beyond 24-36 months.</li>
                  </ul>
              </section>
 
              <section>
-                 <h2>6. Diritti dell'Interessato (GDPR)</h2>
-                 <p>In qualità di interessato, hai specifici diritti riguardo ai tuoi dati personali ai sensi del GDPR (artt. 15-22):</p>
+                 <h2>6. Data Subject Rights (GDPR)</h2>
+                 <p>As a data subject, you have specific rights regarding your personal data under the GDPR (Articles 15-22):</p>
                  <ul>
-                     <li><strong>Diritto di Accesso:</strong> ottenere conferma dell'esistenza dei tuoi dati e accedervi.</li>
-                     <li><strong>Diritto di Rettifica:</strong> correggere dati inesatti o incompleti.</li>
-                     <li><strong>Diritto alla Cancellazione ('Oblio'):</strong> richiedere la cancellazione dei tuoi dati (in determinate circostanze).</li>
-                     <li><strong>Diritto di Limitazione:</strong> richiedere la limitazione del trattamento (in determinate circostanze).</li>
-                     <li><strong>Diritto alla Portabilità:</strong> ricevere i tuoi dati in formato strutturato e trasferirli ad altro titolare (se tecnicamente fattibile).</li>
-                     <li><strong>Diritto di Opposizione:</strong> opporti al trattamento per motivi legittimi o per finalità di marketing diretto.</li>
-                     <li><strong>Diritto di Revoca del Consenso:</strong> revocare il consenso precedentemente fornito in qualsiasi momento (senza pregiudicare la liceità del trattamento basato sul consenso prima della revoca).</li>
-                     <li><strong>Diritto di Reclamo:</strong> presentare un reclamo all'Autorità Garante per la protezione dei dati personali competente.</li>
+                     <li><strong>Right of Access:</strong> obtain confirmation of the existence of your data and access it.</li>
+                     <li><strong>Right to Rectification:</strong> correct inaccurate or incomplete data.</li>
+                     <li><strong>Right to Erasure ('Right to be Forgotten'):</strong> request the deletion of your data (under certain circumstances).</li>
+                     <li><strong>Right to Restriction of Processing:</strong> request the restriction of processing (under certain circumstances).</li>
+                     <li><strong>Right to Data Portability:</strong> receive your data in a structured format and transfer it to another controller (if technically feasible).</li>
+                     <li><strong>Right to Object:</strong> object to processing for legitimate reasons or for direct marketing purposes.</li>
+                     <li><strong>Right to Withdraw Consent:</strong> withdraw previously given consent at any time (without affecting the lawfulness of processing based on consent before its withdrawal).</li>
+                     <li><strong>Right to Lodge a Complaint:</strong> file a complaint with the competent data protection supervisory authority.</li>
                  </ul>
-                 <p>Puoi esercitare i tuoi diritti contattandoci ai recapiti indicati nella sezione 10.</p>
+                 <p>You can exercise your rights by contacting us at the addresses indicated in section 10.</p>
              </section>
 
             <section>
-                <h2>7. Misure di Sicurezza</h2>
-                <p>Adottiamo misure tecniche e organizzative adeguate per proteggere i tuoi dati personali da accessi non autorizzati, perdita, distruzione o alterazione:</p>
+                <h2>7. Security Measures</h2>
+                <p>We adopt appropriate technical and organizational measures to protect your personal data from unauthorized access, loss, destruction, or alteration:</p>
                 <ul>
-                    <li>Crittografia dei dati in transito (SSL/TLS) e a riposo (ove appropriato).</li>
-                    <li>Controllo degli accessi basato sui ruoli (principio del minimo privilegio).</li>
-                    <li>Procedure di autenticazione sicura.</li>
-                    <li>Monitoraggio regolare dei sistemi e aggiornamento delle patch di sicurezza.</li>
-                    <li>Formazione del personale sulla protezione dei dati.</li>
-                    <li>Procedure per la gestione delle violazioni dei dati (Data Breach).</li>
+                    <li>Encryption of data in transit (SSL/TLS) and at rest (where appropriate).</li>
+                    <li>Role-based access control (principle of least privilege).</li>
+                    <li>Secure authentication procedures.</li>
+                    <li>Regular system monitoring and security patch updates.</li>
+                    <li>Staff training on data protection.</li>
+                    <li>Procedures for managing data breaches.</li>
                 </ul>
             </section>
 
             <section>
-                <h2>8. Comunicazione e Diffusione dei Dati</h2>
-                <p>I tuoi dati personali non saranno diffusi indiscriminatamente. Potranno essere comunicati a soggetti terzi solo se necessario per le finalità indicate e nel rispetto della legge:</p>
+                <h2>8. Data Communication and Disclosure</h2>
+                <p>Your personal data will not be disclosed indiscriminately. It may be communicated to third parties only if necessary for the stated purposes and in compliance with the law:</p>
                 <ul>
-                    <li><strong>Personale Interno Autorizzato:</strong> dipendenti e collaboratori che necessitano dei dati per svolgere le loro mansioni.</li>
-                    <li><strong>Fornitori di Servizi:</strong> soggetti terzi che agiscono come responsabili del trattamento per nostro conto (es. hosting provider, piattaforme email, fornitori di analisi, processori di pagamento). Selezioniamo fornitori che garantiscano adeguati livelli di protezione.</li>
-                    <li><strong>Consulenti e Professionisti:</strong> avvocati, commercialisti, revisori per esigenze legali o fiscali.</li>
-                    <li><strong>Autorità Pubbliche:</strong> enti governativi, autorità giudiziarie o di regolamentazione, se richiesto dalla legge o per proteggere i nostri diritti.</li>
-                    <li><strong>Partner Commerciali:</strong> solo con il tuo consenso specifico, per finalità promozionali o offerte congiunte.</li>
+                    <li><strong>Authorized Internal Staff:</strong> employees and collaborators who need the data to perform their duties.</li>
+                    <li><strong>Service Providers:</strong> third parties acting as data processors on our behalf (e.g., hosting providers, email platforms, analytics providers, payment processors). We select providers who guarantee adequate levels of protection.</li>
+                    <li><strong>Consultants and Professionals:</strong> lawyers, accountants, auditors for legal or tax needs.</li>
+                    <li><strong>Public Authorities:</strong> government bodies, judicial or regulatory authorities, if required by law or to protect our rights.</li>
+                    <li><strong>Business Partners:</strong> only with your specific consent, for promotional purposes or joint offers.</li>
                 </ul>
-                <p>Eventuali trasferimenti di dati al di fuori dello Spazio Economico Europeo (SEE) avverranno solo in presenza di adeguate garanzie (es. decisioni di adeguatezza della Commissione UE, Clausole Contrattuali Standard).</p>
+                <p>Any data transfers outside the European Economic Area (EEA) will only occur with adequate safeguards (e.g., EU Commission adequacy decisions, Standard Contractual Clauses).</p>
             </section>
 
              <section>
-                 <h2>9. Cookies e Tecnologie Simili</h2>
-                 <p>Utilizziamo cookie e tecnologie simili per diverse finalità. Per informazioni dettagliate sulle tipologie di cookie utilizzati, le loro finalità e come gestirli, ti invitiamo a consultare la nostra <a href="#cookie-policy" style="color: var(--link-color);">Cookie Policy</a> dedicata.</p>
+                 <h2>9. Cookies and Similar Technologies</h2>
+                 <p>We use cookies and similar technologies for various purposes. For detailed information on the types of cookies used, their purposes, and how to manage them, please consult our dedicated <a href="#cookie-policy" style="color: var(--link-color);">Cookie Policy</a>.</p> <!-- Kept anchor link -->
              </section>
 
             <section>
-                <h2>10. Contatti del Titolare del Trattamento</h2>
-                <p>Il Titolare del Trattamento dei tuoi dati personali è:</p>
+                <h2>10. Data Controller Contacts</h2>
+                <p>The Data Controller for your personal data is:</p>
                 <p><strong>SynergyRecycle.B</strong><br>
-                Indirizzo: [Inserire Indirizzo Completo se disponibile], 32052 Herford, Germany<br>
-                Email: <a href="mailto:SynergyRecycle.B@gmail.com" style="color: var(--link-color);">SynergyRecycle.B@gmail.com</a></p>
-                <p>Per qualsiasi domanda riguardante questa Privacy Policy o per esercitare i tuoi diritti, puoi contattarci all'indirizzo email sopra indicato.</p>
+                Address: [Insert Full Address if available], 32052 Herford, Germany<br> <!-- Kept address placeholder/info -->
+                Email: <a href="mailto:SynergyRecycle.B@gmail.com" style="color: var(--link-color);">SynergyRecycle.B@gmail.com</a></p> <!-- Kept email -->
+                <p>For any questions regarding this Privacy Policy or to exercise your rights, you can contact us at the email address provided above.</p>
             </section>
 
             <section>
-                <h2>11. Modifiche alla Privacy Policy</h2>
-                <p>Ci riserviamo il diritto di aggiornare periodicamente questa Privacy Policy per riflettere cambiamenti nei nostri servizi o nelle normative vigenti. Ti informeremo di eventuali modifiche sostanziali pubblicando la versione aggiornata sul nostro sito/app e, se opportuno, tramite comunicazione diretta. Ti invitiamo a consultare regolarmente questa pagina.</p>
+                <h2>11. Changes to the Privacy Policy</h2>
+                <p>We reserve the right to update this Privacy Policy periodically to reflect changes in our services or current regulations. We will inform you of any substantial changes by publishing the updated version on our site/app and, where appropriate, through direct communication. We invite you to consult this page regularly.</p>
             </section>
 
             <section>
-                 <h2>12. Riferimenti Normativi Principali</h2>
+                 <h2>12. Main Regulatory References</h2>
                  <ul>
-                     <li>Regolamento (UE) 2016/679 del Parlamento Europeo e del Consiglio (Regolamento Generale sulla Protezione dei Dati - GDPR).</li>
-                     <li>Decreto Legislativo 30 giugno 2003, n. 196 ("Codice in materia di protezione dei dati personali"), come modificato dal D.Lgs. 101/2018.</li>
-                     <li>Provvedimenti e Linee Guida dell'Autorità Garante per la protezione dei dati personali italiana e delle altre autorità europee competenti (EDPB).</li>
+                     <li>Regulation (EU) 2016/679 of the European Parliament and of the Council (General Data Protection Regulation - GDPR).</li>
+                     <li>Legislative Decree June 30, 2003, n. 196 ("Code regarding the protection of personal data"), as amended by D.Lgs. 101/2018. <!-- Kept specific Italian reference --></li>
+                     <li>Provisions and Guidelines of the Italian Data Protection Authority (Garante per la protezione dei dati personali) and other competent European authorities (EDPB).</li>
                  </ul>
              </section>
 
-            <div class="ultimo-aggiornamento">
-                <p><strong>Ultimo Aggiornamento:</strong> 26 Marzo 2025</p>
-                <p><strong>Versione:</strong> 1.0</p>
+            <div class="ultimo-aggiornamento"> <!-- Kept class name -->
+                 <!-- Translated text -->
+                <p><strong>Last Updated:</strong> March 26, 2025</p>
+                <p><strong>Version:</strong> 1.0</p>
             </div>
         </div>
 
-        <!-- Documento: Termini e Condizioni -->
-        <div class="documento-legale" id="termini-condizioni">
-            <h1>Termini e Condizioni di Utilizzo</h1>
+        <!-- Document: Terms and Conditions -->
+        <div class="documento-legale" id="termini-condizioni"> <!-- Kept class name and ID -->
+            <h1>Terms and Conditions of Use</h1> <!-- Translated title -->
 
              <section>
-                 <h2>1. Accettazione dei Termini</h2>
-                 <p>Utilizzando il sito web, l'applicazione mobile e i servizi offerti da SynergyRecycle.B (collettivamente, i "Servizi"), accetti di essere vincolato dai presenti Termini e Condizioni ("Termini"), dalla nostra <a href="#privacy-policy" style="color: var(--link-color);">Privacy Policy</a> e da qualsiasi altra policy o linea guida applicabile pubblicata. Se non accetti questi Termini, non sei autorizzato ad utilizzare i Servizi.</p>
+                  <!-- Translated section content -->
+                 <h2>1. Acceptance of Terms</h2>
+                 <p>By using the website, mobile application, and services offered by SynergyRecycle.B (collectively, the "Services"), you agree to be bound by these Terms and Conditions ("Terms"), our <a href="#privacy-policy" style="color: var(--link-color);">Privacy Policy</a>, and any other applicable policies or guidelines published. If you do not agree to these Terms, you are not authorized to use the Services.</p> <!-- Kept anchor link -->
              </section>
 
              <section>
-                 <h2>2. Descrizione dei Servizi</h2>
-                 <p>SynergyRecycle.B fornisce una piattaforma tecnologica basata su blockchain (Polygon) per incentivare e tracciare le attività di riciclaggio. I Servizi includono, ma non sono limitati a:</p>
+                 <h2>2. Description of Services</h2>
+                 <p>SynergyRecycle.B provides a blockchain-based technology platform (Polygon) to incentivize and track recycling activities. The Services include, but are not limited to:</p>
                  <ul>
-                     <li>Registrazione e gestione dell'account utente.</li>
-                     <li>Registrazione delle attività di riciclo presso punti convenzionati.</li>
-                     <li>Attribuzione di utility token (SRB) come ricompensa.</li>
-                     <li>Visualizzazione dell'impatto ambientale personale e collettivo.</li>
-                     <li>Possibilità di supportare progetti ambientali tramite i token SRB.</li>
-                     <li>Accesso a informazioni e contenuti relativi alla sostenibilità e al riciclo.</li>
-                     <li>Potenziali funzionalità future come staking, marketplace e carta di pagamento (soggette a sviluppo e lancio).</li>
+                     <li>User account registration and management.</li>
+                     <li>Recording recycling activities at affiliated points.</li>
+                     <li>Attribution of utility tokens (SRB) as rewards.</li>
+                     <li>Viewing personal and collective environmental impact.</li>
+                     <li>Ability to support environmental projects using SRB tokens.</li>
+                     <li>Access to information and content related to sustainability and recycling.</li>
+                     <li>Potential future features such as staking, marketplace, and payment card (subject to development and launch).</li>
                  </ul>
-                 <p>Ci riserviamo il diritto di modificare, sospendere o interrompere qualsiasi aspetto dei Servizi in qualsiasi momento, con o senza preavviso.</p>
+                 <p>We reserve the right to modify, suspend, or discontinue any aspect of the Services at any time, with or without notice.</p>
              </section>
 
             <section>
-                 <h2>3. Registrazione Account e Obblighi dell'Utente</h2>
-                 <p>Per utilizzare alcune funzionalità dei Servizi, potrebbe essere richiesta la creazione di un account. Ti impegni a:</p>
+                 <h2>3. Account Registration and User Obligations</h2>
+                 <p>To use certain features of the Services, account creation may be required. You agree to:</p>
                  <ul>
-                     <li>Fornire informazioni accurate, complete e aggiornate durante la registrazione e mantenerle tali.</li>
-                     <li>Mantenere la riservatezza delle tue credenziali di accesso (password) e non condividerle con terzi.</li>
-                     <li>Essere l'unico responsabile per tutte le attività che avvengono tramite il tuo account.</li>
-                     <li>Notificarci immediatamente qualsiasi uso non autorizzato del tuo account o violazione della sicurezza.</li>
-                     <li>Utilizzare i Servizi in modo lecito, etico e conforme ai presenti Termini e a tutte le leggi applicabili.</li>
-                     <li>Non utilizzare i Servizi per scopi illegali, fraudolenti, molesti o dannosi.</li>
-                     <li>Non interferire con il corretto funzionamento dei Servizi o tentare di accedere ad aree riservate senza autorizzazione.</li>
-                     <li>Rispettare i diritti di proprietà intellettuale nostri e di terzi.</li>
+                     <li>Provide accurate, complete, and up-to-date information during registration and maintain it as such.</li>
+                     <li>Maintain the confidentiality of your login credentials (password) and not share them with third parties.</li>
+                     <li>Be solely responsible for all activities that occur through your account.</li>
+                     <li>Notify us immediately of any unauthorized use of your account or security breach.</li>
+                     <li>Use the Services lawfully, ethically, and in accordance with these Terms and all applicable laws.</li>
+                     <li>Not use the Services for illegal, fraudulent, harassing, or harmful purposes.</li>
+                     <li>Not interfere with the proper functioning of the Services or attempt to access restricted areas without authorization.</li>
+                     <li>Respect our intellectual property rights and those of third parties.</li>
                  </ul>
-                 <p>Potremmo richiedere procedure di verifica dell'identità (KYC) per determinate funzionalità o per adempiere a obblighi normativi.</p>
+                 <p>We may require identity verification procedures (KYC) for certain features or to comply with regulatory obligations.</p>
              </section>
 
              <section>
-                 <h2>4. Utility Token (SRB)</h2>
-                 <p>I token SRB sono utility token progettati per essere utilizzati all'interno dell'ecosistema SynergyRecycle.B.</p>
+                 <h2>4. Utility Tokens (SRB)</h2>
+                 <p>SRB tokens are utility tokens designed for use within the SynergyRecycle.B ecosystem.</p>
                  <ul>
-                     <li><strong>Natura:</strong> I token SRB non rappresentano azioni, quote di proprietà, diritti di voto o diritti a ricevere profitti o dividendi da SynergyRecycle.B. Non sono considerati strumenti finanziari ai sensi della normativa vigente.</li>
-                     <li><strong>Acquisizione:</strong> I token possono essere ottenuti tramite attività di riciclo verificate, partecipazione a promozioni, acquisto durante fasi di vendita specifiche (ICO, se applicabile) o scambio su piattaforme terze (una volta listati).</li>
-                     <li><strong>Utilizzo:</strong> L'utilità dei token è definita all'interno della piattaforma (es. sconti, supporto progetti, accesso a funzioni) e può evolvere nel tempo.</li>
-                     <li><strong>Valore e Rischio:</strong> Il valore dei token SRB può fluttuare significativamente e dipende da fattori di mercato, adozione della piattaforma e altri elementi. Non vi è alcuna garanzia di valore o liquidità. L'acquisizione e la detenzione di token comportano rischi, inclusa la possibile perdita totale del valore.</li>
-                     <li><strong>Trasferimenti:</strong> I trasferimenti di token SRB sulla blockchain sono irreversibili. È tua responsabilità assicurarti della correttezza degli indirizzi e delle reti utilizzate.</li>
+                     <li><strong>Nature:</strong> SRB tokens do not represent shares, ownership stakes, voting rights, or rights to receive profits or dividends from SynergyRecycle.B. They are not considered financial instruments under current regulations.</li>
+                     <li><strong>Acquisition:</strong> Tokens can be obtained through verified recycling activities, participation in promotions, purchase during specific sale phases (ICO, if applicable), or exchange on third-party platforms (once listed).</li>
+                     <li><strong>Usage:</strong> The utility of the tokens is defined within the platform (e.g., discounts, project support, feature access) and may evolve over time.</li>
+                     <li><strong>Value and Risk:</strong> The value of SRB tokens can fluctuate significantly and depends on market factors, platform adoption, and other elements. There is no guarantee of value or liquidity. Acquiring and holding tokens involves risks, including the possible total loss of value.</li>
+                     <li><strong>Transfers:</strong> Transfers of SRB tokens on the blockchain are irreversible. It is your responsibility to ensure the correctness of the addresses and networks used.</li>
                  </ul>
              </section>
 
             <section>
-                <h2>5. Proprietà Intellettuale</h2>
-                <p>Tutti i contenuti, marchi, loghi, software, design e materiali presenti sui Servizi ("Proprietà Intellettuale") sono di proprietà esclusiva di SynergyRecycle.B o dei suoi licenzianti e sono protetti dalle leggi sul diritto d'autore, sui marchi e altre leggi sulla proprietà intellettuale.</p>
-                <p>Ti viene concessa una licenza limitata, non esclusiva, non trasferibile e revocabile per accedere e utilizzare i Servizi e la Proprietà Intellettuale esclusivamente per uso personale e non commerciale, in conformità con questi Termini. È vietata qualsiasi altra forma di riproduzione, distribuzione, modifica, decompilazione o creazione di opere derivate senza il nostro previo consenso scritto.</p>
+                <h2>5. Intellectual Property</h2>
+                <p>All content, trademarks, logos, software, designs, and materials present on the Services ("Intellectual Property") are the exclusive property of SynergyRecycle.B or its licensors and are protected by copyright, trademark, and other intellectual property laws.</p>
+                <p>You are granted a limited, non-exclusive, non-transferable, and revocable license to access and use the Services and Intellectual Property solely for personal, non-commercial use, in accordance with these Terms. Any other form of reproduction, distribution, modification, decompilation, or creation of derivative works without our prior written consent is prohibited.</p>
             </section>
 
              <section>
-                 <h2>6. Esclusione di Garanzie e Limitazione di Responsabilità</h2>
-                 <p>I Servizi sono forniti "così come sono" ("as is") e "come disponibili" ("as available"), senza garanzie di alcun tipo, esplicite o implicite. Decliniamo specificamente qualsiasi garanzia di commerciabilità, idoneità per uno scopo particolare, non violazione e accuratezza.</p>
-                 <p>Non garantiamo che i Servizi saranno ininterrotti, privi di errori, sicuri o che eventuali difetti verranno corretti. L'utilizzo dei Servizi è a tuo esclusivo rischio.</p>
-                 <p>Nella misura massima consentita dalla legge, SynergyRecycle.B, i suoi dirigenti, dipendenti, agenti e affiliati non saranno responsabili per danni indiretti, incidentali, speciali, consequenziali o punitivi, inclusi, ma non limitati a, perdita di profitti, dati, utilizzo, avviamento o altre perdite intangibili, derivanti da:</p>
+                 <h2>6. Disclaimer of Warranties and Limitation of Liability</h2>
+                 <p>The Services are provided "as is" and "as available," without warranties of any kind, express or implied. We specifically disclaim any warranties of merchantability, fitness for a particular purpose, non-infringement, and accuracy.</p>
+                 <p>We do not warrant that the Services will be uninterrupted, error-free, secure, or that any defects will be corrected. Your use of the Services is at your sole risk.</p>
+                 <p>To the maximum extent permitted by law, SynergyRecycle.B, its officers, employees, agents, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including, but not limited to, loss of profits, data, use, goodwill, or other intangible losses, resulting from:</p>
                  <ul>
-                     <li>Il tuo accesso o utilizzo o impossibilità di accesso o utilizzo dei Servizi.</li>
-                     <li>Qualsiasi condotta o contenuto di terze parti sui Servizi.</li>
-                     <li>Qualsiasi contenuto ottenuto dai Servizi.</li>
-                     <li>Accesso, uso o alterazione non autorizzati delle tue trasmissioni o contenuti.</li>
-                     <li>Qualsiasi questione relativa ai token SRB, inclusa la loro volatilità o perdita di valore.</li>
+                     <li>Your access to or use of or inability to access or use the Services.</li>
+                     <li>Any conduct or content of any third party on the Services.</li>
+                     <li>Any content obtained from the Services.</li>
+                     <li>Unauthorized access, use, or alteration of your transmissions or content.</li>
+                     <li>Any matter relating to SRB tokens, including their volatility or loss of value.</li>
                  </ul>
-                 <p>La nostra responsabilità totale complessiva derivante da o relativa ai presenti Termini o ai Servizi non supererà l'importo maggiore tra cento Euro (€100) o l'importo da te pagato a noi, se del caso, nei sei mesi precedenti l'evento che ha dato origine alla responsabilità.</p>
+                 <p>Our total aggregate liability arising out of or relating to these Terms or the Services will not exceed the greater of one hundred Euros (€100) or the amount you paid to us, if any, in the six months preceding the event giving rise to the liability.</p>
              </section>
 
             <section>
-                <h2>7. Indennizzo</h2>
-                 <p>Accetti di difendere, indennizzare e tenere indenne SynergyRecycle.B, i suoi affiliati, dirigenti, dipendenti e agenti da e contro qualsiasi reclamo, danno, obbligo, perdita, responsabilità, costo o debito e spesa (incluse, ma non limitate a, le spese legali) derivanti da: (i) il tuo utilizzo e accesso ai Servizi; (ii) la tua violazione di qualsiasi termine dei presenti Termini; (iii) la tua violazione di qualsiasi diritto di terzi, inclusi, senza limitazione, diritti d'autore, proprietà o privacy; o (iv) qualsiasi reclamo secondo cui i tuoi contenuti hanno causato danni a terzi.</p>
+                <h2>7. Indemnification</h2>
+                 <p>You agree to defend, indemnify, and hold harmless SynergyRecycle.B, its affiliates, officers, employees, and agents from and against any claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees) arising from: (i) your use of and access to the Services; (ii) your violation of any term of these Terms; (iii) your violation of any third-party right, including without limitation any copyright, property, or privacy right; or (iv) any claim that your content caused damage to a third party.</p>
             </section>
 
             <section>
-                <h2>8. Modifiche ai Termini</h2>
-                <p>Ci riserviamo il diritto, a nostra esclusiva discrezione, di modificare o sostituire i presenti Termini in qualsiasi momento. Se una revisione è sostanziale, cercheremo di fornire un preavviso di almeno 30 giorni prima che i nuovi termini entrino in vigore. Ciò che costituisce una modifica sostanziale sarà determinato a nostra esclusiva discrezione. Continuando ad accedere o utilizzare i nostri Servizi dopo l'entrata in vigore di tali revisioni, accetti di essere vincolato dai termini rivisti.</p>
+                <h2>8. Changes to Terms</h2>
+                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion. By continuing to access or use our Services after those revisions become effective, you agree to be bound by the revised terms.</p>
             </section>
 
              <section>
-                 <h2>9. Legge Applicabile e Risoluzione delle Controversie</h2>
-                 <p>I presenti Termini saranno regolati e interpretati in conformità con le leggi della Repubblica Federale di Germania, senza riguardo alle disposizioni sui conflitti di legge.</p>
-                 <p>Qualsiasi controversia derivante da o relativa ai presenti Termini o ai Servizi sarà soggetta alla giurisdizione esclusiva dei tribunali competenti di Herford, Germania, salvo diversa disposizione imperativa di legge a tutela dei consumatori.</p>
+                 <h2>9. Governing Law and Dispute Resolution</h2>
+                 <p>These Terms shall be governed and construed in accordance with the laws of the Federal Republic of Germany, without regard to its conflict of law provisions.</p>
+                 <p>Any dispute arising from or relating to these Terms or the Services shall be subject to the exclusive jurisdiction of the competent courts of Herford, Germany, unless otherwise mandatorily provided by consumer protection law.</p> <!-- Kept specific location -->
              </section>
 
             <section>
-                <h2>10. Contatti</h2>
-                 <p>Per qualsiasi domanda riguardante i presenti Termini e Condizioni, ti preghiamo di contattarci all'indirizzo email: <a href="mailto:SynergyRecycle.B@gmail.com" style="color: var(--link-color);">SynergyRecycle.B@gmail.com</a>.</p>
+                <h2>10. Contact</h2>
+                 <p>For any questions regarding these Terms and Conditions, please contact us at the email address: <a href="mailto:SynergyRecycle.B@gmail.com" style="color: var(--link-color);">SynergyRecycle.B@gmail.com</a>.</p> <!-- Kept email -->
             </section>
 
-            <div class="ultimo-aggiornamento">
-                <p><strong>Ultimo Aggiornamento:</strong> 26 Marzo 2025</p>
-                <p><strong>Versione:</strong> 1.0</p>
+            <div class="ultimo-aggiornamento"> <!-- Kept class name -->
+                 <!-- Translated text -->
+                <p><strong>Last Updated:</strong> March 26, 2025</p>
+                <p><strong>Version:</strong> 1.0</p>
             </div>
         </div>
 
-        <!-- Documento: Disclaimer -->
-        <div class="documento-legale" id="disclaimer">
-             <h1>Disclaimer Legale</h1>
+        <!-- Document: Disclaimer -->
+        <div class="documento-legale" id="disclaimer"> <!-- Kept class name and ID -->
+             <h1>Legal Disclaimer</h1> <!-- Translated title -->
 
              <section>
-                 <h2>1. Nessuna Consulenza Finanziaria o di Investimento</h2>
-                 <p>Le informazioni fornite su questo sito web, nell'applicazione mobile, nel whitepaper e in qualsiasi altro materiale di SynergyRecycle.B (collettivamente, i "Materiali") sono solo a scopo informativo generale. Nessuna informazione contenuta nei Materiali deve essere interpretata come consulenza finanziaria, di investimento, legale, fiscale o di altro tipo.</p>
-                 <p>SynergyRecycle.B non è un consulente finanziario registrato o un broker/dealer. I contenuti presentati non costituiscono una sollecitazione, raccomandazione, approvazione o offerta da parte di SynergyRecycle.B o di terzi fornitori di servizi per acquistare o vendere titoli, criptovalute (inclusi i token SRB) o altri strumenti finanziari.</p>
-                 <p>Dovresti consultare i tuoi consulenti finanziari, legali e fiscali professionisti prima di prendere qualsiasi decisione di investimento o finanziaria. L'investimento in criptovalute e progetti blockchain comporta rischi significativi, inclusa la possibile perdita totale del capitale investito.</p>
+                  <!-- Translated section content -->
+                 <h2>1. No Financial or Investment Advice</h2>
+                 <p>The information provided on this website, in the mobile application, in the whitepaper, and in any other SynergyRecycle.B materials (collectively, the "Materials") is for general informational purposes only. No information contained in the Materials should be construed as financial, investment, legal, tax, or other advice.</p>
+                 <p>SynergyRecycle.B is not a registered financial advisor or broker/dealer. The content presented does not constitute a solicitation, recommendation, endorsement, or offer by SynergyRecycle.B or any third-party service provider to buy or sell any securities, cryptocurrencies (including SRB tokens), or other financial instruments.</p>
+                 <p>You should consult your own professional financial, legal, and tax advisors before making any investment or financial decisions. Investing in cryptocurrencies and blockchain projects involves significant risks, including the possible total loss of invested capital.</p>
              </section>
 
              <section>
-                 <h2>2. Accuratezza delle Informazioni</h2>
-                 <p>Sebbene ci sforziamo di garantire che le informazioni contenute nei Materiali siano accurate e aggiornate, non forniamo alcuna garanzia, esplicita o implicita, sulla completezza, accuratezza, affidabilità, idoneità o disponibilità delle informazioni, dei prodotti, dei servizi o della grafica correlata contenuti nei Materiali per qualsiasi scopo.</p>
-                 <p>Qualsiasi affidamento tu faccia su tali informazioni è, pertanto, strettamente a tuo rischio. Ci riserviamo il diritto di modificare i contenuti in qualsiasi momento senza preavviso.</p>
+                 <h2>2. Accuracy of Information</h2>
+                 <p>While we strive to ensure that the information contained in the Materials is accurate and up-to-date, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the information, products, services, or related graphics contained in the Materials for any purpose.</p>
+                 <p>Any reliance you place on such information is therefore strictly at your own risk. We reserve the right to modify the contents at any time without notice.</p>
              </section>
 
              <section>
-                 <h2>3. Rischi Relativi ai Token SRB e alla Piattaforma</h2>
-                 <p>L'acquisizione, la detenzione e l'utilizzo dei token SRB comportano rischi significativi. Questi includono, ma non sono limitati a:</p>
+                 <h2>3. Risks Related to SRB Tokens and the Platform</h2>
+                 <p>Acquiring, holding, and using SRB tokens involve significant risks. These include, but are not limited to:</p>
                  <ul>
-                     <li><strong>Volatilità del Mercato:</strong> Il prezzo dei token SRB può fluttuare notevolmente e potresti perdere l'intero valore del tuo acquisto.</li>
-                     <li><strong>Rischi Normativi:</strong> Le leggi e i regolamenti relativi a blockchain, criptovalute e utility token sono in continua evoluzione e potrebbero influire negativamente sul progetto o sul valore dei token.</li>
-                     <li><strong>Rischi Tecnologici:</strong> La piattaforma e gli smart contract potrebbero essere soggetti a bug, errori, exploit o attacchi informatici.</li>
-                     <li><strong>Rischi Operativi:</strong> Il successo del progetto dipende dalla capacità del team di eseguire la roadmap e raggiungere gli obiettivi prefissati.</li>
-                     <li><strong>Rischi di Liquidità:</strong> Non vi è alcuna garanzia che i token SRB saranno listati su exchange o che esisterà un mercato liquido per essi.</li>
+                     <li><strong>Market Volatility:</strong> The price of SRB tokens can fluctuate greatly, and you could lose the entire value of your purchase.</li>
+                     <li><strong>Regulatory Risks:</strong> Laws and regulations concerning blockchain, cryptocurrencies, and utility tokens are constantly evolving and could adversely affect the project or the value of the tokens.</li>
+                     <li><strong>Technological Risks:</strong> The platform and smart contracts may be subject to bugs, errors, exploits, or cyber-attacks.</li>
+                     <li><strong>Operational Risks:</strong> The success of the project depends on the team's ability to execute the roadmap and achieve the stated goals.</li>
+                     <li><strong>Liquidity Risks:</strong> There is no guarantee that SRB tokens will be listed on exchanges or that a liquid market for them will exist.</li>
                  </ul>
-                 <p>Facendo affidamento sulle informazioni o partecipando al progetto, riconosci e accetti questi rischi.</p>
+                 <p>By relying on the information or participating in the project, you acknowledge and accept these risks.</p>
              </section>
 
              <section>
-                 <h2>4. Dichiarazioni Previsionali (Forward-Looking Statements)</h2>
-                 <p>I Materiali possono contenere dichiarazioni previsionali basate su ipotesi, aspettative e proiezioni attuali del management riguardo a eventi futuri. Tali dichiarazioni sono soggette a rischi e incertezze che potrebbero far sì che i risultati effettivi differiscano materialmente da quelli previsti. Non ci assumiamo alcun obbligo di aggiornare o rivedere pubblicamente alcuna dichiarazione previsionale.</p>
+                 <h2>4. Forward-Looking Statements</h2>
+                 <p>The Materials may contain forward-looking statements based on management's current assumptions, expectations, and projections regarding future events. Such statements are subject to risks and uncertainties that could cause actual results to differ materially from those anticipated. We undertake no obligation to publicly update or revise any forward-looking statements.</p>
              </section>
 
             <section>
-                <h2>5. Link Esterni</h2>
-                <p>I nostri Servizi possono contenere link a siti web o risorse di terze parti. Forniamo questi link solo per comodità e non siamo responsabili per il contenuto, i prodotti o i servizi presenti o disponibili su tali siti web o risorse, né per i link visualizzati su tali siti. Riconosci la tua esclusiva responsabilità e ti assumi tutti i rischi derivanti dal tuo utilizzo di qualsiasi sito web o risorsa di terze parti.</p>
+                <h2>5. External Links</h2>
+                <p>Our Services may contain links to third-party websites or resources. We provide these links only as a convenience and are not responsible for the content, products, or services on or available from those websites or resources or links displayed on such sites. You acknowledge sole responsibility for and assume all risk arising from your use of any third-party websites or resources.</p>
             </section>
 
              <section>
-                 <h2>6. Nessuna Garanzia sui Risultati</h2>
-                 <p>Non garantiamo alcun risultato specifico o ritorno finanziario derivante dall'utilizzo dei Servizi o dalla detenzione dei token SRB.</p>
+                 <h2>6. No Guarantee of Results</h2>
+                 <p>We do not guarantee any specific results or financial returns from using the Services or holding SRB tokens.</p>
              </section>
 
-            <div class="ultimo-aggiornamento">
-                <p><strong>Ultimo Aggiornamento:</strong> 26 Marzo 2025</p>
-                <p><strong>Versione:</strong> 1.0</p>
+            <div class="ultimo-aggiornamento"> <!-- Kept class name -->
+                 <!-- Translated text -->
+                <p><strong>Last Updated:</strong> March 26, 2025</p>
+                <p><strong>Version:</strong> 1.0</p>
             </div>
         </div>
 
-        <!-- Documento: Cookie Policy -->
-        <div class="documento-legale" id="cookie-policy">
-            <h1>Cookie Policy</h1>
+        <!-- Document: Cookie Policy -->
+        <div class="documento-legale" id="cookie-policy"> <!-- Kept class name and ID -->
+            <h1>Cookie Policy</h1> <!-- Translated title -->
 
             <section>
-                <h2>1. Cosa sono i Cookie</h2>
-                <p>I cookie sono piccoli file di testo che i siti web visitati dall'utente inviano e registrano sul suo computer o dispositivo mobile, per essere poi ritrasmessi agli stessi siti alla successiva visita. Grazie ai cookie un sito ricorda le azioni e preferenze dell'utente (come, ad esempio, i dati di login, la lingua prescelta, le dimensioni dei caratteri, altre impostazioni di visualizzazione, ecc.) in modo che non debbano essere indicate nuovamente quando l'utente torni a visitare detto sito o navighi da una pagina all'altra di esso.</p>
-                <p>I cookie, quindi, sono usati per eseguire autenticazioni informatiche, monitoraggio di sessioni e memorizzazione di informazioni riguardanti le attività degli utenti che accedono ad un sito e possono contenere anche un codice identificativo unico che consente di tenere traccia della navigazione dell'utente all'interno del sito stesso per finalità statistiche o pubblicitarie.</p>
+                <!-- Translated section content -->
+                <h2>1. What are Cookies</h2>
+                <p>Cookies are small text files that websites visited by the user send and record on their computer or mobile device, to then be re-transmitted to the same sites on the next visit. Thanks to cookies, a site remembers the user's actions and preferences (such as, for example, login data, chosen language, font size, other display settings, etc.) so that they do not have to be indicated again when the user returns to visit said site or navigates from one page to another of it.</p>
+                <p>Cookies, therefore, are used to perform computer authentication, session monitoring, and storage of information regarding the activities of users accessing a site and may also contain a unique identification code that allows tracking the user's navigation within the site itself for statistical or advertising purposes.</p>
             </section>
 
             <section>
-                 <h2>2. Tipologie di Cookie Utilizzati</h2>
-                 <p>Questo sito utilizza diverse tipologie di cookie:</p>
+                 <h2>2. Types of Cookies Used</h2>
+                 <p>This site uses different types of cookies:</p>
                  <ul>
                      <li>
-                         <strong>Cookie Tecnici Essenziali:</strong> Questi cookie sono strettamente necessari per consentire la navigazione e la fruizione del sito web (es. cookie di sessione per l'autenticazione). Non richiedono il consenso preventivo dell'utente. Senza questi cookie, alcune funzionalità potrebbero non essere disponibili.
+                         <strong>Essential Technical Cookies:</strong> These cookies are strictly necessary to allow navigation and use of the website (e.g., session cookies for authentication). They do not require the user's prior consent. Without these cookies, some features may not be available.
                      </li>
                      <li>
-                         <strong>Cookie di Funzionalità:</strong> Permettono al sito di ricordare le scelte effettuate dall'utente (come la lingua o altre preferenze di personalizzazione) per fornire una navigazione più personalizzata e migliorata. Possono essere impostati da noi o da fornitori terzi i cui servizi sono stati aggiunti alle nostre pagine. Richiedono il consenso se non strettamente necessari.
+                         <strong>Functionality Cookies:</strong> Allow the site to remember the choices made by the user (such as language or other customization preferences) to provide a more personalized and improved navigation. They may be set by us or by third-party providers whose services have been added to our pages. They require consent if not strictly necessary.
                      </li>
                      <li>
-                         <strong>Cookie Analitici (di Performance):</strong> Questi cookie ci aiutano a capire come i visitatori interagiscono con il sito web, raccogliendo informazioni in forma aggregata e anonima sul numero degli utenti, le pagine visitate e le sorgenti di traffico. Utilizziamo questi dati per migliorare le prestazioni del nostro sito. Potremmo utilizzare servizi di terze parti (es. Google Analytics) configurati per ridurre il potere identificativo dei cookie (anonimizzazione IP). Per questi cookie, se anonimizzati, il consenso non è strettamente necessario, ma viene spesso richiesto per trasparenza.
+                         <strong>Analytical (Performance) Cookies:</strong> These cookies help us understand how visitors interact with the website, collecting information in aggregate and anonymous form on the number of users, pages visited, and traffic sources. We use this data to improve the performance of our site. We may use third-party services (e.g., Google Analytics) configured to reduce the identifying power of cookies (IP anonymization). For these cookies, if anonymized, consent is not strictly necessary, but is often requested for transparency.
                      </li>
                      <li>
-                         <strong>Cookie di Profilazione/Marketing (se utilizzati):</strong> Questi cookie (nostri o di terze parti) sono utilizzati per creare profili relativi all'utente al fine di inviare messaggi pubblicitari in linea con le preferenze manifestate dallo stesso nell'ambito della navigazione in rete. <strong>Attualmente, potremmo non utilizzare cookie di profilazione diretta.</strong> Qualora dovessimo implementarli, richiederemo il tuo consenso esplicito tramite un apposito banner.
+                         <strong>Profiling/Marketing Cookies (if used):</strong> These cookies (ours or third-party) are used to create user profiles in order to send advertising messages in line with the preferences expressed by the user while browsing the web. <strong>Currently, we may not use direct profiling cookies.</strong> Should we implement them, we will request your explicit consent via a specific banner.
                      </li>
                  </ul>
              </section>
 
             <section>
-                <h2>3. Elenco dei Cookie Utilizzati</h2>
-                 <p>Di seguito (o tramite il nostro strumento di gestione del consenso/banner cookie) puoi trovare dettagli specifici sui cookie utilizzati:</p>
+                <h2>3. List of Cookies Used</h2>
+                 <p>Below (or via our consent management tool/cookie banner) you can find specific details about the cookies used:</p>
                  <ul>
-                     <li><strong>Nome Cookie:</strong> [Es. session_id] | <strong>Tipo:</strong> Tecnico | <strong>Durata:</strong> Sessione | <strong>Finalità:</strong> Mantenere attiva la sessione utente.</li>
-                     <li><strong>Nome Cookie:</strong> [Es. lang_pref] | <strong>Tipo:</strong> Funzionalità | <strong>Durata:</strong> [Es. 1 anno] | <strong>Finalità:</strong> Memorizzare la preferenza linguistica.</li>
-                     <li><strong>Nome Cookie:</strong> [Es. _ga, _gid (Google Analytics)] | <strong>Tipo:</strong> Analitico (Anonimizzato) | <strong>Durata:</strong> [Specificata da Google] | <strong>Finalità:</strong> Analisi statistiche aggregate sul traffico.</li>
-                     <li><i>(Eventuali altri cookie specifici verranno elencati qui o nel centro preferenze)</i></li>
+                      <!-- Example translated, placeholders kept -->
+                     <li><strong>Cookie Name:</strong> [e.g., session_id] | <strong>Type:</strong> Technical | <strong>Duration:</strong> Session | <strong>Purpose:</strong> Maintain user session active.</li>
+                     <li><strong>Cookie Name:</strong> [e.g., lang_pref] | <strong>Type:</strong> Functionality | <strong>Duration:</strong> [e.g., 1 year] | <strong>Purpose:</strong> Store language preference.</li>
+                     <li><strong>Cookie Name:</strong> [e.g., _ga, _gid (Google Analytics)] | <strong>Type:</strong> Analytical (Anonymized) | <strong>Duration:</strong> [Specified by Google] | <strong>Purpose:</strong> Aggregate statistical analysis of traffic.</li>
+                     <li><i>(Any other specific cookies will be listed here or in the preference center)</i></li>
                  </ul>
-                 <p>Per i cookie di terze parti, ti invitiamo a consultare le rispettive informative sulla privacy e cookie policy.</p>
+                 <p>For third-party cookies, we invite you to consult their respective privacy and cookie policies.</p>
              </section>
 
              <section>
-                 <h2>4. Gestione delle Preferenze sui Cookie</h2>
-                 <p>Puoi gestire le tue preferenze relative ai cookie in diversi modi:</p>
+                 <h2>4. Managing Cookie Preferences</h2>
+                 <p>You can manage your cookie preferences in several ways:</p>
                  <ul>
-                     <li><strong>Tramite il Banner Cookie:</strong> Al tuo primo accesso al sito (o dopo aver cancellato i cookie), ti verrà mostrato un banner informativo che ti permette di accettare tutti i cookie, rifiutare quelli non essenziali o personalizzare le tue scelte.</li>
-                     <li><strong>Tramite le Impostazioni del Browser:</strong> La maggior parte dei browser consente di visualizzare, gestire, eliminare e bloccare i cookie per un sito web. Tieni presente che la disabilitazione di tutti i cookie, inclusi quelli tecnici, potrebbe compromettere alcune funzionalità del sito. Consulta la guida del tuo browser per maggiori informazioni:
+                     <li><strong>Via the Cookie Banner:</strong> On your first visit to the site (or after clearing cookies), you will be shown an information banner allowing you to accept all cookies, reject non-essential ones, or customize your choices.</li>
+                     <li><strong>Via Browser Settings:</strong> Most browsers allow you to view, manage, delete, and block cookies for a website. Keep in mind that disabling all cookies, including technical ones, may compromise some site functionalities. Consult your browser's guide for more information:
                          <ul>
+                              <!-- Translated browser names, kept links -->
                              <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" style="color: var(--link-color);">Google Chrome</a></li>
-                             <li><a href="https://support.mozilla.org/it/kb/Gestione%20dei%20cookie" target="_blank" rel="noopener noreferrer" style="color: var(--link-color);">Mozilla Firefox</a></li>
-                             <li><a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" style="color: var(--link-color);">Apple Safari</a></li>
-                             <li><a href="https://support.microsoft.com/it-it/windows/eliminare-e-gestire-i-cookie-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer" style="color: var(--link-color);">Microsoft Edge / Internet Explorer</a></li>
+                             <li><a href="https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox" target="_blank" rel="noopener noreferrer" style="color: var(--link-color);">Mozilla Firefox</a></li>
+                             <li><a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" target="_blank" rel="noopener noreferrer" style="color: var(--link-color);">Apple Safari</a></li>
+                             <li><a href="https://support.microsoft.com/en-us/windows/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer" style="color: var(--link-color);">Microsoft Edge / Internet Explorer</a></li>
                          </ul>
                      </li>
-                     <li><strong>Tramite Strumenti Online:</strong> Puoi utilizzare servizi come <a href="https://www.youronlinechoices.com/it/" target="_blank" rel="noopener noreferrer" style="color: var(--link-color);">YourOnlineChoices</a> (per la pubblicità comportamentale) per gestire le preferenze di tracciamento di molte società pubblicitarie.</li>
+                     <li><strong>Via Online Tools:</strong> You can use services like <a href="https://www.youronlinechoices.com/" target="_blank" rel="noopener noreferrer" style="color: var(--link-color);">YourOnlineChoices</a> (for behavioral advertising) to manage the tracking preferences of many advertising companies.</li> <!-- Updated link to likely English version -->
                  </ul>
-                 <p>La revoca del consenso per i cookie di profilazione (se presenti) non pregiudica la liceità del trattamento basato sul consenso prestato prima della revoca.</p>
+                 <p>Withdrawing consent for profiling cookies (if present) does not affect the lawfulness of processing based on consent given before the withdrawal.</p>
              </section>
 
             <section>
-                 <h2>5. Titolare del Trattamento e Contatti</h2>
-                 <p>Il Titolare del Trattamento è SynergyRecycle.B, come specificato nella nostra <a href="#privacy-policy" style="color: var(--link-color);">Privacy Policy</a>. Per qualsiasi domanda relativa a questa Cookie Policy, puoi contattarci a <a href="mailto:SynergyRecycle.B@gmail.com" style="color: var(--link-color);">SynergyRecycle.B@gmail.com</a>.</p>
+                 <h2>5. Data Controller and Contacts</h2>
+                 <p>The Data Controller is SynergyRecycle.B, as specified in our <a href="#privacy-policy" style="color: var(--link-color);">Privacy Policy</a>. For any questions regarding this Cookie Policy, you can contact us at <a href="mailto:SynergyRecycle.B@gmail.com" style="color: var(--link-color);">SynergyRecycle.B@gmail.com</a>.</p> <!-- Kept anchor link and email -->
              </section>
 
             <section>
-                <h2>6. Aggiornamenti della Policy</h2>
-                <p>Questa Cookie Policy può essere soggetta a modifiche nel tempo. Ti invitiamo a consultarla regolarmente. L'ultima data di aggiornamento è indicata in calce.</p>
+                <h2>6. Policy Updates</h2>
+                <p>This Cookie Policy may be subject to changes over time. We invite you to consult it regularly. The last update date is indicated below.</p>
             </section>
 
-            <div class="ultimo-aggiornamento">
-                <p><strong>Ultimo Aggiornamento:</strong> 26 Marzo 2025</p>
-                <p><strong>Versione:</strong> 1.0</p>
+            <div class="ultimo-aggiornamento"> <!-- Kept class name -->
+                <!-- Translated text -->
+                <p><strong>Last Updated:</strong> March 26, 2025</p>
+                <p><strong>Version:</strong> 1.0</p>
             </div>
         </div>
 
-        <!-- Rimosso footer duplicato dentro legal-container -->
+        <!-- Removed duplicate footer inside legal-container -->
 
     </main>
 
-    <!-- Footer Copyright (Posizionato correttamente fuori da main) -->
+    <!-- Footer Copyright (Correctly positioned outside main) -->
     <footer class="site-footer">
         <div class="container">
             <p class="copyright-text">
                 © <span id="copyright-year"></span> SynergyRecycle.B.
-                 - Tutti i diritti riservati
-                 <br> <!-- Aggiunto break -->
-                Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a>
+                 - All rights reserved <!-- Translated text -->
+                 <br> <!-- Kept break -->
+                Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a> <!-- Kept contact info -->
             </p>
         </div>
     </footer>
 
-    <!-- Script JS Combinato -->
+    <!-- Combined JS Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -946,7 +971,7 @@
                  });
 
             } else {
-                 console.error("Hamburger button o mobile nav non trovati.");
+                 console.error("Hamburger button or mobile nav not found.");
             }
 
 
@@ -1011,16 +1036,18 @@
              if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
 
              function changeLang(lang) { // Placeholder
-                 console.log(`Lingua selezionata: ${lang}`);
+                 // Translated console/alert messages
+                 console.log(`Language selected: ${lang}`);
                  localStorage.setItem('selectedLanguage', lang);
-                 alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+                 alert(`Language changed to: ${lang}. (Translation logic to be implemented)`);
                  // document.documentElement.lang = lang;
              }
 
              const savedLang = localStorage.getItem('selectedLanguage');
              if (savedLang) {
-                  console.log(`Lingua salvata trovata: ${savedLang}.`);
-                 // changeLang(savedLang); // Applica se vuoi
+                  // Translated console message
+                  console.log(`Saved language found: ${savedLang}.`);
+                 // changeLang(savedLang); // Apply if desired
                  // document.documentElement.lang = savedLang;
              }
             // --- END: Language Selector Logic ---
@@ -1029,38 +1056,44 @@
              const legalNavLinks = document.querySelectorAll('.legal-nav a[href^="#"]');
              legalNavLinks.forEach(link => {
                 link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
+                     // Check if the link is internal or external before preventing default
+                     const href = this.getAttribute('href');
+                     if (href && href.startsWith('#')) {
+                         e.preventDefault(); // Prevent default only for internal anchors
+                         const targetId = href.substring(1);
+                         const targetElement = document.getElementById(targetId);
 
-                    if (targetElement) {
-                        // Calculate position considering potential sticky header height
-                        const headerOffset = document.querySelector('header')?.offsetHeight || 0; // Get header height or 0
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20; // Extra 20px offset
+                         if (targetElement) {
+                             // Calculate position considering potential sticky header height
+                             const headerOffset = document.querySelector('header')?.offsetHeight || 0; // Get header height or 0
+                             const elementPosition = targetElement.getBoundingClientRect().top;
+                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20; // Extra 20px offset
 
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
+                             window.scrollTo({
+                                 top: offsetPosition,
+                                 behavior: "smooth"
+                             });
 
-                         // Optionally close mobile menu if open
-                         if (mobileNav && mobileNav.classList.contains('active')) {
-                             mobileNav.classList.remove('active');
-                             bodyEl.classList.remove('menu-open');
-                             if (hamburgerBtn && hamburgerBtn.getAttribute('aria-expanded') === 'true') {
-                                toggleAriaExpanded(hamburgerBtn);
-                            }
+                              // Optionally close mobile menu if open
+                              if (mobileNav && mobileNav.classList.contains('active')) {
+                                  mobileNav.classList.remove('active');
+                                  bodyEl.classList.remove('menu-open');
+                                  if (hamburgerBtn && hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                                     toggleAriaExpanded(hamburgerBtn);
+                                 }
+                              }
                          }
-                    }
-                });
+                     }
+                     // If href doesn't start with #, it's an external link (like risk-policy.html),
+                     // so the default browser behavior (navigating to the page) is allowed.
+                 });
              });
 
 
             // Remove redundant/conflicting JS from original file
             // (Scroll logic was different and less robust, click logic was duplicated)
 
-        }); // Fine DOMContentLoaded
+        }); // End DOMContentLoaded
     </script>
 
 </body>
