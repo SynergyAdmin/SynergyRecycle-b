@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en"> <!-- Changed language -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servizi - SynergyRecycle.B</title> <!-- Changed title slightly for clarity -->
+    <title>Services - SynergyRecycle.B</title> <!-- Translated Title -->
     <style>
         /* === START: Styles copied/adapted from index.html === */
 
@@ -984,177 +984,186 @@
 </head>
 <body>
 
-<!-- Elementi decorativi di sfondo (da index.html) -->
+<!-- Background decorative elements (from index.html) -->
 <div class="bg-decoration decoration-1"></div>
 <div class="bg-decoration decoration-2"></div>
 
 <div class="container">
-    <!-- Intestazione (Struttura da servizi.html, Stili da index.html) -->
+    <!-- Header (Structure from servizi.html, Styles from index.html) -->
     <header>
-        <a href="./" class="logo"> <!-- Logo reso link alla home -->
-            <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B">
-            <span>SynergyRecycle.B</span>
+        <a href="./" class="logo"> <!-- Logo linked to home -->
+            <img src="./assets/img/logo da email.png" alt="SynergyRecycle.B Logo"> <!-- Kept path, translated alt -->
+            <span>SynergyRecycle.B</span> <!-- Kept brand name -->
         </a>
         <nav class="main-nav">
-            <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
+             <!-- Translated nav links -->
+            <a href="./contatore.html" class="green-button">"One action, A Thousand Impacts."</a> <!-- Kept link -->
             <a href="./" class="button">Home</a>
-            <a href="./servizi.html" class="button">Servizi</a>
-            <a href="./sostenerci.html" class="button">Supportaci</a>
-            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./servizi.html" class="button">Services</a>
+            <a href="./sostenerci.html" class="button">Support Us</a>
+            <a href="./contattaci.html" class="button">Contact Us</a>
             <a href="./roadmap.html" class="button">Roadmap</a>
 
             <div class="language-selector">
-                <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
+                <button class="language-btn" id="language-btn" aria-label="Select language" aria-haspopup="true" aria-expanded="false">🌐</button> <!-- Translated aria-label -->
                 <div class="language-dropdown" id="language-dropdown" role="menu">
-                <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
-                <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    <!-- Translated language options -->
+                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
                 </div>
             </div>
         </nav>
-        <!-- Hamburger button con ID da index.html JS -->
-        <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+        <!-- Hamburger button with ID from index.html JS -->
+        <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button> <!-- aria-label already English -->
     </header>
 
-    <!-- Navigazione mobile (Struttura da servizi.html, Stili da index.html) -->
-    <!-- ID da index.html JS -->
+    <!-- Mobile navigation (Structure from servizi.html, Styles from index.html) -->
+    <!-- ID from index.html JS -->
     <nav class="mobile-nav" id="mobile-nav">
-        <!-- I link usano classi .button o .green-button per stile uniforme -->
-        <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
+        <!-- Links use .button or .green-button classes for uniform style -->
+         <!-- Translated nav links -->
+        <a href="./contatore.html" class="green-button">"One action, A Thousand Impacts."</a> <!-- Kept link -->
         <a href="./" class="button">Home</a>
-        <a href="./servizi.html" class="button">Servizi</a>
-        <a href="./sostenerci.html" class="button">Supportaci</a>
-        <a href="./contattaci.html" class="button">Contattaci</a>
+        <a href="./servizi.html" class="button">Services</a>
+        <a href="./sostenerci.html" class="button">Support Us</a>
+        <a href="./contattaci.html" class="button">Contact Us</a>
         <a href="./roadmap.html" class="button">Roadmap</a>
 
         <div class="language-selector">
-            <!-- ID diversi per JS separato se necessario, ma logica simile -->
-            <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
+            <!-- Different IDs for separate JS if needed, but similar logic -->
+            <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Language</button> <!-- Translated button text -->
             <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
+                 <!-- Translated language options -->
                 <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
-                <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
+                <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
+                <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
+                <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
             </div>
         </div>
     </nav>
 
-    <!-- Banner (Stile da index.html) -->
+    <!-- Banner (Style from index.html) -->
     <div class="banner">
-        SynergyRecycle.B: I nostri servizi per un futuro sostenibile attraverso blockchain e riciclo
+        <!-- Translated banner text -->
+        SynergyRecycle.B: Our services for a sustainable future through blockchain and recycling
     </div>
-</div> <!-- Fine container per header/banner -->
+</div> <!-- End container for header/banner -->
 
 <main>
-    <!-- Hero Section (Stile adattato) -->
+    <!-- Hero Section (Adapted style) -->
     <section class="hero">
         <div class="container">
-            <h1 class="hero-title">La Mente, il Cuore, il nostro Eco-sistema.</h1>
+            <!-- Translated hero title -->
+            <h1 class="hero-title">The Mind, the Heart, our Eco-system.</h1>
         </div>
     </section>
 
-    <!-- Sezione System Cards (Stile card adattato da index.html) -->
+    <!-- System Cards Section (Card style adapted from index.html) -->
     <section class="section">
         <div class="container">
-             <!-- Titolo sezione opzionale, se necessario -->
-             <!-- <h2 class="section-title">I Nostri Sistemi Chiave</h2> -->
+             <!-- Optional section title, if needed -->
+             <!-- <h2 class="section-title">Our Key Systems</h2> -->
             <div class="systems-grid">
                 <!-- Card 1: App -->
                 <div class="system-card" id="app-features">
-                    <img src="./assets/img/punto-App.jpg" alt="App SynergyRecycle.B Screenshot">
-                    <h3>Molte Funzionalità </h3>
-                    <p>La tua guida digitale per il riciclo: gestisci ogni aspetto, monitora i progressi e guadagna Token per il tuo contributo ambientale.</p>
+                    <img src="./assets/img/punto-App.jpg" alt="SynergyRecycle.B App Screenshot"> <!-- Kept path, translated alt -->
+                    <h3>Many Features</h3> <!-- Translated title -->
+                    <p>Your digital guide for recycling: manage every aspect, monitor progress, and earn Tokens for your environmental contribution.</p> <!-- Translated paragraph -->
                     <ul>
-                        <li>Registrazione utente semplice e veloce</li>
-                        <li>Tracciabilità trasparente dei materiali riciclati</li>
-                        <li>Sistema di notifiche per premi e obiettivi</li>
-                        <li>Statistiche personalizzate sull'impatto</li>
+                         <!-- Translated list items -->
+                        <li>Simple and fast user registration</li>
+                        <li>Transparent traceability of recycled materials</li>
+                        <li>Notification system for rewards and goals</li>
+                        <li>Personalized impact statistics</li>
                     </ul>
                     <button class="video-btn" onclick="openVideo('app-video')">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
-                        Guarda il video
+                        Watch the video <!-- Translated button text -->
                     </button>
                 </div>
-                <!-- Card 2: Alleati -->
+                <!-- Card 2: Allies -->
                 <div class="system-card" id="our-allies">
-                    <img src="./assets/img/punto-Comp.jpg" alt="Collaborazione e Partnership">
-                    <h3>I Nostri Alleati Strategici</h3>
-                    <p>Costruiamo una rete globale di partner impegnati: insieme a te e ai nostri alleati, creiamo soluzioni sostenibili per un futuro migliore.</p>
+                    <img src="./assets/img/punto-Comp.jpg" alt="Collaboration and Partnership"> <!-- Kept path, translated alt -->
+                    <h3>Our Strategic Allies</h3> <!-- Translated title -->
+                    <p>We build a global network of committed partners: together with you and our allies, we create sustainable solutions for a better future.</p> <!-- Translated paragraph -->
                     <ul>
-                        <li>Collaborazione con aziende leader nel riciclo</li>
-                        <li>Partnership con istituzioni locali e internazionali</li>
-                        <li>Integrazione tecnologica per ottimizzare i processi</li>
-                        <li>Programmi di sensibilizzazione congiunti</li>
+                         <!-- Translated list items -->
+                        <li>Collaboration with leading recycling companies</li>
+                        <li>Partnerships with local and international institutions</li>
+                        <li>Technological integration to optimize processes</li>
+                        <li>Joint awareness programs</li>
                     </ul>
                     <button class="video-btn" onclick="openVideo('allies-video')">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
-                        Scopri come Funziona
+                        Discover How It Works <!-- Translated button text -->
                     </button>
                 </div>
-                <!-- Card 3: Impatto -->
+                <!-- Card 3: Impact -->
                 <div class="system-card">
-                    <img src="./assets/img/4.jpeg" alt="Impatto ambientale positivo">
-                    <h3>Il Mondo Guadagna Insieme a Te</h3>
-                    <p>Un impatto positivo che va oltre il singolo: ogni tuo gesto di riciclo non solo genera benefici tangibili per te, ma contribuisce attivamente a un mondo più sostenibile.</p>
+                    <img src="./assets/img/4.jpeg" alt="Positive environmental impact"> <!-- Kept path, translated alt -->
+                    <h3>The World Gains Together with You</h3> <!-- Translated title -->
+                    <p>A positive impact that goes beyond the individual: every recycling gesture you make not only generates tangible benefits for you but actively contributes to a more sustainable world.</p> <!-- Translated paragraph -->
                     <ul>
-                        <li>Incentivi economici e ricompense (Token SRB)</li>
-                        <li>Riduzione misurabile dell'impatto ambientale</li>
-                        <li>Contributo diretto agli obiettivi di sostenibilità globali</li>
-                        <li>Promozione dell'economia circolare</li>
+                         <!-- Translated list items -->
+                        <li>Economic incentives and rewards (SRB Tokens)</li>
+                        <li>Measurable reduction of environmental impact</li>
+                        <li>Direct contribution to global sustainability goals</li>
+                        <li>Promotion of the circular economy</li>
                     </ul>
-                     <!-- Nessun bottone video qui, ma potresti aggiungerlo se serve -->
-                     <div style="height: 45px; margin-top: auto;"></div> <!-- Spacer per allineare altezza card se non c'è bottone -->
+                     <!-- No video button here, but could be added if needed -->
+                     <div style="height: 45px; margin-top: auto;"></div> <!-- Spacer to align card height if no button -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Popup Video Containers (Invariati nella struttura HTML) -->
+    <!-- Popup Video Containers (Unchanged in HTML structure) -->
     <div id="app-video" class="video-popup" aria-modal="true" role="dialog" aria-labelledby="app-video-title">
         <div class="video-container">
-            <h2 id="app-video-title" style="display: none;">Video Funzionalità App</h2> <!-- Titolo per accessibilità -->
-            <button class="close-video" onclick="closeVideo('app-video')" aria-label="Chiudi video">✕</button>
-            <!-- src verrà impostato da JS -->
-            <iframe title="Video Funzionalità App" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h2 id="app-video-title" style="display: none;">App Features Video</h2> <!-- Title for accessibility, translated -->
+            <button class="close-video" onclick="closeVideo('app-video')" aria-label="Close video">✕</button> <!-- Translated aria-label -->
+            <!-- src will be set by JS -->
+            <iframe title="App Features Video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <!-- Translated title attribute -->
         </div>
     </div>
 
     <div id="allies-video" class="video-popup" aria-modal="true" role="dialog" aria-labelledby="allies-video-title">
         <div class="video-container">
-             <h2 id="allies-video-title" style="display: none;">Video Alleati Strategici</h2>
-            <button class="close-video" onclick="closeVideo('allies-video')" aria-label="Chiudi video">✕</button>
-            <!-- src verrà impostato da JS -->
-            <iframe title="Video Alleati Strategici" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             <h2 id="allies-video-title" style="display: none;">Strategic Allies Video</h2> <!-- Translated title -->
+            <button class="close-video" onclick="closeVideo('allies-video')" aria-label="Close video">✕</button> <!-- Translated aria-label -->
+            <!-- src will be set by JS -->
+            <iframe title="Strategic Allies Video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <!-- Translated title attribute -->
         </div>
     </div>
 
-    <!-- Sezione Milestone/Grid Layout (Stili adattati) -->
-    <section class="section milestone-section"> <!-- Rimosso stile inline -->
+    <!-- Milestone/Grid Layout Section (Adapted styles) -->
+    <section class="section milestone-section"> <!-- Removed inline style -->
         <div class="container">
-            <h2 class="section-title">Dove il Vecchio Incontra il Nuovo</h2>
-             <p class="text-center" style="margin-top: -20px; margin-bottom: 40px; color: #557669;">Creiamo un circolo virtuoso di valore sostenibile.</p>
+            <h2 class="section-title">Where Old Meets New</h2> <!-- Translated title -->
+             <p class="text-center" style="margin-top: -20px; margin-bottom: 40px; color: #557669;">We create a virtuous circle of sustainable value.</p> <!-- Translated paragraph -->
             <div class="grid-layout">
                 <div class="main-image">
-                    <img src="./assets/img/5.3.1.jpeg" alt="SRB: Un circolo di valore senza fine.">
-                    <div class="srb-logo">SRB</div>
+                    <img src="./assets/img/5.3.1.jpeg" alt="SRB: An endless circle of value."> <!-- Kept path, translated alt -->
+                    <div class="srb-logo">SRB</div> <!-- Kept specific identifier -->
                 </div>
                 <div class="features-grid">
-                    <div class="feature-box green-box"> <!-- Classe colore aggiornata -->
-                        <h3>Key Milestone</h3>
-                        <p>Raggiungiamo nuovi traguardi insieme.</p>
+                    <div class="feature-box green-box"> <!-- Updated color class -->
+                        <h3>Key Milestone</h3> <!-- Text already English -->
+                        <p>We reach new milestones together.</p> <!-- Translated text -->
                     </div>
-                    <div class="feature-box blue-box"> <!-- Classe colore aggiornata -->
-                        <h3>Greater Impact</h3>
-                        <p>Amplifichiamo l'impatto positivo ogni giorno.</p>
+                    <div class="feature-box blue-box"> <!-- Updated color class -->
+                        <h3>Greater Impact</h3> <!-- Text already English -->
+                        <p>We amplify the positive impact every day.</p> <!-- Translated text -->
                     </div>
-                    <div class="feature-box light-box"> <!-- Classe colore aggiornata -->
-                        <h3>Community Focus</h3>
-                        <p>Connettiti con la nostra community:</p>
+                    <div class="feature-box light-box"> <!-- Updated color class -->
+                        <h3>Community Focus</h3> <!-- Text already English -->
+                        <p>Connect with our community:</p> <!-- Translated text -->
                         <div class="social-icons">
-                             <!-- Link e immagini icone invariati -->
+                             <!-- Links and icon images kept as is -->
                              <a href="https://x.com/SynergyRecycl?t=84HCOrA4xRS2NEUcjjmkAg&s=35" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                                 <img src="./assets/img/X.png" alt="Twitter Icon">
                             </a>
@@ -1175,49 +1184,50 @@
                             </a>
                         </div>
                     </div>
-                    <div class="feature-box dark-green-box"> <!-- Classe colore aggiornata -->
-                        <h3>Innovation Hub</h3>
-                        <p>Dove le idee prendono vita e guidano il futuro.</p>
+                    <div class="feature-box dark-green-box"> <!-- Updated color class -->
+                        <h3>Innovation Hub</h3> <!-- Text already English -->
+                        <p>Where ideas come to life and guide the future.</p> <!-- Translated text -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action (Stile da index, classe aggiunta) -->
-    <section class="section cta-section"> <!-- Rimosso stile inline, aggiunta classe -->
+    <!-- Call to Action (Style from index, added class) -->
+    <section class="section cta-section"> <!-- Removed inline style, added class -->
         <div class="container">
-            <!-- Testo leggermente modificato per flusso -->
-            <h2 class="section-title">Facciamo molto per noi stessi. È ora di fare di più per il Pianeta.</h2>
-            <h2 class="section-title">Entra in SynergyRecycle.B: insieme possiamo rivoluzionare il futuro del nostro Mondo.</h2>
-            <p>Unisciti a noi per migliorare. Insieme miglioreremo il nostro Pianeta, un riciclo alla volta.</p>
-            <div class="btn-container"> <!-- Wrapper per centrare -->
-                <a href="#" class="btn">Inizia ora</a> <!-- Usa stile .btn standard -->
+            <!-- Text slightly modified for flow, translated -->
+            <h2 class="section-title">We do a lot for ourselves. It's time to do more for the Planet.</h2>
+            <h2 class="section-title">Join SynergyRecycle.B: together we can revolutionize the future of our World.</h2>
+            <p>Join us to improve. Together we will improve our Planet, one recycle at a time.</p>
+            <div class="btn-container"> <!-- Wrapper for centering -->
+                <a href="#" class="btn">Start now</a> <!-- Uses standard .btn style, translated text -->
             </div>
         </div>
     </section>
 
-    <!-- Sezione Partners (Stile adattato) -->
+    <!-- Partners Section (Adapted style) -->
     <section class="section partners-section">
         <div class="container">
-            <h2 class="section-title">Le Aziende che Credono in Noi</h2>
-            <div class="logo-container" aria-label="Loghi dei nostri partner">
+            <h2 class="section-title">The Companies That Believe in Us</h2> <!-- Translated title -->
+            <div class="logo-container" aria-label="Logos of our partners"> <!-- Translated aria-label -->
                 <div class="logo-track">
-                    <!-- Loghi invariati, ma ora duplicati per effetto scorrimento CSS corretto -->
-                    <div class="logo-item"><img src="./assets/img/CO2.png" alt="Logo ZeroCO2"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Logo Partner Generico 1"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Logo Partner Generico 2"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Logo Partner Generico 3"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Logo Partner Generico 4"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Logo Partner Generico 5"></div>
+                    <!-- Logos kept as is, but duplicated for correct CSS scroll effect -->
+                     <!-- Alt text translated -->
+                    <div class="logo-item"><img src="./assets/img/CO2.png" alt="ZeroCO2 Logo"></div>
+                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Generic Partner Logo 1"></div>
+                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Generic Partner Logo 2"></div>
+                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Generic Partner Logo 3"></div>
+                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Generic Partner Logo 4"></div>
+                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Generic Partner Logo 5"></div>
 
-                    <!-- Ripetizione per loop animazione -->
-                    <div class="logo-item"><img src="./assets/img/CO2.png" alt="Logo ZeroCO2"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Logo Partner Generico 1"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Logo Partner Generico 2"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Logo Partner Generico 3"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Logo Partner Generico 4"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Logo Partner Generico 5"></div>
+                    <!-- Repeat for animation loop -->
+                    <div class="logo-item"><img src="./assets/img/CO2.png" alt="ZeroCO2 Logo"></div>
+                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Generic Partner Logo 1"></div>
+                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Generic Partner Logo 2"></div>
+                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Generic Partner Logo 3"></div>
+                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Generic Partner Logo 4"></div>
+                    <div class="logo-item"><img src="./assets/img/partner.png" alt="Generic Partner Logo 5"></div>
                 </div>
             </div>
         </div>
@@ -1225,22 +1235,22 @@
 
 </main>
 
-<!-- Footer (Stile da index.html) -->
+<!-- Footer (Style from index.html) -->
 <footer class="site-footer">
     <div class="container">
         <p class="copyright-text">
-            <!-- Usato ID consistente con index.html per JS -->
+            <!-- Used consistent ID with index.html for JS -->
             © <span id="copyright-year"></span> SynergyRecycle.B.
-            - Tutti i diritti riservati.
-            <br> <!-- Aggiunto break per leggibilità -->
-            Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a>
+            - All rights reserved. <!-- Translated text -->
+            <br> <!-- Added break for readability -->
+            Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a> <!-- Kept contact info -->
         </p>
-         <!-- Potresti aggiungere icone social anche qui se desiderato -->
+         <!-- You could add social icons here too if desired -->
     </div>
 </footer>
 
-<!-- Script JS (Combinato e ripulito) -->
-<!-- Rimosso link a main.js esterno, integrato qui -->
+<!-- Combined and cleaned up JS Script -->
+<!-- Removed link to external main.js, integrated here -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // --- COMMON HELPER FUNCTIONS ---
@@ -1254,28 +1264,28 @@
         if (yearSpan) {
             yearSpan.textContent = new Date().getFullYear();
         }
-        // Gestisce anche l'ID vecchio se presente per errore
+        // Handle old ID too if present by mistake
         const yearSpanOld = document.getElementById('copyright-2024');
          if (yearSpanOld) {
             yearSpanOld.textContent = new Date().getFullYear();
         }
 
 
-        // --- HAMBURGER MENU TOGGLE (Usa ID e logica da index.html) ---
+        // --- HAMBURGER MENU TOGGLE (Use ID and logic from index.html) ---
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileNav = document.getElementById('mobile-nav');
 
         if (hamburgerBtn && mobileNav) {
             hamburgerBtn.addEventListener('click', function() {
                 mobileNav.classList.toggle('active');
-                toggleAriaExpanded(this); // Aggiorna aria-expanded
+                toggleAriaExpanded(this); // Update aria-expanded
             });
 
-            // Chiudi il menu quando si clicca su un link al suo interno
+            // Close menu when clicking a link inside (exclude language)
             const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    // Non chiudere se è il bottone lingua
+                    // Don't close if it's the language button
                     if (!link.closest('.language-selector')) {
                         mobileNav.classList.remove('active');
                         hamburgerBtn.setAttribute('aria-expanded', 'false');
@@ -1304,7 +1314,7 @@
                 e.stopPropagation();
                 const isShown = languageDropdown.classList.toggle('show');
                 languageBtn.setAttribute('aria-expanded', isShown);
-                // Chiudi l'altro dropdown se aperto
+                // Close the other dropdown if open
                 if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
                 if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
             });
@@ -1315,13 +1325,13 @@
                 e.stopPropagation();
                  const isShown = mobileLanguageDropdown.classList.toggle('show');
                  mobileLanguageBtn.setAttribute('aria-expanded', isShown);
-                // Chiudi l'altro dropdown se aperto
+                // Close the other dropdown if open
                 if (languageDropdown) languageDropdown.classList.remove('show');
                 if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
             });
         }
 
-        // Gestione cambio lingua
+        // Handle language change
         if (allLanguageOptions.length > 0) {
             allLanguageOptions.forEach(option => {
                 option.addEventListener('click', function() {
@@ -1332,56 +1342,59 @@
             });
         }
 
-        // Cliccare fuori chiude i dropdown lingua
+        // Clicking outside closes language dropdowns
         document.addEventListener('click', closeAllLanguageDropdowns);
 
-        // Impedisce ai click *dentro* i dropdown di chiuderli
+        // Prevent clicks *inside* dropdowns from closing them
         if (languageDropdown) languageDropdown.addEventListener('click', e => e.stopPropagation());
         if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
 
 
-        // Funzione per cambiare lingua (placeholder - implementare logica reale)
+        // Function to change language (placeholder - implement actual logic)
         function changeLang(lang) {
-            console.log(`Lingua selezionata: ${lang}`);
+             // Translated messages
+            console.log(`Language selected: ${lang}`);
             localStorage.setItem('selectedLanguage', lang);
-            // QUI VA LA LOGICA DI TRADUZIONE:
-            // Esempio: caricare file JSON, aggiornare testo, reindirizzare, ecc.
-             alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
-             // Potresti aggiornare l'attributo lang sull'elemento <html>
+            // HERE GOES THE TRANSLATION LOGIC:
+            // Example: load JSON file, update text, redirect, etc.
+             alert(`Language changed to: ${lang}. (Translation logic to be implemented)`);
+             // You might update the lang attribute on the <html> element
              // document.documentElement.lang = lang;
         }
 
-         // Applica lingua salvata all'avvio (opzionale)
+         // Apply saved language on startup (optional)
         const savedLang = localStorage.getItem('selectedLanguage');
         if (savedLang) {
-             console.log(`Lingua salvata trovata: ${savedLang}. Applicare se necessario.`);
-            // changeLang(savedLang); // Decommenta per applicare subito
-            // document.documentElement.lang = savedLang; // Aggiorna subito attributo lang
+             // Translated message
+             console.log(`Saved language found: ${savedLang}. Apply if necessary.`);
+            // changeLang(savedLang); // Uncomment to apply immediately
+            // document.documentElement.lang = savedLang; // Update lang attribute immediately
         }
 
 
         // --- VIDEO POPUP LOGIC ---
-        // Link ai video (assicurati che siano corretti e accessibili)
-         // NOTA: I link forniti sembravano incompleti. Usare link diretti o embed validi.
-         // Placeholder per URL corretti:
+        // Video links (ensure these are correct and accessible)
+         // NOTE: Provided links seemed incomplete. Use direct or valid embed links.
+         // Placeholders for correct URLs:
         const videoLinks = {
-            'app-video': 'https://www.youtube.com/embed/VIDEO_ID_APP?autoplay=1', // Esempio YouTube con autoplay
-            'allies-video': 'https://player.vimeo.com/video/VIDEO_ID_ALLIES?autoplay=1' // Esempio Vimeo con autoplay
+            'app-video': 'https://www.youtube.com/embed/VIDEO_ID_APP?autoplay=1', // Example YouTube with autoplay
+            'allies-video': 'https://player.vimeo.com/video/VIDEO_ID_ALLIES?autoplay=1' // Example Vimeo with autoplay
         };
 
-        // Funzioni globali per non doverle definire dentro l'event listener
+        // Global functions so they don't need to be defined inside the event listener
         window.openVideo = function(videoId) {
             const popup = document.getElementById(videoId);
             const iframe = popup ? popup.querySelector('iframe') : null;
 
             if (popup && iframe && videoLinks[videoId]) {
-                // Imposta il link corretto del video SOLO quando si apre
+                // Set the correct video link ONLY when opening
                 iframe.src = videoLinks[videoId];
                 popup.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Blocca scroll sfondo
-                popup.focus(); // Opzionale: porta il focus al popup
+                document.body.style.overflow = 'hidden'; // Block background scroll
+                popup.focus(); // Optional: move focus to the popup
             } else {
-                 console.error("Impossibile aprire il video:", videoId, "Popup o Iframe non trovato o link mancante.");
+                 // Translated error message
+                 console.error("Could not open video:", videoId, "Popup or Iframe not found or link missing.");
             }
         };
 
@@ -1391,18 +1404,18 @@
 
             if (popup && iframe) {
                 popup.classList.remove('active');
-                document.body.style.overflow = ''; // Riabilita scroll sfondo
+                document.body.style.overflow = ''; // Re-enable background scroll
 
-                // Ritarda la rimozione src per evitare flash/errori durante la transizione
+                // Delay removing src to avoid flash/errors during CSS transition
                 setTimeout(() => {
-                    iframe.src = ''; // Ferma il video rimuovendo la sorgente
-                }, 300); // Deve corrispondere o superare la durata della transizione CSS
+                    iframe.src = ''; // Stop the video by removing the source
+                }, 300); // Should match or exceed CSS transition duration
             }
         };
 
-        // Aggiungi event listener per chiudere cliccando fuori o con ESC
+        // Add event listeners to close by clicking outside or with ESC
         document.querySelectorAll('.video-popup').forEach(popup => {
-            // Chiudi cliccando sullo sfondo scuro (l'elemento .video-popup stesso)
+            // Close by clicking the dark background (the .video-popup element itself)
             popup.addEventListener('click', (e) => {
                 if (e.target === popup) {
                     closeVideo(popup.getAttribute('id'));
@@ -1410,7 +1423,7 @@
             });
         });
 
-        // Chiudi con il tasto Escape
+        // Close with Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 const activePopup = document.querySelector('.video-popup.active');
@@ -1422,8 +1435,8 @@
 
 
         // --- PARTNERS LOGO SLIDER HOVER PAUSE ---
-        // Questo è gestito via CSS :hover, quindi lo script originale non è strettamente necessario
-        // Ma lo lasciamo commentato se si volesse più controllo JS in futuro.
+        // This is handled via CSS :hover, so the original script isn't strictly needed
+        // But kept commented out if more JS control is desired later.
         /*
         const logoContainer = document.querySelector('.logo-container');
         const logoTrack = document.querySelector('.logo-track');
@@ -1437,11 +1450,11 @@
         }
         */
 
-        // --- Rimosso codice non necessario ---
-        // Rimosso copyAddress (non presente in questo HTML)
-        // Rimosso codice duplicato per hamburger/copyright
+        // --- Removed unnecessary code ---
+        // Removed copyAddress (not present in this HTML)
+        // Removed duplicate code for hamburger/copyright
 
-    }); // Fine DOMContentLoaded
+    }); // End DOMContentLoaded
 </script>
 
 </body>
