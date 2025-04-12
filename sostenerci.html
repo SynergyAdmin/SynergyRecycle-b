@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en"> <!-- Changed language -->
 <head>
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supportaci - SynergyRecycle.B</title> <!-- Updated Title -->
+    <title>Support Us - SynergyRecycle.B</title> <!-- Translated Title -->
     <style>
         /* === START: Styles Copied/Adapted from index.html === */
 
@@ -440,14 +440,14 @@
 
         .front {
             background-color: #ffd700; /* Base gold color */
-            background-image: url('./assets/img/coinF.jpg');
+            background-image: url('./assets/img/coinF.jpg'); /* Kept path */
             /* Push the front face slightly forward */
             transform: translateZ(2px); /* Small Z translation */
         }
 
         .back {
             background-color: #f4a700; /* Darker gold color */
-            background-image: url('./assets/img/coinR.jpg');
+            background-image: url('./assets/img/coinR.jpg'); /* Kept path */
             /* Rotate the back face and push it slightly forward (same amount as front) */
             transform: rotateY(180deg) translateZ(2px); /* Rotate and small Z translation */
         }
@@ -655,6 +655,14 @@
               margin: 15px auto; /* Centra se la card è più larga */
               max-width: 80%; /* Limita larghezza barra */
          }
+         /* Setup card images */
+         .setup-card img {
+             width: 50px;
+             height: auto;
+             margin-top: 15px;
+             opacity: 0.7;
+         }
+
 
         /* Call to Action Section (Stile da index) */
         .cta-section { /* Aggiunta classe */
@@ -751,58 +759,62 @@
     </style>
 </head>
 <body>
-    <!-- Elementi decorativi di sfondo -->
+    <!-- Background decorative elements -->
     <div class="bg-decoration decoration-1"></div>
     <div class="bg-decoration decoration-2"></div>
 
     <div class="container">
-        <!-- Intestazione -->
+        <!-- Header -->
         <header>
-             <a href="./" class="logo"> <!-- Logo link alla home -->
-                <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B">
-                <span>SynergyRecycle.B</span>
+             <a href="./" class="logo"> <!-- Logo linked to home -->
+                <img src="./assets/img/logo da email.png" alt="SynergyRecycle.B Logo"> <!-- Kept path, translated alt -->
+                <span>SynergyRecycle.B</span> <!-- Kept brand name -->
             </a>
             <nav class="main-nav">
-                <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
+                <!-- Translated nav links -->
+                <a href="./contatore.html" class="green-button">"One action, A Thousand Impacts."</a> <!-- Kept link -->
                 <a href="./" class="button">Home</a>
-                <a href="./servizi.html" class="button">Servizi</a>
-                <a href="./sostenerci.html" class="button">Supportaci</a>
-                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./servizi.html" class="button">Services</a>
+                <a href="./sostenerci.html" class="button">Support Us</a>
+                <a href="./contattaci.html" class="button">Contact Us</a>
                 <a href="./roadmap.html" class="button">Roadmap</a>
                 <!-- START: Language Selector HTML (Desktop) -->
                 <div class="language-selector">
-                    <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
+                    <button class="language-btn" id="language-btn" aria-label="Select language" aria-haspopup="true" aria-expanded="false">🌐</button> <!-- Translated aria-label -->
                     <div class="language-dropdown" id="language-dropdown" role="menu">
-                        <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                        <!-- Translated language options -->
+                        <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
                         <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                        <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                        <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                        <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                        <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
+                        <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
+                        <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
                     </div>
                 </div>
                 <!-- END: Language Selector HTML (Desktop) -->
             </nav>
-             <!-- Hamburger button con ID da index.html JS -->
-             <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+             <!-- Hamburger button with ID from index.html JS -->
+             <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button> <!-- aria-label already English -->
         </header>
 
-        <!-- Navigazione mobile -->
+        <!-- Mobile navigation -->
         <nav class="mobile-nav" id="mobile-nav">
-            <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
+            <!-- Translated nav links -->
+            <a href="./contatore.html" class="green-button">"One action, A Thousand Impacts."</a> <!-- Kept link -->
             <a href="./" class="button">Home</a>
-            <a href="./servizi.html" class="button">Servizi</a>
-            <a href="./sostenerci.html" class="button">Supportaci</a>
-            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./servizi.html" class="button">Services</a>
+            <a href="./sostenerci.html" class="button">Support Us</a>
+            <a href="./contattaci.html" class="button">Contact Us</a>
             <a href="./roadmap.html" class="button">Roadmap</a>
              <!-- START: Language Selector HTML (Mobile) -->
             <div class="language-selector">
-                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
+                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Language</button> <!-- Translated button text -->
                 <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    <!-- Translated language options -->
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
                     <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
                 </div>
             </div>
             <!-- END: Language Selector HTML (Mobile) -->
@@ -810,32 +822,34 @@
 
         <!-- Banner -->
         <div class="banner">
-            SynergyRecycle.B: "Il Tuo Supporto è prezioso, come ogni singolo Albero di questo Pianeta."
+            <!-- Translated banner text -->
+            SynergyRecycle.B: "Your Support is precious, like every single Tree on this Planet."
         </div>
-    </div> <!-- Fine container per header/banner -->
+    </div> <!-- End container for header/banner -->
 
-    <!-- CONTENUTO PRINCIPALE -->
+    <!-- MAIN CONTENT -->
     <main>
-        <!-- Hero Section con moneta 3D -->
+        <!-- Hero Section with 3D coin -->
         <section class="hero">
             <div class="container">
                 <div class="hero-content-wrapper">
                     <div class="hero-text">
-                        <h1 class="hero-title">Sostieni la Rivoluzione Verde!</h1> <!-- Titolo modificato -->
-                        <p class="hero-subtitle">Il tuo contributo alimenta l'innovazione e accelera la transizione verso un futuro più sostenibile. Ogni supporto ci avvicina all'obiettivo.</p>
-                        <h2 class="slogan">"Unisciti a noi: ogni azione conta, per te e per il Pianeta."</h2>
+                        <!-- Translated hero content -->
+                        <h1 class="hero-title">Support the Green Revolution!</h1>
+                        <p class="hero-subtitle">Your contribution fuels innovation and accelerates the transition to a more sustainable future. Every bit of support brings us closer to the goal.</p>
+                        <h2 class="slogan">"Join us: every action counts, for you and for the Planet."</h2>
                     </div>
 
-                    <!-- Contenitore esterno circolare per la moneta -->
+                    <!-- Outer circular container for the coin -->
                     <div class="coin-outer-container">
                         <div class="coin-container">
                             <div class="coin" id="coin">
-                                <!-- Immagini definite via CSS -->
+                                <!-- Images defined via CSS -->
                                 <div class="coin-side front"></div>
                                 <div class="coin-side back"></div>
                             </div>
                         </div>
-                         <p style="font-size: 0.9rem; margin-top: 10px; color: var(--dark-gray); font-weight: 500;">SRB Token</p>
+                         <p style="font-size: 0.9rem; margin-top: 10px; color: var(--dark-gray); font-weight: 500;">SRB Token</p> <!-- Kept SRB Token -->
                     </div>
                 </div>
             </div>
@@ -844,101 +858,104 @@
         <!-- Pricing Cards -->
         <section class="section">
             <div class="container">
-                <h2 class="section-title">Fasi di Supporto e Lancio</h2>
+                 <!-- Translated section title -->
+                <h2 class="section-title">Support and Launch Phases</h2>
                 <div class="pricing-grid">
                     <!-- Pre/Sale Card -->
-                    <div class="pricing-card card-fx-border"> <!-- Aggiunta classe effetto -->
-                        <h2>Pre-Sale Riservata</h2>
+                    <div class="pricing-card card-fx-border"> <!-- Added effect class -->
+                        <h2>Reserved Pre-Sale</h2> <!-- Translated title -->
                         <div class="price-tag">
-                            <span class="price">COMING SOON</span>
+                            <span class="price">COMING SOON</span> <!-- Text already English -->
                         </div>
-                        <div class="progress-bar" aria-label="Progresso Pre-Sale" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar-fill" style="width: 15%" title="15% Allocato"></div>
+                        <div class="progress-bar" aria-label="Pre-Sale Progress" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"> <!-- Translated aria-label -->
+                            <div class="progress-bar-fill" style="width: 15%" title="15% Allocated"></div> <!-- Translated title attribute -->
                         </div>
-                        <p>Allocazione limitata (15%) riservata a investitori istituzionali e partner strategici del settore ambientale e tecnologico.</p>
-                        <a href="./contattaci.html" class="btn">Sei un Partner Strategico? Contattaci</a> <!-- Link a contattaci -->
+                        <p>Limited allocation (15%) reserved for institutional investors and strategic partners in the environmental and technological sectors.</p> <!-- Translated paragraph -->
+                        <a href="./contattaci.html" class="btn">Are you a Strategic Partner? Contact Us</a> <!-- Translated button text, kept link -->
                     </div>
 
                     <!-- ICO Card -->
-                    <div class="pricing-card card-fx-border"> <!-- Aggiunta classe effetto -->
-                        <h2>Supporto Iniziale (ICO)</h2>
+                    <div class="pricing-card card-fx-border"> <!-- Added effect class -->
+                        <h2>Initial Support (ICO)</h2> <!-- Translated title -->
                         <div class="price-tag">
-                            <span class="price">COMING SOON</span>
+                            <span class="price">COMING SOON</span> <!-- Text already English -->
                         </div>
-                         <p style="margin-bottom: 20px;">Contribuisci direttamente allo sviluppo e alla crescita del progetto tramite le seguenti opzioni:</p>
+                         <p style="margin-bottom: 20px;">Contribute directly to the project's development and growth through the following options:</p> <!-- Translated paragraph -->
                         <div class="crypto-addresses">
-                             <!-- Indirizzi Cripto -->
+                             <!-- Crypto Addresses -->
                             <div class="crypto-address">
                                 <span class="crypto-label">BTC:</span>
-                                <!-- ATTENZIONE: data-address DEVE contenere l'indirizzo completo -->
-                                <span class="crypto-value" id="btc-address" data-address="bc1quxquvevc9l8gfly6jj7u58vqgpw9l9vjyra0xx">bc1q...a0xx</span>
-                                <button class="copy-btn" onclick="copyAddress('btc-address')" aria-label="Copia indirizzo Bitcoin">
+                                <!-- ATTENTION: data-address MUST contain the full address -->
+                                <span class="crypto-value" id="btc-address" data-address="bc1quxquvevc9l8gfly6jj7u58vqgpw9l9vjyra0xx">bc1q...a0xx</span> <!-- Kept short address display -->
+                                <button class="copy-btn" onclick="copyAddress('btc-address')" aria-label="Copy Bitcoin address"> <!-- Translated aria-label -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 </button>
-                                <span class="copy-msg" id="btc-copy-msg">Copiato!</span>
+                                <span class="copy-msg" id="btc-copy-msg">Copied!</span> <!-- Translated message -->
                             </div>
                              <div class="crypto-address">
                                  <span class="crypto-label">TON:</span>
-                                 <span class="crypto-value" id="ton-address" data-address="UQDes1LjMasF3Erb4uI2KyPgzytmjiOmiOR8DnwqnLDxb2x2">UQDe...b2x2</span>
-                                 <button class="copy-btn" onclick="copyAddress('ton-address')" aria-label="Copia indirizzo TON">
+                                 <span class="crypto-value" id="ton-address" data-address="UQDes1LjMasF3Erb4uI2KyPgzytmjiOmiOR8DnwqnLDxb2x2">UQDe...b2x2</span> <!-- Kept short address display -->
+                                 <button class="copy-btn" onclick="copyAddress('ton-address')" aria-label="Copy TON address"> <!-- Translated aria-label -->
                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                  </button>
-                                 <span class="copy-msg" id="ton-copy-msg">Copiato!</span>
+                                 <span class="copy-msg" id="ton-copy-msg">Copied!</span> <!-- Translated message -->
                              </div>
                              <div class="crypto-address">
-                                 <span class="crypto-label">MATIC:</span> <!-- Label corretta -->
-                                 <span class="crypto-value" id="pol-address" data-address="0xBaAd236beFee553736cbB94e3B8627ff14E2157f">0xBa...157f</span>
-                                 <button class="copy-btn" onclick="copyAddress('pol-address')" aria-label="Copia indirizzo Polygon Matic">
+                                 <span class="crypto-label">MATIC:</span> <!-- Correct label -->
+                                 <span class="crypto-value" id="pol-address" data-address="0xBaAd236beFee553736cbB94e3B8627ff14E2157f">0xBa...157f</span> <!-- Kept short address display -->
+                                 <button class="copy-btn" onclick="copyAddress('pol-address')" aria-label="Copy Polygon Matic address"> <!-- Translated aria-label -->
                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                  </button>
-                                 <span class="copy-msg" id="pol-copy-msg">Copiato!</span>
+                                 <span class="copy-msg" id="pol-copy-msg">Copied!</span> <!-- Translated message -->
                              </div>
                              <div class="crypto-address">
-                                 <span class="crypto-label">USDC (SOL):</span> <!-- Label corretta -->
-                                 <span class="crypto-value" id="usdc-address" data-address="AkhMthuf2bW3NiS9kASqWMSEMwKrD2dfxLGhZQrk78hu">AkhM...78hu</span>
-                                 <button class="copy-btn" onclick="copyAddress('usdc-address')" aria-label="Copia indirizzo USDC Solana">
+                                 <span class="crypto-label">USDC (SOL):</span> <!-- Correct label -->
+                                 <span class="crypto-value" id="usdc-address" data-address="AkhMthuf2bW3NiS9kASqWMSEMwKrD2dfxLGhZQrk78hu">AkhM...78hu</span> <!-- Kept short address display -->
+                                 <button class="copy-btn" onclick="copyAddress('usdc-address')" aria-label="Copy USDC Solana address"> <!-- Translated aria-label -->
                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                  </button>
-                                 <span class="copy-msg" id="usdc-copy-msg">Copiato!</span>
+                                 <span class="copy-msg" id="usdc-copy-msg">Copied!</span> <!-- Translated message -->
                              </div>
                              <div class="crypto-address">
                                  <span class="crypto-label">IBAN:</span>
-                                 <!-- IMPORTANTE: Inserisci l'IBAN completo nel data-address! -->
-                                 <span class="crypto-value" id="iban-address" data-address="DE89370400440532013000">DE89...3000</span>
-                                 <button class="copy-btn" onclick="copyAddress('iban-address')" aria-label="Copia IBAN">
+                                 <!-- IMPORTANT: Insert the full IBAN in data-address! -->
+                                 <span class="crypto-value" id="iban-address" data-address="DE89370400440532013000">DE89...3000</span> <!-- Kept short address display -->
+                                 <button class="copy-btn" onclick="copyAddress('iban-address')" aria-label="Copy IBAN"> <!-- Translated aria-label -->
                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                  </button>
-                                 <span class="copy-msg" id="iban-copy-msg">Copiato!</span>
+                                 <span class="copy-msg" id="iban-copy-msg">Copied!</span> <!-- Translated message -->
                              </div>
                         </div>
-                        <a href="mailto:synergyrecycle.b@gmail.com?subject=Supporto%20Progetto%20SynergyRecycle.B" class="btn">Invia una Mail per Info</a>
+                        <a href="mailto:synergyrecycle.b@gmail.com?subject=Support%20SynergyRecycle.B%20Project" class="btn">Send an Email for Info</a> <!-- Translated button text, updated subject -->
                     </div>
 
                     <!-- Launch Card -->
-                    <div class="pricing-card card-fx-border"> <!-- Aggiunta classe effetto -->
-                        <h2>Lancio Ufficiale</h2>
+                    <div class="pricing-card card-fx-border"> <!-- Added effect class -->
+                        <h2>Official Launch</h2> <!-- Translated title -->
                         <div class="price-tag">
-                           <span class="price">COMING SOON</span>
+                           <span class="price">COMING SOON</span> <!-- Text already English -->
                         </div>
-                        <p>"Preparati al lancio! Apriremo le porte a tutti per unirsi alla rivoluzione del riciclo. Seguici per non perdere le novità e i benefici esclusivi."</p>
+                        <p>"Get ready for launch! We will open the doors for everyone to join the recycling revolution. Follow us to stay updated on news and exclusive benefits."</p> <!-- Translated paragraph -->
                         <ul>
-                            <li>Listing SRB Token su DEX/CEX selezionati</li>
-                            <li>Scambio diretto Token/Ricompense in-App</li>
-                            <li>Introduzione Carta Virtuale/Fisica SRB</li>
-                            <li>Nuove funzionalità e potenziamenti Eco-Sistema</li>
+                             <!-- Translated list items -->
+                            <li>SRB Token listing on selected DEX/CEX</li>
+                            <li>Direct Token/Reward exchange in-App</li>
+                            <li>Introduction of SRB Virtual/Physical Card</li>
+                            <li>New features and Eco-System enhancements</li>
                         </ul>
-                        <a href="#stay-updated" class="btn" style="opacity: 0.7; cursor: not-allowed;">Resta Aggiornato (Coming Soon)</a> <!-- Link placeholder disabilitato -->
+                        <a href="#stay-updated" class="btn" style="opacity: 0.7; cursor: not-allowed;">Stay Updated (Coming Soon)</a> <!-- Translated button text, kept disabled placeholder -->
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Security Notice -->
-        <section class="section" style="padding-top: 0; padding-bottom: 0;"> <!-- Ridotto padding sezione -->
+        <section class="section" style="padding-top: 0; padding-bottom: 0;"> <!-- Reduced section padding -->
             <div class="container">
                 <div class="security-notice">
-                    <h3>⚠️ Attenzione alla Sicurezza</h3>
-                    <p>Verifica sempre attentamente la rete e l'indirizzo prima di inviare criptovalute. Gli invii errati sono irreversibili. In caso di dubbi, contattaci.</p>
+                     <!-- Translated content -->
+                    <h3>⚠️ Security Warning</h3>
+                    <p>Always carefully verify the network and address before sending cryptocurrencies. Incorrect sends are irreversible. If in doubt, contact us.</p>
                 </div>
             </div>
         </section>
@@ -946,37 +963,38 @@
         <!-- Instant Setup -->
         <section class="section">
             <div class="container">
-                 <h2 class="section-title">Il Nostro Percorso</h2>
+                 <h2 class="section-title">Our Journey</h2> <!-- Translated title -->
                 <div class="instant-setup">
-                    <div class="setup-card card-fx-border"> <!-- Aggiunta classe effetto -->
-                        <h3>Fase Iniziale</h3>
-                        <div class="progress-bar" aria-label="Progresso Fase Iniziale" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar-fill" style="width: 10%" title="10% Completato"></div>
+                    <div class="setup-card card-fx-border"> <!-- Added effect class -->
+                        <h3>Initial Phase</h3> <!-- Translated title -->
+                        <div class="progress-bar" aria-label="Initial Phase Progress" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"> <!-- Translated aria-label -->
+                            <div class="progress-bar-fill" style="width: 10%" title="10% Completed"></div> <!-- Translated title -->
                         </div>
-                        <p>Abbiamo gettato le fondamenta (10% completato).</p>
-                         <img src="./assets/img/int-Pha.webp" alt="Setup Icon" style="width: 50px; height: auto; margin-top: 15px; opacity: 0.7;"> <!-- Esempio icona -->
+                        <p>We have laid the foundation (10% completed).</p> <!-- Translated paragraph -->
+                         <img src="./assets/img/int-Pha.webp" alt="Setup Icon" class="setup-icon"> <!-- Kept path, added class, translated alt -->
                     </div>
-                    <div class="setup-card card-fx-border"> <!-- Aggiunta classe effetto -->
-                        <h3>Setup Tecnologico</h3>
-                        <p>Piattaforma intuitiva pronta per la crescita.</p>
-                         <img src="./assets/img/tecno.webp" alt="Setup Icon" style="width: 50px; height: auto; margin-top: 15px; opacity: 0.7;"> <!-- Esempio icona -->
+                    <div class="setup-card card-fx-border"> <!-- Added effect class -->
+                        <h3>Technological Setup</h3> <!-- Translated title -->
+                        <p>Intuitive platform ready for growth.</p> <!-- Translated paragraph -->
+                         <img src="./assets/img/tecno.webp" alt="Technology Icon" class="setup-icon"> <!-- Kept path, added class, translated alt -->
                     </div>
-                    <div class="setup-card card-fx-border"> <!-- Aggiunta classe effetto -->
-                        <h3>Prossimi Passi</h3>
-                        <p>Lavoriamo per un futuro sostenibile e pieno di speranza.</p>
-                         <img src="./assets/img/sper.webp" alt="Future Icon" style="width: 50px; height: auto; margin-top: 15px; opacity: 0.7;"> <!-- Esempio icona -->
+                    <div class="setup-card card-fx-border"> <!-- Added effect class -->
+                        <h3>Next Steps</h3> <!-- Translated title -->
+                        <p>Working towards a sustainable and hopeful future.</p> <!-- Translated paragraph -->
+                         <img src="./assets/img/sper.webp" alt="Future Icon" class="setup-icon"> <!-- Kept path, added class, translated alt -->
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action -->
-        <section class="section cta-section"> <!-- Aggiunta classe -->
+        <section class="section cta-section"> <!-- Added class -->
             <div class="container">
-                <h2 class="section-title">Il cambiamento inizia da un'azione. La tua.</h2> <!-- Titolo CTA modificato -->
-                <p class="text-center">Unisciti alla community di SynergyRecycle.B. Insieme, possiamo costruire un futuro più verde e rivoluzionare il destino del nostro Pianeta.</p>
-                <div class="btn-container"> <!-- Wrapper per centrare -->
-                    <a href="./roadmap.html" class="btn">Scopri la Roadmap</a> <!-- Linkato a roadmap -->
+                <!-- Translated content -->
+                <h2 class="section-title">Change starts with one action. Yours.</h2>
+                <p class="text-center">Join the SynergyRecycle.B community. Together, we can build a greener future and revolutionize the destiny of our Planet.</p>
+                <div class="btn-container"> <!-- Wrapper for centering -->
+                    <a href="./roadmap.html" class="btn">Discover the Roadmap</a> <!-- Translated button text, kept link -->
                 </div>
             </div>
         </section>
@@ -987,14 +1005,14 @@
         <div class="container">
             <p class="copyright-text">
                 © <span id="copyright-year"></span> SynergyRecycle.B.
-                - Tutti i diritti riservati
-                 <br> <!-- Aggiunto break -->
-                Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a>
+                - All rights reserved <!-- Translated text -->
+                 <br> <!-- Kept break -->
+                Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a> <!-- Kept contact info -->
             </p>
         </div>
     </footer>
 
-    <!-- Script JS (con funzione Copia corretta) -->
+    <!-- Script JS (with corrected Copy function) -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -1011,17 +1029,17 @@
                 yearSpan.textContent = new Date().getFullYear();
              }
 
-            // --- HAMBURGER MENU TOGGLE (Usa ID e logica da index.html) ---
-            const hamburgerBtn = document.getElementById('hamburger-btn'); // Usa ID corretto
+            // --- HAMBURGER MENU TOGGLE (Use ID and logic from index.html) ---
+            const hamburgerBtn = document.getElementById('hamburger-btn'); // Use correct ID
             const mobileNav = document.getElementById('mobile-nav');
 
             if (hamburgerBtn && mobileNav) {
                 hamburgerBtn.addEventListener('click', function() {
-                    mobileNav.classList.toggle('active'); // Usa classe 'active'
+                    mobileNav.classList.toggle('active'); // Use 'active' class
                     toggleAriaExpanded(this);
                  });
 
-                 // Chiudi il menu quando si clicca su un link (escluso lingua)
+                 // Close menu when clicking a link inside (exclude language)
                 const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
                 mobileNavLinks.forEach(link => {
                     link.addEventListener('click', function() {
@@ -1035,11 +1053,12 @@
                     });
                 });
             } else {
-                 console.error("Hamburger button o mobile nav non trovati.");
+                 // Translated error message
+                 console.error("Hamburger button or mobile nav not found.");
             }
 
 
-            // --- LANGUAGE SELECTOR LOGIC (Copiata da index.html) ---
+            // --- LANGUAGE SELECTOR LOGIC (Copied from index.html) ---
              const languageBtn = document.getElementById('language-btn');
              const languageDropdown = document.getElementById('language-dropdown');
              const mobileLanguageBtn = document.getElementById('mobile-language-btn');
@@ -1088,16 +1107,18 @@
              if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
 
              function changeLang(lang) { // Placeholder
-                 console.log(`Lingua selezionata: ${lang}`);
+                  // Translated messages
+                 console.log(`Language selected: ${lang}`);
                  localStorage.setItem('selectedLanguage', lang);
-                 alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+                 alert(`Language changed to: ${lang}. (Translation logic to be implemented)`);
                  // document.documentElement.lang = lang;
              }
 
              const savedLang = localStorage.getItem('selectedLanguage');
              if (savedLang) {
-                  console.log(`Lingua salvata trovata: ${savedLang}.`);
-                 // changeLang(savedLang); // Applica se vuoi
+                  // Translated message
+                  console.log(`Saved language found: ${savedLang}.`);
+                 // changeLang(savedLang); // Apply if desired
                  // document.documentElement.lang = savedLang;
              }
             // --- END: Language Selector Logic ---
@@ -1113,17 +1134,20 @@
 
                 // --- Input Validation ---
                 if (!valueElement) {
-                    console.error("Elemento valore non trovato:", elementId);
+                    // Translated error
+                    console.error("Value element not found:", elementId);
                     return;
                 }
                 if (!copyMsgElement) {
-                    console.error("Elemento messaggio copia non trovato per:", elementId);
+                     // Translated error
+                    console.error("Copy message element not found for:", elementId);
                     return;
                 }
                 const addressToCopy = valueElement.getAttribute('data-address');
                 if (!addressToCopy || addressToCopy === "[Codice IBAN]") { // Check also for placeholder
-                     console.error("Attributo 'data-address' mancante, vuoto o placeholder per:", elementId);
-                     alert("Indirizzo non disponibile per la copia.");
+                     // Translated error and alert
+                     console.error("'data-address' attribute missing, empty, or placeholder for:", elementId);
+                     alert("Address not available for copying.");
                      return;
                 }
                 console.log('Address to copy:', addressToCopy); // Debug log
@@ -1138,8 +1162,10 @@
                 // --- Use Clipboard API ---
                 navigator.clipboard.writeText(addressToCopy).then(() => {
                     // Success! Show the confirmation message.
-                    console.log('Copiato con successo:', addressToCopy); // Debug log
-                    copyMsgElement.style.display = 'inline'; // Show the "Copiato!" message
+                    // Translated log and message
+                    console.log('Successfully copied:', addressToCopy);
+                    copyMsgElement.textContent = 'Copied!'; // Ensure text is correct even if HTML changes
+                    copyMsgElement.style.display = 'inline'; // Show the "Copied!" message
 
                     // Hide the message after a delay
                     setTimeout(() => {
@@ -1148,14 +1174,15 @@
 
                 }).catch(err => {
                     // Error handling
-                    console.error('Errore durante la copia negli appunti:', err);
-                    alert('Errore: Impossibile copiare l\'indirizzo negli appunti. Potrebbe essere necessario farlo manualmente.\n Dettagli: ' + err.message);
+                    // Translated errors and alert
+                    console.error('Error copying to clipboard:', err);
+                    alert('Error: Could not copy address to clipboard. You may need to do it manually.\nDetails: ' + err.message);
                      copyMsgElement.style.display = 'none';
                 });
             }
             // --- END: Corrected COPY ADDRESS FUNCTION ---
 
-        }); // Fine DOMContentLoaded
+        }); // End DOMContentLoaded
     </script>
 
 </body>
