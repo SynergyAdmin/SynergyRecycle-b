@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en"> <!-- Changed language -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SynergyRecycle.B</title>
+    <title>SynergyRecycle.B</title> <!-- Kept as likely brand name -->
     <style>
         /* Variabili con nuova palette di colori più ecologica e tecnologica */
         :root {
@@ -404,7 +404,7 @@
         }
 
         .image-container { /* Stile specifico HERO index.html */
-            background-image: url('./assets/img/4.1.jpeg');
+            background-image: url('./assets/img/4.1.jpeg'); /* Kept path */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -776,29 +776,10 @@
              }
 
             /* Future button non sembra esistere nell'HTML, commentato
-            #future-button {
-                padding: 8px 15px;
-                border-radius: 20px;
-                text-decoration: none;
-                color: white;
-                background-color: var(--primary-green);
-                transition: all 0.3s;
-                margin: 0 15px;
-                white-space: nowrap;
-            }
-
-            #future-button:hover {
-                background-color: var(--secondary-green);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            }
-            */
+            #future-button { ... } */
 
             /* Non serve più, .green-button è già gestito sopra
-            .green-button {
-               padding: 6px 15px;
-               font-size: 14px;
-            } */
+            .green-button { ... } */
         }
 
         @media (max-width: 480px) {
@@ -845,53 +826,61 @@
     <div class="bg-decoration decoration-2"></div>
 
     <div class="container">
-        <!-- Intestazione -->
+        <!-- Header -->
         <header>
-            <a href="./" class="logo"> <!-- Aggiunto link alla home sul logo -->
-                <img src="./assets/img/logo da email.png" alt="Logo SynergyRecycle.B">
-                <span>SynergyRecycle.B</span>
+            <a href="./" class="logo"> <!-- Kept link -->
+                <img src="./assets/img/logo da email.png" alt="SynergyRecycle.B Logo"> <!-- Kept path, translated alt -->
+                <span>SynergyRecycle.B</span> <!-- Kept brand name -->
             </a>
             <nav class="main-nav">
-                <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
-                <a href="./" class="button">Home</a>
-                <a href="./servizi.html" class="button">Servizi</a>
-                <a href="./sostenerci.html" class="button">Supportaci</a>
-                <a href="./contattaci.html" class="button">Contattaci</a>
-                <a href="./roadmap.html" class="button">Roadmap</a>
+                <!-- Translated button text -->
+                <a href="./contatore.html" class="green-button">"One action, A Thousand Impacts."</a> <!-- Kept link -->
+                <!-- Translated navigation links -->
+                <a href="./" class="button">Home</a> <!-- Kept link -->
+                <a href="./servizi.html" class="button">Services</a> <!-- Kept link -->
+                <a href="./sostenerci.html" class="button">Support Us</a> <!-- Kept link -->
+                <a href="./contattaci.html" class="button">Contact Us</a> <!-- Kept link -->
+                <a href="./roadmap.html" class="button">Roadmap</a> <!-- Kept link -->
                 <!-- START: Language Selector HTML (Desktop) -->
                 <div class="language-selector">
-                    <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
+                     <!-- Translated aria-label -->
+                    <button class="language-btn" id="language-btn" aria-label="Select language" aria-haspopup="true" aria-expanded="false">🌐</button>
                     <div class="language-dropdown" id="language-dropdown" role="menu">
+                    <!-- Translated language names (keeping original language name for display) -->
                     <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
-                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div> <!-- Español -> Spanish -->
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div> <!-- Deutsch -> German -->
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div> <!-- Italiano -> Italian -->
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div> <!-- Français -> French -->
                     </div>
                 </div>
                 <!-- END: Language Selector HTML (Desktop) -->
             </nav>
             <!-- Hamburger container non serve, il bottone può stare direttamente nell'header -->
-            <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+            <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button> <!-- aria-label already English -->
         </header>
 
-        <!-- Navigazione mobile -->
+        <!-- Mobile navigation -->
         <nav class="mobile-nav" id="mobile-nav">
-            <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
-            <a href="./" class="button">Home</a>
-            <a href="./servizi.html" class="button">Servizi</a>
-            <a href="./sostenerci.html" class="button">Supportaci</a>
-            <a href="./contattaci.html" class="button">Contattaci</a>
-            <a href="./roadmap.html" class="button">Roadmap</a>
+            <!-- Translated button text -->
+            <a href="./contatore.html" class="green-button">"One action, A Thousand Impacts."</a> <!-- Kept link -->
+            <!-- Translated navigation links -->
+            <a href="./" class="button">Home</a> <!-- Kept link -->
+            <a href="./servizi.html" class="button">Services</a> <!-- Kept link -->
+            <a href="./sostenerci.html" class="button">Support Us</a> <!-- Kept link -->
+            <a href="./contattaci.html" class="button">Contact Us</a> <!-- Kept link -->
+            <a href="./roadmap.html" class="button">Roadmap</a> <!-- Kept link -->
             <!-- START: Language Selector HTML (Mobile) -->
             <div class="language-selector">
-                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
+                 <!-- Translated button text -->
+                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Language</button>
                 <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
+                     <!-- Translated language names (keeping original language name for display) -->
                     <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
-                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
-                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
                 </div>
             </div>
             <!-- END: Language Selector HTML (Mobile) -->
@@ -899,18 +888,20 @@
 
         <!-- Banner -->
         <div class="banner">
-            SynergyRecycle.B: "Ogni gesto conta, noi insieme facciamo la differenza."
+            <!-- Translated banner text -->
+            SynergyRecycle.B: "Every gesture counts, together we make the difference."
         </div>
-    </div> <!-- Fine container per header/banner -->
+    </div> <!-- End container for header/banner -->
 
     <main>
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <!-- Contenuto Hero section originale (image-container) -->
+                <!-- Original Hero section content (image-container) -->
                 <div class="image-container">
-                     <h1 class="hero-title">"La nostra Piattaforma: per aiutarci, ad aiutare il Mondo."</h1>
-                     <p class="hero-subtitle">Costruiamo esperienze digitali, rivoluzioniamo il modo di fare, distinguiamoci.</p>
+                     <!-- Translated titles -->
+                     <h1 class="hero-title">"Our Platform: to help us, help the World."</h1>
+                     <p class="hero-subtitle">We build digital experiences, revolutionize the way things are done, let's stand out.</p>
                      <!-- Eventuale bottone CTA qui dentro se necessario -->
                 </div>
             </div>
@@ -919,84 +910,96 @@
         <!-- Blockchain Visualization Section -->
         <section class="section">
             <div class="container">
-                <h2 class="section-title">Con la Blockchain Polygon il futuro sarà sostenibile</h2>
-                <p class="text-center" style="color: #557669; max-width: 700px; margin: -20px auto 30px auto;">La nostra tecnologia basata su blockchain Polygon connette ogni fase del riciclo per massimizzare l'impatto positivo, garantendo trasparenza e tracciabilità.</p>
+                 <!-- Translated title and paragraph -->
+                <h2 class="section-title">With the Polygon Blockchain, the future will be sustainable</h2>
+                <p class="text-center" style="color: #557669; max-width: 700px; margin: -20px auto 30px auto;">Our technology based on the Polygon blockchain connects every phase of recycling to maximize positive impact, ensuring transparency and traceability.</p>
                 <div class="blockchain-visualization" id="blockchain-viz">
                     <!-- This will be filled by JavaScript -->
                 </div>
             </div>
         </section>
 
-        <!-- Strategia Section -->
+        <!-- Strategy Section -->
         <section class="section" style="background: linear-gradient(135deg, var(--background-green), #eaf3ea); padding-bottom: var(--spacing-md);">
              <div class="container">
-                <h2 class="section-title">Guidiamo il Successo attraverso: Efficienza, Affidabilità, Innovazione, Scalabilità.</h2>
-                <p class="text-center" style="color: #557669;">Mettiamo a punto un'esperienza clienti unica.</p>
-                <p class="text-center" style="color: #557669; margin-bottom: 0;">Strategie digitali e ricerche su misura basate su Affidabilità e Innovazione.</p>
+                 <!-- Translated title and paragraphs -->
+                <h2 class="section-title">We Drive Success through: Efficiency, Reliability, Innovation, Scalability.</h2>
+                <p class="text-center" style="color: #557669;">We fine-tune a unique customer experience.</p>
+                <p class="text-center" style="color: #557669; margin-bottom: 0;">Digital strategies and tailored research based on Reliability and Innovation.</p>
             </div>
         </section>
 
-        <!-- Valori Section -->
+        <!-- Values Section -->
         <section class="section">
             <div class="container">
-                <h2 class="section-title">I nostri pilastri fondamentali</h2>
+                 <!-- Translated title -->
+                <h2 class="section-title">Our fundamental pillars</h2>
                 <div class="values-grid">
                     <div class="value-card">
-                        <h3>Efficienza</h3>
-                        <p>Ottimizziamo processi e risorse per il massimo risultato con il minimo spreco.</p>
-                        <img src="./assets/img/efficienz.jpeg" alt="Icona Efficienza">
+                         <!-- Translated content -->
+                        <h3>Efficiency</h3>
+                        <p>We optimize processes and resources for maximum results with minimum waste.</p>
+                        <img src="./assets/img/efficienz.jpeg" alt="Efficiency Icon"> <!-- Kept path, translated alt -->
                     </div>
                     <div class="value-card">
-                        <h3>Affidabilità</h3>
-                         <p>Garantiamo trasparenza e sicurezza grazie alla tecnologia blockchain.</p>
-                        <img src="./assets/img/affidabilita.jpeg" alt="Icona Affidabilità">
+                         <!-- Translated content -->
+                        <h3>Reliability</h3>
+                         <p>We guarantee transparency and security thanks to blockchain technology.</p>
+                        <img src="./assets/img/affidabilita.jpeg" alt="Reliability Icon"> <!-- Kept path, translated alt -->
                     </div>
                     <div class="value-card">
-                        <h3>Innovazione</h3>
-                         <p>Sviluppiamo costantemente soluzioni all'avanguardia per la sostenibilità.</p>
-                        <img src="./assets/img/innovazione.jpeg" alt="Icona Innovazione">
+                         <!-- Translated content -->
+                        <h3>Innovation</h3>
+                         <p>We constantly develop cutting-edge solutions for sustainability.</p>
+                        <img src="./assets/img/innovazione.jpeg" alt="Innovation Icon"> <!-- Kept path, translated alt -->
                     </div>
                     <div class="value-card">
-                        <h3>Scalabilità</h3>
-                        <p>Progettiamo sistemi flessibili pronti a crescere con la nostra community.</p>
-                        <img src="./assets/img/donna.png" alt="Icona Scalabilità">
+                         <!-- Translated content -->
+                        <h3>Scalability</h3>
+                        <p>We design flexible systems ready to grow with our community.</p>
+                        <img src="./assets/img/donna.png" alt="Scalability Icon"> <!-- Kept path, translated alt -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Offerta Section -->
-        <section class="section building-section"> <!-- Aggiunta classe building-section -->
+        <!-- Offer Section -->
+        <section class="section building-section"> <!-- Added building-section class -->
             <div class="container">
-                <h2 class="section-title">Scopri cosa stiamo Costruendo.</h2>
-                <!-- Rimossa div .building-section interna superflua -->
+                 <!-- Translated title -->
+                <h2 class="section-title">Discover what we are Building.</h2>
+                <!-- Removed superfluous inner .building-section div -->
                 <div class="building-content">
                     <div class="building-text">
-                        <h3>Trasformazione digitale per la Sostenibilità</h3>
-                        <p>Aiutiamo persone e aziende a prosperare in un panorama eco-consapevole in continua evoluzione.</p>
-                        <h3>Sviluppo Web & App Dedicati</h3>
-                        <p>Mettiamo a frutto la nostra esperienza per fornire strumenti intuitivi e potenti, dando a tutti la possibilità di contribuire e crescere.</p>
+                         <!-- Translated content -->
+                        <h3>Digital Transformation for Sustainability</h3>
+                        <p>We help people and companies thrive in an ever-evolving eco-conscious landscape.</p>
+                        <h3>Dedicated Web & App Development</h3>
+                        <p>We leverage our experience to provide intuitive and powerful tools, giving everyone the opportunity to contribute and grow.</p>
                         <div class="app-download-buttons">
-                            <a href="#" class="btn" target="_blank" style="opacity: 0.7; cursor: not-allowed;">Coming Soon: App Store</a> <!-- Link disabilitato -->
-                            <a href="#" class="btn" target="_blank" style="opacity: 0.7; cursor: not-allowed;">Coming Soon: Google Play</a> <!-- Link disabilitato -->
+                            <!-- Text already English, kept links disabled -->
+                            <a href="#" class="btn" target="_blank" style="opacity: 0.7; cursor: not-allowed;">Coming Soon: App Store</a>
+                            <a href="#" class="btn" target="_blank" style="opacity: 0.7; cursor: not-allowed;">Coming Soon: Google Play</a>
                         </div>
                     </div>
                     <div class="building-image">
-                        <img src="./assets/img/persona.jpeg" alt="Persona che interagisce con tecnologia sostenibile">
+                        <img src="./assets/img/persona.jpeg" alt="Person interacting with sustainable technology"> <!-- Kept path, translated alt -->
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action -->
-        <!-- Modificato stile per coerenza con l'altro CTA -->
+        <!-- Modified style for consistency with the other CTA -->
         <section class="section" style="background: linear-gradient(135deg, #f0f7ee, var(--tertiary-green));">
             <div class="container">
-                <h2 class="section-title" style="font-size: 1.8rem;">Tutte le Persone fanno molto per se stessi, ma ancora poco per il nostro Pianeta.</h2>
-                <h2 class="section-title" style="font-size: 2rem;">Entra a far parte di SynergyRecycle.B: insieme potremmo rivoluzionare il futuro del nostro Mondo.</h2>
-                <p class="text-center" style="color: #557669;">Unisciti a noi per migliorare, e insieme miglioreremo il nostro Pianeta.</p>
+                <!-- Translated titles and paragraph -->
+                <h2 class="section-title" style="font-size: 1.8rem;">People do a lot for themselves, but still too little for our Planet.</h2>
+                <h2 class="section-title" style="font-size: 2rem;">Become part of SynergyRecycle.B: together we could revolutionize the future of our World.</h2>
+                <p class="text-center" style="color: #557669;">Join us to improve, and together we will improve our Planet.</p>
                 <div style="text-align: center; margin-top: var(--spacing-md);">
-                    <a href="./sostenerci.html" class="btn">Inizia ora</a> <!-- Linkato a supportaci -->
+                    <!-- Translated button text, kept link -->
+                    <a href="./sostenerci.html" class="btn">Start now</a>
                 </div>
             </div>
         </section>
@@ -1007,8 +1010,9 @@
         <div class="container">
             <p class="copyright-text">
                 © <span id="copyright-year"></span> SynergyRecycle.B.
-                 - Tutti i diritti riservati
-                 <br> <!-- Aggiunto break -->
+                 <!-- Translated text --> - All rights reserved
+                 <br> <!-- Kept break -->
+                 <!-- Kept contact info -->
                 Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a>
             </p>
         </div>
@@ -1110,17 +1114,19 @@
 
              // Funzione per cambiare lingua (placeholder - implementare logica reale)
              function changeLang(lang) {
-                 console.log(`Lingua selezionata: ${lang}`);
+                 // Translated console log and alert messages
+                 console.log(`Language selected: ${lang}`);
                  localStorage.setItem('selectedLanguage', lang);
-                 // QUI VA LA LOGICA DI TRADUZIONE:
-                 alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+                 // HERE GOES THE TRANSLATION LOGIC:
+                 alert(`Language changed to: ${lang}. (Translation logic to be implemented)`);
                  // document.documentElement.lang = lang; // Aggiorna attributo lang
              }
 
               // Applica lingua salvata all'avvio (opzionale)
              const savedLang = localStorage.getItem('selectedLanguage');
              if (savedLang) {
-                  console.log(`Lingua salvata trovata: ${savedLang}. Applicare se necessario.`);
+                  // Translated console log message
+                  console.log(`Saved language found: ${savedLang}. Apply if necessary.`);
                  // changeLang(savedLang); // Decommenta per applicare subito
                  // document.documentElement.lang = savedLang; // Aggiorna subito attributo lang
              }
@@ -1136,7 +1142,8 @@
                  blockchainVizContainer.innerHTML = ''; // Pulisci prima di ricreare
                  blockchainVizContainer.dataset.initialized = 'true'; // Imposta flag
 
-                 const blockLabels = ['Raccolta', 'Verifica', 'Processo', 'Riciclo', 'Riutilizzo'];
+                 // Translated block labels
+                 const blockLabels = ['Collection', 'Verification', 'Processing', 'Recycling', 'Reuse'];
                  const blocks = [];
                  const isMobile = window.innerWidth <= 768;
                  const isSmallMobile = window.innerWidth <= 480;
