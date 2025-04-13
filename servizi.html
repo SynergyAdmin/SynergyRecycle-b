@@ -358,6 +358,30 @@
             right: -50px;
         }
 
+        .language-selector {
+            position: relative;
+            margin-left: 10px;
+            flex-shrink: 0; /* Add this line */
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        /* Replace this line: */
+        /* min-width: 160px; */
+        /* With these two lines: */
+            width: max-content; /* Let width be determined by content */
+            min-width: 160px;   /* But ensure it's at least 160px wide */
+            z-index: 1100;
+            display: none;
+            overflow: hidden;
+            padding: 5px 0;
+        }
+
         /* === END: Styles copied/adapted from index.html === */
 
 
