@@ -111,7 +111,6 @@
             position: relative;
             overflow: hidden;
             white-space: nowrap; /* Evita che i link vadano a capo */
-            flex-shrink: 0; /* Non restringere i link */
         }
 
         .main-nav a.button:hover {
@@ -149,9 +148,8 @@
             position: relative;
             overflow: hidden;
             white-space: nowrap; /* Evita a capo */
-            margin: 0 10px 0 5px; /* Margine per separare */
+            margin: 0 5px; /* Margine per separare */
             display: inline-block;
-            flex-shrink: 0; /* Non restringere il bottone */
         }
 
         .green-button::before { /* Effetto shine da index */
@@ -358,30 +356,6 @@
             right: -50px;
         }
 
-        .language-selector {
-            position: relative;
-            margin-left: 10px;
-            flex-shrink: 0; /* Add this line */
-        }
-
-        .language-dropdown {
-            position: absolute;
-            top: calc(100% + 10px);
-            right: 0;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        /* Replace this line: */
-        /* min-width: 160px; */
-        /* With these two lines: */
-            width: max-content; /* Let width be determined by content */
-            min-width: 160px;   /* But ensure it's at least 160px wide */
-            z-index: 1100;
-            display: none;
-            overflow: hidden;
-            padding: 5px 0;
-        }
-
         /* === END: Styles copied/adapted from index.html === */
 
 
@@ -389,13 +363,13 @@
 
         /* Hero section con video background */
         .hero {
-            min-height: 65vh; /* Altezza leggermente aumentata */
+            min-height: 30vh; /* Altezza leggermente aumentata */
             display: flex;
             align-items: center; /* Centra contenuto verticalmente */
             justify-content: center; /* Centra contenuto orizzontalmente */
             position: relative; /* Necessario per video e overlay */
             overflow: hidden;
-            padding: 0; /* Rimuove padding base sezione */
+            padding: var(--spacing-md) 0; /* Ridotto padding */
             margin-bottom: var(--spacing-lg); /* Spazio sotto hero */
         }
 
@@ -711,7 +685,116 @@
              @keyframes scrollLogos { 100% { transform: translateX(-840px); } } /* Recalculated for 480px */
              .cta-section .section-title { font-size: 1.4rem; }
          }
-        /* === END: Responsive Styles === */
+
+        /* Language Selector Styling */
+
+        .language-selector {
+            position: relative;
+            margin-left: 10px; /* Spazio a sinistra nel nav desktop */
+        }
+
+        .language-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem; /* Icona leggermente più grande */
+            cursor: pointer;
+            padding: 5px 8px; /* Padding per area cliccabile */
+            border-radius: 50%; /* Cerchio */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Colore icona */
+            transition: background-color 0.3s;
+            line-height: 1; /* Evita altezza extra */
+        }
+
+        .language-btn:hover {
+            background-color: rgba(255, 255, 255, 0.15); /* Stesso hover dei link nav */
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: calc(100% + 10px); /* Spazio tra bottone e dropdown */
+            right: 0;
+            background-color: white;
+            border-radius: 8px; /* Stesso radius card */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Ombra più pronunciata */
+            min-width: 160px; /* Larghezza minima */
+            z-index: 1100; /* Sopra l'header */
+            display: none; /* Nascosto di default */
+            overflow: hidden; /* Per bordi arrotondati */
+            padding: 5px 0; /* Padding verticale interno */
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 10px 15px; /* Padding interno */
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--dark-gray); /* Testo scuro */
+        }
+
+        .language-option:hover {
+            background-color: var(--background-green); /* Sfondo verde chiaro su hover */
+        }
+
+        .language-flag {
+            margin-right: 10px; /* Spazio tra bandiera e testo */
+            font-size: 1.1rem; /* Dimensione bandiera emoji */
+            line-height: 1;
+        }
+
+        /* Language selector mobile */
+        .mobile-nav .language-selector {
+            width: 100%;
+            margin: 15px 0 5px 0; /* Spazio sopra/sotto nel menu mobile */
+            position: relative; /* Necessario per dropdown */
+        }
+
+        .mobile-nav .language-btn {
+            width: 100%;
+            justify-content: center; /* Centra testo/icona */
+            padding: 10px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Bordo sottile bianco */
+            border-radius: 5px; /* Stesso radius link mobile */
+            background-color: transparent;
+            color: white;
+            font-size: 1rem; /* Dimensione testo bottone */
+            text-align: center;
+        }
+         .mobile-nav .language-btn:hover {
+             background-color: rgba(255, 255, 255, 0.1);
+             transform: none; /* Nessun transform in mobile */
+         }
+
+        .mobile-nav .language-dropdown {
+            position: static; /* Non assoluto, appare sotto */
+            width: 100%;
+            box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: none; /* Rimuove bordo sopra */
+            border-radius: 0 0 5px 5px; /* Arrotonda solo sotto */
+            margin-top: -1px; /* Sovrappone leggermente il bottone */
+            background-color: rgba(0,0,0, 0.1); /* Sfondo scuro semi-trasparente */
+            max-height: 200px; /* Limita altezza */
+            overflow-y: auto; /* Scroll se necessario */
+            padding: 0; /* Rimuove padding base */
+        }
+         .mobile-nav .language-option {
+             color: white; /* Testo bianco */
+             padding: 12px 20px;
+         }
+         .mobile-nav .language-option:hover {
+             background-color: rgba(255, 255, 255, 0.15);
+         }
+
+       /* === END: Responsive Styles === */
 
     </style>
 </head>
@@ -816,8 +899,8 @@
                 <div class="systems-grid">
                     <!-- Card 1: App -->
                      <div class="system-card card-fx-border" id="app-features">
-                        <img src="./assets/img/punto-App.jpg" alt="SynergyRecycle.B App Screenshot"> <!-- Kept path, translated alt -->
-                        <h3>App with Many Features</h3> <!-- Translated title -->
+                        <img src="./assets/img/3.31.jpeg" alt="SynergyRecycle.B App Screenshot"> <!-- Kept path, translated alt -->
+                        <h3>Many Features</h3> <!-- Translated title -->
                         <p>Your digital guide for recycling: manage every aspect, monitor progress, and earn SRB Tokens for your environmental contribution.</p> <!-- Translated paragraph -->
                         <ul>
                             <!-- Translated list items -->
@@ -833,7 +916,7 @@
                     </div>
                      <!-- Card 2: Allies -->
                      <div class="system-card card-fx-border" id="our-allies">
-                        <img src="./assets/img/punto-Comp.jpg" alt="Collaboration and Partnership"> <!-- Kept path, translated alt -->
+                        <img src="./assets/img/3.1.jpeg" alt="Collaboration and Partnership"> <!-- Kept path, translated alt -->
                         <h3>Our Strategic Allies</h3> <!-- Translated title -->
                         <p>We build a global network of committed partners: together with you and our allies, we create sustainable solutions for a better future.</p> <!-- Translated paragraph -->
                         <ul>
@@ -909,9 +992,10 @@
                                 <a href="https://x.com/SynergyRecycl?t=84HCOrA4xRS2NEUcjjmkAg&s=35" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><img src="./assets/img/X.png" alt="Twitter Icon"></a>
                                 <a href="https://youtube.com/tuocanale" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="./assets/img/youTube.png" alt="YouTube Icon"></a>
                                 <a href="https://www.instagram.com/synergyrecycle.b?utm_source=qr&igsh=MW05cWtzajFkMDg2dg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="./assets/img/instagram.png" alt="Instagram Icon"></a>
-                                <a href="   " target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="./assets/img/telegram.png" alt="Telegram Icon"></a>
+                                <!-- Corrected Telegram link/icon -->
+                                <a href="https://t.me/tuocanaletelegram" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="./assets/img/telegram.png" alt="Telegram Icon"></a>
                                 <a href="https://linkedin.com/in/synergyrecycle-b-4b8246322" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="./assets/img/linkedin1.png" alt="LinkedIn Icon"></a>
-                                <a href="htuoinvito" target="_blank" rel="noopener noreferrer" aria-label="Discord"><img src="./assets/img/discord.png" alt="Discord Icon"></a>
+                                <a href="https://discord.gg/tuoinvito" target="_blank" rel="noopener noreferrer" aria-label="Discord"><img src="./assets/img/discord.png" alt="Discord Icon"></a>
                             </div>
                         </div>
                         <div class="feature-box dark-green-box">
