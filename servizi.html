@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - SynergyRecycle.B</title> <!-- Translated Title -->
     <style>
-        /* === START: Styles copied/adapted from index.html === */
+        /* === START: Styles Copied/Adapted from index.html === */
 
         /* Variabili con palette di colori ecologica e tecnologica (da index.html) */
         :root {
@@ -23,16 +23,20 @@
             --blockchain-blue: #4c7f9c;    /* Blu per la blockchain */
             /* --laser-color: #5cdb95; */       /* Colore dei "raggi laser" (verde - commentato perché index usava viola alla fine) */
             --laser-color: #9c27b0; /* Colore viola (dall'ultima definizione in index.html) */
+            --card-bg-color: #fff;
+            --light-bg-section: #f8f9fa;
+            --hero-overlay-bg: rgba(255, 255, 255, 0.6); /* Overlay più chiaro per video */
+            --hero-text-color: var(--primary-blue); /* Colore testo hero */
         }
 
         /* Reset e base (da index.html) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif; /* Font da index */
             line-height: 1.5;
-            color: var(--dark-gray); /* Usiamo variabile */
-            background-color: var(--background-green);
+            color: var(--dark-gray); /* Colore base da index */
+            background-color: var(--background-green); /* Sfondo da index */
             position: relative;
             overflow-x: hidden;
         }
@@ -42,10 +46,19 @@
             max-width: var(--container-width); /* Usiamo variabile */
             width: 100%;
             margin: 0 auto;
-            padding: 20px; /* Mantiene spazio sopra header */
+            padding: 20px; /* Mantiene padding contenitore */
             position: relative;
             z-index: 2; /* Assicura che il contenuto sia sopra le decorazioni di sfondo */
         }
+         /* Container specifico per HERO per rimuovere padding laterale */
+        .container-hero {
+             max-width: var(--container-width);
+             width: 100%;
+             margin: 0 auto;
+             padding: 0; /* No padding laterale per hero */
+             position: relative;
+             z-index: 1; /* Hero sta sotto header */
+         }
 
         /* Header e navigazione con effetto gradiente (da index.html) */
         header {
@@ -98,6 +111,7 @@
             position: relative;
             overflow: hidden;
             white-space: nowrap; /* Evita che i link vadano a capo */
+            flex-shrink: 0; /* Non restringere i link */
         }
 
         .main-nav a.button:hover {
@@ -135,8 +149,9 @@
             position: relative;
             overflow: hidden;
             white-space: nowrap; /* Evita a capo */
-            margin: 0 5px; /* Aggiunge margine laterale */
-            display: inline-block; /* Assicura corretto layout */
+            margin: 0 10px 0 5px; /* Margine per separare */
+            display: inline-block;
+            flex-shrink: 0; /* Non restringere il bottone */
         }
 
         .green-button::before { /* Effetto shine da index */
@@ -348,1114 +363,825 @@
 
         /* === START: Styles specific to servizi.html, adapted for consistency === */
 
-        /* Hero section (semplificata rispetto a index, senza immagine overlay) */
+        /* Hero section con video background */
         .hero {
-            min-height: 30vh; /* Ridotta altezza */
+            min-height: 65vh; /* Altezza leggermente aumentata */
             display: flex;
-            align-items: center;
-            justify-content: center; /* Centra contenuto */
-            background-color: var(--background-green); /* Usa sfondo base */
-            padding: var(--spacing-md) 0; /* Ridotto padding */
+            align-items: center; /* Centra contenuto verticalmente */
+            justify-content: center; /* Centra contenuto orizzontalmente */
+            position: relative; /* Necessario per video e overlay */
+            overflow: hidden;
+            padding: 0; /* Rimuove padding base sezione */
+            margin-bottom: var(--spacing-lg); /* Spazio sotto hero */
+        }
+
+        .video-background {
+            position: absolute;
+            top: 50%; /* Centra verticalmente */
+            left: 50%; /* Centra orizzontalmente */
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Dietro a tutto */
+            transform: translate(-50%, -50%); /* Centramento effettivo */
+            overflow: hidden; /* Nasconde parti video che escono */
+        }
+
+        .video-background video {
+            min-width: 100%; /* Assicura copertura */
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover; /* Copre l'area senza distorcere */
+            opacity: 0.7; /* Leggera opacità per leggibilità testo */
+            filter: brightness(0.8); /* Leggermente scurito */
+        }
+
+        /* Overlay Gradiente sopra video (opzionale ma migliora leggibilità) */
+        .hero::after {
+             content: '';
+             position: absolute;
+             inset: 0;
+             background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); /* Gradiente scuro da basso */
+             z-index: 1;
+        }
+
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto; /* Già centrato da flex in .hero */
             text-align: center;
+            position: relative;
+            z-index: 2; /* Sopra video e overlay */
+            background-color: transparent; /* Rimosso sfondo bianco */
+            padding: var(--spacing-md); /* Aggiunge padding per respiro */
+            color: white; /* Testo bianco per contrasto */
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Ombra testo più marcata */
         }
 
-        .hero-title { /* Stile titolo da index */
-            font-size: 3rem;
-            margin-bottom: var(--spacing-sm); /* Ridotto margine */
-            color: #2a5548;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        .hero-title {
+            font-size: clamp(2.2rem, 6vw, 3.5rem); /* Font responsivo */
+            margin-bottom: 0; /* Rimuove margine sotto */
+            color: white; /* Assicura colore bianco */
+            text-shadow: inherit; /* Eredita ombra dal parent */
+            font-weight: 600; /* Bold */
         }
 
-        /* System cards grid */
+        /* Fallback (se necessario, va dentro .video-background) */
+        .fallback-image {
+             position: absolute;
+             inset: 0;
+             width: 100%;
+             height: 100%;
+             background-image: url('./assets/img/video-fallback.jpg'); /* Assicurati che esista */
+             background-size: cover;
+             background-position: center;
+             z-index: -1; /* Dietro al contenuto ma sopra lo sfondo base */
+        }
+
+
+        /* System cards (adattato da .value-card di index.html) */
         .systems-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-md); /* Usa variabile spacing */
-            margin-top: var(--spacing-md); /* Usa variabile spacing */
+            gap: var(--spacing-md);
+            margin-top: 0; /* Rimosso margine top extra, gestito da .section */
         }
 
-        /* System card styling (adattato da .value-card di index.html) */
         .system-card {
-            background: white;
+            background: var(--card-bg-color);
             border-radius: 12px;
             padding: var(--spacing-md);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: left; /* Allineato a sx di default */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            /* Applica effetto bordo da index */
             position: relative;
-            overflow: hidden; /* Nasconde ::after all'inizio */
-            display: flex; /* Per layout interno */
-            flex-direction: column; /* Elementi in colonna */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .system-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+             transform: translateY(-10px); /* Added hover effect */
         }
-
-        .system-card::after { /* Effetto bordo inferiore hover da index */
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
+         .system-card::after { /* Effect from card-fx-border */
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 5px;
             background: linear-gradient(90deg, var(--primary-green), var(--tertiary-green));
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
+            transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease;
         }
-
         .system-card:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+            transform: scaleX(1); transform-origin: left;
         }
 
         .system-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 8px; /* Leggermente più arrotondato */
-            margin-bottom: var(--spacing-sm); /* Usa variabile */
+            border-radius: 8px;
+            margin-bottom: var(--spacing-sm);
             transition: transform 0.3s ease;
         }
-         .system-card:hover img {
-             transform: scale(1.03); /* Leggero zoom immagine su hover card */
-         }
+        .system-card:hover img {
+             transform: scale(1.03);
+        }
 
         .system-card h3 {
-            color: var(--primary-blue); /* Colore titolo da index */
-            margin-bottom: 10px; /* Spazio sotto h3 */
-            font-size: 1.5rem; /* Dimensione da index */
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
         }
-
         .system-card p {
-            margin-bottom: 15px; /* Spazio sotto paragrafi */
-            color: var(--dark-gray); /* Colore testo standard */
-            flex-grow: 1; /* Fa sì che il paragrafo occupi spazio disponibile */
+             margin-bottom: 15px;
+             color: var(--dark-gray);
+             font-size: 0.95rem;
+             flex-grow: 1;
         }
-
         .system-card ul {
-            list-style: disc; /* Stile lista standard */
-            margin-left: 20px; /* Indentazione lista */
-            margin-bottom: var(--spacing-sm); /* Spazio sotto lista */
-            color: var(--dark-gray);
-            flex-grow: 1; /* Occupa spazio */
+             list-style: disc; margin-left: 20px; margin-bottom: var(--spacing-sm);
+             color: var(--dark-gray); flex-grow: 1; font-size: 0.95rem;
         }
-         .system-card ul li {
-             margin-bottom: 5px; /* Spazio tra elementi lista */
-         }
+         .system-card ul li { margin-bottom: 5px; }
 
-        /* Video button (usa stile base .btn e aggiunge icona) */
+        /* Video button (stile base .btn, colore verde) */
         .video-btn {
-            /* Eredita stili da .btn */
-            background: var(--primary-green); /* Usa verde primario */
-            padding: 0.7rem 1.5rem; /* Padding specifico */
-            border-radius: 25px; /* Più arrotondato */
-            margin-top: auto; /* Spinge il bottone in fondo alla card */
-            align-self: flex-start; /* Allinea a sinistra */
-            display: inline-flex; /* Per allineare icona e testo */
-            align-items: center;
+            display: inline-flex; align-items: center; justify-content: center;
+            background: var(--primary-green); /* Colore verde primario */
+            color: white; padding: 0.7rem 1.5rem; border-radius: 25px;
+            text-decoration: none; margin-top: auto; /* Spinge in fondo */
+            align-self: flex-start; /* Allinea a sx */
+            transition: all 0.3s ease; border: none; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombra base */
+             position: relative; overflow: hidden; z-index: 1;
         }
-         .video-btn:hover {
-             background: var(--secondary-green); /* Hover verde secondario */
-             /* Eredita transform e shadow da .btn:hover */
-         }
-         .video-btn svg { /* Stile icona SVG */
-             margin-right: 8px;
-             width: 20px; /* Dimensione icona */
-             height: 20px;
-         }
-         .video-btn:hover::before {
-             left: -100%; /* Disabilita effetto shine per questo bottone specifico */
-         }
+        .video-btn::before { /* Effetto shine */
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s; z-index: -1;
+        }
+        .video-btn:hover {
+            background-color: var(--secondary-green);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15);
+        }
+        .video-btn:hover::before { left: 100%; }
+        .video-btn svg { margin-right: 8px; width: 20px; height: 20px; }
 
-
-        /* Video popup (mantiene stile originale, è funzionale) */
+        /* Video popup (stile base mantenuto, colori adattati) */
         .video-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.85); /* Leggermente più scuro */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Transizione fluida */
+            position: fixed; inset: 0; background-color: rgba(0, 40, 50, 0.85); /* Usa colore tema */
+            display: none; /* Changed from flex to none initially */
+            align-items: center; justify-content: center;
+            z-index: 9999; opacity: 0; visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+            backdrop-filter: blur(3px); /* Aggiunge blur */
         }
-
         .video-popup.active {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.3s ease;
+             display: flex; /* Show when active */
+             opacity: 1; visibility: visible; transition: opacity 0.3s ease;
         }
-
         .video-container {
-            position: relative;
-            width: 90%; /* Più largo su mobile */
-            max-width: 900px;
-            background-color: #000;
-             /* Aspect ratio per video 16:9 */
-            padding-top: 56.25%; /* 9 / 16 * 100% */
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px; /* Angoli arrotondati */
+            position: relative; width: 90%; max-width: 900px; background-color: #000;
+            padding-top: 56.25%; height: 0; overflow: hidden; border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .video-container iframe {
-             position: absolute;
-             top: 0;
-             left: 0;
-             width: 100%;
-             height: 100%;
-             border: 0; /* Nessun bordo iframe */
-        }
-
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         .close-video {
-            position: absolute;
-            top: -35px; /* Posizionato sopra */
-            right: 0px;
-            color: white;
-            font-size: 2rem; /* Più grande */
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            line-height: 1;
-            padding: 5px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Ombra per leggibilità */
+            position: absolute; top: -35px; right: -5px; color: white; font-size: 2rem;
+            background: transparent; border: none; cursor: pointer; line-height: 1;
+            padding: 5px; text-shadow: 0 1px 3px rgba(0,0,0,0.5); z-index: 10;
         }
 
-        /* Grid layout con feature boxes */
+        /* Grid layout e features */
         .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Due colonne uguali */
-            gap: var(--spacing-md); /* Usa variabile */
-            margin: var(--spacing-lg) 0; /* Usa variabile */
-            align-items: stretch; /* Allunga elementi all'altezza massima della riga */
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md); margin: var(--spacing-lg) 0; align-items: stretch;
         }
-
         .main-image {
-            position: relative;
-            grid-row: span 2; /* Occupa due righe in altezza */
-            border-radius: 12px; /* Stesso radius delle card */
-            overflow: hidden; /* Per arrotondare immagine */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Ombra leggera */
+            position: relative; grid-row: span 2; border-radius: 12px;
+            overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
-
-        .main-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block; /* Rimuove spazio sotto immagine */
-        }
-
-        /* Logo SRB - Stile aggiornato */
+        .main-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .srb-logo {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            background-color: rgba(255, 255, 255, 0.85); /* Sfondo leggermente più opaco */
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-weight: bold;
-            color: var(--primary-blue); /* Colore testo blu primario */
-            font-size: 0.9rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: absolute; bottom: 15px; right: 15px; background-color: rgba(255, 255, 255, 0.85);
+            padding: 6px 12px; border-radius: 6px; font-weight: bold; color: var(--primary-blue);
+            font-size: 0.9rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-
-        /* Griglia feature interne */
         .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: var(--spacing-md); /* Usa variabile */
-            height: 100%; /* Occupa altezza disponibile */
+            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+            gap: var(--spacing-md); height: 100%;
         }
-
-        /* Stile base feature box */
         .feature-box {
-            padding: var(--spacing-md); /* Usa variabile */
-            border-radius: 12px; /* Stesso radius card */
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Centra contenuto verticalmente */
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); /* Ombra leggera */
+            padding: var(--spacing-md); border-radius: 12px; display: flex;
+            flex-direction: column; justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-         .feature-box:hover {
-             transform: translateY(-5px);
-             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-         }
-
-        .feature-box h3 {
-            margin-bottom: 8px;
-            font-size: 1.3rem; /* Leggermente più piccolo */
-        }
-         .feature-box p {
-             font-size: 0.95rem; /* Leggermente più piccolo */
-             line-height: 1.4;
-         }
-
+        .feature-box:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); }
+        .feature-box h3 { margin-bottom: 8px; font-size: 1.3rem; }
+        .feature-box p { font-size: 0.95rem; line-height: 1.4; }
         /* Varianti colori feature box (usando palette index) */
-        .green-box { background-color: var(--tertiary-green); color: #2a5548; } /* Verde chiarissimo, testo scuro */
-        .blue-box { background-color: var(--blockchain-blue); color: white; } /* Blu blockchain, testo bianco */
-        .light-box { background-color: #ffffff; color: var(--dark-gray); } /* Bianco */
-        .dark-green-box { background-color: var(--primary-green); color: white; } /* Verde primario, testo bianco */
+        .green-box { background-color: var(--tertiary-green); color: #2a5548; }
+        .blue-box { background-color: var(--blockchain-blue); color: white; }
+        .light-box { background-color: var(--card-bg-color); color: var(--dark-gray); }
+        .dark-green-box { background-color: var(--primary-green); color: white; }
 
         /* Icone Social */
-        .social-icons {
-            display: flex;
-            flex-wrap: wrap; /* Permette alle icone di andare a capo se non c'è spazio */
-            gap: 10px;
-            margin-top: 15px; /* Spazio sopra le icone */
-        }
-
+        .social-icons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
         .social-icons a {
-            width: 32px; /* Dimensione base icona */
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.05); /* Sfondo leggermente visibile */
-            text-decoration: none;
-            color: inherit; /* Eredita colore testo dalla feature box */
-            transition: background-color 0.3s, transform 0.3s;
+            width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background-color: rgba(0, 0, 0, 0.05); text-decoration: none;
+            color: inherit; transition: background-color 0.3s, transform 0.3s;
         }
-         .social-icons a:hover {
-             background-color: rgba(0, 0, 0, 0.1);
-             transform: scale(1.1);
-         }
+        .social-icons a:hover { background-color: rgba(0, 0, 0, 0.1); transform: scale(1.1); }
+        .social-icons img { width: 18px; height: 18px; object-fit: contain; }
+        /* Specificità icone */
+         .light-box .social-icons a { background-color: #f0f0f0; }
+         .light-box .social-icons a:hover { background-color: #e0e0e0; }
+         .blue-box .social-icons a, .dark-green-box .social-icons a { background-color: rgba(255, 255, 255, 0.15); }
+         .blue-box .social-icons a:hover, .dark-green-box .social-icons a:hover { background-color: rgba(255, 255, 255, 0.25); }
 
-        .social-icons img {
-            width: 18px; /* Dimensione immagine interna */
-            height: 18px;
-            object-fit: contain; /* Mantiene proporzioni */
-        }
-        /* Specificità per icone in box chiari */
-         .light-box .social-icons a {
-             background-color: #f0f0f0;
-         }
-         .light-box .social-icons a:hover {
-             background-color: #e0e0e0;
-         }
-        /* Specificità per icone in box scuri (invertire se necessario) */
-         .blue-box .social-icons a,
-         .dark-green-box .social-icons a {
-            background-color: rgba(255, 255, 255, 0.15);
-         }
-         .blue-box .social-icons a:hover,
-         .dark-green-box .social-icons a:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-         }
-
-
-        /* Sezione Partners Logo Slider */
-        .partners-section {
-            padding: var(--spacing-md) 0; /* Padding ridotto */
-            background-color: #f8f9fa; /* Sfondo leggermente grigio */
-            overflow: hidden; /* Nasconde overflow slider */
-        }
-         .partners-section .section-title {
-             margin-bottom: var(--spacing-md); /* Spazio sotto titolo */
-         }
-
+        /* Partner logos (stile da index) */
+        .partners-section { padding: var(--spacing-md) 0; background-color: var(--light-bg-section); overflow: hidden; }
+        .partners-section .section-title { margin-bottom: var(--spacing-md); }
         .logo-container {
-            position: relative;
-            width: 100%;
-            max-width: 900px; /* Larghezza massima slider */
-            height: 100px; /* Altezza fissa */
-            margin: 0 auto;
+            position: relative; width: 100%; max-width: 900px; height: 100px; margin: 0 auto;
             overflow: hidden;
-            /* Rimosso background bianco e ombra per un look più integrato */
-            /* Aggiunto mask per fade laterale */
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
-
         .logo-track {
-            display: flex;
-            align-items: center;
-            width: fit-content; /* Larghezza basata sul contenuto */
-            height: 100%;
-            /* Animation applicata con JS potrebbe essere più flessibile, ma manteniamo CSS per ora */
-            animation: scrollLogos 40s linear infinite; /* Rallentato leggermente */
+            display: flex; align-items: center; width: fit-content; height: 100%;
+            animation: scrollLogos 40s linear infinite;
         }
-         /* Pausa animazione su hover (da JS originale) */
-         .logo-container:hover .logo-track {
-             animation-play-state: paused;
-         }
-
+         .logo-container:hover .logo-track { animation-play-state: paused; }
         .logo-item {
-            flex: 0 0 auto; /* Non si restringe/allarga */
-            width: 180px; /* Leggermente più larghi */
-            height: 90px; /* Leggermente più alti */
-            margin: 0 25px; /* Più spazio tra loghi */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px; /* Padding interno */
+            flex: 0 0 auto; width: 180px; height: 90px; margin: 0 25px; display: flex;
+            align-items: center; justify-content: center; padding: 10px;
         }
-
         .logo-item img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: grayscale(80%); /* Loghi in bianco e nero per uniformità */
-            opacity: 0.8; /* Leggermente trasparenti */
-            transition: filter 0.3s, opacity 0.3s;
+            max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(80%);
+            opacity: 0.8; transition: filter 0.3s, opacity 0.3s;
         }
-         .logo-item:hover img {
-             filter: grayscale(0%); /* Colore pieno su hover */
-             opacity: 1;
-         }
-
+         .logo-item:hover img { filter: grayscale(0%); opacity: 1; }
         @keyframes scrollLogos {
-            0% {
-                transform: translateX(0);
-            }
-            /* Calcolo dinamico è meglio, ma per 6 loghi + ripetizione con nuova larghezza/margine:
-               Larghezza totale = 6 * (180px + 2*25px) = 6 * 230px = 1380px */
-            100% {
-                transform: translateX(-1380px);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-1380px); } /* Recalculate if logos change: 6 * (180 + 50) */
         }
 
-
-        /* Call to Action Section (stile da index) */
-        .cta-section { /* Aggiunta classe per specificità */
-             background: linear-gradient(135deg, #f8f9fa, var(--tertiary-green));
+        /* Call to Action Section (Stile da index) */
+        .cta-section {
+             background: linear-gradient(135deg, #f0f7ee, var(--tertiary-green));
              padding: var(--spacing-lg) 0;
         }
-         .cta-section .section-title {
-             font-size: 2rem; /* Leggermente più piccolo */
-         }
-         .cta-section p {
-             text-align: center;
-             color: var(--dark-gray);
-             max-width: 700px; /* Limita larghezza testo */
-             margin: 0 auto var(--spacing-md) auto; /* Centra e aggiunge spazio sotto */
-         }
-         .cta-section .btn-container { /* Container per centrare bottone */
-              text-align: center;
-              margin-top: var(--spacing-sm);
-         }
+         .cta-section .section-title { font-size: 1.8rem; }
+         .cta-section p { text-align: center; color: var(--dark-gray); max-width: 700px; margin: 0 auto var(--spacing-md) auto; }
+         .cta-section .btn-container { text-align: center; margin-top: var(--spacing-sm); }
+
+        /* === END: Styles Specific to Services Page === */
 
 
-        /* Language Selector Styling */
-        .language-selector {
-            position: relative;
-            margin-left: 10px; /* Spazio a sinistra nel nav desktop */
-        }
-
-        .language-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem; /* Icona leggermente più grande */
-            cursor: pointer;
-            padding: 5px 8px; /* Padding per area cliccabile */
-            border-radius: 50%; /* Cerchio */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white; /* Colore icona */
-            transition: background-color 0.3s;
-            line-height: 1; /* Evita altezza extra */
-        }
-
-        .language-btn:hover {
-            background-color: rgba(255, 255, 255, 0.15); /* Stesso hover dei link nav */
-        }
-
-        .language-dropdown {
-            position: absolute;
-            top: calc(100% + 10px); /* Spazio tra bottone e dropdown */
-            right: 0;
-            background-color: white;
-            border-radius: 8px; /* Stesso radius card */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Ombra più pronunciata */
-            min-width: 160px; /* Larghezza minima */
-            z-index: 1100; /* Sopra l'header */
-            display: none; /* Nascosto di default */
-            overflow: hidden; /* Per bordi arrotondati */
-            padding: 5px 0; /* Padding verticale interno */
-        }
-
-        .language-dropdown.show {
-            display: block;
-        }
-
-        .language-option {
-            padding: 10px 15px; /* Padding interno */
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-            color: var(--dark-gray); /* Testo scuro */
-        }
-
-        .language-option:hover {
-            background-color: var(--background-green); /* Sfondo verde chiaro su hover */
-        }
-
-        .language-flag {
-            margin-right: 10px; /* Spazio tra bandiera e testo */
-            font-size: 1.1rem; /* Dimensione bandiera emoji */
-            line-height: 1;
-        }
-
-        /* Language selector mobile */
-        .mobile-nav .language-selector {
-            width: 100%;
-            margin: 15px 0 5px 0; /* Spazio sopra/sotto nel menu mobile */
-            position: relative; /* Necessario per dropdown */
-        }
-
-        .mobile-nav .language-btn {
-            width: 100%;
-            justify-content: center; /* Centra testo/icona */
-            padding: 10px 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Bordo sottile bianco */
-            border-radius: 5px; /* Stesso radius link mobile */
-            background-color: transparent;
-            color: white;
-            font-size: 1rem; /* Dimensione testo bottone */
-            text-align: center;
-        }
-         .mobile-nav .language-btn:hover {
-             background-color: rgba(255, 255, 255, 0.1);
-             transform: none; /* Nessun transform in mobile */
-         }
-
-        .mobile-nav .language-dropdown {
-            position: static; /* Non assoluto, appare sotto */
-            width: 100%;
-            box-shadow: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-top: none; /* Rimuove bordo sopra */
-            border-radius: 0 0 5px 5px; /* Arrotonda solo sotto */
-            margin-top: -1px; /* Sovrappone leggermente il bottone */
-            background-color: rgba(0,0,0, 0.1); /* Sfondo scuro semi-trasparente */
-            max-height: 200px; /* Limita altezza */
-            overflow-y: auto; /* Scroll se necessario */
-            padding: 0; /* Rimuove padding base */
-        }
-         .mobile-nav .language-option {
-             color: white; /* Testo bianco */
-             padding: 12px 20px;
-         }
-         .mobile-nav .language-option:hover {
-             background-color: rgba(255, 255, 255, 0.15);
-         }
-
-        /* === END: Styles specific to servizi.html === */
-
-
-        /* === START: Responsive Styles (Merged & Refined) === */
+        /* === START: Responsive Styles === */
         @media (max-width: 992px) {
-             .main-nav {
-                 gap: 5px; /* Riduci ulteriormente gap su schermi medi */
-             }
-             .main-nav a.button, .main-nav .green-button {
-                 padding: 8px 10px; /* Riduci padding bottoni */
-                 font-size: 0.9rem; /* Riduci dimensione font */
-             }
-             .green-button {
-                  padding: 8px 15px; /* Padding specifico per green button */
-             }
-             .grid-layout {
-                 grid-template-columns: 1fr; /* Passa a colonna singola prima */
-             }
-             .main-image {
-                 grid-row: auto; /* Resetta span riga */
-                 height: 350px; /* Altezza fissa per immagine */
-             }
-             .features-grid {
-                 /* Mantiene 2 colonne se c'è spazio */
-             }
+             .main-nav { gap: 5px; }
+             .main-nav a.button, .main-nav .green-button { padding: 8px 10px; font-size: 0.9rem; }
+             .grid-layout { grid-template-columns: 1fr; }
+             .main-image { grid-row: auto; height: 350px; }
         }
 
         @media (max-width: 768px) {
-            .main-nav {
-                display: none; /* Nasconde nav desktop */
-            }
+            .main-nav { display: none; }
+            .hamburger-btn { display: block; }
+            /* .mobile-nav.active gestito */
 
-            .hamburger-btn { /* Era .hamburger-menu */
-                display: block; /* Mostra hamburger */
-            }
+            .hero { min-height: 50vh; } /* Riduci altezza hero su mobile */
+            .hero-content { padding: var(--spacing-sm); width: 90%; }
+            .hero-title { font-size: 1.8rem; } /* Riduci titolo */
+            .video-background video { opacity: 0.5; filter: brightness(0.7); } /* Video più scuro/opaco */
 
-            /* .mobile-nav.active già gestito sopra */
+            .section-title { font-size: 2rem; }
+            .systems-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, auto); gap: var(--spacing-sm);}
 
-            .hero-title {
-                font-size: 2.2rem; /* Riduci dimensione titolo hero */
-            }
-            .section-title {
-                font-size: 2rem; /* Riduci dimensione titoli sezione */
-            }
+            .partners-section .section-title { font-size: 1.8rem; }
+            .logo-container { max-width: 100%; }
+            .logo-item { width: 140px; margin: 0 15px; }
+            @keyframes scrollLogos { 100% { transform: translateX(-1020px); } } /* Recalculated for 768px */
 
-            .systems-grid {
-                grid-template-columns: 1fr; /* Card a colonna singola */
-            }
-
-             .features-grid {
-                 grid-template-columns: 1fr; /* Feature box a colonna singola */
-                 gap: var(--spacing-sm); /* Riduci gap */
-            }
-
-            .partners-section .section-title {
-                 font-size: 1.8rem;
-             }
-            .logo-container {
-                max-width: 100%; /* Occupa tutta larghezza */
-                -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-                 mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-            }
-            .logo-item {
-                width: 140px; /* Riduci larghezza loghi */
-                margin: 0 15px; /* Riduci margine loghi */
-            }
-            /* Aggiorna animazione per nuova larghezza (6 * (140 + 30) = 1020px) */
-            @keyframes scrollLogos {
-                100% { transform: translateX(-1020px); }
-            }
-
-             .cta-section .section-title {
-                 font-size: 1.6rem;
-             }
-
-             .video-container {
-                 width: 95%; /* Ancora più largo su mobile piccolo */
-             }
+             .cta-section .section-title { font-size: 1.6rem; }
         }
 
          @media (max-width: 480px) {
-             :root { /* Riduci spacing su schermi molto piccoli */
-                 --spacing-sm: 0.8rem;
-                 --spacing-md: 1.5rem;
-                 --spacing-lg: 2.5rem;
-             }
-             .container {
-                 padding: 15px; /* Riduci padding container */
-             }
-             header {
-                 padding: 10px 15px; /* Riduci padding header */
-             }
-             .logo img {
-                 height: 35px; /* Riduci logo */
-             }
-             .hero-title {
-                 font-size: 1.8rem;
-             }
-             .section-title {
-                 font-size: 1.6rem;
-             }
-             .btn { /* Riduci padding bottoni generici */
-                 padding: 0.7rem 1.2rem;
-                 font-size: 0.9rem;
-             }
-             .system-card {
-                 padding: var(--spacing-sm);
-             }
-             .feature-box {
-                 padding: var(--spacing-sm);
-             }
-             .footer {
-                 padding: 1.5rem 0;
-             }
-             .copyright-text {
-                 font-size: 0.8rem;
-             }
-             .logo-item {
-                 width: 120px;
-                 margin: 0 10px;
-             }
-              /* Aggiorna animazione (6 * (120 + 20) = 840px) */
-             @keyframes scrollLogos {
-                 100% { transform: translateX(-840px); }
-             }
+             :root { --spacing-sm: 0.8rem; --spacing-md: 1.5rem; --spacing-lg: 2.5rem; }
+             .container { padding: 15px; }
+             header { padding: 10px 15px; }
+             .logo img { height: 35px; }
+             .hero { min-height: 45vh; }
+             .hero-title { font-size: 1.5rem; }
+             .section-title { font-size: 1.6rem; }
+             .btn, .video-btn { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
+             .system-card { padding: var(--spacing-sm); }
+             .feature-box { padding: var(--spacing-sm); }
+             .footer { padding: 1.5rem 0; }
+             .copyright-text { font-size: 0.8rem; }
+             .logo-item { width: 120px; margin: 0 10px; }
+             @keyframes scrollLogos { 100% { transform: translateX(-840px); } } /* Recalculated for 480px */
+             .cta-section .section-title { font-size: 1.4rem; }
          }
         /* === END: Responsive Styles === */
 
     </style>
 </head>
 <body>
+    <!-- Background decorative elements -->
+    <div class="bg-decoration decoration-1"></div>
+    <div class="bg-decoration decoration-2"></div>
 
-<!-- Background decorative elements (from index.html) -->
-<div class="bg-decoration decoration-1"></div>
-<div class="bg-decoration decoration-2"></div>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <a href="./" class="logo"> <!-- Logo linked to home -->
+                <img src="./assets/img/logo da email.png" alt="SynergyRecycle.B Logo"> <!-- Kept path, translated alt -->
+                <span>SynergyRecycle.B</span> <!-- Kept brand name -->
+            </a>
+            <nav class="main-nav">
+                 <!-- ***** GREEN BUTTON INSERTED HERE ***** -->
+                 <a href="./contatore.html" class="green-button">"One action, A Thousand Impacts."</a> <!-- Translated text, kept link -->
+                 <!-- ************************************ -->
+                 <!-- Translated nav links -->
+                <a href="./" class="button">Home</a>
+                <a href="./servizi.html" class="button">Services</a>
+                <a href="./sostenerci.html" class="button">Support Us</a>
+                <a href="./contattaci.html" class="button">Contact Us</a>
+                <a href="./roadmap.html" class="button">Roadmap</a>
+                <!-- START: Language Selector HTML (Desktop) -->
+                <div class="language-selector">
+                    <button class="language-btn" id="language-btn" aria-label="Select language" aria-haspopup="true" aria-expanded="false">🌐</button> <!-- Translated aria-label -->
+                    <div class="language-dropdown" id="language-dropdown" role="menu">
+                        <!-- Translated language options -->
+                        <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                    	<div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                    	<div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                    	<div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    	<div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    </div>
+                </div>
+                <!-- END: Language Selector HTML (Desktop) -->
+            </nav>
+            <!-- Hamburger button with correct ID -->
+             <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button> <!-- aria-label already English -->
+        </header>
 
-<div class="container">
-    <!-- Header (Structure from servizi.html, Styles from index.html) -->
-    <header>
-        <a href="./" class="logo"> <!-- Logo linked to home -->
-            <img src="./assets/img/logo da email.png" alt="SynergyRecycle.B Logo"> <!-- Kept path, translated alt -->
-            <span>SynergyRecycle.B</span> <!-- Kept brand name -->
-        </a>
-        <nav class="main-nav">
-             <!-- Translated nav links -->
-            <a href="./contatore.html" class="green-button">"One action, A Thousand Impacts."</a> <!-- Kept link -->
+        <!-- Mobile navigation -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <!-- ***** GREEN BUTTON INSERTED HERE ***** -->
+            <a href="./contatore.html" class="green-button">"One action, A Thousand Impacts."</a> <!-- Translated text, kept link -->
+            <!-- ************************************ -->
+            <!-- Translated nav links -->
             <a href="./" class="button">Home</a>
             <a href="./servizi.html" class="button">Services</a>
             <a href="./sostenerci.html" class="button">Support Us</a>
             <a href="./contattaci.html" class="button">Contact Us</a>
             <a href="./roadmap.html" class="button">Roadmap</a>
-
+            <!-- START: Language Selector HTML (Mobile) -->
             <div class="language-selector">
-                <button class="language-btn" id="language-btn" aria-label="Select language" aria-haspopup="true" aria-expanded="false">🌐</button> <!-- Translated aria-label -->
-                <div class="language-dropdown" id="language-dropdown" role="menu">
-                    <!-- Translated language options -->
+                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Language</button> <!-- Translated button text -->
+                <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
+                     <!-- Translated language options -->
                     <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
-                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
-                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
-                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
                 </div>
             </div>
+            <!-- END: Language Selector HTML (Mobile) -->
         </nav>
-        <!-- Hamburger button with ID from index.html JS -->
-        <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button> <!-- aria-label already English -->
-    </header>
 
-    <!-- Mobile navigation (Structure from servizi.html, Styles from index.html) -->
-    <!-- ID from index.html JS -->
-    <nav class="mobile-nav" id="mobile-nav">
-        <!-- Links use .button or .green-button classes for uniform style -->
-         <!-- Translated nav links -->
-        <a href="./contatore.html" class="green-button">"One action, A Thousand Impacts."</a> <!-- Kept link -->
-        <a href="./" class="button">Home</a>
-        <a href="./servizi.html" class="button">Services</a>
-        <a href="./sostenerci.html" class="button">Support Us</a>
-        <a href="./contattaci.html" class="button">Contact Us</a>
-        <a href="./roadmap.html" class="button">Roadmap</a>
-
-        <div class="language-selector">
-            <!-- Different IDs for separate JS if needed, but similar logic -->
-            <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Language</button> <!-- Translated button text -->
-            <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
-                 <!-- Translated language options -->
-                <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
-                <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Spanish</div>
-                <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> German</div>
-                <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italian</div>
-                <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> French</div>
-            </div>
+        <!-- Banner -->
+        <div class="banner">
+             <!-- Translated banner text -->
+            SynergyRecycle.B: Our services for a sustainable future through blockchain and recycling
         </div>
-    </nav>
+    </div> <!-- End container for header/banner -->
 
-    <!-- Banner (Style from index.html) -->
-    <div class="banner">
-        <!-- Translated banner text -->
-        SynergyRecycle.B: Our services for a sustainable future through blockchain and recycling
-    </div>
-</div> <!-- End container for header/banner -->
+    <main>
+        <!-- Modified hero section with video background -->
+         <section class="hero">
+             <div class="video-background">
+                 <video autoplay muted loop playsinline id="hero-video" preload="auto" poster="./assets/img/video-fallback.jpg"> <!-- Kept path -->
+                     <source src="./assets/video/utilizzo APP.mp4" type="video/mp4"> <!-- Kept path -->
+                     <!-- Add other video formats if needed -->
+                      Your browser does not support the video tag. <!-- Translated fallback text -->
+                 </video>
+                 <!-- Fallback image is handled by poster attribute or CSS -->
+                 <div class="fallback-image" style="display: none;"></div> <!-- Hidden by default, can be shown by JS -->
+             </div>
+             <div class="container-hero"> <!-- Container for hero content -->
+                 <div class="hero-content">
+                     <h1 class="hero-title">The Mind, the Heart, our Eco-system.</h1> <!-- Translated title -->
+                     <!-- You could add a subtitle or button here if needed -->
+                 </div>
+             </div>
+         </section>
 
-<main>
-    <!-- Hero Section (Adapted style) -->
-    <section class="hero">
-        <div class="container">
-            <!-- Translated hero title -->
-            <h1 class="hero-title">The Mind, the Heart, our Eco-system.</h1>
-        </div>
-    </section>
 
-    <!-- System Cards Section (Card style adapted from index.html) -->
-    <section class="section">
-        <div class="container">
-             <!-- Optional section title, if needed -->
-             <!-- <h2 class="section-title">Our Key Systems</h2> -->
-            <div class="systems-grid">
-                <!-- Card 1: App -->
-                <div class="system-card" id="app-features">
-                    <img src="./assets/img/punto-App.jpg" alt="SynergyRecycle.B App Screenshot"> <!-- Kept path, translated alt -->
-                    <h3>Many Features</h3> <!-- Translated title -->
-                    <p>Your digital guide for recycling: manage every aspect, monitor progress, and earn Tokens for your environmental contribution.</p> <!-- Translated paragraph -->
-                    <ul>
-                         <!-- Translated list items -->
-                        <li>Simple and fast user registration</li>
-                        <li>Transparent traceability of recycled materials</li>
-                        <li>Notification system for rewards and goals</li>
-                        <li>Personalized impact statistics</li>
-                    </ul>
-                    <button class="video-btn" onclick="openVideo('app-video')">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
-                        Watch the video <!-- Translated button text -->
-                    </button>
-                </div>
-                <!-- Card 2: Allies -->
-                <div class="system-card" id="our-allies">
-                    <img src="./assets/img/punto-Comp.jpg" alt="Collaboration and Partnership"> <!-- Kept path, translated alt -->
-                    <h3>Our Strategic Allies</h3> <!-- Translated title -->
-                    <p>We build a global network of committed partners: together with you and our allies, we create sustainable solutions for a better future.</p> <!-- Translated paragraph -->
-                    <ul>
-                         <!-- Translated list items -->
-                        <li>Collaboration with leading recycling companies</li>
-                        <li>Partnerships with local and international institutions</li>
-                        <li>Technological integration to optimize processes</li>
-                        <li>Joint awareness programs</li>
-                    </ul>
-                    <button class="video-btn" onclick="openVideo('allies-video')">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
-                        Discover How It Works <!-- Translated button text -->
-                    </button>
-                </div>
-                <!-- Card 3: Impact -->
-                <div class="system-card">
-                    <img src="./assets/img/4.jpeg" alt="Positive environmental impact"> <!-- Kept path, translated alt -->
-                    <h3>The World Gains Together with You</h3> <!-- Translated title -->
-                    <p>A positive impact that goes beyond the individual: every recycling gesture you make not only generates tangible benefits for you but actively contributes to a more sustainable world.</p> <!-- Translated paragraph -->
-                    <ul>
-                         <!-- Translated list items -->
-                        <li>Economic incentives and rewards (SRB Tokens)</li>
-                        <li>Measurable reduction of environmental impact</li>
-                        <li>Direct contribution to global sustainability goals</li>
-                        <li>Promotion of the circular economy</li>
-                    </ul>
-                     <!-- No video button here, but could be added if needed -->
-                     <div style="height: 45px; margin-top: auto;"></div> <!-- Spacer to align card height if no button -->
+        <!-- System Cards Section (Card with border effect) -->
+        <section class="section">
+            <div class="container">
+                 <h2 class="section-title" style="margin-bottom: var(--spacing-md);">Our Key Services</h2> <!-- Translated title -->
+                <div class="systems-grid">
+                    <!-- Card 1: App -->
+                     <div class="system-card card-fx-border" id="app-features">
+                        <img src="./assets/img/punto-App.jpg" alt="SynergyRecycle.B App Screenshot"> <!-- Kept path, translated alt -->
+                        <h3>App with Many Features</h3> <!-- Translated title -->
+                        <p>Your digital guide for recycling: manage every aspect, monitor progress, and earn SRB Tokens for your environmental contribution.</p> <!-- Translated paragraph -->
+                        <ul>
+                            <!-- Translated list items -->
+                            <li>Simple user registration</li>
+                            <li>Transparent traceability</li>
+                            <li>Notification and reward system</li>
+                            <li>Personalized impact statistics</li>
+                        </ul>
+                        <button class="video-btn" onclick="openVideo('app-video')">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                            Watch the App video <!-- Translated button text -->
+                        </button>
+                    </div>
+                     <!-- Card 2: Allies -->
+                     <div class="system-card card-fx-border" id="our-allies">
+                        <img src="./assets/img/punto-Comp.jpg" alt="Collaboration and Partnership"> <!-- Kept path, translated alt -->
+                        <h3>Our Strategic Allies</h3> <!-- Translated title -->
+                        <p>We build a global network of committed partners: together with you and our allies, we create sustainable solutions for a better future.</p> <!-- Translated paragraph -->
+                        <ul>
+                            <!-- Translated list items -->
+                            <li>Collaboration with leading recycling companies</li>
+                            <li>Partnerships with local/international institutions</li>
+                            <li>Technological integration to optimize processes</li>
+                            <li>Joint awareness programs</li>
+                        </ul>
+                        <button class="video-btn" onclick="openVideo('allies-video')">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                            Discover Collaborations <!-- Translated button text -->
+                        </button>
+                    </div>
+                     <!-- Card 3: Impact -->
+                    <div class="system-card card-fx-border">
+                        <img src="./assets/img/4.jpeg" alt="Positive environmental impact"> <!-- Kept path, translated alt -->
+                        <h3>The World Gains with You</h3> <!-- Translated title -->
+                        <p>A positive impact that goes beyond the individual: every recycling gesture you make not only generates tangible benefits for you, but contributes to a more sustainable world.</p> <!-- Translated paragraph -->
+                        <ul>
+                            <!-- Translated list items -->
+                            <li>Economic incentives (SRB Tokens)</li>
+                            <li>Measurable reduction of CO2 impact</li>
+                            <li>Direct contribution to sustainability</li>
+                            <li>Promotion of the circular economy</li>
+                        </ul>
+                        <div style="height: 50px; margin-top: auto;"></div> <!-- Spacer -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Popup Video Containers (Unchanged in HTML structure) -->
-    <div id="app-video" class="video-popup" aria-modal="true" role="dialog" aria-labelledby="app-video-title">
-        <div class="video-container">
-            <h2 id="app-video-title" style="display: none;">App Features Video</h2> <!-- Title for accessibility, translated -->
-            <button class="close-video" onclick="closeVideo('app-video')" aria-label="Close video">✕</button> <!-- Translated aria-label -->
-            <!-- src will be set by JS -->
-            <iframe title="App Features Video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <!-- Translated title attribute -->
+        <!-- Popup Video Containers (Unchanged HTML Structure) -->
+        <div id="app-video" class="video-popup" aria-modal="true" role="dialog" aria-labelledby="app-video-title">
+            <div class="video-container">
+                 <h2 id="app-video-title" style="display: none;">App Features Video</h2> <!-- Translated title -->
+                 <button class="close-video" onclick="closeVideo('app-video')" aria-label="Close video">✕</button> <!-- Translated aria-label -->
+                 <iframe title="App Features Video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <!-- Translated title -->
+            </div>
         </div>
-    </div>
-
-    <div id="allies-video" class="video-popup" aria-modal="true" role="dialog" aria-labelledby="allies-video-title">
-        <div class="video-container">
-             <h2 id="allies-video-title" style="display: none;">Strategic Allies Video</h2> <!-- Translated title -->
-            <button class="close-video" onclick="closeVideo('allies-video')" aria-label="Close video">✕</button> <!-- Translated aria-label -->
-            <!-- src will be set by JS -->
-            <iframe title="Strategic Allies Video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <!-- Translated title attribute -->
+        <div id="allies-video" class="video-popup" aria-modal="true" role="dialog" aria-labelledby="allies-video-title">
+            <div class="video-container">
+                 <h2 id="allies-video-title" style="display: none;">Strategic Allies Video</h2> <!-- Translated title -->
+                 <button class="close-video" onclick="closeVideo('allies-video')" aria-label="Close video">✕</button> <!-- Translated aria-label -->
+                 <iframe title="Strategic Allies Video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <!-- Translated title -->
+            </div>
         </div>
-    </div>
 
-    <!-- Milestone/Grid Layout Section (Adapted styles) -->
-    <section class="section milestone-section"> <!-- Removed inline style -->
-        <div class="container">
-            <h2 class="section-title">Where Old Meets New</h2> <!-- Translated title -->
-             <p class="text-center" style="margin-top: -20px; margin-bottom: 40px; color: #557669;">We create a virtuous circle of sustainable value.</p> <!-- Translated paragraph -->
-            <div class="grid-layout">
-                <div class="main-image">
-                    <img src="./assets/img/5.3.1.jpeg" alt="SRB: An endless circle of value."> <!-- Kept path, translated alt -->
-                    <div class="srb-logo">SRB</div> <!-- Kept specific identifier -->
-                </div>
-                <div class="features-grid">
-                    <div class="feature-box green-box"> <!-- Updated color class -->
-                        <h3>Key Milestone</h3> <!-- Text already English -->
-                        <p>We reach new milestones together.</p> <!-- Translated text -->
+        <!-- Milestone/Grid Layout Section -->
+        <section class="section milestone-section" style="background-color: var(--light-bg-section);"> <!-- Alternating background -->
+            <div class="container">
+                 <h2 class="section-title">Where Old Meets New</h2> <!-- Translated title -->
+                 <p class="text-center" style="margin-top: -20px; margin-bottom: 40px; color: #557669;">We create a virtuous circle of sustainable value.</p> <!-- Translated paragraph -->
+                <div class="grid-layout">
+                    <div class="main-image">
+                        <img src="./assets/img/5.3.1.jpeg" alt="SRB: An endless circle of value."> <!-- Kept path, translated alt -->
+                        <div class="srb-logo">SRB</div> <!-- Kept specific identifier -->
                     </div>
-                    <div class="feature-box blue-box"> <!-- Updated color class -->
-                        <h3>Greater Impact</h3> <!-- Text already English -->
-                        <p>We amplify the positive impact every day.</p> <!-- Translated text -->
-                    </div>
-                    <div class="feature-box light-box"> <!-- Updated color class -->
-                        <h3>Community Focus</h3> <!-- Text already English -->
-                        <p>Connect with our community:</p> <!-- Translated text -->
-                        <div class="social-icons">
-                             <!-- Links and icon images kept as is -->
-                             <a href="https://x.com/SynergyRecycl?t=84HCOrA4xRS2NEUcjjmkAg&s=35" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                                <img src="./assets/img/X.png" alt="Twitter Icon">
-                            </a>
-                            <a href="https://youtube.com/tuocanale" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                                <img src="./assets/img/youTube.png" alt="YouTube Icon">
-                            </a>
-                            <a href="https://www.instagram.com/synergyrecycle.b?utm_source=qr&igsh=MW05cWtzajFkMDg2dg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                                <img src="./assets/img/instagram.png" alt="Instagram Icon">
-                            </a>
-                            <a href="https://Telegram" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-                                <img src="./assets/img/telegram.png" alt="Telegram Icon">
-                            </a>
-                            <a href="https://linkedin.com/in/synergyrecycle-b-4b8246322" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                <img src="./assets/img/linkedin1.png" alt="LinkedIn Icon">
-                            </a>
-                            <a href="https://discord.gg/tuoinvito" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-                                <img src="./assets/img/discord.png" alt="Discord Icon">
-                            </a>
+                    <div class="features-grid">
+                        <div class="feature-box green-box">
+                            <h3>Key Milestone</h3> <!-- Text already English -->
+                            <p>We reach new milestones together.</p> <!-- Translated text -->
+                        </div>
+                        <div class="feature-box blue-box">
+                            <h3>Greater Impact</h3> <!-- Text already English -->
+                            <p>We amplify the positive impact every day.</p> <!-- Translated text -->
+                        </div>
+                        <div class="feature-box light-box">
+                            <h3>Community Focus</h3> <!-- Text already English -->
+                            <p>Connect with our community:</p> <!-- Translated text -->
+                            <div class="social-icons">
+                                 <!-- Links and icon images kept as is -->
+                                <a href="https://x.com/SynergyRecycl?t=84HCOrA4xRS2NEUcjjmkAg&s=35" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><img src="./assets/img/X.png" alt="Twitter Icon"></a>
+                                <a href="https://youtube.com/tuocanale" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="./assets/img/youTube.png" alt="YouTube Icon"></a>
+                                <a href="https://www.instagram.com/synergyrecycle.b?utm_source=qr&igsh=MW05cWtzajFkMDg2dg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="./assets/img/instagram.png" alt="Instagram Icon"></a>
+                                <a href="   " target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="./assets/img/telegram.png" alt="Telegram Icon"></a>
+                                <a href="https://linkedin.com/in/synergyrecycle-b-4b8246322" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="./assets/img/linkedin1.png" alt="LinkedIn Icon"></a>
+                                <a href="htuoinvito" target="_blank" rel="noopener noreferrer" aria-label="Discord"><img src="./assets/img/discord.png" alt="Discord Icon"></a>
+                            </div>
+                        </div>
+                        <div class="feature-box dark-green-box">
+                            <h3>Innovation Hub</h3> <!-- Text already English -->
+                            <p>Where ideas come to life and guide the future.</p> <!-- Translated text -->
                         </div>
                     </div>
-                    <div class="feature-box dark-green-box"> <!-- Updated color class -->
-                        <h3>Innovation Hub</h3> <!-- Text already English -->
-                        <p>Where ideas come to life and guide the future.</p> <!-- Translated text -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="section cta-section">
+            <div class="container">
+                <!-- Original text kept and translated -->
+                 <h2 class="section-title">More than 50,000 People have done a lot for themselves, but still little for our Planet.</h2>
+                 <h2 class="section-title">Become part of SynergyRecycle.B: together we could revolutionize the future of our World.</h2>
+                 <p style="text-align: center;">Join us to improve, and together we will improve our Planet.</p>
+                <div class="btn-container">
+                    <a href="./sostenerci.html" class="btn">Start now</a> <!-- Translated button text, kept link -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Partner section -->
+        <section class="section partners-section">
+            <div class="container">
+                <h2 class="section-title">The Companies That Believe in Us</h2> <!-- Translated title -->
+                <div class="logo-container" aria-label="Logos of our partners"> <!-- Translated aria-label -->
+                    <div class="logo-track">
+                        <!-- Example logos, replace with real ones, kept paths, translated alt -->
+                        <div class="logo-item"><img src="./assets/img/CO2.png" alt=" "></div>
+                        <div class="logo-item"><img src="./assets/img/partner2.png" alt=" "></div>
+                        <div class="logo-item"><img src="./assets/img/partner3.png" alt=" "></div>
+                        <div class="logo-item"><img src="./assets/img/partner4.png" alt=" "></div>
+                        <div class="logo-item"><img src="./assets/img/partner5.png" alt=" "></div>
+                        <div class="logo-item"><img src="./assets/img/partner6.png" alt=" "></div>
+
+                        <!-- Repeat for loop -->
+                        <div class="logo-item"><img src="./assets/img/CO2.png" alt=" "></div>
+                        <div class="logo-item"><img src="./assets/img/partner2.png" alt=" "></div>
+                        <div class="logo-item"><img src="./assets/img/partner3.png" alt=" "></div>
+                        <div class="logo-item"><img src="./assets/img/partner4.png" alt=" "></div>
+                        <div class="logo-item"><img src="./assets/img/partner5.png" alt=" "></div>
+                        <div class="logo-item"><img src="./assets/img/partner6.png" alt=" "></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Call to Action (Style from index, added class) -->
-    <section class="section cta-section"> <!-- Removed inline style, added class -->
+    <footer class="site-footer">
         <div class="container">
-            <!-- Text slightly modified for flow, translated -->
-            <h2 class="section-title">We do a lot for ourselves. It's time to do more for the Planet.</h2>
-            <h2 class="section-title">Join SynergyRecycle.B: together we can revolutionize the future of our World.</h2>
-            <p>Join us to improve. Together we will improve our Planet, one recycle at a time.</p>
-            <div class="btn-container"> <!-- Wrapper for centering -->
-                <a href="#" class="btn">Start now</a> <!-- Uses standard .btn style, translated text -->
-            </div>
+            <p class="copyright-text">
+                © <span id="copyright-year"></span> SynergyRecycle.B.
+                 - All rights reserved. <!-- Translated text -->
+                 <br> <!-- Kept break -->
+                 Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a> <!-- Kept contact info -->
+            </p>
         </div>
-    </section>
+    </footer>
 
-    <!-- Partners Section (Adapted style) -->
-    <section class="section partners-section">
-        <div class="container">
-            <h2 class="section-title">The Companies That Believe in Us</h2> <!-- Translated title -->
-            <div class="logo-container" aria-label="Logos of our partners"> <!-- Translated aria-label -->
-                <div class="logo-track">
-                    <!-- Logos kept as is, but duplicated for correct CSS scroll effect -->
-                     <!-- Alt text translated -->
-                    <div class="logo-item"><img src="./assets/img/CO2.png" alt="ZeroCO2 Logo"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt=" "></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt=" "></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt=" "></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt=" "></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt=" "></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-                    <!-- Repeat for animation loop -->
-                    <div class="logo-item"><img src="./assets/img/CO2.png" alt="ZeroCO2 Logo"></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt=" "></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt=" "></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt=" "></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt=" "></div>
-                    <div class="logo-item"><img src="./assets/img/partner.png" alt=" "></div>
-                </div>
-            </div>
-        </div>
-    </section>
+            // --- COMMON HELPER FUNCTIONS ---
+            const toggleAriaExpanded = (element) => {
+                 if (!element) return;
+                 const isExpanded = element.getAttribute('aria-expanded') === 'true';
+                 element.setAttribute('aria-expanded', !isExpanded);
+            };
 
-</main>
+            // --- COPYRIGHT YEAR ---
+            const yearSpan = document.getElementById('copyright-year');
+             if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+             }
 
-<!-- Footer (Style from index.html) -->
-<footer class="site-footer">
-    <div class="container">
-        <p class="copyright-text">
-            <!-- Used consistent ID with index.html for JS -->
-            © <span id="copyright-year"></span> SynergyRecycle.B.
-            - All rights reserved. <!-- Translated text -->
-            <br> <!-- Added break for readability -->
-            Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a> <!-- Kept contact info -->
-        </p>
-         <!-- You could add social icons here too if desired -->
-    </div>
-</footer>
+            // --- HAMBURGER MENU TOGGLE ---
+            const hamburgerBtn = document.getElementById('hamburger-btn'); // Use correct ID
+            const mobileNav = document.getElementById('mobile-nav');
+            const bodyEl = document.body; // Assuming body element might be used
 
-<!-- Combined and cleaned up JS Script -->
-<!-- Removed link to external main.js, integrated here -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // --- COMMON HELPER FUNCTIONS ---
-        const toggleAriaExpanded = (element) => {
-             const isExpanded = element.getAttribute('aria-expanded') === 'true';
-             element.setAttribute('aria-expanded', !isExpanded);
-        };
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     const isActive = mobileNav.classList.toggle('active'); // Use 'active' class
+                     toggleAriaExpanded(this);
+                     // Optional: add a class to body when menu is open for potential styling (e.g., prevent scroll)
+                     bodyEl.classList.toggle('menu-open', isActive);
+                 });
 
-        // --- COPYRIGHT YEAR ---
-        const yearSpan = document.getElementById('copyright-year');
-        if (yearSpan) {
-            yearSpan.textContent = new Date().getFullYear();
-        }
-        // Handle old ID too if present by mistake
-        const yearSpanOld = document.getElementById('copyright-2024');
-         if (yearSpanOld) {
-            yearSpanOld.textContent = new Date().getFullYear();
-        }
+                 // Close menu when clicking a link inside (exclude language)
+                const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (!link.closest('.language-selector')) {
+                             mobileNav.classList.remove('active');
+                             bodyEl.classList.remove('menu-open'); // Remove body class
+                            // Ensure hamburger button state is also reset
+                            if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                                toggleAriaExpanded(hamburgerBtn);
+                            }
+                        }
+                    });
+                 });
 
+                 // Close by clicking outside the menu
+                 document.addEventListener('click', function(event) {
+                     if (mobileNav.classList.contains('active') &&
+                         !hamburgerBtn.contains(event.target) &&
+                         !mobileNav.contains(event.target))
+                    {
+                         mobileNav.classList.remove('active');
+                         bodyEl.classList.remove('menu-open'); // Remove body class
+                         if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                            toggleAriaExpanded(hamburgerBtn);
+                        }
+                     }
+                 });
 
-        // --- HAMBURGER MENU TOGGLE (Use ID and logic from index.html) ---
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const mobileNav = document.getElementById('mobile-nav');
+                 // Close with ESC key
+                 document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && mobileNav.classList.contains('active')) {
+                         mobileNav.classList.remove('active');
+                         bodyEl.classList.remove('menu-open'); // Remove body class
+                         if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                             toggleAriaExpanded(hamburgerBtn);
+                         }
+                     }
+                 });
 
-        if (hamburgerBtn && mobileNav) {
-            hamburgerBtn.addEventListener('click', function() {
-                mobileNav.classList.toggle('active');
-                toggleAriaExpanded(this); // Update aria-expanded
-            });
-
-            // Close menu when clicking a link inside (exclude language)
-            const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    // Don't close if it's the language button
-                    if (!link.closest('.language-selector')) {
-                        mobileNav.classList.remove('active');
-                        hamburgerBtn.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            });
-        }
-
-
-        // --- LANGUAGE SELECTOR LOGIC ---
-        const languageBtn = document.getElementById('language-btn');
-        const languageDropdown = document.getElementById('language-dropdown');
-        const mobileLanguageBtn = document.getElementById('mobile-language-btn');
-        const mobileLanguageDropdown = document.getElementById('mobile-language-dropdown');
-        const allLanguageOptions = document.querySelectorAll('.language-option');
-
-        const closeAllLanguageDropdowns = () => {
-            if (languageDropdown) languageDropdown.classList.remove('show');
-            if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
-            if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
-            if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
-        };
-
-        if (languageBtn && languageDropdown) {
-            languageBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const isShown = languageDropdown.classList.toggle('show');
-                languageBtn.setAttribute('aria-expanded', isShown);
-                // Close the other dropdown if open
-                if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
-                if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
-            });
-        }
-
-        if (mobileLanguageBtn && mobileLanguageDropdown) {
-            mobileLanguageBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                 const isShown = mobileLanguageDropdown.classList.toggle('show');
-                 mobileLanguageBtn.setAttribute('aria-expanded', isShown);
-                // Close the other dropdown if open
-                if (languageDropdown) languageDropdown.classList.remove('show');
-                if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
-            });
-        }
-
-        // Handle language change
-        if (allLanguageOptions.length > 0) {
-            allLanguageOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    changeLang(lang);
-                    closeAllLanguageDropdowns();
-                });
-            });
-        }
-
-        // Clicking outside closes language dropdowns
-        document.addEventListener('click', closeAllLanguageDropdowns);
-
-        // Prevent clicks *inside* dropdowns from closing them
-        if (languageDropdown) languageDropdown.addEventListener('click', e => e.stopPropagation());
-        if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
-
-
-        // Function to change language (placeholder - implement actual logic)
-        function changeLang(lang) {
-             // Translated messages
-            console.log(`Language selected: ${lang}`);
-            localStorage.setItem('selectedLanguage', lang);
-            // HERE GOES THE TRANSLATION LOGIC:
-            // Example: load JSON file, update text, redirect, etc.
-             alert(`Language changed to: ${lang}. (Translation logic to be implemented)`);
-             // You might update the lang attribute on the <html> element
-             // document.documentElement.lang = lang;
-        }
-
-         // Apply saved language on startup (optional)
-        const savedLang = localStorage.getItem('selectedLanguage');
-        if (savedLang) {
-             // Translated message
-             console.log(`Saved language found: ${savedLang}. Apply if necessary.`);
-            // changeLang(savedLang); // Uncomment to apply immediately
-            // document.documentElement.lang = savedLang; // Update lang attribute immediately
-        }
-
-
-        // --- VIDEO POPUP LOGIC ---
-        // Video links (ensure these are correct and accessible)
-         // NOTE: Provided links seemed incomplete. Use direct or valid embed links.
-         // Placeholders for correct URLs:
-        const videoLinks = {
-            'app-video': 'https://www.youtube.com/embed/VIDEO_ID_APP?autoplay=1', // Example YouTube with autoplay
-            'allies-video': 'https://player.vimeo.com/video/VIDEO_ID_ALLIES?autoplay=1' // Example Vimeo with autoplay
-        };
-
-        // Global functions so they don't need to be defined inside the event listener
-        window.openVideo = function(videoId) {
-            const popup = document.getElementById(videoId);
-            const iframe = popup ? popup.querySelector('iframe') : null;
-
-            if (popup && iframe && videoLinks[videoId]) {
-                // Set the correct video link ONLY when opening
-                iframe.src = videoLinks[videoId];
-                popup.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Block background scroll
-                popup.focus(); // Optional: move focus to the popup
             } else {
                  // Translated error message
-                 console.error("Could not open video:", videoId, "Popup or Iframe not found or link missing.");
+                 console.error("Hamburger button or mobile nav not found.");
             }
-        };
 
-        window.closeVideo = function(videoId) {
-            const popup = document.getElementById(videoId);
-            const iframe = popup ? popup.querySelector('iframe') : null;
 
-            if (popup && iframe) {
-                popup.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable background scroll
+            // --- LANGUAGE SELECTOR LOGIC ---
+             const languageBtn = document.getElementById('language-btn');
+             const languageDropdown = document.getElementById('language-dropdown');
+             const mobileLanguageBtn = document.getElementById('mobile-language-btn');
+             const mobileLanguageDropdown = document.getElementById('mobile-language-dropdown');
+             const allLanguageOptions = document.querySelectorAll('.language-option');
 
-                // Delay removing src to avoid flash/errors during CSS transition
-                setTimeout(() => {
-                    iframe.src = ''; // Stop the video by removing the source
-                }, 300); // Should match or exceed CSS transition duration
-            }
-        };
+             const closeAllLanguageDropdowns = () => {
+                 if (languageDropdown) languageDropdown.classList.remove('show');
+                 if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+                 if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
+                 if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+             };
 
-        // Add event listeners to close by clicking outside or with ESC
-        document.querySelectorAll('.video-popup').forEach(popup => {
-            // Close by clicking the dark background (the .video-popup element itself)
-            popup.addEventListener('click', (e) => {
-                if (e.target === popup) {
-                    closeVideo(popup.getAttribute('id'));
+             if (languageBtn && languageDropdown) {
+                 languageBtn.addEventListener('click', function(e) {
+                     e.stopPropagation();
+                     const isShown = languageDropdown.classList.toggle('show');
+                     languageBtn.setAttribute('aria-expanded', isShown);
+                     if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
+                     if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+                 });
+             }
+
+             if (mobileLanguageBtn && mobileLanguageDropdown) {
+                 mobileLanguageBtn.addEventListener('click', function(e) {
+                     e.stopPropagation();
+                      const isShown = mobileLanguageDropdown.classList.toggle('show');
+                      mobileLanguageBtn.setAttribute('aria-expanded', isShown);
+                     if (languageDropdown) languageDropdown.classList.remove('show');
+                     if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+                 });
+             }
+
+             if (allLanguageOptions.length > 0) {
+                 allLanguageOptions.forEach(option => {
+                     option.addEventListener('click', function() {
+                         const lang = this.getAttribute('data-lang');
+                         changeLang(lang);
+                         closeAllLanguageDropdowns();
+                     });
+                 });
+             }
+
+             // Attach listener to document for closing language dropdowns
+             document.addEventListener('click', function(event) {
+                 if (languageBtn && languageDropdown && !languageBtn.contains(event.target) && !languageDropdown.contains(event.target)) {
+                     languageDropdown.classList.remove('show');
+                     languageBtn.setAttribute('aria-expanded', 'false');
+                 }
+                 if (mobileLanguageBtn && mobileLanguageDropdown && !mobileLanguageBtn.contains(event.target) && !mobileLanguageDropdown.contains(event.target)) {
+                     mobileLanguageDropdown.classList.remove('show');
+                     mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+                 }
+             });
+
+             // Prevent clicks inside dropdowns from closing them immediately
+             if (languageDropdown) languageDropdown.addEventListener('click', e => e.stopPropagation());
+             if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
+
+             function changeLang(lang) { // Placeholder
+                  // Translated messages
+                 console.log(`Language selected: ${lang}`);
+                 localStorage.setItem('selectedLanguage', lang);
+                 alert(`Language changed to: ${lang}. (Translation logic to be implemented)`);
+                 // document.documentElement.lang = lang;
+             }
+
+             const savedLang = localStorage.getItem('selectedLanguage');
+             if (savedLang) {
+                  // Translated message
+                  console.log(`Saved language found: ${savedLang}.`);
+                 // changeLang(savedLang); // Apply if desired
+                 // document.documentElement.lang = savedLang;
+             }
+            // --- END: Language Selector Logic ---
+
+
+            // --- VIDEO POPUP LOGIC --- (Kept from original)
+            // Dropbox video links (Ensure they are correct and accessible)
+            const videoLinks = {
+                'app-video': 'https://www.dropbox.com/scl/fi/5k9rivkbkj2zyoprnwd86/video-carta.mp4?rlkey=5ciemjgygvevi3fvtsroi6t0h&raw=1', // Kept path
+                'allies-video': 'https://www.dropbox.com/scl/fi/twxlmmnbn704wxr3kpgbk/ricompense.mp4?rlkey=hk71vqb90ehkge5rqlqvmc938&raw=1' // Kept path
+            };
+
+            // Global functions for video popup
+            window.openVideo = function(videoId) {
+                const popup = document.getElementById(videoId);
+                const iframe = popup ? popup.querySelector('iframe') : null;
+
+                if (popup && iframe && videoLinks[videoId]) {
+                    iframe.src = videoLinks[videoId] + "&autoplay=1"; // Added autoplay if supported
+                    popup.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                     // Translated error message
+                     console.error("Cannot open video popup:", videoId);
+                }
+            };
+
+            window.closeVideo = function(videoId) {
+                const popup = document.getElementById(videoId);
+                const iframe = popup ? popup.querySelector('iframe') : null;
+
+                if (popup && iframe) {
+                    popup.classList.remove('active');
+                    document.body.style.overflow = '';
+                    setTimeout(() => { iframe.src = ''; }, 300); // Delay src removal
+                }
+            };
+
+            // Listener to close popup by clicking outside or with ESC
+            document.querySelectorAll('.video-popup').forEach(popup => {
+                popup.addEventListener('click', (e) => {
+                    if (e.target === popup) closeVideo(popup.getAttribute('id'));
+                });
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.video-popup.active').forEach(popup => closeVideo(popup.getAttribute('id')));
                 }
             });
-        });
+             // --- END VIDEO POPUP LOGIC ---
 
-        // Close with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const activePopup = document.querySelector('.video-popup.active');
-                if (activePopup) {
-                    closeVideo(activePopup.getAttribute('id'));
-                }
+
+            // --- HERO VIDEO BACKGROUND HANDLING --- (Kept from original)
+            const heroVideo = document.getElementById('hero-video');
+            if (heroVideo) {
+                 // preload="auto" is already in HTML
+                 heroVideo.addEventListener('loadeddata', function() {
+                     console.log("Hero video loadeddata event");
+                     heroVideo.play().catch(function(error) {
+                          // Translated messages
+                         console.error('Error playing hero video:', error);
+                         const videoBackground = document.querySelector('.video-background');
+                         const fallback = videoBackground?.querySelector('.fallback-image');
+                         if (fallback) fallback.style.display = 'block'; // Show fallback div on error
+                         console.warn("Hero video did not start, showing poster/fallback.");
+                     });
+                 });
+                 heroVideo.addEventListener('error', function(e) {
+                      // Translated messages
+                      console.error('Error loading hero video:', e);
+                      const videoBackground = document.querySelector('.video-background');
+                      const fallback = videoBackground?.querySelector('.fallback-image');
+                      if (fallback) fallback.style.display = 'block'; // Show fallback div on error
+                      console.warn("Error loading hero video, showing poster/fallback.");
+                 });
+            } else {
+                 // Translated message
+                 console.warn("Hero video element not found.");
             }
-        });
+             // --- END HERO VIDEO BACKGROUND HANDLING ---
 
-
-        // --- PARTNERS LOGO SLIDER HOVER PAUSE ---
-        // This is handled via CSS :hover, so the original script isn't strictly needed
-        // But kept commented out if more JS control is desired later.
-        /*
-        const logoContainer = document.querySelector('.logo-container');
-        const logoTrack = document.querySelector('.logo-track');
-        if (logoContainer && logoTrack) {
-            logoContainer.addEventListener('mouseenter', () => {
-                logoTrack.style.animationPlayState = 'paused';
-            });
-            logoContainer.addEventListener('mouseleave', () => {
-                logoTrack.style.animationPlayState = 'running';
-            });
-        }
-        */
-
-        // --- Removed unnecessary code ---
-        // Removed copyAddress (not present in this HTML)
-        // Removed duplicate code for hamburger/copyright
-
-    }); // End DOMContentLoaded
-</script>
+        }); // End DOMContentLoaded
+    </script>
 
 </body>
 </html>
