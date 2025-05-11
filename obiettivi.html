@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obiettivi - SynergyRecycle.B</title>
+    <!-- Codice favicon qui -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/32x32logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/16x16logo.png">
+    <link rel="icon" href="./assets/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon.png">
+    <link rel="manifest" href="./assets/img/site.webmanifest">
+    <style>
+        /* === START: Styles Copied/Adapted from index.html === */
+
+        /* Variabili con palette di colori ecologica e tecnologica (da index.html) */
+        :root {
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --container-width: 1200px;
+            --primary-blue: #3a7c8c;       /* Blu più soft */
+            --dark-gray: #333;
+            --light-gray: #ccc;
+            --primary-green: #5aad57;      /* Verde ecologico */
+            --secondary-green: #8BC34A;    /* Verde più chiaro */
+            --tertiary-green: #c2e6c0;     /* Verde molto soft */
+            --background-green: #f5f9f5;   /* Sfondo verde chiarissimo */
+            --blockchain-blue: #4c7f9c;    /* Blu per la blockchain */
+            /* --laser-color: #5cdb95; */       /* Colore dei "raggi laser" (verde - commentato perché index usava viola alla fine) */
+            --laser-color: #9c27b0; /* Colore viola (dall'ultima definizione in index.html) */
+            --card-bg-color: #fff;
+            --light-bg-section: #f8f9fa;
+            --hero-overlay-bg: rgba(255, 255, 255, 0.6); /* Overlay più chiaro per video */
+            --hero-text-color: var(--primary-blue); /* Colore testo hero */
+        }
+
+        /* Reset e base (da index.html) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif; /* Font da index */
+            line-height: 1.5;
+            color: var(--dark-gray); /* Colore base da index */
+            background-color: var(--background-green); /* Sfondo da index */
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Layout container (da index.html) */
+        .container {
+            max-width: var(--container-width); /* Usiamo variabile */
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px; /* Mantiene padding contenitore */
+            position: relative;
+            z-index: 2; /* Assicura che il contenuto sia sopra le decorazioni di sfondo */
+        }
+         /* Container specifico per HERO per rimuovere padding laterale */
+        .container-hero {
+             max-width: var(--container-width);
+             width: 100%;
+             margin: 0 auto;
+             padding: 0; /* No padding laterale per hero */
+             position: relative;
+             z-index: 1; /* Hero sta sotto header */
+         }
+
+        /* Header e navigazione con effetto gradiente (da index.html) */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            margin-bottom: 15px; /* Spazio sotto header */
+            position: relative; /* Per z-index */
+            z-index: 1000; /* Alto per stare sopra il contenuto, ma sotto il menu mobile se aperto */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white; /* Assicura che il testo span sia bianco */
+            text-decoration: none; /* Se il logo fosse un link */
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Navigazione principale (da index.html) */
+        .main-nav {
+            display: flex;
+            gap: 5px; /* Ridotto leggermente il gap per far spazio al selettore lingua */
+            align-items: center; /* Allinea verticalmente i link e il selettore lingua */
+            justify-content: flex-end;
+             /* width: 70%; Non necessario con flex-end e gap */
+        }
+
+        .main-nav a.button {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap; /* Evita che i link vadano a capo */
+        }
+
+        .main-nav a.button:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .main-nav a.button::after { /* Effetto underline hover da index */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--tertiary-green);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a.button:hover::after {
+            width: 100%;
+        }
+
+        /* Bottone verde CTA (da index.html) */
+        .green-button {
+            padding: 8px 20px;
+            background-color: var(--primary-green);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap; /* Evita a capo */
+            margin: 0 5px; /* Margine per separare */
+            display: inline-block;
+        }
+
+        .green-button::before { /* Effetto shine da index */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .green-button:hover {
+            background-color: var(--secondary-green);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .green-button:hover::before {
+            left: 100%;
+        }
+
+        /* Hamburger Menu Button (da index.html) */
+         /* Rinominato da .hamburger-menu a .hamburger-btn per coerenza con index.html JS */
+        .hamburger-btn {
+            display: none; /* Mostrato solo su mobile */
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 5px; /* Aggiunge un po' di area cliccabile */
+        }
+
+        /* Navigazione Mobile (da index.html) */
+        .mobile-nav {
+            display: none; /* Nascosto di default */
+            flex-direction: column;
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue)); /* Stesso gradiente header */
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            margin-top: -10px; /* Sovrappone leggermente l'header per continuità */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative; /* Necessario per z-index */
+            z-index: 999; /* Sotto header ma sopra il resto */
+        }
+
+        .mobile-nav.active { /* Classe per mostrarlo (da index.html JS) */
+             display: flex;
+        }
+
+        .mobile-nav a.button,
+        .mobile-nav .green-button { /* Applica stili simili a tutti i bottoni/link nel menu mobile */
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            text-align: center; /* Centra testo */
+            display: block; /* Occupa tutta la larghezza */
+            width: 100%;
+            box-sizing: border-box; /* Include padding nella larghezza */
+        }
+
+         .mobile-nav a.button:hover,
+         .mobile-nav .green-button:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+             /* Rimuove l'effetto ::before dal green-button in mobile per semplicità */
+            box-shadow: none;
+         }
+         .mobile-nav .green-button:hover::before {
+            left: -100%; /* Nasconde l'effetto shine */
+         }
+
+
+        /* Banner con effetto gradiente (da index.html) */
+        .banner {
+            background: linear-gradient(90deg, #2d463a, #3b594a, #2d463a);
+            background-size: 200% 100%;
+            color: white;
+            padding: 12px 20px;
+            margin: 10px 0 20px 0; /* Aggiunto margine sotto */
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift { /* Da index.html */
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Stili Sezioni Generali (da index.html) */
+        .section {
+            padding: var(--spacing-lg) 0;
+            position: relative; /* Necessario per eventuali ::before/::after */
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-md); /* Ridotto rispetto a index per più compattezza */
+            font-size: 2.5rem;
+            color: #2a5548; /* Verde scuro da index */
+            font-weight: 600;
+        }
+
+        .text-center { /* Helper class da index.html */
+             text-align: center;
+        }
+
+        /* Stili Bottoni Generali (da index.html) */
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 1.8rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin: 5px;
+            border: none; /* Assicura nessun bordo di default */
+            cursor: pointer; /* Cursore per bottoni */
+            text-align: center; /* Centra testo se necessario */
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Footer (da index.html) */
+        .site-footer {
+            background-color: #2d3a35; /* Colore scuro da index */
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            position: relative; /* Per z-index */
+            z-index: 2; /* Sopra decorazioni */
+        }
+
+        .copyright-text {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .copyright-text a { /* Stile link footer da index */
+            color: var(--secondary-green);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .copyright-text a:hover {
+            color: var(--tertiary-green);
+        }
+
+        /* Background decorations (da index.html) */
+        .bg-decoration {
+            position: fixed; /* Fixed per stare fermi allo scroll */
+            background-color: var(--tertiary-green);
+            border-radius: 50%;
+            opacity: 0.4;
+            filter: blur(70px);
+            z-index: 0; /* Dietro tutto */
+            pointer-events: none; /* Non interferisce con click */
+        }
+
+        .decoration-1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
+        }
+
+        .decoration-2 {
+            width: 350px;
+            height: 350px;
+            bottom: -50px;
+            right: -50px;
+        }
+
+        /* === END: Styles copied/adapted from index.html === */
+
+
+        /* === START: Styles specific to servizi.html, adapted for consistency === */
+        /* Questi stili sono stati copiati da servizi.html, li manteniamo per coerenza */
+        /* Hero section con video background (Potremmo personalizzarlo per la pagina Obiettivi) */
+        .hero {
+            min-height: 30vh; /* Altezza leggermente aumentata */
+            display: flex;
+            align-items: center; /* Centra contenuto verticalmente */
+            justify-content: center; /* Centra contenuto orizzontalmente */
+            position: relative; /* Necessario per video e overlay */
+            overflow: hidden;
+            padding: var(--spacing-md) 0; /* Ridotto padding */
+            margin-bottom: var(--spacing-lg); /* Spazio sotto hero */
+        }
+
+        .video-background {
+            position: absolute;
+            top: 50%; /* Centra verticalmente */
+            left: 50%; /* Centra orizzontalmente */
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Dietro a tutto */
+            transform: translate(-50%, -50%); /* Centramento effettivo */
+            overflow: hidden; /* Nasconde parti video che escono */
+        }
+
+        .video-background video {
+            min-width: 100%; /* Assicura copertura */
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover; /* Copre l'area senza distorcere */
+            opacity: 0.7; /* Leggera opacità per leggibilità testo */
+            filter: brightness(0.8); /* Leggermente scurito */
+        }
+
+        /* Overlay Gradiente sopra video (opzionale ma migliora leggibilità) */
+        .hero::after {
+             content: '';
+             position: absolute;
+             inset: 0;
+             background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); /* Gradiente scuro da basso */
+             z-index: 1;
+        }
+
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto; /* Già centrato da flex in .hero */
+            text-align: center;
+            position: relative;
+            z-index: 2; /* Sopra video e overlay */
+            background-color: transparent; /* Rimosso sfondo bianco */
+            padding: var(--spacing-md); /* Aggiunge padding per respiro */
+            color: white; /* Testo bianco per contrasto */
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Ombra testo più marcata */
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 6vw, 3.5rem); /* Font responsivo */
+            margin-bottom: 0; /* Rimuove margine sotto */
+            color: white; /* Assicura colore bianco */
+            text-shadow: inherit; /* Eredita ombra dal parent */
+            font-weight: 600; /* Bold */
+        }
+
+        /* Fallback (se necessario, va dentro .video-background) */
+        .fallback-image {
+             position: absolute;
+             inset: 0;
+             width: 100%;
+             height: 100%;
+             background-image: url('./assets/img/video-fallback.jpg'); /* Assicurati che esista */
+             background-size: cover;
+             background-position: center;
+             z-index: -1; /* Dietro al contenuto ma sopra lo sfondo base */
+        }
+        /* STILI PER LA PAGINA OBIETTIVI - Puoi aggiungere qui stili specifici se necessario */
+        .obiettivi-content {
+            padding: var(--spacing-md);
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: var(--spacing-lg);
+        }
+        .obiettivi-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.8rem;
+        }
+        .obiettivi-content p, .obiettivi-content ul {
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.6;
+        }
+        .obiettivi-content ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        .obiettivi-content ul li {
+            margin-bottom: 8px;
+        }
+
+        /* === END: Styles Specific to Services Page === */
+
+
+        /* === START: Responsive Styles === */
+        @media (max-width: 992px) {
+             .main-nav { gap: 5px; }
+             .main-nav a.button, .main-nav .green-button { padding: 8px 10px; font-size: 0.9rem; }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .hamburger-btn { display: block; }
+            /* .mobile-nav.active gestito */
+
+            .hero { min-height: 50vh; } /* Riduci altezza hero su mobile */
+            .hero-content { padding: var(--spacing-sm); width: 90%; }
+            .hero-title { font-size: 1.8rem; } /* Riduci titolo */
+            .video-background video { opacity: 0.5; filter: brightness(0.7); } /* Video più scuro/opaco */
+
+            .section-title { font-size: 2rem; }
+        }
+
+         @media (max-width: 480px) {
+             :root { --spacing-sm: 0.8rem; --spacing-md: 1.5rem; --spacing-lg: 2.5rem; }
+             .container { padding: 15px; }
+             header { padding: 10px 15px; }
+             .logo img { height: 35px; }
+             .hero { min-height: 45vh; }
+             .hero-title { font-size: 1.5rem; }
+             .section-title { font-size: 1.6rem; }
+             .btn { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
+             .footer { padding: 1.5rem 0; }
+             .copyright-text { font-size: 0.8rem; }
+         }
+
+        /* Language Selector Styling */
+
+        .language-selector {
+            position: relative;
+            margin-left: 10px; /* Spazio a sinistra nel nav desktop */
+        }
+
+        .language-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem; /* Icona leggermente più grande */
+            cursor: pointer;
+            padding: 5px 8px; /* Padding per area cliccabile */
+            border-radius: 50%; /* Cerchio */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Colore icona */
+            transition: background-color 0.3s;
+            line-height: 1; /* Evita altezza extra */
+        }
+
+        .language-btn:hover {
+            background-color: rgba(255, 255, 255, 0.15); /* Stesso hover dei link nav */
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: calc(100% + 10px); /* Spazio tra bottone e dropdown */
+            right: 0;
+            background-color: white;
+            border-radius: 8px; /* Stesso radius card */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Ombra più pronunciata */
+            min-width: 160px; /* Larghezza minima */
+            z-index: 1100; /* Sopra l'header */
+            display: none; /* Nascosto di default */
+            overflow: hidden; /* Per bordi arrotondati */
+            padding: 5px 0; /* Padding verticale interno */
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 10px 15px; /* Padding interno */
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--dark-gray); /* Testo scuro */
+        }
+
+        .language-option:hover {
+            background-color: var(--background-green); /* Sfondo verde chiaro su hover */
+        }
+
+        .language-flag {
+            margin-right: 10px; /* Spazio tra bandiera e testo */
+            font-size: 1.1rem; /* Dimensione bandiera emoji */
+            line-height: 1;
+        }
+
+        /* Language selector mobile */
+        .mobile-nav .language-selector {
+            width: 100%;
+            margin: 15px 0 5px 0; /* Spazio sopra/sotto nel menu mobile */
+            position: relative; /* Necessario per dropdown */
+        }
+
+        .mobile-nav .language-btn {
+            width: 100%;
+            justify-content: center; /* Centra testo/icona */
+            padding: 10px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Bordo sottile bianco */
+            border-radius: 5px; /* Stesso radius link mobile */
+            background-color: transparent;
+            color: white;
+            font-size: 1rem; /* Dimensione testo bottone */
+            text-align: center;
+        }
+         .mobile-nav .language-btn:hover {
+             background-color: rgba(255, 255, 255, 0.1);
+             transform: none; /* Nessun transform in mobile */
+         }
+
+        .mobile-nav .language-dropdown {
+            position: static; /* Non assoluto, appare sotto */
+            width: 100%;
+            box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: none; /* Rimuove bordo sopra */
+            border-radius: 0 0 5px 5px; /* Arrotonda solo sotto */
+            margin-top: -1px; /* Sovrappone leggermente il bottone */
+            background-color: rgba(0,0,0, 0.1); /* Sfondo scuro semi-trasparente */
+            max-height: 200px; /* Limita altezza */
+            overflow-y: auto; /* Scroll se necessario */
+            padding: 0; /* Rimuove padding base */
+        }
+         .mobile-nav .language-option {
+             color: white; /* Testo bianco */
+             padding: 12px 20px;
+         }
+         .mobile-nav .language-option:hover {
+             background-color: rgba(255, 255, 255, 0.15);
+         }
+
+       /* === END: Responsive Styles === */
+    </style>
+</head>
+<body>
+    <!-- Background decorative elements -->
+    <div class="bg-decoration decoration-1"></div>
+    <div class="bg-decoration decoration-2"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <a href="./" class="logo">
+                <img src="./assets/img/logo da email.png" alt="SynergyRecycle.B Logo">
+                <span>SynergyRecycle.B</span>
+            </a>
+            <nav class="main-nav">
+                 <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
+                <a href="./" class="button">Home</a>
+                <a href="./servizi.html" class="button">Servizi</a>
+                <!-- Il link Obiettivi è stato rimosso da qui -->
+                <a href="./sostenerci.html" class="button">Sostienici</a>
+                <a href="./contattaci.html" class="button">Contattaci</a>
+                <a href="./roadmap.html" class="button">Roadmap</a>
+                <div class="language-selector">
+                    <button class="language-btn" id="language-btn" aria-label="Seleziona lingua" aria-haspopup="true" aria-expanded="false">🌐</button>
+                    <div class="language-dropdown" id="language-dropdown" role="menu">
+                        <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                    	<div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                    	<div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                    	<div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    	<div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                    </div>
+                </div>
+            </nav>
+             <button class="hamburger-btn" id="hamburger-btn" aria-expanded="false" aria-label="Menu">☰</button>
+        </header>
+
+        <!-- Mobile navigation -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
+            <a href="./" class="button">Home</a>
+            <a href="./servizi.html" class="button">Servizi</a>
+            <!-- Il link Obiettivi è stato rimosso da qui -->
+            <a href="./sostenerci.html" class="button">Sostienici</a>
+            <a href="./contattaci.html" class="button">Contattaci</a>
+            <a href="./roadmap.html" class="button">Roadmap</a>
+            <div class="language-selector">
+                <button class="language-btn" id="mobile-language-btn" aria-haspopup="true" aria-expanded="false">🌐 Lingua</button>
+                <div class="language-dropdown" id="mobile-language-dropdown" role="menu">
+                    <div class="language-option" data-lang="en" role="menuitem"><span class="language-flag">🇬🇧</span> English</div>
+                    <div class="language-option" data-lang="es" role="menuitem"><span class="language-flag">🇪🇸</span> Español</div>
+                    <div class="language-option" data-lang="de" role="menuitem"><span class="language-flag">🇩🇪</span> Deutsch</div>
+                    <div class="language-option" data-lang="it" role="menuitem"><span class="language-flag">🇮🇹</span> Italiano</div>
+                    <div class="language-option" data-lang="fr" role="menuitem"><span class="language-flag">🇫🇷</span> Français</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Banner -->
+        <div class="banner">
+            SynergyRecycle.B: I nostri obiettivi per un futuro sostenibile
+        </div>
+    </div> <!-- End container for header/banner -->
+
+    <main>
+        <!-- Hero section per la pagina Obiettivi (puoi personalizzarla) -->
+         <section class="hero">
+             <div class="video-background">
+                 <video autoplay muted loop playsinline id="hero-video" preload="auto" poster="./assets/img/hero-obiettivi-fallback.jpg">
+                     <source src="./assets/video/video_per_obiettivi.mp4" type="video/mp4">
+                     Il tuo browser non supporta il tag video.
+                 </video>
+                 <div class="fallback-image" style="display: none; background-image: url('./assets/img/hero-obiettivi-fallback.jpg');"></div>
+             </div>
+             <div class="container-hero">
+                 <div class="hero-content">
+                     <h1 class="hero-title">I Nostri Obiettivi Chiave</h1>
+                     <p style="font-size: 1.2rem; margin-top: 10px;">Tracciamo la rotta verso un impatto ambientale positivo e duraturo.</p>
+                 </div>
+             </div>
+         </section>
+
+        <!-- Contenuto specifico per la pagina Obiettivi -->
+        <section class="section">
+            <div class="container">
+                 <h2 class="section-title" style="margin-bottom: var(--spacing-lg);">Definiamo il Futuro Sostenibile</h2>
+                
+                <div class="obiettivi-content">
+                    <h3>Obiettivo 1: Espansione della Rete di Riciclo</h3>
+                    <p>Miriamo a espandere la nostra rete di punti di raccolta e partner di riciclo del 50% entro i prossimi due anni. Questo includerà l'integrazione di nuove tipologie di materiali e la penetrazione in nuove aree geografiche, con un focus sulle comunità meno servite.</p>
+                    <ul>
+                        <li>Incrementare i centri di raccolta affiliati.</li>
+                        <li>Introdurre la tracciabilità per almeno 3 nuovi tipi di materiali riciclabili.</li>
+                        <li>Sviluppare partnership strategiche con enti locali e aziende per facilitare la raccolta.</li>
+                    </ul>
+                </div>
+
+                <div class="obiettivi-content">
+                    <h3>Obiettivo 2: Innovazione Tecnologica Continua</h3>
+                    <p>Investiremo costantemente in ricerca e sviluppo per migliorare la nostra piattaforma blockchain, l'app utente e i sistemi di tracciabilità. L'obiettivo è rendere il processo di riciclo più efficiente, trasparente e gratificante per tutti gli stakeholder.</p>
+                    <ul>
+                        <li>Implementare funzionalità avanzate nell'app basate sul feedback degli utenti.</li>
+                        <li>Esplorare l'uso di AI per ottimizzare la logistica del riciclo e l'identificazione dei materiali.</li>
+                        <li>Migliorare la sicurezza e la scalabilità della nostra infrastruttura blockchain.</li>
+                    </ul>
+                </div>
+
+                <div class="obiettivi-content">
+                    <h3>Obiettivo 3: Educazione e Coinvolgimento della Comunità</h3>
+                    <p>Vogliamo sensibilizzare un pubblico più ampio sull'importanza del riciclo e sui benefici della circular economy. Lanceremo campagne educative e iniziative di coinvolgimento per promuovere comportamenti sostenibili e aumentare la partecipazione attiva.</p>
+                    <ul>
+                        <li>Creare contenuti educativi multimediali (video, infografiche, webinar).</li>
+                        <li>Organizzare workshop e eventi locali (online e offline) sulla sostenibilità.</li>
+                        <li>Collaborare con scuole e istituzioni educative per programmi dedicati ai giovani.</li>
+                    </ul>
+                </div>
+
+                <div class="obiettivi-content">
+                    <h3>Obiettivo 4: Misurazione e Aumento dell'Impatto Positivo</h3>
+                    <p>Ci impegniamo a misurare con precisione l'impatto ambientale positivo generato dalla nostra piattaforma, come la riduzione delle emissioni di CO2, il risparmio di risorse naturali e la quantità di rifiuti deviati dalle discariche. L'obiettivo è raddoppiare il nostro impatto misurabile entro tre anni.</p>
+                    <ul>
+                        <li>Sviluppare un dashboard pubblico per mostrare l'impatto aggregato in tempo reale.</li>
+                        <li>Pubblicare report di sostenibilità annuali trasparenti.</li>
+                        <li>Ottenere certificazioni ambientali riconosciute per le nostre operazioni e la nostra tecnologia.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="section cta-section">
+            <div class="container">
+                 <h2 class="section-title">Pronto a Contribuire ai Nostri Obiettivi?</h2>
+                 <p style="text-align: center;">Ogni azione conta. Unisciti a noi per costruire un futuro più verde e sostenibile.</p>
+                <div class="btn-container">
+                    <a href="./sostenerci.html" class="btn">Sostienici Ora</a>
+                    <a href="./contattaci.html" class="btn" style="background: var(--primary-green);">Contattaci</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p class="copyright-text">
+                © <span id="copyright-year"></span> SynergyRecycle.B.
+                 - Tutti i diritti riservati.
+                 <br>
+                 Herford, Germany | <a href="mailto:SynergyRecycle.B@gmail.com">SynergyRecycle.B@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- COMMON HELPER FUNCTIONS ---
+            const toggleAriaExpanded = (element) => {
+                 if (!element) return;
+                 const isExpanded = element.getAttribute('aria-expanded') === 'true';
+                 element.setAttribute('aria-expanded', !isExpanded);
+            };
+
+            // --- COPYRIGHT YEAR ---
+            const yearSpan = document.getElementById('copyright-year');
+             if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+             }
+
+            // --- HAMBURGER MENU TOGGLE ---
+            const hamburgerBtn = document.getElementById('hamburger-btn'); 
+            const mobileNav = document.getElementById('mobile-nav');
+            const bodyEl = document.body; 
+
+            if (hamburgerBtn && mobileNav) {
+                hamburgerBtn.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     const isActive = mobileNav.classList.toggle('active'); 
+                     toggleAriaExpanded(this);
+                     bodyEl.classList.toggle('menu-open', isActive);
+                 });
+
+                const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (!link.closest('.language-selector')) {
+                             mobileNav.classList.remove('active');
+                             bodyEl.classList.remove('menu-open'); 
+                            if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                                toggleAriaExpanded(hamburgerBtn);
+                            }
+                        }
+                    });
+                 });
+
+                 document.addEventListener('click', function(event) {
+                     if (mobileNav.classList.contains('active') &&
+                         !hamburgerBtn.contains(event.target) &&
+                         !mobileNav.contains(event.target))
+                    {
+                         mobileNav.classList.remove('active');
+                         bodyEl.classList.remove('menu-open'); 
+                         if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                            toggleAriaExpanded(hamburgerBtn);
+                        }
+                     }
+                 });
+
+                 document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && mobileNav.classList.contains('active')) {
+                         mobileNav.classList.remove('active');
+                         bodyEl.classList.remove('menu-open'); 
+                         if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+                             toggleAriaExpanded(hamburgerBtn);
+                         }
+                     }
+                 });
+
+            } else {
+                 console.error("Bottone hamburger o navigazione mobile non trovati.");
+            }
+
+
+            // --- LANGUAGE SELECTOR LOGIC ---
+             const languageBtn = document.getElementById('language-btn');
+             const languageDropdown = document.getElementById('language-dropdown');
+             const mobileLanguageBtn = document.getElementById('mobile-language-btn');
+             const mobileLanguageDropdown = document.getElementById('mobile-language-dropdown');
+             const allLanguageOptions = document.querySelectorAll('.language-option');
+
+             const closeAllLanguageDropdowns = () => {
+                 if (languageDropdown) languageDropdown.classList.remove('show');
+                 if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+                 if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
+                 if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+             };
+
+             if (languageBtn && languageDropdown) {
+                 languageBtn.addEventListener('click', function(e) {
+                     e.stopPropagation();
+                     const isShown = languageDropdown.classList.toggle('show');
+                     languageBtn.setAttribute('aria-expanded', isShown);
+                     if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
+                     if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+                 });
+             }
+
+             if (mobileLanguageBtn && mobileLanguageDropdown) {
+                 mobileLanguageBtn.addEventListener('click', function(e) {
+                     e.stopPropagation();
+                      const isShown = mobileLanguageDropdown.classList.toggle('show');
+                      mobileLanguageBtn.setAttribute('aria-expanded', isShown);
+                     if (languageDropdown) languageDropdown.classList.remove('show');
+                     if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
+                 });
+             }
+
+             if (allLanguageOptions.length > 0) {
+                 allLanguageOptions.forEach(option => {
+                     option.addEventListener('click', function() {
+                         const lang = this.getAttribute('data-lang');
+                         changeLang(lang);
+                         closeAllLanguageDropdowns();
+                     });
+                 });
+             }
+
+             document.addEventListener('click', function(event) {
+                 if (languageBtn && languageDropdown && !languageBtn.contains(event.target) && !languageDropdown.contains(event.target)) {
+                     languageDropdown.classList.remove('show');
+                     languageBtn.setAttribute('aria-expanded', 'false');
+                 }
+                 if (mobileLanguageBtn && mobileLanguageDropdown && !mobileLanguageBtn.contains(event.target) && !mobileLanguageDropdown.contains(event.target)) {
+                     mobileLanguageDropdown.classList.remove('show');
+                     mobileLanguageBtn.setAttribute('aria-expanded', 'false');
+                 }
+             });
+
+             if (languageDropdown) languageDropdown.addEventListener('click', e => e.stopPropagation());
+             if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
+
+             function changeLang(lang) { 
+                 console.log(`Lingua selezionata: ${lang}`);
+                 localStorage.setItem('selectedLanguage', lang);
+                 alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+             }
+
+             const savedLang = localStorage.getItem('selectedLanguage');
+             if (savedLang) {
+                  console.log(`Lingua salvata trovata: ${savedLang}.`);
+             }
+            // --- END: Language Selector Logic ---
+
+
+            // --- HERO VIDEO BACKGROUND HANDLING --- 
+            const heroVideo = document.getElementById('hero-video');
+            if (heroVideo) {
+                 heroVideo.addEventListener('loadeddata', function() {
+                     console.log("Hero video loadeddata event");
+                     heroVideo.play().catch(function(error) {
+                         console.error('Errore nel play del video hero:', error);
+                         const videoBackground = document.querySelector('.video-background');
+                         const fallback = videoBackground?.querySelector('.fallback-image');
+                         if (fallback) fallback.style.display = 'block'; 
+                         console.warn("Video hero non partito, mostro poster/fallback.");
+                     });
+                 });
+                 heroVideo.addEventListener('error', function(e) {
+                      console.error('Errore caricamento video hero:', e);
+                      const videoBackground = document.querySelector('.video-background');
+                      const fallback = videoBackground?.querySelector('.fallback-image');
+                      if (fallback) fallback.style.display = 'block'; 
+                      console.warn("Errore caricamento video hero, mostro poster/fallback.");
+                 });
+            } else {
+                 console.warn("Elemento video hero non trovato.");
+            }
+             // --- END HERO VIDEO BACKGROUND HANDLING ---
+
+        }); // End DOMContentLoaded
+    </script>
+
+</body>
+</html>
