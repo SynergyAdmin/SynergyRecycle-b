@@ -12,61 +12,54 @@
     <link rel="manifest" href="./assets/img/site.webmanifest">
     <style>
         /* === START: Styles Copied/Adapted from index.html === */
-
-        /* Variabili con palette di colori ecologica e tecnologica (da index.html) */
         :root {
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
             --spacing-lg: 4rem;
             --container-width: 1200px;
-            --primary-blue: #3a7c8c;       /* Blu più soft */
+            --primary-blue: #3a7c8c;
             --dark-gray: #333;
             --light-gray: #ccc;
-            --primary-green: #5aad57;      /* Verde ecologico */
-            --secondary-green: #8BC34A;    /* Verde più chiaro */
-            --tertiary-green: #c2e6c0;     /* Verde molto soft */
-            --background-green: #f5f9f5;   /* Sfondo verde chiarissimo */
-            --blockchain-blue: #4c7f9c;    /* Blu per la blockchain */
-            /* --laser-color: #5cdb95; */       /* Colore dei "raggi laser" (verde - commentato perché index usava viola alla fine) */
-            --laser-color: #9c27b0; /* Colore viola (dall'ultima definizione in index.html) */
+            --primary-green: #5aad57;
+            --secondary-green: #8BC34A;
+            --tertiary-green: #c2e6c0;
+            --background-green: #f5f9f5;
+            --blockchain-blue: #4c7f9c;
+            --laser-color: #9c27b0;
             --card-bg-color: #fff;
             --light-bg-section: #f8f9fa;
-            --hero-overlay-bg: rgba(255, 255, 255, 0.6); /* Overlay più chiaro per video */
-            --hero-text-color: var(--primary-blue); /* Colore testo hero */
+            --hero-overlay-bg: rgba(255, 255, 255, 0.6);
+            --hero-text-color: var(--primary-blue);
         }
 
-        /* Reset e base (da index.html) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: "Segoe UI", system-ui, -apple-system, sans-serif; /* Font da index */
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
             line-height: 1.5;
-            color: var(--dark-gray); /* Colore base da index */
-            background-color: var(--background-green); /* Sfondo da index */
+            color: var(--dark-gray);
+            background-color: var(--background-green);
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Layout container (da index.html) */
         .container {
-            max-width: var(--container-width); /* Usiamo variabile */
+            max-width: var(--container-width);
             width: 100%;
             margin: 0 auto;
-            padding: 20px; /* Mantiene padding contenitore */
+            padding: 20px;
             position: relative;
-            z-index: 2; /* Assicura che il contenuto sia sopra le decorazioni di sfondo */
+            z-index: 2;
         }
-         /* Container specifico per HERO per rimuovere padding laterale */
         .container-hero {
              max-width: var(--container-width);
              width: 100%;
              margin: 0 auto;
-             padding: 0; /* No padding laterale per hero */
+             padding: 0;
              position: relative;
-             z-index: 1; /* Hero sta sotto header */
+             z-index: 1;
          }
 
-        /* Header e navigazione con effetto gradiente (da index.html) */
         header {
             background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
             color: white;
@@ -75,17 +68,17 @@
             justify-content: space-between;
             align-items: center;
             border-radius: 10px;
-            margin-bottom: 15px; /* Spazio sotto header */
-            position: relative; /* Per z-index */
-            z-index: 1000; /* Alto per stare sopra il contenuto, ma sotto il menu mobile se aperto */
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
             display: flex;
             align-items: center;
-            color: white; /* Assicura che il testo span sia bianco */
-            text-decoration: none; /* Se il logo fosse un link */
+            color: white;
+            text-decoration: none;
         }
 
         .logo img {
@@ -94,18 +87,13 @@
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
             transition: transform 0.3s ease;
         }
+        .logo:hover img { transform: scale(1.05); }
 
-        .logo:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Navigazione principale (da index.html) */
         .main-nav {
             display: flex;
-            gap: 5px; /* Ridotto leggermente il gap per far spazio al selettore lingua */
-            align-items: center; /* Allinea verticalmente i link e il selettore lingua */
+            gap: 5px;
+            align-items: center;
             justify-content: flex-end;
-             /* width: 70%; Non necessario con flex-end e gap */
         }
 
         .main-nav a.button {
@@ -116,358 +104,326 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
-            white-space: nowrap; /* Evita che i link vadano a capo */
+            white-space: nowrap;
         }
-
         .main-nav a.button:hover {
             background-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
-
-        .main-nav a.button::after { /* Effetto underline hover da index */
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--tertiary-green);
+        .main-nav a.button::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background-color: var(--tertiary-green);
             transition: width 0.3s ease;
         }
+        .main-nav a.button:hover::after { width: 100%; }
 
-        .main-nav a.button:hover::after {
-            width: 100%;
-        }
-
-        /* Bottone verde CTA (da index.html) */
         .green-button {
-            padding: 8px 20px;
-            background-color: var(--primary-green);
-            border-radius: 20px;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            padding: 8px 20px; background-color: var(--primary-green);
+            border-radius: 20px; color: white; text-decoration: none;
+            font-weight: 500; transition: all 0.3s ease;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            white-space: nowrap; /* Evita a capo */
-            margin: 0 5px; /* Margine per separare */
+            border: none; cursor: pointer; position: relative;
+            overflow: hidden; white-space: nowrap; margin: 0 5px;
             display: inline-block;
         }
-
-        .green-button::before { /* Effetto shine da index */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+        .green-button::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.6s ease;
         }
-
         .green-button:hover {
             background-color: var(--secondary-green);
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
+        .green-button:hover::before { left: 100%; }
 
-        .green-button:hover::before {
-            left: 100%;
-        }
-
-        /* Hamburger Menu Button (da index.html) */
-         /* Rinominato da .hamburger-menu a .hamburger-btn per coerenza con index.html JS */
         .hamburger-btn {
-            display: none; /* Mostrato solo su mobile */
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            padding: 5px; /* Aggiunge un po' di area cliccabile */
+            display: none; cursor: pointer; background: none;
+            border: none; color: white; font-size: 24px; padding: 5px;
         }
 
-        /* Navigazione Mobile (da index.html) */
         .mobile-nav {
-            display: none; /* Nascosto di default */
-            flex-direction: column;
-            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue)); /* Stesso gradiente header */
-            padding: 15px;
-            border-radius: 0 0 10px 10px;
-            margin-top: -10px; /* Sovrappone leggermente l'header per continuità */
+            display: none; flex-direction: column;
+            background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
+            padding: 15px; border-radius: 0 0 10px 10px; margin-top: -10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: relative; /* Necessario per z-index */
-            z-index: 999; /* Sotto header ma sopra il resto */
+            position: relative; z-index: 999;
         }
+        .mobile-nav.active { display: flex; }
 
-        .mobile-nav.active { /* Classe per mostrarlo (da index.html JS) */
-             display: flex;
-        }
-
-        .mobile-nav a.button,
-        .mobile-nav .green-button { /* Applica stili simili a tutti i bottoni/link nel menu mobile */
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            margin: 5px 0;
-            border-radius: 5px;
+        .mobile-nav a.button, .mobile-nav .green-button {
+            color: white; text-decoration: none; padding: 10px 15px;
+            margin: 5px 0; border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
-            text-align: center; /* Centra testo */
-            display: block; /* Occupa tutta la larghezza */
-            width: 100%;
-            box-sizing: border-box; /* Include padding nella larghezza */
+            text-align: center; display: block; width: 100%;
+            box-sizing: border-box;
         }
-
-         .mobile-nav a.button:hover,
-         .mobile-nav .green-button:hover {
+         .mobile-nav a.button:hover, .mobile-nav .green-button:hover {
             background-color: rgba(255, 255, 255, 0.15);
-            transform: translateX(5px);
-             /* Rimuove l'effetto ::before dal green-button in mobile per semplicità */
-            box-shadow: none;
+            transform: translateX(5px); box-shadow: none;
          }
-         .mobile-nav .green-button:hover::before {
-            left: -100%; /* Nasconde l'effetto shine */
-         }
+         .mobile-nav .green-button:hover::before { left: -100%; }
 
-
-        /* Banner con effetto gradiente (da index.html) */
         .banner {
             background: linear-gradient(90deg, #2d463a, #3b594a, #2d463a);
-            background-size: 200% 100%;
-            color: white;
-            padding: 12px 20px;
-            margin: 10px 0 20px 0; /* Aggiunto margine sotto */
-            border-radius: 8px;
-            text-align: center;
+            background-size: 200% 100%; color: white; padding: 12px 20px;
+            margin: 10px 0 20px 0; border-radius: 8px; text-align: center;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             animation: gradientShift 8s ease infinite;
         }
-
-        @keyframes gradientShift { /* Da index.html */
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Stili Sezioni Generali (da index.html) */
-        .section {
-            padding: var(--spacing-lg) 0;
-            position: relative; /* Necessario per eventuali ::before/::after */
-        }
-
+        .section { padding: var(--spacing-lg) 0; position: relative; }
         .section-title {
-            text-align: center;
-            margin-bottom: var(--spacing-md); /* Ridotto rispetto a index per più compattezza */
-            font-size: 2.5rem;
-            color: #2a5548; /* Verde scuro da index */
-            font-weight: 600;
+            text-align: center; margin-bottom: var(--spacing-md);
+            font-size: 2.5rem; color: #2a5548; font-weight: 600;
         }
+        .text-center { text-align: center; }
 
-        .text-center { /* Helper class da index.html */
-             text-align: center;
-        }
-
-        /* Stili Bottoni Generali (da index.html) */
         .btn {
-            display: inline-block;
-            padding: 0.9rem 1.8rem;
+            display: inline-block; padding: 0.9rem 1.8rem;
             background: linear-gradient(135deg, var(--primary-blue), var(--blockchain-blue));
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            margin: 5px;
-            border: none; /* Assicura nessun bordo di default */
-            cursor: pointer; /* Cursore per bottoni */
-            text-align: center; /* Centra testo se necessario */
+            color: white; text-decoration: none; border-radius: 6px;
+            transition: all 0.3s; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative; overflow: hidden; z-index: 1; margin: 5px;
+            border: none; cursor: pointer; text-align: center;
         }
-
         .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s;
-            z-index: -1;
+            transition: left 0.7s; z-index: -1;
         }
-
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15);
         }
+        .btn:hover::before { left: 100%; }
 
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        /* Footer (da index.html) */
         .site-footer {
-            background-color: #2d3a35; /* Colore scuro da index */
-            padding: 2rem 0;
-            margin-top: 4rem;
-            text-align: center;
-            position: relative; /* Per z-index */
-            z-index: 2; /* Sopra decorazioni */
+            background-color: #2d3a35; padding: 2rem 0;
+            margin-top: 4rem; text-align: center;
+            position: relative; z-index: 2;
         }
-
         .copyright-text {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            color: var(--light-gray); font-size: 0.9rem; line-height: 1.5;
         }
-
-        .copyright-text a { /* Stile link footer da index */
-            color: var(--secondary-green);
-            text-decoration: none;
+        .copyright-text a {
+            color: var(--secondary-green); text-decoration: none;
             transition: color 0.3s;
         }
+        .copyright-text a:hover { color: var(--tertiary-green); }
 
-        .copyright-text a:hover {
-            color: var(--tertiary-green);
-        }
-
-        /* Background decorations (da index.html) */
         .bg-decoration {
-            position: fixed; /* Fixed per stare fermi allo scroll */
-            background-color: var(--tertiary-green);
-            border-radius: 50%;
-            opacity: 0.4;
-            filter: blur(70px);
-            z-index: 0; /* Dietro tutto */
-            pointer-events: none; /* Non interferisce con click */
+            position: fixed; background-color: var(--tertiary-green);
+            border-radius: 50%; opacity: 0.4; filter: blur(70px);
+            z-index: 0; pointer-events: none;
         }
+        .decoration-1 { width: 400px; height: 400px; top: -100px; left: -100px; }
+        .decoration-2 { width: 350px; height: 350px; bottom: -50px; right: -50px; }
 
-        .decoration-1 {
-            width: 400px;
-            height: 400px;
-            top: -100px;
-            left: -100px;
-        }
-
-        .decoration-2 {
-            width: 350px;
-            height: 350px;
-            bottom: -50px;
-            right: -50px;
-        }
-
-        /* === END: Styles copied/adapted from index.html === */
-
-
-        /* === START: Styles specific to servizi.html, adapted for consistency === */
-        /* Questi stili sono stati copiati da servizi.html, li manteniamo per coerenza */
-        /* Hero section con video background (Potremmo personalizzarlo per la pagina Obiettivi) */
+        /* Hero section styles (mantenuti per coerenza se si usa un hero) */
         .hero {
-            min-height: 30vh; /* Altezza leggermente aumentata */
-            display: flex;
-            align-items: center; /* Centra contenuto verticalmente */
-            justify-content: center; /* Centra contenuto orizzontalmente */
-            position: relative; /* Necessario per video e overlay */
-            overflow: hidden;
-            padding: var(--spacing-md) 0; /* Ridotto padding */
-            margin-bottom: var(--spacing-lg); /* Spazio sotto hero */
+            min-height: 30vh; display: flex; align-items: center;
+            justify-content: center; position: relative; overflow: hidden;
+            padding: var(--spacing-md) 0; margin-bottom: var(--spacing-lg);
         }
-
         .video-background {
-            position: absolute;
-            top: 50%; /* Centra verticalmente */
-            left: 50%; /* Centra orizzontalmente */
-            width: 100%;
-            height: 100%;
-            z-index: 0; /* Dietro a tutto */
-            transform: translate(-50%, -50%); /* Centramento effettivo */
-            overflow: hidden; /* Nasconde parti video che escono */
+            position: absolute; top: 50%; left: 50%;
+            width: 100%; height: 100%; z-index: 0;
+            transform: translate(-50%, -50%); overflow: hidden;
         }
-
         .video-background video {
-            min-width: 100%; /* Assicura copertura */
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: cover; /* Copre l'area senza distorcere */
-            opacity: 0.7; /* Leggera opacità per leggibilità testo */
-            filter: brightness(0.8); /* Leggermente scurito */
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto; object-fit: cover;
+            opacity: 0.7; filter: brightness(0.8);
         }
-
-        /* Overlay Gradiente sopra video (opzionale ma migliora leggibilità) */
         .hero::after {
-             content: '';
-             position: absolute;
-             inset: 0;
-             background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); /* Gradiente scuro da basso */
+             content: ''; position: absolute; inset: 0;
+             background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
              z-index: 1;
         }
-
-
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto; /* Già centrato da flex in .hero */
-            text-align: center;
-            position: relative;
-            z-index: 2; /* Sopra video e overlay */
-            background-color: transparent; /* Rimosso sfondo bianco */
-            padding: var(--spacing-md); /* Aggiunge padding per respiro */
-            color: white; /* Testo bianco per contrasto */
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Ombra testo più marcata */
+            max-width: 800px; margin: 0 auto; text-align: center;
+            position: relative; z-index: 2; background-color: transparent;
+            padding: var(--spacing-md); color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
         }
-
         .hero-title {
-            font-size: clamp(2.2rem, 6vw, 3.5rem); /* Font responsivo */
-            margin-bottom: 0; /* Rimuove margine sotto */
-            color: white; /* Assicura colore bianco */
-            text-shadow: inherit; /* Eredita ombra dal parent */
-            font-weight: 600; /* Bold */
+            font-size: clamp(2.2rem, 6vw, 3.5rem); margin-bottom: 0;
+            color: white; text-shadow: inherit; font-weight: 600;
+        }
+        .fallback-image {
+             position: absolute; inset: 0; width: 100%; height: 100%;
+             background-size: cover; background-position: center; z-index: -1;
         }
 
-        /* Fallback (se necessario, va dentro .video-background) */
-        .fallback-image {
-             position: absolute;
-             inset: 0;
-             width: 100%;
-             height: 100%;
-             background-image: url('./assets/img/video-fallback.jpg'); /* Assicurati che esista */
-             background-size: cover;
-             background-position: center;
-             z-index: -1; /* Dietro al contenuto ma sopra lo sfondo base */
-        }
-        /* STILI PER LA PAGINA OBIETTIVI - Puoi aggiungere qui stili specifici se necessario */
-        .obiettivi-content {
+        /* === STILI SPECIFICI PER LA NUOVA STRUTTURA OBIETTIVI === */
+        .section-obiettivo-principale .obiettivo-card.principale {
+            background-color: var(--primary-blue);
+            color: white;
             padding: var(--spacing-md);
+            border-radius: 15px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg) auto; /* Aggiunto margine sotto */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .section-obiettivo-principale .obiettivo-card.principale .obiettivo-icon-container { /* Contenitore per icona principale */
+            margin-bottom: var(--spacing-sm);
+        }
+        .section-obiettivo-principale .obiettivo-card.principale .obiettivo-icon {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+        .section-obiettivo-principale .obiettivo-card.principale .obiettivo-label {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .section-obiettivo-principale .obiettivo-card.principale .obiettivo-detail {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .obiettivi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .obiettivo-card {
             background-color: var(--card-bg-color);
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 300px; /* Altezza minima per card (aggiusta se necessario) */
         }
-        .obiettivi-content h3 {
+        .obiettivo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .obiettivo-icon-container {
+            margin-bottom: var(--spacing-sm);
+            height: 80px; /* Altezza fissa per allineare le icone */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .obiettivo-icon {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+        .obiettivi-grid.micro .obiettivo-icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        .obiettivo-label {
+            font-size: 1.25rem;
             color: var(--primary-blue);
-            margin-bottom: var(--spacing-sm);
-            font-size: 1.8rem;
-        }
-        .obiettivi-content p, .obiettivi-content ul {
-            margin-bottom: var(--spacing-sm);
-            line-height: 1.6;
-        }
-        .obiettivi-content ul {
-            list-style: disc;
-            padding-left: 20px;
-        }
-        .obiettivi-content ul li {
+            font-weight: 600;
             margin-bottom: 8px;
+            line-height: 1.3;
+            min-height: 2.6em; /* Spazio per due righe di label, per allineamento */
+            display: flex; /* Per centrare verticalmente se il testo è corto */
+            align-items: center;
+            justify-content: center;
+        }
+        .obiettivo-detail {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            line-height: 1.4;
+            flex-grow: 1;
+            margin-top: auto; /* Spinge il dettaglio in basso se lo spazio lo permette */
         }
 
-        /* === END: Styles Specific to Services Page === */
+        .misurazione-content {
+            background-color: var(--card-bg-color);
+            padding: var(--spacing-md);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .misurazione-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .misurazione-content li {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: flex-start;
+        }
+        .misurazione-content li:last-child { margin-bottom: 0; }
+        .misurazione-content strong { color: var(--primary-green); }
+        .misurazione-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            line-height: 1.5;
+        }
+        /* === FINE STILI SPECIFICI OBIETTIVI === */
 
+        /* Language Selector Styling */
+        .language-selector { position: relative; margin-left: 10px; }
+        .language-btn {
+            background: none; border: none; font-size: 1.5rem; cursor: pointer;
+            padding: 5px 8px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; color: white;
+            transition: background-color 0.3s; line-height: 1;
+        }
+        .language-btn:hover { background-color: rgba(255, 255, 255, 0.15); }
+        .language-dropdown {
+            position: absolute; top: calc(100% + 10px); right: 0;
+            background-color: white; border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            min-width: 160px; z-index: 1100; display: none;
+            overflow: hidden; padding: 5px 0;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 10px 15px; cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            display: flex; align-items: center;
+            font-size: 0.95rem; color: var(--dark-gray);
+        }
+        .language-option:hover { background-color: var(--background-green); }
+        .language-flag { margin-right: 10px; font-size: 1.1rem; line-height: 1;}
+
+        /* Language selector mobile */
+        .mobile-nav .language-selector { width: 100%; margin: 15px 0 5px 0; position: relative; }
+        .mobile-nav .language-btn {
+            width: 100%; justify-content: center; padding: 10px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 5px;
+            background-color: transparent; color: white; font-size: 1rem;
+            text-align: center;
+        }
+         .mobile-nav .language-btn:hover { background-color: rgba(255, 255, 255, 0.1); transform: none; }
+        .mobile-nav .language-dropdown {
+            position: static; width: 100%; box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.2); border-top: none;
+            border-radius: 0 0 5px 5px; margin-top: -1px;
+            background-color: rgba(0,0,0, 0.1); max-height: 200px;
+            overflow-y: auto; padding: 0;
+        }
+         .mobile-nav .language-option { color: white; padding: 12px 20px; }
+         .mobile-nav .language-option:hover { background-color: rgba(255, 255, 255, 0.15); }
 
         /* === START: Responsive Styles === */
         @media (max-width: 992px) {
@@ -478,14 +434,29 @@
         @media (max-width: 768px) {
             .main-nav { display: none; }
             .hamburger-btn { display: block; }
-            /* .mobile-nav.active gestito */
 
-            .hero { min-height: 50vh; } /* Riduci altezza hero su mobile */
+            .hero { min-height: 40vh; }
             .hero-content { padding: var(--spacing-sm); width: 90%; }
-            .hero-title { font-size: 1.8rem; } /* Riduci titolo */
-            .video-background video { opacity: 0.5; filter: brightness(0.7); } /* Video più scuro/opaco */
+            .hero-title { font-size: 1.8rem; }
 
             .section-title { font-size: 2rem; }
+
+            .obiettivi-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            .section-obiettivo-principale .obiettivo-card.principale .obiettivo-label {
+                font-size: 1.5rem;
+            }
+            .obiettivo-label {
+                font-size: 1.1rem;
+                min-height: 2.2em; /* Adattamento per font più piccolo */
+            }
+            .obiettivo-card {
+                min-height: 280px; /* Leggermente meno su tablet */
+            }
+             .misurazione-content li {
+                font-size: 1rem;
+            }
         }
 
          @media (max-width: 480px) {
@@ -493,122 +464,39 @@
              .container { padding: 15px; }
              header { padding: 10px 15px; }
              .logo img { height: 35px; }
-             .hero { min-height: 45vh; }
+             .hero { min-height: 35vh; }
              .hero-title { font-size: 1.5rem; }
              .section-title { font-size: 1.6rem; }
              .btn { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
              .footer { padding: 1.5rem 0; }
              .copyright-text { font-size: 0.8rem; }
+
+            .obiettivi-grid {
+                grid-template-columns: 1fr;
+            }
+            .obiettivo-card {
+                min-height: auto;
+                padding: var(--spacing-sm);
+            }
+            .section-obiettivo-principale .obiettivo-card.principale .obiettivo-icon {
+                width: 100px;
+                height: 100px;
+            }
+             .obiettivo-icon {
+                width: 60px;
+                height: 60px;
+            }
+            .section-obiettivo-principale .obiettivo-card.principale .obiettivo-label {
+                font-size: 1.3rem;
+            }
+            .obiettivo-label {
+                font-size: 1rem;
+                min-height: 0; /* Rimuove min-height per label su mobile */
+            }
+            .obiettivo-detail {
+                font-size: 0.9rem;
+            }
          }
-
-        /* Language Selector Styling */
-
-        .language-selector {
-            position: relative;
-            margin-left: 10px; /* Spazio a sinistra nel nav desktop */
-        }
-
-        .language-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem; /* Icona leggermente più grande */
-            cursor: pointer;
-            padding: 5px 8px; /* Padding per area cliccabile */
-            border-radius: 50%; /* Cerchio */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white; /* Colore icona */
-            transition: background-color 0.3s;
-            line-height: 1; /* Evita altezza extra */
-        }
-
-        .language-btn:hover {
-            background-color: rgba(255, 255, 255, 0.15); /* Stesso hover dei link nav */
-        }
-
-        .language-dropdown {
-            position: absolute;
-            top: calc(100% + 10px); /* Spazio tra bottone e dropdown */
-            right: 0;
-            background-color: white;
-            border-radius: 8px; /* Stesso radius card */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Ombra più pronunciata */
-            min-width: 160px; /* Larghezza minima */
-            z-index: 1100; /* Sopra l'header */
-            display: none; /* Nascosto di default */
-            overflow: hidden; /* Per bordi arrotondati */
-            padding: 5px 0; /* Padding verticale interno */
-        }
-
-        .language-dropdown.show {
-            display: block;
-        }
-
-        .language-option {
-            padding: 10px 15px; /* Padding interno */
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-            color: var(--dark-gray); /* Testo scuro */
-        }
-
-        .language-option:hover {
-            background-color: var(--background-green); /* Sfondo verde chiaro su hover */
-        }
-
-        .language-flag {
-            margin-right: 10px; /* Spazio tra bandiera e testo */
-            font-size: 1.1rem; /* Dimensione bandiera emoji */
-            line-height: 1;
-        }
-
-        /* Language selector mobile */
-        .mobile-nav .language-selector {
-            width: 100%;
-            margin: 15px 0 5px 0; /* Spazio sopra/sotto nel menu mobile */
-            position: relative; /* Necessario per dropdown */
-        }
-
-        .mobile-nav .language-btn {
-            width: 100%;
-            justify-content: center; /* Centra testo/icona */
-            padding: 10px 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Bordo sottile bianco */
-            border-radius: 5px; /* Stesso radius link mobile */
-            background-color: transparent;
-            color: white;
-            font-size: 1rem; /* Dimensione testo bottone */
-            text-align: center;
-        }
-         .mobile-nav .language-btn:hover {
-             background-color: rgba(255, 255, 255, 0.1);
-             transform: none; /* Nessun transform in mobile */
-         }
-
-        .mobile-nav .language-dropdown {
-            position: static; /* Non assoluto, appare sotto */
-            width: 100%;
-            box-shadow: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-top: none; /* Rimuove bordo sopra */
-            border-radius: 0 0 5px 5px; /* Arrotonda solo sotto */
-            margin-top: -1px; /* Sovrappone leggermente il bottone */
-            background-color: rgba(0,0,0, 0.1); /* Sfondo scuro semi-trasparente */
-            max-height: 200px; /* Limita altezza */
-            overflow-y: auto; /* Scroll se necessario */
-            padding: 0; /* Rimuove padding base */
-        }
-         .mobile-nav .language-option {
-             color: white; /* Testo bianco */
-             padding: 12px 20px;
-         }
-         .mobile-nav .language-option:hover {
-             background-color: rgba(255, 255, 255, 0.15);
-         }
-
        /* === END: Responsive Styles === */
     </style>
 </head>
@@ -628,7 +516,6 @@
                  <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
                 <a href="./" class="button">Home</a>
                 <a href="./servizi.html" class="button">Servizi</a>
-                <!-- Il link Obiettivi è stato rimosso da qui -->
                 <a href="./sostenerci.html" class="button">Sostienici</a>
                 <a href="./contattaci.html" class="button">Contattaci</a>
                 <a href="./roadmap.html" class="button">Roadmap</a>
@@ -651,7 +538,6 @@
             <a href="./contatore.html" class="green-button">"Un'azione, Mille Impatti."</a>
             <a href="./" class="button">Home</a>
             <a href="./servizi.html" class="button">Servizi</a>
-            <!-- Il link Obiettivi è stato rimosso da qui -->
             <a href="./sostenerci.html" class="button">Sostienici</a>
             <a href="./contattaci.html" class="button">Contattaci</a>
             <a href="./roadmap.html" class="button">Roadmap</a>
@@ -674,68 +560,147 @@
     </div> <!-- End container for header/banner -->
 
     <main>
-        <!-- Hero section per la pagina Obiettivi (puoi personalizzarla) -->
+        <!-- Hero section per la pagina Obiettivi (opzionale) -->
          <section class="hero">
              <div class="video-background">
                  <video autoplay muted loop playsinline id="hero-video" preload="auto" poster="./assets/img/hero-obiettivi-fallback.jpg">
-                     <source src="./assets/video/video_per_obiettivi.mp4" type="video/mp4">
+                     <source src="./assets/video/video_per_obiettivi.mp4" type="video/mp4"> <!-- Assicurati che questo video esista -->
                      Il tuo browser non supporta il tag video.
                  </video>
-                 <div class="fallback-image" style="display: none; background-image: url('./assets/img/hero-obiettivi-fallback.jpg');"></div>
+                 <div class="fallback-image" style="display: none; background-image: url('./assets/img/hero-obiettivi-fallback.jpg');"></div> <!-- Assicurati che questa immagine esista -->
              </div>
              <div class="container-hero">
                  <div class="hero-content">
-                     <h1 class="hero-title">I Nostri Obiettivi Chiave</h1>
+                     <h1 class="hero-title">I Nostri Obiettivi</h1>
                      <p style="font-size: 1.2rem; margin-top: 10px;">Tracciamo la rotta verso un impatto ambientale positivo e duraturo.</p>
                  </div>
              </div>
          </section>
 
-        <!-- Contenuto specifico per la pagina Obiettivi -->
-        <section class="section">
+        <!-- OBIETTIVO PRINCIPALE -->
+        <section class="section section-obiettivo-principale">
             <div class="container">
-                 <h2 class="section-title" style="margin-bottom: var(--spacing-lg);">Definiamo il Futuro Sostenibile</h2>
-                
-                <div class="obiettivi-content">
-                    <h3>Obiettivo 1: Espansione della Rete di Riciclo</h3>
-                    <p>Miriamo a espandere la nostra rete di punti di raccolta e partner di riciclo del 50% entro i prossimi due anni. Questo includerà l'integrazione di nuove tipologie di materiali e la penetrazione in nuove aree geografiche, con un focus sulle comunità meno servite.</p>
+                <h2 class="section-title">🎯 Obiettivo Principale</h2>
+                <div class="obiettivo-card principale">
+                    <div class="obiettivo-icon-container">
+                        <img src="./assets/img/icons/globo_meno_plastica.png" alt="Globo con nastro 'meno plastica'" class="obiettivo-icon">
+                    </div>
+                    <h3 class="obiettivo-label">Liberare mari, fiumi e foreste dalla plastica</h3>
+                    <p class="obiettivo-detail">Verso un mondo con meno plastica, più vita.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- OBIETTIVI STRATEGICI INTERMEDI -->
+        <section class="section section-obiettivi-intermedi" style="background-color: var(--light-bg-section);">
+            <div class="container">
+                <h2 class="section-title">1️⃣ Obiettivi Strategici Intermedi</h2>
+                <div class="obiettivi-grid">
+                    <div class="obiettivo-card">
+                        <div class="obiettivo-icon-container">
+                            <img src="./assets/img/icons/sacco_bottiglie.png" alt="Sacco pieno di bottiglie" class="obiettivo-icon">
+                        </div>
+                        <h3 class="obiettivo-label">1.000 Tonnellate di Plastica</h3>
+                        <p class="obiettivo-detail">Raccolte e riciclate entro 12 mesi</p>
+                    </div>
+                    <div class="obiettivo-card">
+                        <div class="obiettivo-icon-container">
+                            <img src="./assets/img/icons/compattatore_wifi.png" alt="Compattatore intelligente" class="obiettivo-icon">
+                        </div>
+                        <h3 class="obiettivo-label">300 Compattatori Intelligenti</h3>
+                        <p class="obiettivo-detail">Installati in 50 città entro 18 mesi</p>
+                    </div>
+                    <div class="obiettivo-card">
+                        <div class="obiettivo-icon-container">
+                            <img src="./assets/img/icons/smartphone_cuori.png" alt="Smartphone con cuoricini" class="obiettivo-icon">
+                        </div>
+                        <h3 class="obiettivo-label">100.000 Utenti Attivi</h3>
+                        <p class="obiettivo-detail">Sulla nostra app mobile in 12 mesi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OBIETTIVI OPERATIVI DI BREVE TERMINE -->
+        <section class="section section-obiettivi-operativi">
+            <div class="container">
+                <h2 class="section-title">2️⃣ Obiettivi Operativi (Breve Termine)</h2>
+                <div class="obiettivi-grid">
+                    <div class="obiettivo-card">
+                        <div class="obiettivo-icon-container">
+                            <img src="./assets/img/icons/stretta_mano_riciclo.png" alt="Partnership per il riciclo" class="obiettivo-icon">
+                        </div>
+                        <h3 class="obiettivo-label">20 Partnership Strategiche</h3>
+                        <p class="obiettivo-detail">Con supermercati e centri di raccolta</p>
+                    </div>
+                    <div class="obiettivo-card">
+                        <div class="obiettivo-icon-container">
+                            <img src="./assets/img/icons/megafono_comunita.png" alt="Eventi di sensibilizzazione" class="obiettivo-icon">
+                        </div>
+                        <h3 class="obiettivo-label">25 Eventi di Sensibilizzazione</h3>
+                        <p class="obiettivo-detail">In scuole e comunità locali</p>
+                    </div>
+                    <div class="obiettivo-card">
+                        <div class="obiettivo-icon-container">
+                            <img src="./assets/img/icons/medaglia_token.png" alt="Milestone Token" class="obiettivo-icon">
+                        </div>
+                        <h3 class="obiettivo-label">Aggiornamenti & Milestone Token</h3>
+                        <p class="obiettivo-detail">Rilasci mensili per premiare la costanza</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MICRO-OBIETTIVI TATTICI -->
+        <section class="section section-micro-obiettivi" style="background-color: var(--light-bg-section);">
+            <div class="container">
+                <h2 class="section-title">3️⃣ Micro-Obiettivi Tattici</h2>
+                <div class="obiettivi-grid micro">
+                    <div class="obiettivo-card">
+                        <div class="obiettivo-icon-container">
+                            <img src="./assets/img/icons/feedback_utenti.png" alt="Feedback utenti" class="obiettivo-icon">
+                        </div>
+                        <h3 class="obiettivo-label">Feedback da 500 Utenti</h3>
+                        <p class="obiettivo-detail">Almeno 500 feedback/mese</p>
+                    </div>
+                    <div class="obiettivo-card">
+                        <div class="obiettivo-icon-container">
+                            <img src="./assets/img/icons/videocamera_tutorial.png" alt="Tutorial video" class="obiettivo-icon">
+                        </div>
+                        <h3 class="obiettivo-label">4 Tutorial Video Trimestrali</h3>
+                        <p class="obiettivo-detail">Su come riciclare correttamente</p>
+                    </div>
+                    <div class="obiettivo-card">
+                        <div class="obiettivo-icon-container">
+                            <img src="./assets/img/icons/orologio_supporto.png" alt="Supporto rapido" class="obiettivo-icon">
+                        </div>
+                        <h3 class="obiettivo-label">Supporto Entro 24 Ore</h3>
+                        <p class="obiettivo-detail">Garantire tempi di risposta rapidi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COME MISUREREMO IL SUCCESSO -->
+        <section class="section section-misurazione">
+            <div class="container">
+                <h2 class="section-title">📈 Come Misureremo il Successo</h2>
+                <div class="misurazione-content">
                     <ul>
-                        <li>Incrementare i centri di raccolta affiliati.</li>
-                        <li>Introdurre la tracciabilità per almeno 3 nuovi tipi di materiali riciclabili.</li>
-                        <li>Sviluppare partnership strategiche con enti locali e aziende per facilitare la raccolta.</li>
+                        <li>
+                            <span class="misurazione-icon">📊</span>
+                            <strong>Dashboard in tempo reale:</strong> Tonnellate raccolte, utenti attivi, compattatori online.
+                        </li>
+                        <li>
+                            <span class="misurazione-icon">📄</span>
+                            <strong>Report trimestrali:</strong> % di crescita utenti, % di riduzione plastica abbandonata.
+                        </li>
+                        <li>
+                            <span class="misurazione-icon">👥</span>
+                            <strong>Eventi & Feedback:</strong> Numero di workshop e valutazione di gradimento.
+                        </li>
                     </ul>
                 </div>
-
-                <div class="obiettivi-content">
-                    <h3>Obiettivo 2: Innovazione Tecnologica Continua</h3>
-                    <p>Investiremo costantemente in ricerca e sviluppo per migliorare la nostra piattaforma blockchain, l'app utente e i sistemi di tracciabilità. L'obiettivo è rendere il processo di riciclo più efficiente, trasparente e gratificante per tutti gli stakeholder.</p>
-                    <ul>
-                        <li>Implementare funzionalità avanzate nell'app basate sul feedback degli utenti.</li>
-                        <li>Esplorare l'uso di AI per ottimizzare la logistica del riciclo e l'identificazione dei materiali.</li>
-                        <li>Migliorare la sicurezza e la scalabilità della nostra infrastruttura blockchain.</li>
-                    </ul>
-                </div>
-
-                <div class="obiettivi-content">
-                    <h3>Obiettivo 3: Educazione e Coinvolgimento della Comunità</h3>
-                    <p>Vogliamo sensibilizzare un pubblico più ampio sull'importanza del riciclo e sui benefici della circular economy. Lanceremo campagne educative e iniziative di coinvolgimento per promuovere comportamenti sostenibili e aumentare la partecipazione attiva.</p>
-                    <ul>
-                        <li>Creare contenuti educativi multimediali (video, infografiche, webinar).</li>
-                        <li>Organizzare workshop e eventi locali (online e offline) sulla sostenibilità.</li>
-                        <li>Collaborare con scuole e istituzioni educative per programmi dedicati ai giovani.</li>
-                    </ul>
-                </div>
-
-                <div class="obiettivi-content">
-                    <h3>Obiettivo 4: Misurazione e Aumento dell'Impatto Positivo</h3>
-                    <p>Ci impegniamo a misurare con precisione l'impatto ambientale positivo generato dalla nostra piattaforma, come la riduzione delle emissioni di CO2, il risparmio di risorse naturali e la quantità di rifiuti deviati dalle discariche. L'obiettivo è raddoppiare il nostro impatto misurabile entro tre anni.</p>
-                    <ul>
-                        <li>Sviluppare un dashboard pubblico per mostrare l'impatto aggregato in tempo reale.</li>
-                        <li>Pubblicare report di sostenibilità annuali trasparenti.</li>
-                        <li>Ottenere certificazioni ambientali riconosciute per le nostre operazioni e la nostra tecnologia.</li>
-                    </ul>
-                </div>
-
             </div>
         </section>
 
@@ -750,7 +715,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer class="site-footer">
@@ -766,7 +730,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-
             // --- COMMON HELPER FUNCTIONS ---
             const toggleAriaExpanded = (element) => {
                  if (!element) return;
@@ -776,9 +739,7 @@
 
             // --- COPYRIGHT YEAR ---
             const yearSpan = document.getElementById('copyright-year');
-             if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-             }
+             if (yearSpan) { yearSpan.textContent = new Date().getFullYear(); }
 
             // --- HAMBURGER MENU TOGGLE ---
             const hamburgerBtn = document.getElementById('hamburger-btn'); 
@@ -792,7 +753,6 @@
                      toggleAriaExpanded(this);
                      bodyEl.classList.toggle('menu-open', isActive);
                  });
-
                 const mobileNavLinks = mobileNav.querySelectorAll('a.button, a.green-button');
                 mobileNavLinks.forEach(link => {
                     link.addEventListener('click', function() {
@@ -805,12 +765,10 @@
                         }
                     });
                  });
-
                  document.addEventListener('click', function(event) {
                      if (mobileNav.classList.contains('active') &&
                          !hamburgerBtn.contains(event.target) &&
-                         !mobileNav.contains(event.target))
-                    {
+                         !mobileNav.contains(event.target)) {
                          mobileNav.classList.remove('active');
                          bodyEl.classList.remove('menu-open'); 
                          if (hamburgerBtn.getAttribute('aria-expanded') === 'true') {
@@ -818,7 +776,6 @@
                         }
                      }
                  });
-
                  document.addEventListener('keydown', function(event) {
                     if (event.key === 'Escape' && mobileNav.classList.contains('active')) {
                          mobileNav.classList.remove('active');
@@ -828,11 +785,7 @@
                          }
                      }
                  });
-
-            } else {
-                 console.error("Bottone hamburger o navigazione mobile non trovati.");
-            }
-
+            } else { console.error("Bottone hamburger o navigazione mobile non trovati."); }
 
             // --- LANGUAGE SELECTOR LOGIC ---
              const languageBtn = document.getElementById('language-btn');
@@ -847,7 +800,6 @@
                  if (mobileLanguageDropdown) mobileLanguageDropdown.classList.remove('show');
                  if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
              };
-
              if (languageBtn && languageDropdown) {
                  languageBtn.addEventListener('click', function(e) {
                      e.stopPropagation();
@@ -857,7 +809,6 @@
                      if (mobileLanguageBtn) mobileLanguageBtn.setAttribute('aria-expanded', 'false');
                  });
              }
-
              if (mobileLanguageBtn && mobileLanguageDropdown) {
                  mobileLanguageBtn.addEventListener('click', function(e) {
                      e.stopPropagation();
@@ -867,7 +818,6 @@
                      if (languageBtn) languageBtn.setAttribute('aria-expanded', 'false');
                  });
              }
-
              if (allLanguageOptions.length > 0) {
                  allLanguageOptions.forEach(option => {
                      option.addEventListener('click', function() {
@@ -877,7 +827,6 @@
                      });
                  });
              }
-
              document.addEventListener('click', function(event) {
                  if (languageBtn && languageDropdown && !languageBtn.contains(event.target) && !languageDropdown.contains(event.target)) {
                      languageDropdown.classList.remove('show');
@@ -888,34 +837,36 @@
                      mobileLanguageBtn.setAttribute('aria-expanded', 'false');
                  }
              });
-
              if (languageDropdown) languageDropdown.addEventListener('click', e => e.stopPropagation());
              if (mobileLanguageDropdown) mobileLanguageDropdown.addEventListener('click', e => e.stopPropagation());
 
              function changeLang(lang) { 
                  console.log(`Lingua selezionata: ${lang}`);
                  localStorage.setItem('selectedLanguage', lang);
-                 alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+                 // alert(`Lingua cambiata in: ${lang}. (Logica di traduzione da implementare)`);
+                 // Per una reale traduzione, considera di ricaricare la pagina con il parametro lang
+                 // o usare una libreria i18n lato client.
+                 // Esempio base:
+                 // window.location.search = `?lang=${lang}`;
              }
-
              const savedLang = localStorage.getItem('selectedLanguage');
              if (savedLang) {
                   console.log(`Lingua salvata trovata: ${savedLang}.`);
+                  // Potresti voler applicare la lingua qui se hai una logica di traduzione
+                  // document.documentElement.lang = savedLang;
              }
             // --- END: Language Selector Logic ---
-
 
             // --- HERO VIDEO BACKGROUND HANDLING --- 
             const heroVideo = document.getElementById('hero-video');
             if (heroVideo) {
                  heroVideo.addEventListener('loadeddata', function() {
-                     console.log("Hero video loadeddata event");
+                     console.log("Hero video caricato.");
                      heroVideo.play().catch(function(error) {
                          console.error('Errore nel play del video hero:', error);
                          const videoBackground = document.querySelector('.video-background');
                          const fallback = videoBackground?.querySelector('.fallback-image');
                          if (fallback) fallback.style.display = 'block'; 
-                         console.warn("Video hero non partito, mostro poster/fallback.");
                      });
                  });
                  heroVideo.addEventListener('error', function(e) {
@@ -923,15 +874,10 @@
                       const videoBackground = document.querySelector('.video-background');
                       const fallback = videoBackground?.querySelector('.fallback-image');
                       if (fallback) fallback.style.display = 'block'; 
-                      console.warn("Errore caricamento video hero, mostro poster/fallback.");
                  });
-            } else {
-                 console.warn("Elemento video hero non trovato.");
             }
              // --- END HERO VIDEO BACKGROUND HANDLING ---
-
         }); // End DOMContentLoaded
     </script>
-
 </body>
 </html>
